@@ -1,0 +1,221 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Code_Secret_SOEMS;
+using Code_Secret_SOEMS.Helpers;
+
+namespace Code_Secret_SOEMS
+{
+    public partial class FrmMain : Form
+    {
+        private static UserControl currentUserControl;
+
+        private void setUserControl(string userControl)
+        {
+            try
+            {
+                this.Controls.Remove(currentUserControl);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                switch (userControl)
+                {
+                    case "Dashboard":
+                        currentUserControl = new CtrlDashboard();
+                        break;
+                    case "Officers":
+                        currentUserControl = new CtrlOfficers();
+                        break;
+                    case "Events":
+                        currentUserControl = new CtrlEvents();
+                        break;
+                    case "Students":
+                        currentUserControl = new CtrlStudents();
+                        break;
+                    case "Guests":
+                        currentUserControl = new CtrlGuests();
+                        break;
+                }
+                currentUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+                currentUserControl.Location = new System.Drawing.Point(294, 51);
+                currentUserControl.Name = "Current Form";
+                currentUserControl.Size = new System.Drawing.Size(940, 614);
+                this.Controls.Add(currentUserControl);
+                lblTitle.Text = userControl;
+            }
+        }
+
+        private void triggerMaximize()
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                currentUserControl.Size = new Size(940, 614);
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                if (Screen.PrimaryScreen.Bounds.Width == 1920)
+                {
+                    currentUserControl.Size = new Size(1576, 956);
+                }
+                WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void setUserControlSize(FormWindowState myFormWindowState)
+        {
+            if(myFormWindowState == FormWindowState.Maximized)
+            {
+                currentUserControl.Size = new Size(1576, 956);
+            } else
+            {
+                currentUserControl.Size = new Size(940, 614);
+            }
+        }
+
+        private void setFormTheme()
+        {
+            ThemeHelper th = new ThemeHelper();
+            th.setFormColor(this);
+            th.setDragPanelColor(panelTop);
+            th.setGradientPanelColor(panelLeft);
+            th.setControlButtonColor(btnMinimize);
+            th.setControlButtonColor(btnMaximize);
+            th.setControlButtonColor(btnClose);
+            th.setIconButtonColor(btnDashboard);
+            th.setIconButtonColor(btnOfficers);
+            th.setIconButtonColor(btnEvents);
+            th.setIconButtonColor(btnStudents);
+            th.setIconButtonColor(btnGuests);
+            th.setIconButtonColor(btnOfficers);
+            th.setLabelColor(lblTitle);
+            th.setStripStatusColor(statusStripMain);
+            th.setToolStripStatusLabelColor(toolStripStatusOfficer);
+            th.setToolStripStatusLabelColor(toolStripStatusDate);
+            th.setToolStripStatusLabelColor(toolStripStatusTime);
+        }
+        public FrmMain()
+        {
+            InitializeComponent();
+            setFormTheme();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult prompt = MessageBox.Show("Logout?", "Calendae", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (prompt == DialogResult.Yes) {
+                this.Hide();
+                new FrmLogin().Show();
+            }
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            triggerMaximize();
+        }
+
+        private void tmrMain_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusTime.Text = DateTime.Now.ToString("T");
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            toolStripStatusDate.Text = DateTime.Now.ToString("dddd, MMMM d, yyyy");
+            setUserControl("Dashboard");
+            currentUserControl.Size = new Size(940, 614);
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            setUserControl("Dashboard");
+            if(this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            {
+                currentUserControl.Size = new Size(1576, 956);
+            } else
+            {
+                currentUserControl.Size = new Size(940, 614);
+            }
+        }
+
+        private void btnOfficers_Click(object sender, EventArgs e)
+        {
+            setUserControl("Officers");
+            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            {
+                currentUserControl.Size = new Size(1576, 956);
+            }
+            else
+            {
+                currentUserControl.Size = new Size(940, 614);
+            }
+        }
+
+        private void btnEvents_Click(object sender, EventArgs e)
+        {
+            setUserControl("Events");
+            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            {
+                currentUserControl.Size = new Size(1576, 956);
+            }
+            else
+            {
+                currentUserControl.Size = new Size(940, 614);
+            }
+        }
+
+        private void btnStudents_Click(object sender, EventArgs e)
+        {
+            setUserControl("Students");
+            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            {
+                currentUserControl.Size = new Size(1576, 956);
+            }
+            else
+            {
+                currentUserControl.Size = new Size(940, 614);
+            }
+        }
+
+        private void btnGuests_Click(object sender, EventArgs e)
+        {
+            setUserControl("Guests");
+            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            {
+                currentUserControl.Size = new Size(1576, 956);
+            }
+            else
+            {
+                currentUserControl.Size = new Size(940, 614);
+            }
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            new FrmTheme().ShowDialog();
+            setFormTheme();
+            setUserControl(lblTitle.Text);
+            setUserControlSize(this.WindowState);
+        }
+
+        private void panelTop_DoubleClick(object sender, EventArgs e)
+        {
+            triggerMaximize();
+        }
+    }
+}
