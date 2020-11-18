@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Code_Secret_SOEMS.Models
 {
-    public class Theme
+    class Theme
     {
         // Properties
         public string theme { get; set; }
@@ -15,7 +15,7 @@ namespace Code_Secret_SOEMS.Models
         // Methods
         public string getCurrentTheme()
         {
-            return Properties.Settings.Default.Theme;
+            return Properties.Settings.Default.theme;
         }
 
         public bool getCurrentMode()
@@ -25,7 +25,7 @@ namespace Code_Secret_SOEMS.Models
 
         public void saveTheme()
         {
-            Properties.Settings.Default.Theme = theme;
+            Properties.Settings.Default.theme = theme;
             Properties.Settings.Default.Save();
         }
 
@@ -37,7 +37,7 @@ namespace Code_Secret_SOEMS.Models
 
         public void saveBoth()
         {
-            Properties.Settings.Default.Theme = theme;
+            Properties.Settings.Default.theme = theme;
             Properties.Settings.Default.isDark = isDark;
             Properties.Settings.Default.Save();
         }

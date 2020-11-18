@@ -19,7 +19,7 @@ namespace Code_Secret_SOEMS.Helpers
         //Theme
         public string getCurrentTheme()
         {
-            return Properties.Settings.Default.Theme;
+            return Properties.Settings.Default.theme;
         }
 
         // Dark Mode
@@ -28,6 +28,7 @@ namespace Code_Secret_SOEMS.Helpers
             return Properties.Settings.Default.isDark;
         }
 
+        // Sets color of Form
         public void setFormColor(Form myForm)
         {
             if (isDark())
@@ -189,27 +190,20 @@ namespace Code_Secret_SOEMS.Helpers
         // Sets color for buttons (based from theme)
         public void setButtonColor(Button myButton)
         {
-            if (isDark())
+            switch (getCurrentTheme())
             {
-                myButton.BackColor = Color.FromArgb(51, 51, 51);
-            }
-            else
-            {
-                switch (getCurrentTheme())
-                {
-                    case "Dark Orange":
-                        myButton.BackColor = Color.DarkOrange;
-                        break;
-                    case "Cool Blue":
-                        myButton.BackColor = Color.FromArgb(96, 120, 234);
-                        break;
-                    case "Hot Pink":
-                        myButton.BackColor = Color.FromArgb(211, 32, 139);
-                        break;
-                    case "Fresh Green":
-                        myButton.BackColor = Color.FromArgb(87, 202, 133);
-                        break;
-                }
+                case "Dark Orange":
+                    myButton.BackColor = Color.DarkOrange;
+                    break;
+                case "Cool Blue":
+                    myButton.BackColor = Color.FromArgb(96, 120, 234);
+                    break;
+                case "Hot Pink":
+                    myButton.BackColor = Color.FromArgb(211, 32, 139);
+                    break;
+                case "Fresh Green":
+                    myButton.BackColor = Color.FromArgb(87, 202, 133);
+                    break;
             }
         }
 

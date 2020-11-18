@@ -30,9 +30,9 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblEventName);
             th.setLabelColor(lblVenue);
             th.setLabelColor(lblDateFrom);
-            th.setLabelColor(lblTimeFrom);
+            th.setLabelColor(lblTime);
             th.setLabelColor(lblDateTo);
-            th.setLabelColor(lblTimeTo);
+            th.setLabelColor(lblTime);
             th.setLabelColor(lblStudentRegistrationFee);
             th.setLabelColor(lblStudentSlots);
             th.setLabelColor(lblGuestRegistrationFee);

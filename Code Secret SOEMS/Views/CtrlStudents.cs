@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
+using Code_Secret_SOEMS.Presenters;
 
 namespace Code_Secret_SOEMS
 {
@@ -58,6 +59,9 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblIDNo);
             th.setLabelColor(lblCourse);
             th.setLabelColor(lblYearAndSection);
+
+            StudentPresenter studentPresenter = new StudentPresenter();
+            studentPresenter.loadStudents(dataStudents);
         }
     }
 }

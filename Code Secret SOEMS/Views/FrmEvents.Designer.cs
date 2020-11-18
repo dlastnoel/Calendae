@@ -50,9 +50,9 @@
             this.txtEventName = new System.Windows.Forms.TextBox();
             this.lblEventName = new System.Windows.Forms.Label();
             this.lblVenue = new System.Windows.Forms.Label();
-            this.txtTimeFrom = new System.Windows.Forms.TextBox();
+            this.txtTime = new System.Windows.Forms.TextBox();
             this.txtVenue = new System.Windows.Forms.TextBox();
-            this.lblTimeFrom = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.lblDateFrom = new System.Windows.Forms.Label();
             this.txtDateFrom = new System.Windows.Forms.TextBox();
             this.lblStudentRegistrationFee = new System.Windows.Forms.Label();
@@ -225,9 +225,9 @@
             this.groupEventInfo.Controls.Add(this.txtEventDetails);
             this.groupEventInfo.Controls.Add(this.txtStudentSlots);
             this.groupEventInfo.Controls.Add(this.lblStudentSlots);
-            this.groupEventInfo.Controls.Add(this.lblTimeFrom);
+            this.groupEventInfo.Controls.Add(this.lblTime);
             this.groupEventInfo.Controls.Add(this.txtEventName);
-            this.groupEventInfo.Controls.Add(this.txtTimeFrom);
+            this.groupEventInfo.Controls.Add(this.txtTime);
             this.groupEventInfo.Controls.Add(this.lblEventName);
             this.groupEventInfo.Controls.Add(this.lblVenue);
             this.groupEventInfo.Controls.Add(this.txtVenue);
@@ -319,13 +319,13 @@
             this.lblVenue.TabIndex = 1;
             this.lblVenue.Text = "Venue";
             // 
-            // txtTimeFrom
+            // txtTime
             // 
-            this.txtTimeFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimeFrom.Location = new System.Drawing.Point(43, 193);
-            this.txtTimeFrom.Name = "txtTimeFrom";
-            this.txtTimeFrom.Size = new System.Drawing.Size(486, 22);
-            this.txtTimeFrom.TabIndex = 15;
+            this.txtTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTime.Location = new System.Drawing.Point(43, 193);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Size = new System.Drawing.Size(486, 22);
+            this.txtTime.TabIndex = 15;
             // 
             // txtVenue
             // 
@@ -335,15 +335,15 @@
             this.txtVenue.Size = new System.Drawing.Size(487, 22);
             this.txtVenue.TabIndex = 2;
             // 
-            // lblTimeFrom
+            // lblTime
             // 
-            this.lblTimeFrom.AutoSize = true;
-            this.lblTimeFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeFrom.Location = new System.Drawing.Point(40, 175);
-            this.lblTimeFrom.Name = "lblTimeFrom";
-            this.lblTimeFrom.Size = new System.Drawing.Size(39, 16);
-            this.lblTimeFrom.TabIndex = 14;
-            this.lblTimeFrom.Text = "Time";
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(40, 175);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(39, 16);
+            this.lblTime.TabIndex = 14;
+            this.lblTime.Text = "Time";
             // 
             // lblDateFrom
             // 
@@ -452,9 +452,9 @@
         private System.Windows.Forms.TextBox txtEventName;
         private System.Windows.Forms.Label lblEventName;
         private System.Windows.Forms.Label lblVenue;
-        private System.Windows.Forms.TextBox txtTimeFrom;
+        private System.Windows.Forms.TextBox txtTime;
         private System.Windows.Forms.TextBox txtVenue;
-        private System.Windows.Forms.Label lblTimeFrom;
+        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblDateFrom;
         private System.Windows.Forms.TextBox txtDateFrom;
         private System.Windows.Forms.Label lblStudentRegistrationFee;
