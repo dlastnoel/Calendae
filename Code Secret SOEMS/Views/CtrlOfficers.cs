@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
+using Code_Secret_SOEMS.Presenters;
 
 namespace Code_Secret_SOEMS
 {
     public partial class CtrlOfficers : UserControl
     {
+        private OfficerPresenter officerPresenter = new OfficerPresenter();
         public CtrlOfficers()
         {
             InitializeComponent();
@@ -60,6 +62,8 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblYearAndSection);
             th.setLabelColor(lblPassword);
             th.setLabelColor(lblConfirmPassword);
+
+            officerPresenter.loadOfficers(dataOfficers);
         }
     }
 }

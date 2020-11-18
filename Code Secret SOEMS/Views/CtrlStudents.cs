@@ -14,6 +14,7 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlStudents : UserControl
     {
+        private StudentPresenter studentPresenter = new StudentPresenter();
         public CtrlStudents()
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblCourse);
             th.setLabelColor(lblYearAndSection);
 
-            StudentPresenter studentPresenter = new StudentPresenter();
+            
             studentPresenter.loadStudents(dataStudents);
         }
     }

@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
+using Code_Secret_SOEMS.Presenters;
 
 namespace Code_Secret_SOEMS
 {
     public partial class CtrlGuests : UserControl
     {
+        private GuestPresenter guestPresenter = new GuestPresenter();
         public CtrlGuests()
         {
             InitializeComponent();
@@ -64,6 +66,8 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblYear);
             th.setLabelColor(lblWorksAt);
             th.setLabelColor(lblPosition);
+
+            guestPresenter.loadStudents(dataGuests);
         }
 
         private void CtrlGuests_SizeChanged(object sender, EventArgs e)

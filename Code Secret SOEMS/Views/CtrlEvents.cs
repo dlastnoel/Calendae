@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
+using Code_Secret_SOEMS.Presenters;
 
 namespace Code_Secret_SOEMS
 {
     public partial class CtrlEvents : UserControl
     {
+        private EventPresenter eventPresenter = new EventPresenter();
         public CtrlEvents()
         {
             InitializeComponent();
@@ -71,6 +73,8 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblInfo2);
             th.setLabelColor(lblInfo3);
             th.setLabelColor(lblInfo4);
+
+            eventPresenter.loadEvents(dataEvents);
         }
     }
 }
