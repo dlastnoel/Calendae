@@ -29,8 +29,10 @@ namespace Code_Secret_SOEMS
 
             th.setLabelColor(lblEventName);
             th.setLabelColor(lblVenue);
-            th.setLabelColor(lblDate);
-            th.setLabelColor(lblTime);
+            th.setLabelColor(lblDateFrom);
+            th.setLabelColor(lblTimeFrom);
+            th.setLabelColor(lblDateTo);
+            th.setLabelColor(lblTimeTo);
             th.setLabelColor(lblStudentRegistrationFee);
             th.setLabelColor(lblStudentSlots);
             th.setLabelColor(lblGuestRegistrationFee);
@@ -38,8 +40,6 @@ namespace Code_Secret_SOEMS
 
             th.setLabelColor(lblInfo1);
             th.setLabelColor(lblInfo2);
-            th.setLabelColor(lblInfo3);
-            th.setLabelColor(lblInfo4);
         }
 
         private void btnBack_Click(object sender, EventArgs e)

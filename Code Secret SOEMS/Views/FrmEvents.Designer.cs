@@ -35,30 +35,30 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.groupGuests = new System.Windows.Forms.GroupBox();
-            this.lblInfo4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.lblInfo3 = new System.Windows.Forms.Label();
+            this.txtGuestSlots = new System.Windows.Forms.TextBox();
+            this.lblInfo1 = new System.Windows.Forms.Label();
             this.lblGuestSlots = new System.Windows.Forms.Label();
             this.lblGuestRegistrationFee = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtGuestRegistraionFree = new System.Windows.Forms.TextBox();
             this.checkGuests = new System.Windows.Forms.CheckBox();
             this.groupEventInfo = new System.Windows.Forms.GroupBox();
             this.lblEventDetails = new System.Windows.Forms.Label();
             this.txtEventDetails = new System.Windows.Forms.TextBox();
             this.lblInfo2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblInfo1 = new System.Windows.Forms.Label();
+            this.txtStudentSlots = new System.Windows.Forms.TextBox();
             this.lblStudentSlots = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEventName = new System.Windows.Forms.TextBox();
             this.lblEventName = new System.Windows.Forms.Label();
             this.lblVenue = new System.Windows.Forms.Label();
-            this.txtEmailAddress = new System.Windows.Forms.TextBox();
+            this.txtTimeFrom = new System.Windows.Forms.TextBox();
             this.txtVenue = new System.Windows.Forms.TextBox();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.txtMiddleName = new System.Windows.Forms.TextBox();
+            this.lblTimeFrom = new System.Windows.Forms.Label();
+            this.lblDateFrom = new System.Windows.Forms.Label();
+            this.txtDateFrom = new System.Windows.Forms.TextBox();
             this.lblStudentRegistrationFee = new System.Windows.Forms.Label();
-            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtStudentRegistration = new System.Windows.Forms.TextBox();
+            this.lblDateTo = new System.Windows.Forms.Label();
+            this.txtDateTo = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.groupGuests.SuspendLayout();
             this.groupEventInfo.SuspendLayout();
@@ -145,56 +145,45 @@
             // 
             // groupGuests
             // 
-            this.groupGuests.Controls.Add(this.lblInfo4);
-            this.groupGuests.Controls.Add(this.textBox3);
-            this.groupGuests.Controls.Add(this.lblInfo3);
+            this.groupGuests.Controls.Add(this.txtGuestSlots);
+            this.groupGuests.Controls.Add(this.lblInfo1);
+            this.groupGuests.Controls.Add(this.lblInfo2);
             this.groupGuests.Controls.Add(this.lblGuestSlots);
             this.groupGuests.Controls.Add(this.lblGuestRegistrationFee);
-            this.groupGuests.Controls.Add(this.textBox8);
+            this.groupGuests.Controls.Add(this.txtGuestRegistraionFree);
             this.groupGuests.Enabled = false;
             this.groupGuests.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupGuests.Location = new System.Drawing.Point(11, 473);
+            this.groupGuests.Location = new System.Drawing.Point(11, 484);
             this.groupGuests.Name = "groupGuests";
-            this.groupGuests.Size = new System.Drawing.Size(591, 156);
+            this.groupGuests.Size = new System.Drawing.Size(591, 145);
             this.groupGuests.TabIndex = 43;
             this.groupGuests.TabStop = false;
             this.groupGuests.Text = "       Allow Guests?";
             // 
-            // lblInfo4
+            // txtGuestSlots
             // 
-            this.lblInfo4.AutoSize = true;
-            this.lblInfo4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo4.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo4.Location = new System.Drawing.Point(40, 121);
-            this.lblInfo4.Name = "lblInfo4";
-            this.lblInfo4.Size = new System.Drawing.Size(175, 13);
-            this.lblInfo4.TabIndex = 34;
-            this.lblInfo4.Text = "Leave slots empty for unlimited slots";
+            this.txtGuestSlots.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGuestSlots.Location = new System.Drawing.Point(317, 66);
+            this.txtGuestSlots.Name = "txtGuestSlots";
+            this.txtGuestSlots.Size = new System.Drawing.Size(213, 22);
+            this.txtGuestSlots.TabIndex = 19;
             // 
-            // textBox3
+            // lblInfo1
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(317, 68);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 22);
-            this.textBox3.TabIndex = 19;
-            // 
-            // lblInfo3
-            // 
-            this.lblInfo3.AutoSize = true;
-            this.lblInfo3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo3.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo3.Location = new System.Drawing.Point(40, 103);
-            this.lblInfo3.Name = "lblInfo3";
-            this.lblInfo3.Size = new System.Drawing.Size(198, 13);
-            this.lblInfo3.TabIndex = 33;
-            this.lblInfo3.Text = "Leave registration fee empty to set it free";
+            this.lblInfo1.AutoSize = true;
+            this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo1.ForeColor = System.Drawing.Color.Black;
+            this.lblInfo1.Location = new System.Drawing.Point(40, 101);
+            this.lblInfo1.Name = "lblInfo1";
+            this.lblInfo1.Size = new System.Drawing.Size(198, 13);
+            this.lblInfo1.TabIndex = 33;
+            this.lblInfo1.Text = "Leave registration fee empty to set it free";
             // 
             // lblGuestSlots
             // 
             this.lblGuestSlots.AutoSize = true;
             this.lblGuestSlots.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGuestSlots.Location = new System.Drawing.Point(314, 50);
+            this.lblGuestSlots.Location = new System.Drawing.Point(314, 48);
             this.lblGuestSlots.Name = "lblGuestSlots";
             this.lblGuestSlots.Size = new System.Drawing.Size(38, 16);
             this.lblGuestSlots.TabIndex = 18;
@@ -204,24 +193,24 @@
             // 
             this.lblGuestRegistrationFee.AutoSize = true;
             this.lblGuestRegistrationFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGuestRegistrationFee.Location = new System.Drawing.Point(40, 50);
+            this.lblGuestRegistrationFee.Location = new System.Drawing.Point(40, 48);
             this.lblGuestRegistrationFee.Name = "lblGuestRegistrationFee";
             this.lblGuestRegistrationFee.Size = new System.Drawing.Size(107, 16);
             this.lblGuestRegistrationFee.TabIndex = 5;
             this.lblGuestRegistrationFee.Text = "Registration Fee";
             // 
-            // textBox8
+            // txtGuestRegistraionFree
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(43, 68);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(213, 22);
-            this.textBox8.TabIndex = 6;
+            this.txtGuestRegistraionFree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGuestRegistraionFree.Location = new System.Drawing.Point(43, 66);
+            this.txtGuestRegistraionFree.Name = "txtGuestRegistraionFree";
+            this.txtGuestRegistraionFree.Size = new System.Drawing.Size(213, 22);
+            this.txtGuestRegistraionFree.TabIndex = 6;
             // 
             // checkGuests
             // 
             this.checkGuests.AutoSize = true;
-            this.checkGuests.Location = new System.Drawing.Point(22, 473);
+            this.checkGuests.Location = new System.Drawing.Point(22, 483);
             this.checkGuests.Name = "checkGuests";
             this.checkGuests.Size = new System.Drawing.Size(15, 14);
             this.checkGuests.TabIndex = 36;
@@ -230,26 +219,26 @@
             // 
             // groupEventInfo
             // 
+            this.groupEventInfo.Controls.Add(this.lblDateTo);
+            this.groupEventInfo.Controls.Add(this.txtDateTo);
             this.groupEventInfo.Controls.Add(this.lblEventDetails);
             this.groupEventInfo.Controls.Add(this.txtEventDetails);
-            this.groupEventInfo.Controls.Add(this.lblInfo2);
-            this.groupEventInfo.Controls.Add(this.textBox2);
-            this.groupEventInfo.Controls.Add(this.lblInfo1);
+            this.groupEventInfo.Controls.Add(this.txtStudentSlots);
             this.groupEventInfo.Controls.Add(this.lblStudentSlots);
-            this.groupEventInfo.Controls.Add(this.textBox1);
+            this.groupEventInfo.Controls.Add(this.lblTimeFrom);
+            this.groupEventInfo.Controls.Add(this.txtEventName);
+            this.groupEventInfo.Controls.Add(this.txtTimeFrom);
             this.groupEventInfo.Controls.Add(this.lblEventName);
             this.groupEventInfo.Controls.Add(this.lblVenue);
-            this.groupEventInfo.Controls.Add(this.txtEmailAddress);
             this.groupEventInfo.Controls.Add(this.txtVenue);
-            this.groupEventInfo.Controls.Add(this.lblTime);
-            this.groupEventInfo.Controls.Add(this.lblDate);
-            this.groupEventInfo.Controls.Add(this.txtMiddleName);
+            this.groupEventInfo.Controls.Add(this.lblDateFrom);
+            this.groupEventInfo.Controls.Add(this.txtDateFrom);
             this.groupEventInfo.Controls.Add(this.lblStudentRegistrationFee);
-            this.groupEventInfo.Controls.Add(this.txtLastName);
+            this.groupEventInfo.Controls.Add(this.txtStudentRegistration);
             this.groupEventInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupEventInfo.Location = new System.Drawing.Point(12, 36);
             this.groupEventInfo.Name = "groupEventInfo";
-            this.groupEventInfo.Size = new System.Drawing.Size(591, 425);
+            this.groupEventInfo.Size = new System.Drawing.Size(591, 441);
             this.groupEventInfo.TabIndex = 47;
             this.groupEventInfo.TabStop = false;
             this.groupEventInfo.Text = "Event Information";
@@ -258,7 +247,7 @@
             // 
             this.lblEventDetails.AutoSize = true;
             this.lblEventDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEventDetails.Location = new System.Drawing.Point(40, 217);
+            this.lblEventDetails.Location = new System.Drawing.Point(40, 261);
             this.lblEventDetails.Name = "lblEventDetails";
             this.lblEventDetails.Size = new System.Drawing.Size(87, 16);
             this.lblEventDetails.TabIndex = 36;
@@ -267,7 +256,7 @@
             // txtEventDetails
             // 
             this.txtEventDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEventDetails.Location = new System.Drawing.Point(43, 235);
+            this.txtEventDetails.Location = new System.Drawing.Point(43, 279);
             this.txtEventDetails.Multiline = true;
             this.txtEventDetails.Name = "txtEventDetails";
             this.txtEventDetails.Size = new System.Drawing.Size(487, 137);
@@ -278,54 +267,43 @@
             this.lblInfo2.AutoSize = true;
             this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo2.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo2.Location = new System.Drawing.Point(40, 401);
+            this.lblInfo2.Location = new System.Drawing.Point(40, 114);
             this.lblInfo2.Name = "lblInfo2";
             this.lblInfo2.Size = new System.Drawing.Size(175, 13);
             this.lblInfo2.TabIndex = 34;
             this.lblInfo2.Text = "Leave slots empty for unlimited slots";
             // 
-            // textBox2
+            // txtStudentSlots
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(317, 191);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 22);
-            this.textBox2.TabIndex = 19;
-            // 
-            // lblInfo1
-            // 
-            this.lblInfo1.AutoSize = true;
-            this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo1.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo1.Location = new System.Drawing.Point(40, 383);
-            this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(198, 13);
-            this.lblInfo1.TabIndex = 33;
-            this.lblInfo1.Text = "Leave registration fee empty to set it free";
+            this.txtStudentSlots.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentSlots.Location = new System.Drawing.Point(316, 236);
+            this.txtStudentSlots.Name = "txtStudentSlots";
+            this.txtStudentSlots.Size = new System.Drawing.Size(213, 22);
+            this.txtStudentSlots.TabIndex = 19;
             // 
             // lblStudentSlots
             // 
             this.lblStudentSlots.AutoSize = true;
             this.lblStudentSlots.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentSlots.Location = new System.Drawing.Point(314, 173);
+            this.lblStudentSlots.Location = new System.Drawing.Point(313, 218);
             this.lblStudentSlots.Name = "lblStudentSlots";
             this.lblStudentSlots.Size = new System.Drawing.Size(38, 16);
             this.lblStudentSlots.TabIndex = 18;
             this.lblStudentSlots.Text = "Slots";
             // 
-            // textBox1
+            // txtEventName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(43, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(487, 22);
-            this.textBox1.TabIndex = 17;
+            this.txtEventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventName.Location = new System.Drawing.Point(43, 62);
+            this.txtEventName.Name = "txtEventName";
+            this.txtEventName.Size = new System.Drawing.Size(487, 22);
+            this.txtEventName.TabIndex = 17;
             // 
             // lblEventName
             // 
             this.lblEventName.AutoSize = true;
             this.lblEventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEventName.Location = new System.Drawing.Point(40, 41);
+            this.lblEventName.Location = new System.Drawing.Point(40, 44);
             this.lblEventName.Name = "lblEventName";
             this.lblEventName.Size = new System.Drawing.Size(82, 16);
             this.lblEventName.TabIndex = 16;
@@ -335,73 +313,91 @@
             // 
             this.lblVenue.AutoSize = true;
             this.lblVenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVenue.Location = new System.Drawing.Point(40, 85);
+            this.lblVenue.Location = new System.Drawing.Point(40, 88);
             this.lblVenue.Name = "lblVenue";
             this.lblVenue.Size = new System.Drawing.Size(47, 16);
             this.lblVenue.TabIndex = 1;
             this.lblVenue.Text = "Venue";
             // 
-            // txtEmailAddress
+            // txtTimeFrom
             // 
-            this.txtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailAddress.Location = new System.Drawing.Point(317, 147);
-            this.txtEmailAddress.Name = "txtEmailAddress";
-            this.txtEmailAddress.Size = new System.Drawing.Size(213, 22);
-            this.txtEmailAddress.TabIndex = 15;
+            this.txtTimeFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimeFrom.Location = new System.Drawing.Point(43, 193);
+            this.txtTimeFrom.Name = "txtTimeFrom";
+            this.txtTimeFrom.Size = new System.Drawing.Size(486, 22);
+            this.txtTimeFrom.TabIndex = 15;
             // 
             // txtVenue
             // 
             this.txtVenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVenue.Location = new System.Drawing.Point(43, 103);
+            this.txtVenue.Location = new System.Drawing.Point(43, 106);
             this.txtVenue.Name = "txtVenue";
             this.txtVenue.Size = new System.Drawing.Size(487, 22);
             this.txtVenue.TabIndex = 2;
             // 
-            // lblTime
+            // lblTimeFrom
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(314, 129);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(39, 16);
-            this.lblTime.TabIndex = 14;
-            this.lblTime.Text = "Time";
+            this.lblTimeFrom.AutoSize = true;
+            this.lblTimeFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeFrom.Location = new System.Drawing.Point(40, 175);
+            this.lblTimeFrom.Name = "lblTimeFrom";
+            this.lblTimeFrom.Size = new System.Drawing.Size(39, 16);
+            this.lblTimeFrom.TabIndex = 14;
+            this.lblTimeFrom.Text = "Time";
             // 
-            // lblDate
+            // lblDateFrom
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(40, 129);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(37, 16);
-            this.lblDate.TabIndex = 3;
-            this.lblDate.Text = "Date";
+            this.lblDateFrom.AutoSize = true;
+            this.lblDateFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateFrom.Location = new System.Drawing.Point(40, 132);
+            this.lblDateFrom.Name = "lblDateFrom";
+            this.lblDateFrom.Size = new System.Drawing.Size(39, 16);
+            this.lblDateFrom.TabIndex = 3;
+            this.lblDateFrom.Text = "From";
             // 
-            // txtMiddleName
+            // txtDateFrom
             // 
-            this.txtMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMiddleName.Location = new System.Drawing.Point(43, 147);
-            this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Size = new System.Drawing.Size(213, 22);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtDateFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateFrom.Location = new System.Drawing.Point(43, 150);
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(241, 22);
+            this.txtDateFrom.TabIndex = 4;
             // 
             // lblStudentRegistrationFee
             // 
             this.lblStudentRegistrationFee.AutoSize = true;
             this.lblStudentRegistrationFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(40, 173);
+            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(39, 218);
             this.lblStudentRegistrationFee.Name = "lblStudentRegistrationFee";
             this.lblStudentRegistrationFee.Size = new System.Drawing.Size(107, 16);
             this.lblStudentRegistrationFee.TabIndex = 5;
             this.lblStudentRegistrationFee.Text = "Registration Fee";
             // 
-            // txtLastName
+            // txtStudentRegistration
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(43, 191);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(213, 22);
-            this.txtLastName.TabIndex = 6;
+            this.txtStudentRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentRegistration.Location = new System.Drawing.Point(42, 236);
+            this.txtStudentRegistration.Name = "txtStudentRegistration";
+            this.txtStudentRegistration.Size = new System.Drawing.Size(268, 22);
+            this.txtStudentRegistration.TabIndex = 6;
+            // 
+            // lblDateTo
+            // 
+            this.lblDateTo.AutoSize = true;
+            this.lblDateTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTo.Location = new System.Drawing.Point(290, 132);
+            this.lblDateTo.Name = "lblDateTo";
+            this.lblDateTo.Size = new System.Drawing.Size(25, 16);
+            this.lblDateTo.TabIndex = 37;
+            this.lblDateTo.Text = "To";
+            // 
+            // txtDateTo
+            // 
+            this.txtDateTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateTo.Location = new System.Drawing.Point(290, 150);
+            this.txtDateTo.Name = "txtDateTo";
+            this.txtDateTo.Size = new System.Drawing.Size(241, 22);
+            this.txtDateTo.TabIndex = 38;
             // 
             // FrmEvents
             // 
@@ -442,28 +438,28 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.GroupBox groupGuests;
         private System.Windows.Forms.CheckBox checkGuests;
-        private System.Windows.Forms.Label lblInfo4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label lblInfo3;
+        private System.Windows.Forms.TextBox txtGuestSlots;
+        private System.Windows.Forms.Label lblInfo1;
         private System.Windows.Forms.Label lblGuestSlots;
         private System.Windows.Forms.Label lblGuestRegistrationFee;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtGuestRegistraionFree;
         private System.Windows.Forms.GroupBox groupEventInfo;
         private System.Windows.Forms.Label lblEventDetails;
         private System.Windows.Forms.TextBox txtEventDetails;
         private System.Windows.Forms.Label lblInfo2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label lblInfo1;
+        private System.Windows.Forms.TextBox txtStudentSlots;
         private System.Windows.Forms.Label lblStudentSlots;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEventName;
         private System.Windows.Forms.Label lblEventName;
         private System.Windows.Forms.Label lblVenue;
-        private System.Windows.Forms.TextBox txtEmailAddress;
+        private System.Windows.Forms.TextBox txtTimeFrom;
         private System.Windows.Forms.TextBox txtVenue;
-        private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.TextBox txtMiddleName;
+        private System.Windows.Forms.Label lblTimeFrom;
+        private System.Windows.Forms.Label lblDateFrom;
+        private System.Windows.Forms.TextBox txtDateFrom;
         private System.Windows.Forms.Label lblStudentRegistrationFee;
-        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtStudentRegistration;
+        private System.Windows.Forms.Label lblDateTo;
+        private System.Windows.Forms.TextBox txtDateTo;
     }
 }
