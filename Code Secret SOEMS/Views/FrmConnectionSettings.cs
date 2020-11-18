@@ -20,6 +20,7 @@ namespace Code_Secret_SOEMS
             th.setFormColor(this);
             th.setDragPanelColor(panelTop);
             th.setControlButtonColor(btnClose);
+            th.setButtonColor(btnSave);
             th.setLabelColor(lblTitle);
             th.setLabelColor(lblServer);
             th.setLabelColor(lblPort);

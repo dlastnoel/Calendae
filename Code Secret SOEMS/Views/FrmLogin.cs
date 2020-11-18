@@ -56,5 +56,10 @@ namespace Code_Secret_SOEMS
         {
             new FrmAbout().ShowDialog();
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

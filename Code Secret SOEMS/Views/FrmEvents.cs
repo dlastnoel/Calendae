@@ -19,7 +19,6 @@ namespace Code_Secret_SOEMS
             ThemeHelper th = new ThemeHelper();
             th.setFormColor(this);
             th.setPanelColor(panelTop);
-            th.setLabelColor(lblTitle);
             th.setControlButtonColor(btnBack);
             th.setGroupBoxColor(groupEventInfo);
             th.setGroupBoxColor(groupGuests);

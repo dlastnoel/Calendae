@@ -14,11 +14,15 @@ namespace Code_Secret_SOEMS.Helpers
 {
     public class ThemeHelper
     {
+        //Retrieve properties stored
+        
+        //Theme
         public string getCurrentTheme()
         {
             return Properties.Settings.Default.Theme;
         }
 
+        // Dark Mode
         private bool isDark()
         {
             return Properties.Settings.Default.isDark;
@@ -35,6 +39,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Set App Logo based from theme
         public void setCalendae(PictureBox myPictureBox)
         {
             if (isDark())
@@ -47,6 +52,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Set Team Logo based from theme
         public void setCodeSecret(PictureBox myPictureBox)
         {
             if (isDark())
@@ -59,6 +65,8 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+
+        // Set User Control (mini forms) color
         public void setUserControlColor(UserControl myUserControl)
         {
             if (isDark())
@@ -71,6 +79,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets color for panels (based on theme)
         public void setPanelColor(Panel myPanel)
         {
             if (isDark())
@@ -78,10 +87,25 @@ namespace Code_Secret_SOEMS.Helpers
                 myPanel.BackColor = Color.FromArgb(51, 51, 51);
             } else
             {
-                myPanel.BackColor = Color.FromName(getCurrentTheme());
+                switch (getCurrentTheme())
+                {
+                    case "Dark Orange":
+                        myPanel.BackColor = Color.DarkOrange;
+                        break;
+                    case "Cool Blue":
+                        myPanel.BackColor = Color.FromArgb(96, 120, 234);
+                        break;
+                    case "Hot Pink":
+                        myPanel.BackColor = Color.FromArgb(211, 32, 139);
+                        break;
+                    case "Fresh Green":
+                        myPanel.BackColor = Color.FromArgb(87, 202, 133);
+                        break;
+                }
             }
         }
 
+        // Sets color for drag panel (either white or black)
         public void setDragPanelColor(Panel myPanel)
         {
             if (isDark())
@@ -94,6 +118,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets color for status strip (either white or black)
         public void setStripStatusColor(StatusStrip myStatusStrip)
         {
             if (isDark())
@@ -105,6 +130,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets the gradient color for the left panel of the main form
         public void setGradientPanelColor(XUIGradientPanel myPanel)
         {
             if (isDark())
@@ -118,23 +144,36 @@ namespace Code_Secret_SOEMS.Helpers
             {
                 switch (getCurrentTheme())
                 {
-                    case "DarkOrange":
+                    case "Dark Orange":
                         myPanel.BottomLeft = Color.FromName("Red");
                         myPanel.BottomRight = Color.FromName("Gold");
                         myPanel.TopLeft = Color.FromName("Gold");
                         myPanel.TopRight = Color.FromName("Red");
                         break;
-
-                    case "LightCoral":
-                        myPanel.BottomLeft = Color.FromName("IndianRed");
-                        myPanel.BottomRight = Color.FromName("Violet");
-                        myPanel.TopLeft = Color.FromName("Violet");
-                        myPanel.TopRight = Color.FromName("IndianRed");
+                    case "Cool Blue":
+                        myPanel.BottomLeft = Color.FromArgb(23, 234, 217);
+                        myPanel.BottomRight = Color.FromArgb(96, 120, 234);
+                        myPanel.TopLeft = Color.FromArgb(23, 234, 217);
+                        myPanel.TopRight = Color.FromArgb(96, 120, 234);
                         break;
+                    case "Hot Pink":
+                        myPanel.BottomLeft = Color.FromArgb(211, 32, 139);
+                        myPanel.BottomRight = Color.FromArgb(253, 160, 0);
+                        myPanel.TopRight = Color.FromArgb(211, 32, 139);
+                        myPanel.TopLeft = Color.FromArgb(135, 154, 242);
+                        break;
+                    case "Fresh Green":
+                        myPanel.BottomLeft = Color.FromArgb(24, 78, 104);
+                        myPanel.BottomRight = Color.FromArgb(87, 202, 133);
+                        myPanel.TopRight = Color.FromArgb(87, 202, 133);
+                        myPanel.TopLeft = Color.FromArgb(24, 78, 104);
+                        break;
+
                 }
             }
         }
 
+        // Sets color for group box (either white or black)
         public void setGroupBoxColor(GroupBox myGroupBox)
         {
             if (isDark())
@@ -146,21 +185,55 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+
+        // Sets color for buttons (based from theme)
         public void setButtonColor(Button myButton)
         {
-            myButton.BackColor = Color.FromName(getCurrentTheme());
+            if (isDark())
+            {
+                myButton.BackColor = Color.FromArgb(51, 51, 51);
+            }
+            else
+            {
+                switch (getCurrentTheme())
+                {
+                    case "Dark Orange":
+                        myButton.BackColor = Color.DarkOrange;
+                        break;
+                    case "Cool Blue":
+                        myButton.BackColor = Color.FromArgb(96, 120, 234);
+                        break;
+                    case "Hot Pink":
+                        myButton.BackColor = Color.FromArgb(211, 32, 139);
+                        break;
+                    case "Fresh Green":
+                        myButton.BackColor = Color.FromArgb(87, 202, 133);
+                        break;
+                }
+            }
         }
 
+        // Sets the hover color for the icon buttons (based from theme)
         public void setIconButtonColor(IconButton myButton)
         {
             switch (getCurrentTheme())
             {
-                case "DarkOrange":
+                case "Dark Orange":
                     myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 125, 0);
+                    break;
+                case "Cool Blue":
+                    myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(86, 107, 210);
+                    break;
+                case "Hot Pink":
+                    myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(211, 32, 139);
+                    break;
+                case "Fresh Green":
+                    myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(87, 202, 133);
                     break;
             }
         }
 
+        // Sets the color for control buttons (either white or black)
         public void setControlButtonColor(Button myButton)
 
         {
@@ -176,6 +249,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets the color for labels (either white or black)
         public void setLabelColor(Label myLabel)
         {
             if (isDark())
@@ -188,6 +262,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets the color for labels inside status strips (either white or black)
         public void setToolStripStatusLabelColor(ToolStripStatusLabel myToolStripStatusLabel)
         {
             if (isDark())
@@ -199,6 +274,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets the color for radio buttons (either white or black)
         public void setRadioButtonColor(RadioButton myRadioButton)
         {
             if (isDark())
@@ -211,6 +287,7 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        // Sets the color for check box (either white or black)
         public void setCheckBoxColor(CheckBox myCheckBox)
         {
             if (isDark())

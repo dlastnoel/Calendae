@@ -61,6 +61,7 @@ namespace Code_Secret_SOEMS
             {
                 currentUserControl.Size = new Size(940, 614);
                 WindowState = FormWindowState.Normal;
+                this.CenterToScreen();
             }
             else
             {
@@ -76,7 +77,14 @@ namespace Code_Secret_SOEMS
         {
             if(myFormWindowState == FormWindowState.Maximized)
             {
-                currentUserControl.Size = new Size(1576, 956);
+                if(Screen.PrimaryScreen.Bounds.Width == 1920)
+                {
+                    currentUserControl.Size = new Size(1576, 956);
+                }
+                else
+                {
+                    currentUserControl.Size = new Size(940, 614);
+                }
             } else
             {
                 currentUserControl.Size = new Size(940, 614);
@@ -98,6 +106,7 @@ namespace Code_Secret_SOEMS
             th.setIconButtonColor(btnStudents);
             th.setIconButtonColor(btnGuests);
             th.setIconButtonColor(btnOfficers);
+            th.setIconButtonColor(btnSettings);
             th.setLabelColor(lblTitle);
             th.setStripStatusColor(statusStripMain);
             th.setToolStripStatusLabelColor(toolStripStatusOfficer);

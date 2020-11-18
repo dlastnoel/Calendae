@@ -80,7 +80,7 @@
             this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSettings.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.IconChar = FontAwesome.Sharp.IconChar.Cog;
             this.btnSettings.IconColor = System.Drawing.Color.White;
@@ -103,7 +103,7 @@
             this.btnGuests.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.btnGuests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuests.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnGuests.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuests.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuests.ForeColor = System.Drawing.Color.White;
             this.btnGuests.IconChar = FontAwesome.Sharp.IconChar.IdCard;
             this.btnGuests.IconColor = System.Drawing.Color.White;
@@ -126,7 +126,7 @@
             this.btnStudents.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.btnStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStudents.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnStudents.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStudents.ForeColor = System.Drawing.Color.White;
             this.btnStudents.IconChar = FontAwesome.Sharp.IconChar.Users;
             this.btnStudents.IconColor = System.Drawing.Color.White;
@@ -149,7 +149,7 @@
             this.btnEvents.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.btnEvents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEvents.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnEvents.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEvents.ForeColor = System.Drawing.Color.White;
             this.btnEvents.IconChar = FontAwesome.Sharp.IconChar.CalendarCheck;
             this.btnEvents.IconColor = System.Drawing.Color.White;
@@ -172,7 +172,7 @@
             this.btnOfficers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.btnOfficers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOfficers.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnOfficers.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOfficers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOfficers.ForeColor = System.Drawing.Color.White;
             this.btnOfficers.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
             this.btnOfficers.IconColor = System.Drawing.Color.White;
@@ -195,7 +195,7 @@
             this.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashboard.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnDashboard.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.IconChar = FontAwesome.Sharp.IconChar.Desktop;
             this.btnDashboard.IconColor = System.Drawing.Color.White;
@@ -230,7 +230,7 @@
             this.btnMinimize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinimize.Location = new System.Drawing.Point(953, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(23, 30);
@@ -245,7 +245,7 @@
             this.btnMaximize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaximize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMaximize.Location = new System.Drawing.Point(976, 0);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(23, 30);
@@ -257,10 +257,10 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(6, 5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(87, 19);
+            this.lblTitle.Size = new System.Drawing.Size(88, 20);
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Dashboard";
             // 
@@ -270,7 +270,7 @@
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(999, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(23, 30);
@@ -295,34 +295,34 @@
             this.toolStripStatusOfficer,
             this.toolStripStatusDate,
             this.toolStripStatusTime});
-            this.statusStripMain.Location = new System.Drawing.Point(258, 697);
+            this.statusStripMain.Location = new System.Drawing.Point(258, 696);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStripMain.Size = new System.Drawing.Size(1022, 23);
+            this.statusStripMain.Size = new System.Drawing.Size(1022, 24);
             this.statusStripMain.TabIndex = 28;
             this.statusStripMain.Text = "statusStrip1";
             // 
             // toolStripStatusOfficer
             // 
             this.toolStripStatusOfficer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.toolStripStatusOfficer.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusOfficer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusOfficer.Name = "toolStripStatusOfficer";
-            this.toolStripStatusOfficer.Size = new System.Drawing.Size(88, 18);
+            this.toolStripStatusOfficer.Size = new System.Drawing.Size(96, 19);
             this.toolStripStatusOfficer.Text = "CODE SECRET";
             // 
             // toolStripStatusDate
             // 
             this.toolStripStatusDate.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.toolStripStatusDate.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusDate.Name = "toolStripStatusDate";
-            this.toolStripStatusDate.Size = new System.Drawing.Size(36, 18);
+            this.toolStripStatusDate.Size = new System.Drawing.Size(37, 19);
             this.toolStripStatusDate.Text = "Date";
             // 
             // toolStripStatusTime
             // 
-            this.toolStripStatusTime.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusTime.Name = "toolStripStatusTime";
-            this.toolStripStatusTime.Size = new System.Drawing.Size(34, 18);
+            this.toolStripStatusTime.Size = new System.Drawing.Size(35, 19);
             this.toolStripStatusTime.Text = "Time";
             // 
             // FrmMain

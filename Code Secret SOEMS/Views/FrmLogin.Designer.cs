@@ -67,10 +67,10 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(6, 5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(49, 19);
+            this.lblTitle.Size = new System.Drawing.Size(48, 20);
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Login";
             // 
@@ -80,7 +80,7 @@
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(477, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(23, 30);
@@ -91,8 +91,8 @@
             // 
             // panelLeft
             // 
-            this.panelLeft.BottomLeft = System.Drawing.Color.Red;
-            this.panelLeft.BottomRight = System.Drawing.Color.Gold;
+            this.panelLeft.BottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(234)))), ((int)(((byte)(217)))));
+            this.panelLeft.BottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
             this.panelLeft.Controls.Add(this.btnAbout);
             this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.pictureBoxCalendae);
@@ -103,8 +103,8 @@
             this.panelLeft.Size = new System.Drawing.Size(300, 520);
             this.panelLeft.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.panelLeft.TabIndex = 5;
-            this.panelLeft.TopLeft = System.Drawing.Color.Gold;
-            this.panelLeft.TopRight = System.Drawing.Color.Red;
+            this.panelLeft.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(234)))), ((int)(((byte)(217)))));
+            this.panelLeft.TopRight = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
             // 
             // btnAbout
             // 
@@ -159,10 +159,10 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(387, 340);
             this.btnLogin.Name = "btnLogin";
@@ -174,47 +174,48 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(387, 202);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(343, 27);
+            this.textBox1.Size = new System.Drawing.Size(343, 26);
             this.textBox1.TabIndex = 7;
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(387, 277);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(343, 27);
+            this.textBox2.Size = new System.Drawing.Size(343, 26);
             this.textBox2.TabIndex = 8;
             this.textBox2.UseSystemPasswordChar = true;
             // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.Location = new System.Drawing.Point(383, 176);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(48, 23);
+            this.lblUser.Size = new System.Drawing.Size(49, 24);
             this.lblUser.TabIndex = 9;
             this.lblUser.Text = "User";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.Location = new System.Drawing.Point(383, 251);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(94, 23);
+            this.lblPassword.Size = new System.Drawing.Size(92, 24);
             this.lblPassword.TabIndex = 10;
             this.lblPassword.Text = "Password";
             // 
             // btnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
             this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(80)))), ((int)(((byte)(167)))));
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.White;
             this.btnRegister.Location = new System.Drawing.Point(387, 387);
             this.btnRegister.Name = "btnRegister";

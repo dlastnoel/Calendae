@@ -78,11 +78,11 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(3, 5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(106, 19);
+            this.lblTitle.Size = new System.Drawing.Size(113, 20);
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "EVENT FORM";
             // 
@@ -92,7 +92,7 @@
             this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.Location = new System.Drawing.Point(591, 0);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(23, 30);
@@ -106,9 +106,9 @@
             this.btnDelete.BackColor = System.Drawing.Color.DarkOrange;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(310, 736);
+            this.btnDelete.Location = new System.Drawing.Point(310, 682);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(292, 41);
             this.btnDelete.TabIndex = 46;
@@ -120,9 +120,9 @@
             this.btnAdd.BackColor = System.Drawing.Color.DarkOrange;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(11, 689);
+            this.btnAdd.Location = new System.Drawing.Point(11, 635);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(591, 41);
             this.btnAdd.TabIndex = 45;
@@ -134,9 +134,9 @@
             this.btnUpdate.BackColor = System.Drawing.Color.DarkOrange;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(11, 736);
+            this.btnUpdate.Location = new System.Drawing.Point(11, 682);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(292, 41);
             this.btnUpdate.TabIndex = 44;
@@ -152,8 +152,8 @@
             this.groupGuests.Controls.Add(this.lblGuestRegistrationFee);
             this.groupGuests.Controls.Add(this.textBox8);
             this.groupGuests.Enabled = false;
-            this.groupGuests.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupGuests.Location = new System.Drawing.Point(11, 516);
+            this.groupGuests.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupGuests.Location = new System.Drawing.Point(11, 473);
             this.groupGuests.Name = "groupGuests";
             this.groupGuests.Size = new System.Drawing.Size(591, 156);
             this.groupGuests.TabIndex = 43;
@@ -173,10 +173,10 @@
             // 
             // textBox3
             // 
-            this.textBox3.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(317, 68);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 23);
+            this.textBox3.Size = new System.Drawing.Size(213, 22);
             this.textBox3.TabIndex = 19;
             // 
             // lblInfo3
@@ -193,35 +193,35 @@
             // lblGuestSlots
             // 
             this.lblGuestSlots.AutoSize = true;
-            this.lblGuestSlots.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuestSlots.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGuestSlots.Location = new System.Drawing.Point(314, 50);
             this.lblGuestSlots.Name = "lblGuestSlots";
-            this.lblGuestSlots.Size = new System.Drawing.Size(36, 15);
+            this.lblGuestSlots.Size = new System.Drawing.Size(38, 16);
             this.lblGuestSlots.TabIndex = 18;
             this.lblGuestSlots.Text = "Slots";
             // 
             // lblGuestRegistrationFee
             // 
             this.lblGuestRegistrationFee.AutoSize = true;
-            this.lblGuestRegistrationFee.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuestRegistrationFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGuestRegistrationFee.Location = new System.Drawing.Point(40, 50);
             this.lblGuestRegistrationFee.Name = "lblGuestRegistrationFee";
-            this.lblGuestRegistrationFee.Size = new System.Drawing.Size(99, 15);
+            this.lblGuestRegistrationFee.Size = new System.Drawing.Size(107, 16);
             this.lblGuestRegistrationFee.TabIndex = 5;
             this.lblGuestRegistrationFee.Text = "Registration Fee";
             // 
             // textBox8
             // 
-            this.textBox8.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.Location = new System.Drawing.Point(43, 68);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(213, 23);
+            this.textBox8.Size = new System.Drawing.Size(213, 22);
             this.textBox8.TabIndex = 6;
             // 
             // checkGuests
             // 
             this.checkGuests.AutoSize = true;
-            this.checkGuests.Location = new System.Drawing.Point(22, 516);
+            this.checkGuests.Location = new System.Drawing.Point(22, 473);
             this.checkGuests.Name = "checkGuests";
             this.checkGuests.Size = new System.Drawing.Size(15, 14);
             this.checkGuests.TabIndex = 36;
@@ -246,10 +246,10 @@
             this.groupEventInfo.Controls.Add(this.txtMiddleName);
             this.groupEventInfo.Controls.Add(this.lblStudentRegistrationFee);
             this.groupEventInfo.Controls.Add(this.txtLastName);
-            this.groupEventInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupEventInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupEventInfo.Location = new System.Drawing.Point(12, 36);
             this.groupEventInfo.Name = "groupEventInfo";
-            this.groupEventInfo.Size = new System.Drawing.Size(591, 474);
+            this.groupEventInfo.Size = new System.Drawing.Size(591, 425);
             this.groupEventInfo.TabIndex = 47;
             this.groupEventInfo.TabStop = false;
             this.groupEventInfo.Text = "Event Information";
@@ -257,20 +257,20 @@
             // lblEventDetails
             // 
             this.lblEventDetails.AutoSize = true;
-            this.lblEventDetails.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEventDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEventDetails.Location = new System.Drawing.Point(40, 217);
             this.lblEventDetails.Name = "lblEventDetails";
-            this.lblEventDetails.Size = new System.Drawing.Size(81, 15);
+            this.lblEventDetails.Size = new System.Drawing.Size(87, 16);
             this.lblEventDetails.TabIndex = 36;
             this.lblEventDetails.Text = "Event Details";
             // 
             // txtEventDetails
             // 
-            this.txtEventDetails.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEventDetails.Location = new System.Drawing.Point(43, 235);
             this.txtEventDetails.Multiline = true;
             this.txtEventDetails.Name = "txtEventDetails";
-            this.txtEventDetails.Size = new System.Drawing.Size(487, 183);
+            this.txtEventDetails.Size = new System.Drawing.Size(487, 137);
             this.txtEventDetails.TabIndex = 35;
             // 
             // lblInfo2
@@ -278,7 +278,7 @@
             this.lblInfo2.AutoSize = true;
             this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo2.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo2.Location = new System.Drawing.Point(40, 439);
+            this.lblInfo2.Location = new System.Drawing.Point(40, 401);
             this.lblInfo2.Name = "lblInfo2";
             this.lblInfo2.Size = new System.Drawing.Size(175, 13);
             this.lblInfo2.TabIndex = 34;
@@ -286,10 +286,10 @@
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(317, 191);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 23);
+            this.textBox2.Size = new System.Drawing.Size(213, 22);
             this.textBox2.TabIndex = 19;
             // 
             // lblInfo1
@@ -297,7 +297,7 @@
             this.lblInfo1.AutoSize = true;
             this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo1.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo1.Location = new System.Drawing.Point(40, 421);
+            this.lblInfo1.Location = new System.Drawing.Point(40, 383);
             this.lblInfo1.Name = "lblInfo1";
             this.lblInfo1.Size = new System.Drawing.Size(198, 13);
             this.lblInfo1.TabIndex = 33;
@@ -306,101 +306,101 @@
             // lblStudentSlots
             // 
             this.lblStudentSlots.AutoSize = true;
-            this.lblStudentSlots.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentSlots.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentSlots.Location = new System.Drawing.Point(314, 173);
             this.lblStudentSlots.Name = "lblStudentSlots";
-            this.lblStudentSlots.Size = new System.Drawing.Size(36, 15);
+            this.lblStudentSlots.Size = new System.Drawing.Size(38, 16);
             this.lblStudentSlots.TabIndex = 18;
             this.lblStudentSlots.Text = "Slots";
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(43, 59);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(487, 23);
+            this.textBox1.Size = new System.Drawing.Size(487, 22);
             this.textBox1.TabIndex = 17;
             // 
             // lblEventName
             // 
             this.lblEventName.AutoSize = true;
-            this.lblEventName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEventName.Location = new System.Drawing.Point(40, 41);
             this.lblEventName.Name = "lblEventName";
-            this.lblEventName.Size = new System.Drawing.Size(76, 15);
+            this.lblEventName.Size = new System.Drawing.Size(82, 16);
             this.lblEventName.TabIndex = 16;
             this.lblEventName.Text = "Event Name";
             // 
             // lblVenue
             // 
             this.lblVenue.AutoSize = true;
-            this.lblVenue.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVenue.Location = new System.Drawing.Point(40, 85);
             this.lblVenue.Name = "lblVenue";
-            this.lblVenue.Size = new System.Drawing.Size(43, 15);
+            this.lblVenue.Size = new System.Drawing.Size(47, 16);
             this.lblVenue.TabIndex = 1;
             this.lblVenue.Text = "Venue";
             // 
             // txtEmailAddress
             // 
-            this.txtEmailAddress.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailAddress.Location = new System.Drawing.Point(317, 147);
             this.txtEmailAddress.Name = "txtEmailAddress";
-            this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
+            this.txtEmailAddress.Size = new System.Drawing.Size(213, 22);
             this.txtEmailAddress.TabIndex = 15;
             // 
             // txtVenue
             // 
-            this.txtVenue.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVenue.Location = new System.Drawing.Point(43, 103);
             this.txtVenue.Name = "txtVenue";
-            this.txtVenue.Size = new System.Drawing.Size(487, 23);
+            this.txtVenue.Size = new System.Drawing.Size(487, 22);
             this.txtVenue.TabIndex = 2;
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.Location = new System.Drawing.Point(314, 129);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(37, 15);
+            this.lblTime.Size = new System.Drawing.Size(39, 16);
             this.lblTime.TabIndex = 14;
             this.lblTime.Text = "Time";
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(40, 129);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(34, 15);
+            this.lblDate.Size = new System.Drawing.Size(37, 16);
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "Date";
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMiddleName.Location = new System.Drawing.Point(43, 147);
             this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
+            this.txtMiddleName.Size = new System.Drawing.Size(213, 22);
             this.txtMiddleName.TabIndex = 4;
             // 
             // lblStudentRegistrationFee
             // 
             this.lblStudentRegistrationFee.AutoSize = true;
-            this.lblStudentRegistrationFee.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentRegistrationFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentRegistrationFee.Location = new System.Drawing.Point(40, 173);
             this.lblStudentRegistrationFee.Name = "lblStudentRegistrationFee";
-            this.lblStudentRegistrationFee.Size = new System.Drawing.Size(99, 15);
+            this.lblStudentRegistrationFee.Size = new System.Drawing.Size(107, 16);
             this.lblStudentRegistrationFee.TabIndex = 5;
             this.lblStudentRegistrationFee.Text = "Registration Fee";
             // 
             // txtLastName
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(43, 191);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(213, 23);
+            this.txtLastName.Size = new System.Drawing.Size(213, 22);
             this.txtLastName.TabIndex = 6;
             // 
             // FrmEvents
@@ -408,7 +408,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(614, 791);
+            this.ClientSize = new System.Drawing.Size(614, 740);
             this.Controls.Add(this.groupEventInfo);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
