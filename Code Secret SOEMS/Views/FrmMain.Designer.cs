@@ -55,8 +55,8 @@
             // 
             // panelLeft
             // 
-            this.panelLeft.BottomLeft = System.Drawing.Color.RoyalBlue;
-            this.panelLeft.BottomRight = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panelLeft.BottomLeft = System.Drawing.Color.Red;
+            this.panelLeft.BottomRight = System.Drawing.Color.Gold;
             this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.btnGuests);
             this.panelLeft.Controls.Add(this.btnStudents);
@@ -70,8 +70,8 @@
             this.panelLeft.Size = new System.Drawing.Size(258, 720);
             this.panelLeft.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.panelLeft.TabIndex = 6;
-            this.panelLeft.TopLeft = System.Drawing.Color.Goldenrod;
-            this.panelLeft.TopRight = System.Drawing.Color.RoyalBlue;
+            this.panelLeft.TopLeft = System.Drawing.Color.Gold;
+            this.panelLeft.TopRight = System.Drawing.Color.Red;
             // 
             // btnSettings
             // 

@@ -8,15 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
+using Code_Secret_SOEMS.Presenters;
+using Code_Secret_SOEMS.Views;
 
 namespace Code_Secret_SOEMS
 {
     public partial class FrmLogin : Form
     {
+        SettingsHelper sh;
+        LoginPresenter loginPresenter;
         public FrmLogin()
         {
             InitializeComponent();
+            sh = new SettingsHelper();
             ThemeHelper th = new ThemeHelper();
+            loginPresenter = new LoginPresenter();
             th.setFormColor(this);
             th.setCalendae(pictureBoxCalendae);
             th.setDragPanelColor(panelTop);
@@ -27,7 +33,7 @@ namespace Code_Secret_SOEMS
             th.setIconButtonColor(btnSettings);
             th.setIconButtonColor(btnAbout);
             th.setLabelColor(lblTitle);
-            th.setLabelColor(lblUser);
+            th.setLabelColor(lblIDNo);
             th.setLabelColor(lblPassword);
         }
 
@@ -39,6 +45,7 @@ namespace Code_Secret_SOEMS
         private void btnSettings_Click(object sender, EventArgs e)
         {
             new FrmConnectionSettings().ShowDialog();
+            sh = new SettingsHelper();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -48,18 +55,37 @@ namespace Code_Secret_SOEMS
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            new FrmMain().Show();
-            this.Hide();
+            if(!String.IsNullOrEmpty(txtIDNo.Text) && !String.IsNullOrEmpty(txtPassword.Text))
+            {
+                string officer = loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text);
+                if (!String.IsNullOrEmpty(officer))
+                {
+                    new FrmMain(officer).Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect ID No or Password", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            } else
+            {
+                MessageBox.Show("Please fill up all the fields correctly", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
-        private void btnAbout_Click_1(object sender, EventArgs e)
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            if (sh.isFirstRun())
+            {
+                this.Hide();
+                new FrmAdviserRegistration().ShowDialog();
+            }
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
         {
             new FrmAbout().ShowDialog();
-        }
-
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

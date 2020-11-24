@@ -4,40 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Code_Secret_SOEMS.Models;
+using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS.Presenters
 {
     class ThemePresenter
     {
-        Theme _theme = new Theme();
+        ThemeHelper th = new ThemeHelper();
 
         public string getCurrentTheme()
         {
-            return _theme.getCurrentTheme();
+            return th.getCurrentTheme();
         }
 
         public bool getCurrentMode()
         {
-            return _theme.getCurrentMode();
+            return th.isDark();
         }
 
         public void applyTheme(string theme)
         {
-            _theme.theme = theme;
-            _theme.saveTheme();
+            th.saveTheme(theme);
         }
 
         public void applyMode(bool mode)
         {
-            _theme.isDark = mode;
-            _theme.saveMode();
+            th.saveMode(mode);
         }
 
         public void applyBoth(string theme, bool mode)
         {
-            _theme.theme = theme;
-            _theme.isDark = mode;
-            _theme.saveBoth();
+            th.saveBoth(theme, mode);
         }
     }
 }

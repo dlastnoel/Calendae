@@ -10,11 +10,11 @@ namespace Code_Secret_SOEMS.Models
 {
     class Event
     {
-        public DatabaseHelper dbHelper = new DatabaseHelper();
+        DatabaseHelper dbHelper = new DatabaseHelper();
 
         public void loadEvents(DataGridView myDataGridView)
         {
-            dbHelper.selectData("SELECT * FROM events");
+            dbHelper.createQuery("SELECT * FROM events");
             dbHelper.populateDataGridView(myDataGridView);
         }
     }

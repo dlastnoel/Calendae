@@ -14,7 +14,7 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmTheme : Form
     {
-        ThemePresenter themePresenter;
+        ThemePresenter themePresenter = new ThemePresenter();
         private void setFormTheme()
         {
             ThemeHelper th = new ThemeHelper();
@@ -30,7 +30,6 @@ namespace Code_Secret_SOEMS
             InitializeComponent();
             setFormTheme();
 
-            themePresenter = new ThemePresenter();
             checkDarkMode.Checked = themePresenter.getCurrentMode();
             cmbTheme.SelectedIndex = cmbTheme.FindStringExact(themePresenter.getCurrentTheme());
         }

@@ -10,11 +10,11 @@ namespace Code_Secret_SOEMS.Models
 {
     class Guest
     {
-        public DatabaseHelper dbHelper = new DatabaseHelper();
+        DatabaseHelper dbHelper = new DatabaseHelper();
 
         public void loadGuests(DataGridView myDataGridView)
         {
-            dbHelper.selectData("SELECT * FROM guests");
+            dbHelper.createQuery("SELECT * FROM guests");
             dbHelper.populateDataGridView(myDataGridView);
         }
     }

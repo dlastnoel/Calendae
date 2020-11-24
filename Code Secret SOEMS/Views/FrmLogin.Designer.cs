@@ -39,9 +39,9 @@
             this.btnSettings = new FontAwesome.Sharp.IconButton();
             this.pictureBoxCalendae = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblUser = new System.Windows.Forms.Label();
+            this.txtIDNo = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblIDNo = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
@@ -91,8 +91,8 @@
             // 
             // panelLeft
             // 
-            this.panelLeft.BottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(234)))), ((int)(((byte)(217)))));
-            this.panelLeft.BottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
+            this.panelLeft.BottomLeft = System.Drawing.Color.Red;
+            this.panelLeft.BottomRight = System.Drawing.Color.Gold;
             this.panelLeft.Controls.Add(this.btnAbout);
             this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.pictureBoxCalendae);
@@ -103,8 +103,8 @@
             this.panelLeft.Size = new System.Drawing.Size(300, 520);
             this.panelLeft.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.panelLeft.TabIndex = 5;
-            this.panelLeft.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(234)))), ((int)(((byte)(217)))));
-            this.panelLeft.TopRight = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
+            this.panelLeft.TopLeft = System.Drawing.Color.Gold;
+            this.panelLeft.TopRight = System.Drawing.Color.Red;
             // 
             // btnAbout
             // 
@@ -124,7 +124,7 @@
             this.btnAbout.Size = new System.Drawing.Size(30, 30);
             this.btnAbout.TabIndex = 3;
             this.btnAbout.UseVisualStyleBackColor = false;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click_1);
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnSettings
             // 
@@ -159,7 +159,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
+            this.btnLogin.BackColor = System.Drawing.Color.DarkOrange;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -172,32 +172,32 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // textBox1
+            // txtIDNo
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(387, 202);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(343, 26);
-            this.textBox1.TabIndex = 7;
+            this.txtIDNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDNo.Location = new System.Drawing.Point(387, 202);
+            this.txtIDNo.Name = "txtIDNo";
+            this.txtIDNo.Size = new System.Drawing.Size(343, 26);
+            this.txtIDNo.TabIndex = 7;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(387, 277);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(343, 26);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(387, 277);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(343, 26);
+            this.txtPassword.TabIndex = 8;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // lblUser
+            // lblIDNo
             // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(383, 176);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(49, 24);
-            this.lblUser.TabIndex = 9;
-            this.lblUser.Text = "User";
+            this.lblIDNo.AutoSize = true;
+            this.lblIDNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDNo.Location = new System.Drawing.Point(383, 176);
+            this.lblIDNo.Name = "lblIDNo";
+            this.lblIDNo.Size = new System.Drawing.Size(62, 24);
+            this.lblIDNo.TabIndex = 9;
+            this.lblIDNo.Text = "ID No.";
             // 
             // lblPassword
             // 
@@ -211,7 +211,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(120)))), ((int)(((byte)(234)))));
+            this.btnRegister.BackColor = System.Drawing.Color.DarkOrange;
             this.btnRegister.FlatAppearance.BorderSize = 0;
             this.btnRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(80)))), ((int)(((byte)(167)))));
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -233,10 +233,10 @@
             this.ClientSize = new System.Drawing.Size(800, 520);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.panelTop);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblUser);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblIDNo);
+            this.Controls.Add(this.txtIDNo);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -244,6 +244,7 @@
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelLeft.ResumeLayout(false);
@@ -257,10 +258,10 @@
         private JDragControl.JDragControl jDragControl1;
         private XanderUI.XUIGradientPanel panelLeft;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblIDNo;
+        private System.Windows.Forms.TextBox txtIDNo;
         private System.Windows.Forms.PictureBox pictureBoxCalendae;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Button btnRegister;

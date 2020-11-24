@@ -10,11 +10,11 @@ namespace Code_Secret_SOEMS.Models
 {
     class Student
     {
-        public DatabaseHelper dbHelper = new DatabaseHelper();
+        DatabaseHelper dbHelper = new DatabaseHelper();
 
         public void loadStudents(DataGridView myDataGridView)
         {
-            dbHelper.selectData("SELECT * FROM students");
+            dbHelper.createQuery("SELECT * FROM students");
             dbHelper.populateDataGridView(myDataGridView);
         }
     }

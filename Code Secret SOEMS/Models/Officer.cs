@@ -10,12 +10,85 @@ namespace Code_Secret_SOEMS.Models
 {
     class Officer
     {
-        public DatabaseHelper dbHelper = new DatabaseHelper();
+        public string id { get; set; }
+        public string position { get; set; }
+        public string first_name { get; set; }
+        public string middle_name { get; set; }
+        public string last_name { get; set; }
+        public string address { get; set; }
+        public string contact { get; set; }
+        public string email { get; set; }
+        public char gender { get; set; }
+        public string course { get; set; }
+        public string year_and_section { get; set; }
+        public string password { get; set; }
 
+        DatabaseHelper dbHelper = new DatabaseHelper();
+        PasswordHelper ph = new PasswordHelper();
+
+        // DISPLAYING DATA
         public void loadOfficers(DataGridView myDataGridView)
         {
-            dbHelper.selectData("SELECT * FROM officers");
+            dbHelper.createQuery("SELECT * FROM officers");
             dbHelper.populateDataGridView(myDataGridView);
         }
+
+        public void addOfficer()
+        {
+            password = ph.hashPassword(password);
+            dbHelper.createQuery("INSERT INTO officers (id, position, first_name, middle_name, last_name, " +
+                "address, contact, email, gender, course, year_and_section, password) VALUES (" +
+                "@id, @position, @first_name, @middle_name, @last_name, @address, @contact, @email, @gender, " +
+                "@course, @year_and_seciton, @password); ");
+
+            dbHelper.bindParam("@id", id);
+            dbHelper.bindParam("@position", position);
+            dbHelper.bindParam("@first_name", first_name);
+            dbHelper.bindParam("@middle_name", middle_name);
+            dbHelper.bindParam("@last_name", last_name);
+            dbHelper.bindParam("@address", address);
+            dbHelper.bindParam("@contact", contact);
+            dbHelper.bindParam("@email", email);
+            dbHelper.bindParam("@gender", gender);
+            dbHelper.bindParam("@course", course);
+            dbHelper.bindParam("@year_and_seciton", year_and_section);
+            dbHelper.bindParam("@password", password);
+
+            dbHelper.executeQuery();
+        }
+
+        public bool loginOfficer(string id, string userPassword)
+        {
+            string hashPassword;
+            dbHelper.createQuery("SELECT * FROM officers WHERE id = @id");
+            dbHelper.bindParam("@id", id);
+
+            if(dbHelper.executeReader())
+            {
+                hashPassword = dbHelper.getFromReader("password");
+
+                if(ph.IsValidPassword(userPassword, hashPassword))
+                {
+                    // correct password
+                    return true;
+                }
+                else
+                {
+                    // incorrect password
+                    return false;
+                }
+            } else
+            {
+                // no user found
+                return false;
+            }
+        }
+
+        public string getLoggedInOfficer()
+        {
+            return dbHelper.getFromReader("position") + ": " + dbHelper.getFromReader("first_name");
+        }
+
+
     }
 }

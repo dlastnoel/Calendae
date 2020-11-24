@@ -40,14 +40,14 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblInfo1 = new System.Windows.Forms.Label();
-            this.lblInfo2 = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.btnTest = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.BackColor = System.Drawing.Color.DarkOrange;
             this.panelTop.Controls.Add(this.lblTitle);
             this.panelTop.Controls.Add(this.btnClose);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -59,10 +59,11 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(12, 5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(150, 19);
+            this.lblTitle.Size = new System.Drawing.Size(151, 19);
             this.lblTitle.TabIndex = 12;
             this.lblTitle.Text = "Connection Settings";
             // 
@@ -161,43 +162,48 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(43, 212);
+            this.btnSave.Location = new System.Drawing.Point(227, 212);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(319, 32);
+            this.btnSave.Size = new System.Drawing.Size(135, 32);
             this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblInfo1
+            // lblInfo
             // 
-            this.lblInfo1.AutoSize = true;
-            this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo1.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo1.Location = new System.Drawing.Point(43, 260);
-            this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(250, 13);
-            this.lblInfo1.TabIndex = 10;
-            this.lblInfo1.Text = "Leave user and password empty to use default user";
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.ForeColor = System.Drawing.Color.Black;
+            this.lblInfo.Location = new System.Drawing.Point(40, 265);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(243, 13);
+            this.lblInfo.TabIndex = 11;
+            this.lblInfo.Text = "Leave all fields empty to use entire default settings";
             // 
-            // lblInfo2
+            // btnTest
             // 
-            this.lblInfo2.AutoSize = true;
-            this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo2.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo2.Location = new System.Drawing.Point(43, 278);
-            this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(243, 13);
-            this.lblInfo2.TabIndex = 11;
-            this.lblInfo2.Text = "Leave all fields empty to use entire default settings";
+            this.btnTest.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnTest.FlatAppearance.BorderSize = 0;
+            this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTest.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest.ForeColor = System.Drawing.Color.White;
+            this.btnTest.Location = new System.Drawing.Point(43, 212);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(135, 32);
+            this.btnTest.TabIndex = 12;
+            this.btnTest.Text = "TEST";
+            this.btnTest.UseVisualStyleBackColor = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // FrmConnectionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(413, 309);
-            this.Controls.Add(this.lblInfo2);
-            this.Controls.Add(this.lblInfo1);
+            this.ClientSize = new System.Drawing.Size(413, 295);
+            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
@@ -232,9 +238,9 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label lblPort;
-        private System.Windows.Forms.Label lblInfo2;
-        private System.Windows.Forms.Label lblInfo1;
+        private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnTest;
     }
 }

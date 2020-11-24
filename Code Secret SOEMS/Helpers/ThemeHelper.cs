@@ -12,7 +12,7 @@ using XanderUI.Designers;
 
 namespace Code_Secret_SOEMS.Helpers
 {
-    public class ThemeHelper
+    class ThemeHelper
     {
         //Retrieve properties stored
         
@@ -23,9 +23,27 @@ namespace Code_Secret_SOEMS.Helpers
         }
 
         // Dark Mode
-        private bool isDark()
+        public bool isDark()
         {
             return Properties.Settings.Default.isDark;
+        }
+
+        public void saveTheme(string theme)
+        {
+            Properties.Settings.Default.theme = theme;
+            Properties.Settings.Default.Save();
+        }
+
+        public void saveMode(bool mode)
+        {
+            Properties.Settings.Default.isDark = mode;
+            Properties.Settings.Default.Save();
+        }
+        public void saveBoth(string theme, bool mode)
+        {
+            Properties.Settings.Default.theme = theme;
+            Properties.Settings.Default.isDark = mode; ;
+            Properties.Settings.Default.Save();
         }
 
         // Sets color of Form

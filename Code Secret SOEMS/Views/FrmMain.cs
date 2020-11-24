@@ -113,10 +113,11 @@ namespace Code_Secret_SOEMS
             th.setToolStripStatusLabelColor(toolStripStatusDate);
             th.setToolStripStatusLabelColor(toolStripStatusTime);
         }
-        public FrmMain()
+        public FrmMain(string officer)
         {
             InitializeComponent();
             setFormTheme();
+            toolStripStatusOfficer.Text = officer;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
