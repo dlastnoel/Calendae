@@ -50,7 +50,7 @@
             this.rbnMale = new System.Windows.Forms.RadioButton();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.groupSchoolInfo = new System.Windows.Forms.GroupBox();
-            this.cmbCourse = new System.Windows.Forms.ComboBox();
+            this.txtCourse = new System.Windows.Forms.TextBox();
             this.lblIDNo = new System.Windows.Forms.Label();
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
@@ -64,6 +64,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.lblPasswordMessage = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
             this.groupSchoolInfo.SuspendLayout();
@@ -140,7 +141,7 @@
             this.txtPosition.Location = new System.Drawing.Point(16, 45);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(487, 23);
-            this.txtPosition.TabIndex = 17;
+            this.txtPosition.TabIndex = 1;
             // 
             // lblPosition
             // 
@@ -168,7 +169,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(290, 133);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
-            this.txtEmailAddress.TabIndex = 15;
+            this.txtEmailAddress.TabIndex = 7;
             // 
             // txtFirstName
             // 
@@ -204,7 +205,7 @@
             this.txtContactNo.Location = new System.Drawing.Point(290, 89);
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(213, 23);
-            this.txtContactNo.TabIndex = 13;
+            this.txtContactNo.TabIndex = 6;
             // 
             // txtMiddleName
             // 
@@ -212,7 +213,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(16, 133);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtMiddleName.TabIndex = 3;
             // 
             // lblContactNo
             // 
@@ -250,7 +251,7 @@
             this.txtLastName.Location = new System.Drawing.Point(16, 177);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(213, 23);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 4;
             // 
             // rbnFemale
             // 
@@ -259,7 +260,7 @@
             this.rbnFemale.Location = new System.Drawing.Point(349, 190);
             this.rbnFemale.Name = "rbnFemale";
             this.rbnFemale.Size = new System.Drawing.Size(68, 19);
-            this.rbnFemale.TabIndex = 10;
+            this.rbnFemale.TabIndex = 9;
             this.rbnFemale.TabStop = true;
             this.rbnFemale.Text = "Female";
             this.rbnFemale.UseVisualStyleBackColor = true;
@@ -281,7 +282,7 @@
             this.rbnMale.Location = new System.Drawing.Point(290, 190);
             this.rbnMale.Name = "rbnMale";
             this.rbnMale.Size = new System.Drawing.Size(53, 19);
-            this.rbnMale.TabIndex = 9;
+            this.rbnMale.TabIndex = 8;
             this.rbnMale.TabStop = true;
             this.rbnMale.Text = "Male";
             this.rbnMale.UseVisualStyleBackColor = true;
@@ -293,11 +294,11 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(487, 56);
-            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabIndex = 5;
             // 
             // groupSchoolInfo
             // 
-            this.groupSchoolInfo.Controls.Add(this.cmbCourse);
+            this.groupSchoolInfo.Controls.Add(this.txtCourse);
             this.groupSchoolInfo.Controls.Add(this.lblIDNo);
             this.groupSchoolInfo.Controls.Add(this.txtIDNo);
             this.groupSchoolInfo.Controls.Add(this.lblCourse);
@@ -311,14 +312,13 @@
             this.groupSchoolInfo.TabStop = false;
             this.groupSchoolInfo.Text = "School Information";
             // 
-            // cmbCourse
+            // txtCourse
             // 
-            this.cmbCourse.BackColor = System.Drawing.Color.White;
-            this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(16, 91);
-            this.cmbCourse.Name = "cmbCourse";
-            this.cmbCourse.Size = new System.Drawing.Size(223, 23);
-            this.cmbCourse.TabIndex = 7;
+            this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourse.Location = new System.Drawing.Point(16, 89);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(223, 23);
+            this.txtCourse.TabIndex = 11;
             // 
             // lblIDNo
             // 
@@ -336,7 +336,7 @@
             this.txtIDNo.Location = new System.Drawing.Point(16, 47);
             this.txtIDNo.Name = "txtIDNo";
             this.txtIDNo.Size = new System.Drawing.Size(355, 23);
-            this.txtIDNo.TabIndex = 2;
+            this.txtIDNo.TabIndex = 10;
             // 
             // lblCourse
             // 
@@ -364,10 +364,11 @@
             this.txtYearAndSection.Location = new System.Drawing.Point(245, 91);
             this.txtYearAndSection.Name = "txtYearAndSection";
             this.txtYearAndSection.Size = new System.Drawing.Size(126, 23);
-            this.txtYearAndSection.TabIndex = 6;
+            this.txtYearAndSection.TabIndex = 12;
             // 
             // groupSecurity
             // 
+            this.groupSecurity.Controls.Add(this.lblPasswordMessage);
             this.groupSecurity.Controls.Add(this.txtConfirmPassword);
             this.groupSecurity.Controls.Add(this.lblPassword);
             this.groupSecurity.Controls.Add(this.txtPassword);
@@ -383,17 +384,18 @@
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(19, 103);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(20, 95);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.Size = new System.Drawing.Size(352, 23);
-            this.txtConfirmPassword.TabIndex = 4;
+            this.txtConfirmPassword.TabIndex = 14;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(16, 41);
+            this.lblPassword.Location = new System.Drawing.Point(17, 33);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(64, 15);
             this.lblPassword.TabIndex = 1;
@@ -402,17 +404,17 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(19, 59);
+            this.txtPassword.Location = new System.Drawing.Point(20, 51);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(352, 23);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 13;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblConfirmPassword
             // 
             this.lblConfirmPassword.AutoSize = true;
             this.lblConfirmPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmPassword.Location = new System.Drawing.Point(16, 85);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(17, 77);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
             this.lblConfirmPassword.Size = new System.Drawing.Size(112, 15);
             this.lblConfirmPassword.TabIndex = 3;
@@ -428,9 +430,10 @@
             this.btnAdd.Location = new System.Drawing.Point(12, 338);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(916, 41);
-            this.btnAdd.TabIndex = 39;
+            this.btnAdd.TabIndex = 15;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -442,9 +445,10 @@
             this.btnUpdate.Location = new System.Drawing.Point(12, 385);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(454, 41);
-            this.btnUpdate.TabIndex = 38;
+            this.btnUpdate.TabIndex = 16;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -456,9 +460,19 @@
             this.btnDelete.Location = new System.Drawing.Point(474, 385);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(454, 41);
-            this.btnDelete.TabIndex = 40;
+            this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // lblPasswordMessage
+            // 
+            this.lblPasswordMessage.AutoSize = true;
+            this.lblPasswordMessage.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordMessage.Location = new System.Drawing.Point(17, 121);
+            this.lblPasswordMessage.Name = "lblPasswordMessage";
+            this.lblPasswordMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblPasswordMessage.TabIndex = 35;
             // 
             // FrmOfficers
             // 
@@ -513,7 +527,6 @@
         private System.Windows.Forms.RadioButton rbnMale;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.GroupBox groupSchoolInfo;
-        private System.Windows.Forms.ComboBox cmbCourse;
         private System.Windows.Forms.Label lblIDNo;
         private System.Windows.Forms.TextBox txtIDNo;
         private System.Windows.Forms.Label lblCourse;
@@ -528,5 +541,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtPosition;
+        private System.Windows.Forms.TextBox txtCourse;
+        private System.Windows.Forms.Label lblPasswordMessage;
     }
 }

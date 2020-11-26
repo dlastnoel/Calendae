@@ -14,7 +14,8 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmTheme : Form
     {
-        ThemePresenter themePresenter = new ThemePresenter();
+        SettingsPresenter settingsPresenter;
+        ThemeHelper th;
         private void setFormTheme()
         {
             ThemeHelper th = new ThemeHelper();
@@ -29,27 +30,29 @@ namespace Code_Secret_SOEMS
         {
             InitializeComponent();
             setFormTheme();
+            settingsPresenter = new SettingsPresenter();
 
-            checkDarkMode.Checked = themePresenter.getCurrentMode();
-            cmbTheme.SelectedIndex = cmbTheme.FindStringExact(themePresenter.getCurrentTheme());
+            checkDarkMode.Checked = settingsPresenter.getCurrentMode();
+            cmbTheme.SelectedIndex = cmbTheme.FindStringExact(settingsPresenter.getCurrentTheme());
         }
 
         private void btnThemeApply_Click(object sender, EventArgs e)
         {
-            if(cmbTheme.Text != themePresenter.getCurrentTheme() && checkDarkMode.Checked != themePresenter.getCurrentMode())
+            if(cmbTheme.Text != settingsPresenter.getCurrentTheme() && checkDarkMode.Checked != settingsPresenter.getCurrentMode())
             {
-                themePresenter.applyBoth(cmbTheme.Text, checkDarkMode.Checked);
+                settingsPresenter.applyBoth(cmbTheme.Text, checkDarkMode.Checked);
             } 
-            else if (cmbTheme.Text == themePresenter.getCurrentTheme() && checkDarkMode.Checked != themePresenter.getCurrentMode())
+            else if (cmbTheme.Text == settingsPresenter.getCurrentTheme() && checkDarkMode.Checked != settingsPresenter.getCurrentMode())
             {
-                themePresenter.applyMode(checkDarkMode.Checked);
+                settingsPresenter.applyMode(checkDarkMode.Checked);
             }
-            else if (cmbTheme.Text != themePresenter.getCurrentTheme() && checkDarkMode.Checked == themePresenter.getCurrentMode())
+            else if (cmbTheme.Text != settingsPresenter.getCurrentTheme() && checkDarkMode.Checked == settingsPresenter.getCurrentMode())
             {
-                themePresenter.applyTheme(cmbTheme.Text);
+                settingsPresenter.applyTheme(cmbTheme.Text);
             }
             MessageBox.Show("Theme applied successfully", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Information);
             setFormTheme();
+            this.Close();
             
         }
 

@@ -87,12 +87,12 @@
             this.lblTotalIGP = new System.Windows.Forms.Label();
             this.panelIGPGained = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblOrganization = new System.Windows.Forms.Label();
+            this.lblSchool = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
+            this.lblAdviser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconEvents)).BeginInit();
             this.panelEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconStudents)).BeginInit();
@@ -690,9 +690,9 @@
             this.lblOfficers.ForeColor = System.Drawing.Color.White;
             this.lblOfficers.Location = new System.Drawing.Point(259, 32);
             this.lblOfficers.Name = "lblOfficers";
-            this.lblOfficers.Size = new System.Drawing.Size(79, 23);
+            this.lblOfficers.Size = new System.Drawing.Size(78, 23);
             this.lblOfficers.TabIndex = 12;
-            this.lblOfficers.Text = "Offciers";
+            this.lblOfficers.Text = "Officers";
             // 
             // btnEvents
             // 
@@ -891,9 +891,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblAdviser);
+            this.panel1.Controls.Add(this.lblOrganization);
+            this.panel1.Controls.Add(this.lblSchool);
             this.panel1.Controls.Add(this.iconPictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(953, 183);
@@ -901,41 +901,29 @@
             this.panel1.Size = new System.Drawing.Size(605, 226);
             this.panel1.TabIndex = 25;
             // 
-            // label4
+            // lblOrganization
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(31, 163);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(230, 19);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "Adviser: The Famous John Doe";
+            this.lblOrganization.AutoSize = true;
+            this.lblOrganization.BackColor = System.Drawing.Color.Transparent;
+            this.lblOrganization.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrganization.ForeColor = System.Drawing.Color.White;
+            this.lblOrganization.Location = new System.Drawing.Point(31, 133);
+            this.lblOrganization.Name = "lblOrganization";
+            this.lblOrganization.Size = new System.Drawing.Size(186, 19);
+            this.lblOrganization.TabIndex = 40;
+            this.lblOrganization.Text = "Organization: Math CLub";
             // 
-            // label3
+            // lblSchool
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(31, 133);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 19);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Organization: Math CLub";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(31, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 19);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "School: St. Andres Fields  Elementary School";
+            this.lblSchool.AutoSize = true;
+            this.lblSchool.BackColor = System.Drawing.Color.Transparent;
+            this.lblSchool.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchool.ForeColor = System.Drawing.Color.White;
+            this.lblSchool.Location = new System.Drawing.Point(31, 104);
+            this.lblSchool.Name = "lblSchool";
+            this.lblSchool.Size = new System.Drawing.Size(324, 19);
+            this.lblSchool.TabIndex = 23;
+            this.lblSchool.Text = "School: St. Andres Fields  Elementary School";
             // 
             // iconPictureBox1
             // 
@@ -972,6 +960,18 @@
             this.txtNotes.Size = new System.Drawing.Size(900, 305);
             this.txtNotes.TabIndex = 26;
             this.txtNotes.Text = "Write notes here...";
+            // 
+            // lblAdviser
+            // 
+            this.lblAdviser.AutoSize = true;
+            this.lblAdviser.BackColor = System.Drawing.Color.Transparent;
+            this.lblAdviser.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdviser.ForeColor = System.Drawing.Color.White;
+            this.lblAdviser.Location = new System.Drawing.Point(31, 163);
+            this.lblAdviser.Name = "lblAdviser";
+            this.lblAdviser.Size = new System.Drawing.Size(137, 19);
+            this.lblAdviser.TabIndex = 41;
+            this.lblAdviser.Text = "Adviser: John Doe";
             // 
             // CtrlDashboard
             // 
@@ -1084,11 +1084,11 @@
         private System.Windows.Forms.Label lblTotalIGP;
         private System.Windows.Forms.Panel panelIGPGained;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblOrganization;
+        private System.Windows.Forms.Label lblSchool;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNotes;
+        private System.Windows.Forms.Label lblAdviser;
     }
 }

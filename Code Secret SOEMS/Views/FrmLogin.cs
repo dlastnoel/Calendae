@@ -45,7 +45,7 @@ namespace Code_Secret_SOEMS
         private void btnSettings_Click(object sender, EventArgs e)
         {
             new FrmConnectionSettings().ShowDialog();
-            sh = new SettingsHelper();
+            loginPresenter = new LoginPresenter();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -57,10 +57,14 @@ namespace Code_Secret_SOEMS
         {
             if(!String.IsNullOrEmpty(txtIDNo.Text) && !String.IsNullOrEmpty(txtPassword.Text))
             {
-                string officer = loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text);
-                if (!String.IsNullOrEmpty(officer))
+
+                if (sh.isLoginLocked())
                 {
-                    new FrmMain(officer).Show();
+
+                }
+                if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
+                {
+                    new FrmMain(loginPresenter.getLoggedInOfficerPosition(),loginPresenter.getLoggedInOfficerName()).Show();
                     this.Hide();
                 }
                 else

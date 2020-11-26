@@ -295,10 +295,10 @@
             this.toolStripStatusOfficer,
             this.toolStripStatusDate,
             this.toolStripStatusTime});
-            this.statusStripMain.Location = new System.Drawing.Point(258, 696);
+            this.statusStripMain.Location = new System.Drawing.Point(258, 695);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStripMain.Size = new System.Drawing.Size(1022, 24);
+            this.statusStripMain.Size = new System.Drawing.Size(1022, 25);
             this.statusStripMain.TabIndex = 28;
             this.statusStripMain.Text = "statusStrip1";
             // 
@@ -306,23 +306,26 @@
             // 
             this.toolStripStatusOfficer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.toolStripStatusOfficer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusOfficer.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusOfficer.Image")));
             this.toolStripStatusOfficer.Name = "toolStripStatusOfficer";
-            this.toolStripStatusOfficer.Size = new System.Drawing.Size(96, 19);
+            this.toolStripStatusOfficer.Size = new System.Drawing.Size(112, 20);
             this.toolStripStatusOfficer.Text = "CODE SECRET";
             // 
             // toolStripStatusDate
             // 
             this.toolStripStatusDate.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.toolStripStatusDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusDate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusDate.Image")));
             this.toolStripStatusDate.Name = "toolStripStatusDate";
-            this.toolStripStatusDate.Size = new System.Drawing.Size(37, 19);
+            this.toolStripStatusDate.Size = new System.Drawing.Size(53, 20);
             this.toolStripStatusDate.Text = "Date";
             // 
             // toolStripStatusTime
             // 
             this.toolStripStatusTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusTime.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusTime.Image")));
             this.toolStripStatusTime.Name = "toolStripStatusTime";
-            this.toolStripStatusTime.Size = new System.Drawing.Size(35, 19);
+            this.toolStripStatusTime.Size = new System.Drawing.Size(51, 20);
             this.toolStripStatusTime.Text = "Time";
             // 
             // FrmMain

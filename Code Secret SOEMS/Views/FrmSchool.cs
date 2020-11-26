@@ -31,7 +31,7 @@ namespace Code_Secret_SOEMS.Views
         {
             if (!String.IsNullOrEmpty(txtSchoolName.Text) && !String.IsNullOrEmpty(txtOrganization.Text))
             {
-                schoolPresenter.setSchoolName(txtSchoolName.Text, txtSchoolName.Text);
+                schoolPresenter.setSchoolName(txtSchoolName.Text, txtOrganization.Text);
                 MessageBox.Show("Organization successfully registered \n You  will now redirected to" +
                     "login window", "Organization Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

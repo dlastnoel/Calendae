@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataOfficers = new System.Windows.Forms.DataGridView();
             this.groupSchoolInfo = new System.Windows.Forms.GroupBox();
-            this.cmbCourse = new System.Windows.Forms.ComboBox();
+            this.txtCourse = new System.Windows.Forms.TextBox();
             this.lblIDNo = new System.Windows.Forms.Label();
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
@@ -64,6 +64,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.btnOpenForm = new System.Windows.Forms.Button();
+            this.lblPasswordMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataOfficers)).BeginInit();
             this.groupSchoolInfo.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
@@ -86,12 +87,14 @@
             this.dataOfficers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataOfficers.Location = new System.Drawing.Point(27, 42);
             this.dataOfficers.Name = "dataOfficers";
+            this.dataOfficers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataOfficers.Size = new System.Drawing.Size(884, 883);
             this.dataOfficers.TabIndex = 0;
+            this.dataOfficers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOfficers_CellDoubleClick);
             // 
             // groupSchoolInfo
             // 
-            this.groupSchoolInfo.Controls.Add(this.cmbCourse);
+            this.groupSchoolInfo.Controls.Add(this.txtCourse);
             this.groupSchoolInfo.Controls.Add(this.lblIDNo);
             this.groupSchoolInfo.Controls.Add(this.txtIDNo);
             this.groupSchoolInfo.Controls.Add(this.lblCourse);
@@ -105,14 +108,13 @@
             this.groupSchoolInfo.TabStop = false;
             this.groupSchoolInfo.Text = "School Information";
             // 
-            // cmbCourse
+            // txtCourse
             // 
-            this.cmbCourse.BackColor = System.Drawing.Color.White;
-            this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(43, 106);
-            this.cmbCourse.Name = "cmbCourse";
-            this.cmbCourse.Size = new System.Drawing.Size(295, 23);
-            this.cmbCourse.TabIndex = 7;
+            this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourse.Location = new System.Drawing.Point(43, 106);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(295, 23);
+            this.txtCourse.TabIndex = 11;
             // 
             // lblIDNo
             // 
@@ -130,7 +132,7 @@
             this.txtIDNo.Location = new System.Drawing.Point(43, 62);
             this.txtIDNo.Name = "txtIDNo";
             this.txtIDNo.Size = new System.Drawing.Size(487, 23);
-            this.txtIDNo.TabIndex = 2;
+            this.txtIDNo.TabIndex = 10;
             // 
             // lblCourse
             // 
@@ -158,7 +160,7 @@
             this.txtYearAndSection.Location = new System.Drawing.Point(344, 106);
             this.txtYearAndSection.Name = "txtYearAndSection";
             this.txtYearAndSection.Size = new System.Drawing.Size(186, 23);
-            this.txtYearAndSection.TabIndex = 6;
+            this.txtYearAndSection.TabIndex = 12;
             // 
             // groupPersonalInfo
             // 
@@ -193,7 +195,7 @@
             this.txtPosition.Location = new System.Drawing.Point(43, 59);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(487, 23);
-            this.txtPosition.TabIndex = 5;
+            this.txtPosition.TabIndex = 1;
             // 
             // lblPosition
             // 
@@ -221,7 +223,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(317, 147);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
-            this.txtEmailAddress.TabIndex = 15;
+            this.txtEmailAddress.TabIndex = 7;
             // 
             // txtFirstName
             // 
@@ -257,7 +259,7 @@
             this.txtContactNo.Location = new System.Drawing.Point(317, 103);
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(213, 23);
-            this.txtContactNo.TabIndex = 13;
+            this.txtContactNo.TabIndex = 6;
             // 
             // txtMiddleName
             // 
@@ -265,7 +267,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(43, 147);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtMiddleName.TabIndex = 3;
             // 
             // lblContactNo
             // 
@@ -303,7 +305,7 @@
             this.txtLastName.Location = new System.Drawing.Point(43, 191);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(213, 23);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 4;
             // 
             // rbnFemale
             // 
@@ -312,7 +314,7 @@
             this.rbnFemale.Location = new System.Drawing.Point(376, 204);
             this.rbnFemale.Name = "rbnFemale";
             this.rbnFemale.Size = new System.Drawing.Size(68, 19);
-            this.rbnFemale.TabIndex = 10;
+            this.rbnFemale.TabIndex = 9;
             this.rbnFemale.TabStop = true;
             this.rbnFemale.Text = "Female";
             this.rbnFemale.UseVisualStyleBackColor = true;
@@ -334,7 +336,7 @@
             this.rbnMale.Location = new System.Drawing.Point(317, 204);
             this.rbnMale.Name = "rbnMale";
             this.rbnMale.Size = new System.Drawing.Size(53, 19);
-            this.rbnMale.TabIndex = 9;
+            this.rbnMale.TabIndex = 8;
             this.rbnMale.TabStop = true;
             this.rbnMale.Text = "Male";
             this.rbnMale.UseVisualStyleBackColor = true;
@@ -346,7 +348,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(487, 56);
-            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabIndex = 5;
             // 
             // btnUpdate
             // 
@@ -358,9 +360,10 @@
             this.btnUpdate.Location = new System.Drawing.Point(941, 762);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(292, 41);
-            this.btnUpdate.TabIndex = 26;
+            this.btnUpdate.TabIndex = 16;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -372,9 +375,10 @@
             this.btnAdd.Location = new System.Drawing.Point(941, 715);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(591, 41);
-            this.btnAdd.TabIndex = 27;
+            this.btnAdd.TabIndex = 15;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -386,12 +390,14 @@
             this.btnDelete.Location = new System.Drawing.Point(1240, 762);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(292, 41);
-            this.btnDelete.TabIndex = 28;
+            this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // groupSecurity
             // 
+            this.groupSecurity.Controls.Add(this.lblPasswordMessage);
             this.groupSecurity.Controls.Add(this.txtConfirmPassword);
             this.groupSecurity.Controls.Add(this.lblPassword);
             this.groupSecurity.Controls.Add(this.txtPassword);
@@ -407,16 +413,18 @@
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(43, 99);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(43, 92);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.Size = new System.Drawing.Size(487, 23);
-            this.txtConfirmPassword.TabIndex = 4;
+            this.txtConfirmPassword.TabIndex = 14;
+            this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(40, 37);
+            this.lblPassword.Location = new System.Drawing.Point(40, 30);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(64, 15);
             this.lblPassword.TabIndex = 1;
@@ -425,16 +433,17 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(43, 55);
+            this.txtPassword.Location = new System.Drawing.Point(43, 48);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(487, 23);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 13;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblConfirmPassword
             // 
             this.lblConfirmPassword.AutoSize = true;
             this.lblConfirmPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmPassword.Location = new System.Drawing.Point(40, 81);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(40, 74);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
             this.lblConfirmPassword.Size = new System.Drawing.Size(112, 15);
             this.lblConfirmPassword.TabIndex = 3;
@@ -454,6 +463,15 @@
             this.btnOpenForm.Text = "Open Form";
             this.btnOpenForm.UseVisualStyleBackColor = false;
             this.btnOpenForm.Click += new System.EventHandler(this.btnOpenForm_Click);
+            // 
+            // lblPasswordMessage
+            // 
+            this.lblPasswordMessage.AutoSize = true;
+            this.lblPasswordMessage.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordMessage.Location = new System.Drawing.Point(40, 118);
+            this.lblPasswordMessage.Name = "lblPasswordMessage";
+            this.lblPasswordMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblPasswordMessage.TabIndex = 15;
             // 
             // CtrlOfficers
             // 
@@ -487,7 +505,6 @@
 
         private System.Windows.Forms.DataGridView dataOfficers;
         private System.Windows.Forms.GroupBox groupSchoolInfo;
-        private System.Windows.Forms.ComboBox cmbCourse;
         private System.Windows.Forms.Label lblIDNo;
         private System.Windows.Forms.TextBox txtIDNo;
         private System.Windows.Forms.Label lblCourse;
@@ -520,5 +537,7 @@
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.Button btnOpenForm;
         private System.Windows.Forms.TextBox txtPosition;
+        private System.Windows.Forms.TextBox txtCourse;
+        private System.Windows.Forms.Label lblPasswordMessage;
     }
 }

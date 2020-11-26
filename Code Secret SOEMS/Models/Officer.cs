@@ -23,23 +23,44 @@ namespace Code_Secret_SOEMS.Models
         public string year_and_section { get; set; }
         public string password { get; set; }
 
-        DatabaseHelper dbHelper = new DatabaseHelper();
-        PasswordHelper ph = new PasswordHelper();
+        private DatabaseHelper dbHelper = new DatabaseHelper();
+        private PasswordHelper ph = new PasswordHelper();
+
+        public Officer()
+        {
+            dbHelper = new DatabaseHelper();
+        }
+        
 
         // DISPLAYING DATA
         public void loadOfficers(DataGridView myDataGridView)
         {
-            dbHelper.createQuery("SELECT * FROM officers");
+            dbHelper.createQuery(
+                "SELECT " +
+                    "id AS 'ID No.', " +
+                    "position AS 'Position', " +
+                    "first_name AS 'First Name', " +
+                    "middle_name AS 'Middle Name', " +
+                    "last_name AS 'Last Name', " +
+                    "address AS 'Address', " +
+                    "contact AS 'Contact No.', " +
+                    "email AS 'Email Address', " +
+                    "gender AS 'Gender', " +
+                    "course AS 'Course', " +
+                    "year_and_section AS 'Year and Section' " +
+                "FROM officers WHERE " +
+                    "position != 'Adviser';");
             dbHelper.populateDataGridView(myDataGridView);
         }
 
         public void addOfficer()
         {
-            password = ph.hashPassword(password);
             dbHelper.createQuery("INSERT INTO officers (id, position, first_name, middle_name, last_name, " +
                 "address, contact, email, gender, course, year_and_section, password) VALUES (" +
                 "@id, @position, @first_name, @middle_name, @last_name, @address, @contact, @email, @gender, " +
                 "@course, @year_and_seciton, @password); ");
+
+            password = ph.hashPassword(password);
 
             dbHelper.bindParam("@id", id);
             dbHelper.bindParam("@position", position);
@@ -60,7 +81,7 @@ namespace Code_Secret_SOEMS.Models
         public bool loginOfficer(string id, string userPassword)
         {
             string hashPassword;
-            dbHelper.createQuery("SELECT * FROM officers WHERE id = @id");
+            dbHelper.createQuery("SELECT * FROM officers WHERE id = @id;");
             dbHelper.bindParam("@id", id);
 
             if(dbHelper.executeReader())
@@ -84,11 +105,68 @@ namespace Code_Secret_SOEMS.Models
             }
         }
 
-        public string getLoggedInOfficer()
+        public string getLoggedInOfficer(string item)
         {
-            return dbHelper.getFromReader("position") + ": " + dbHelper.getFromReader("first_name");
+            return dbHelper.getFromReader(item);
         }
 
+        public void selectOfficer(string id)
+        {
+            dbHelper.createQuery("SELECT * FROM officers WHERE id = @id;");
+            dbHelper.bindParam("@id", id);
+        }
+
+        public void updateOfficer(string currentIDNo)
+        {
+            dbHelper.createQuery(
+                "UPDATE officers SET " +
+                    "id = @id, " +
+                    "position = @position," +
+                    "first_name = @first_name, " +
+                    "middle_name = @middle_name, " +
+                    "last_name = @last_name, " +
+                    "address = @address, " +
+                    "contact = @contact," +
+                    "email = @email, " +
+                    "gender = @gender, " +
+                    "course = @course, " +
+                    "year_and_section = @year_and_section, " +
+                    "password = @password " +
+                 "WHERE id = @current_id;"
+                );
+
+            password = ph.hashPassword(password);
+
+            dbHelper.bindParam("@id", id);
+            dbHelper.bindParam("@position", position);
+            dbHelper.bindParam("@first_name", first_name);
+            dbHelper.bindParam("@middle_name", middle_name);
+            dbHelper.bindParam("@last_name", last_name);
+            dbHelper.bindParam("@address", address);
+            dbHelper.bindParam("@contact", contact);
+            dbHelper.bindParam("@email", email);
+            dbHelper.bindParam("@gender", gender);
+            dbHelper.bindParam("@course", course);
+            dbHelper.bindParam("@year_and_section", year_and_section);
+            dbHelper.bindParam("@password", password);
+            dbHelper.bindParam("@current_id", currentIDNo);
+
+            dbHelper.executeQuery();
+
+        }
+
+        public void deleteOfficer(string currentIDNo)
+        {
+            dbHelper.createQuery("DELETE FROM officers WHERE id = @id;");
+            dbHelper.bindParam("@id", currentIDNo);
+
+            dbHelper.executeQuery();
+        }
+
+        public string getOfficerDetails(string item)
+        {
+            return dbHelper.getFromReader(item);
+        }
 
     }
 }

@@ -93,7 +93,9 @@
             "Dark Orange",
             "Cool Blue",
             "Hot Pink",
-            "Fresh Green"});
+            "Mint Green",
+            "Peru",
+            "Candy Red"});
             this.cmbTheme.Location = new System.Drawing.Point(12, 81);
             this.cmbTheme.Name = "cmbTheme";
             this.cmbTheme.Size = new System.Drawing.Size(367, 21);

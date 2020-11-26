@@ -34,15 +34,16 @@ namespace Code_Secret_SOEMS.Helpers
 
         // Test if login lock is on
         // Returns result as bool
-        public bool loginLock()
+        public bool isLoginLocked()
         {
             return Properties.Settings.Default.loginLock;
         }
 
         // Enables login lock
-        public void enableLoginLock()
+        public void enableLoginLock(byte minutes)
         {
             Properties.Settings.Default.loginLock = true;
+            Properties.Settings.Default.minutes = minutes;
             Properties.Settings.Default.Save();
         }
 

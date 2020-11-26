@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Code_Secret_SOEMS.Models;
 using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS.Presenters
 {
-    class ThemePresenter
+    class SettingsPresenter
     {
+        SettingsHelper sh = new SettingsHelper();
         ThemeHelper th = new ThemeHelper();
-
         public string getCurrentTheme()
         {
             return th.getCurrentTheme();
@@ -31,10 +30,25 @@ namespace Code_Secret_SOEMS.Presenters
         {
             th.saveMode(mode);
         }
+        public bool isLoginLocked()
+        {
+            return sh.isLoginLocked();
+        }
 
         public void applyBoth(string theme, bool mode)
         {
             th.saveBoth(theme, mode);
         }
+        public void enableLoginLock(byte minutes)
+        {
+            sh.enableLoginLock(minutes);
+        }
+
+        // Disables login lock
+        public void disableLoginLock()
+        {
+            sh.disableLoginLock();
+        }
+
     }
 }

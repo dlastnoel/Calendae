@@ -9,18 +9,26 @@ namespace Code_Secret_SOEMS.Presenters
 {
     class LoginPresenter
     {
-        Officer _officer = new Officer();
+        private Officer _officer;
 
-        public string loginOfficer(string id, string password)
+        public LoginPresenter()
         {
-            if(_officer.loginOfficer(id, password))
-            {
-                
-                return _officer.getLoggedInOfficer();
-            } else
-            {
-                return "";
-            }
+            _officer = new Officer();
+        }
+
+        public bool loginOfficer(string id, string password)
+        {
+            return _officer.loginOfficer(id, password);
+        }
+
+        public string getLoggedInOfficerPosition()
+        {
+            return _officer.getLoggedInOfficer("position");
+        }
+
+        public string getLoggedInOfficerName()
+        {
+            return _officer.getLoggedInOfficer("first_name");
         }
     }
 }

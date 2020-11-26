@@ -179,6 +179,7 @@
             this.txtIDNo.Name = "txtIDNo";
             this.txtIDNo.Size = new System.Drawing.Size(343, 26);
             this.txtIDNo.TabIndex = 7;
+            this.txtIDNo.Text = "181-1668-2";
             // 
             // txtPassword
             // 
@@ -187,6 +188,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(343, 26);
             this.txtPassword.TabIndex = 8;
+            this.txtPassword.Text = "qwerty123";
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblIDNo
@@ -227,6 +229,7 @@
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

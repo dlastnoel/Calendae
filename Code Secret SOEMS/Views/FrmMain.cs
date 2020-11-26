@@ -15,6 +15,8 @@ namespace Code_Secret_SOEMS
     public partial class FrmMain : Form
     {
         private static UserControl currentUserControl;
+        private string position;
+        private string name;
 
         private void setUserControl(string userControl)
         {
@@ -65,7 +67,7 @@ namespace Code_Secret_SOEMS
             }
             else
             {
-                if (Screen.PrimaryScreen.Bounds.Width == 1920)
+                if (Screen.PrimaryScreen.Bounds.Width >= 1920)
                 {
                     currentUserControl.Size = new Size(1576, 956);
                 }
@@ -77,7 +79,7 @@ namespace Code_Secret_SOEMS
         {
             if(myFormWindowState == FormWindowState.Maximized)
             {
-                if(Screen.PrimaryScreen.Bounds.Width == 1920)
+                if(Screen.PrimaryScreen.Bounds.Width >= 1920)
                 {
                     currentUserControl.Size = new Size(1576, 956);
                 }
@@ -113,11 +115,22 @@ namespace Code_Secret_SOEMS
             th.setToolStripStatusLabelColor(toolStripStatusDate);
             th.setToolStripStatusLabelColor(toolStripStatusTime);
         }
-        public FrmMain(string officer)
+        public FrmMain(string position, string name)
         {
             InitializeComponent();
             setFormTheme();
-            toolStripStatusOfficer.Text = officer;
+            this.position = position;
+            this.name = name;
+            toolStripStatusOfficer.Text = this.position + ": " + this.name;
+
+            if(position != "Adviser")
+            {
+                btnOfficers.Hide();
+                btnSettings.Location = btnGuests.Location;
+                btnGuests.Location = btnStudents.Location;
+                btnStudents.Location = btnEvents.Location;
+                btnEvents.Location = btnOfficers.Location;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -217,7 +230,13 @@ namespace Code_Secret_SOEMS
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            new FrmTheme().ShowDialog();
+            if(position == "Adviser")
+            {
+                new FrmSettings().ShowDialog();
+            } else
+            {
+                new FrmTheme().ShowDialog();
+            }
             setFormTheme();
             setUserControl(lblTitle.Text);
             setUserControlSize(this.WindowState);

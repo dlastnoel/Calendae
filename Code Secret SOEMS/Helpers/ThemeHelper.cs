@@ -117,9 +117,16 @@ namespace Code_Secret_SOEMS.Helpers
                     case "Hot Pink":
                         myPanel.BackColor = Color.FromArgb(211, 32, 139);
                         break;
-                    case "Fresh Green":
+                    case "Mint Green":
                         myPanel.BackColor = Color.FromArgb(87, 202, 133);
                         break;
+                    case "Peru":
+                        myPanel.BackColor = Color.Peru;
+                        break;
+                    case "Candy Red":
+                        myPanel.BackColor = Color.FromArgb(192, 0, 0);
+                        break;
+
                 }
             }
         }
@@ -181,11 +188,23 @@ namespace Code_Secret_SOEMS.Helpers
                         myPanel.TopRight = Color.FromArgb(211, 32, 139);
                         myPanel.TopLeft = Color.FromArgb(135, 154, 242);
                         break;
-                    case "Fresh Green":
+                    case "Mint Green":
                         myPanel.BottomLeft = Color.FromArgb(24, 78, 104);
                         myPanel.BottomRight = Color.FromArgb(87, 202, 133);
                         myPanel.TopRight = Color.FromArgb(87, 202, 133);
                         myPanel.TopLeft = Color.FromArgb(24, 78, 104);
+                        break;
+                    case "Peru":
+                        myPanel.BottomLeft = Color.FromArgb(255, 255, 192);
+                        myPanel.BottomRight = Color.FromArgb(255, 255, 192);
+                        myPanel.TopRight = Color.FromArgb(255, 128, 0);
+                        myPanel.TopLeft = Color.FromArgb(255, 128, 0);
+                        break;
+                    case "Candy Red":
+                        myPanel.BottomLeft = Color.Red;
+                        myPanel.BottomRight = Color.Red;
+                        myPanel.TopRight = Color.FromArgb(64, 0, 64);
+                        myPanel.TopLeft = Color.Red;
                         break;
 
                 }
@@ -219,8 +238,14 @@ namespace Code_Secret_SOEMS.Helpers
                 case "Hot Pink":
                     myButton.BackColor = Color.FromArgb(211, 32, 139);
                     break;
-                case "Fresh Green":
+                case "Mint Green":
                     myButton.BackColor = Color.FromArgb(87, 202, 133);
+                    break;
+                case "Peru":
+                    myButton.BackColor = Color.Peru;
+                    break;
+                case "Candy Red":
+                    myButton.BackColor = Color.FromArgb(192, 0, 0);
                     break;
             }
         }
@@ -239,8 +264,14 @@ namespace Code_Secret_SOEMS.Helpers
                 case "Hot Pink":
                     myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(211, 32, 139);
                     break;
-                case "Fresh Green":
+                case "Mint Green":
                     myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(87, 202, 133);
+                    break;
+                case "Peru":
+                    myButton.FlatAppearance.MouseOverBackColor = Color.Peru;
+                    break;
+                case "Candy Red":
+                    myButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 0, 0);
                     break;
             }
         }

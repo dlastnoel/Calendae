@@ -131,13 +131,14 @@ namespace Code_Secret_SOEMS.Helpers
         // item - field from reader to be read
         public string getFromReader(string item)
         {
-            string data;
+            string data = "";
             openConnection();
 
             sqlDataReader = commandQuery.ExecuteReader();
-            sqlDataReader.Read();
-
-            data = sqlDataReader[item].ToString();
+            if(sqlDataReader.Read())
+            {
+                data = sqlDataReader[item].ToString();
+            }
 
             closeConnection();
 

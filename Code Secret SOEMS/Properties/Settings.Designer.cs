@@ -154,5 +154,17 @@ namespace Code_Secret_SOEMS.Properties {
                 this["organization"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte minutes {
+            get {
+                return ((byte)(this["minutes"]));
+            }
+            set {
+                this["minutes"] = value;
+            }
+        }
     }
 }
