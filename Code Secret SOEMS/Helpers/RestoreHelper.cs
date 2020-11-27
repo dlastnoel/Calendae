@@ -9,9 +9,9 @@ namespace Code_Secret_SOEMS.Helpers
 {
     class RestoreHelper
     {
-        public RestoreHelper(bool run)
+        public RestoreHelper(string mode)
         {
-            if(run)
+            if(mode == "all")
             {
                 Properties.Settings.Default.theme = "Dark Orange";
                 Properties.Settings.Default.isDark = false;
@@ -27,7 +27,7 @@ namespace Code_Secret_SOEMS.Helpers
                 Properties.Settings.Default.Save();
 
                 MessageBox.Show("All settings reverted to default");
-            } else
+            } else if(mode == "super")
             {
                 Properties.Settings.Default.theme = "Dark Orange";
                 Properties.Settings.Default.isDark = false;
@@ -43,6 +43,13 @@ namespace Code_Secret_SOEMS.Helpers
                 Properties.Settings.Default.Save();
 
                 MessageBox.Show("Adviser registration removed");
+            } else
+            {
+                Properties.Settings.Default.lockStatus = false;
+                Properties.Settings.Default.loginLock = false;
+                Properties.Settings.Default.Save();
+
+                MessageBox.Show("Lock removed");
             }
         }
     }

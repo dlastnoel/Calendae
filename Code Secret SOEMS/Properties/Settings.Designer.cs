@@ -166,5 +166,17 @@ namespace Code_Secret_SOEMS.Properties {
                 this["minutes"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool lockStatus {
+            get {
+                return ((bool)(this["lockStatus"]));
+            }
+            set {
+                this["lockStatus"] = value;
+            }
+        }
     }
 }

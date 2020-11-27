@@ -18,7 +18,7 @@ namespace Code_Secret_SOEMS
         ThemeHelper th;
         private void setFormTheme()
         {
-            ThemeHelper th = new ThemeHelper();
+            th = new ThemeHelper();
             th.setFormColor(this);
             th.setDragPanelColor(panelTop);
             th.setLabelColor(lblTitle);

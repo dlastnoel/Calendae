@@ -15,14 +15,16 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmLogin : Form
     {
-        SettingsHelper sh;
         LoginPresenter loginPresenter;
+        SettingsHelper sh;
+        ThemeHelper th;
+        private static byte counter = 3;
         public FrmLogin()
         {
             InitializeComponent();
-            sh = new SettingsHelper();
-            ThemeHelper th = new ThemeHelper();
             loginPresenter = new LoginPresenter();
+            sh = new SettingsHelper();
+            th = new ThemeHelper();
             th.setFormColor(this);
             th.setCalendae(pictureBoxCalendae);
             th.setDragPanelColor(panelTop);
@@ -57,20 +59,45 @@ namespace Code_Secret_SOEMS
         {
             if(!String.IsNullOrEmpty(txtIDNo.Text) && !String.IsNullOrEmpty(txtPassword.Text))
             {
-
                 if (sh.isLoginLocked())
                 {
-
-                }
-                if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
+                    if(sh.isLocked())
+                    {
+                            MessageBox.Show("System is locked, try again later", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if(counter != 0)
+                    {
+                        if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
+                        {
+                            new FrmMain(loginPresenter.getLoggedInOfficerPosition(), loginPresenter.getLoggedInOfficerName()).Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            counter--;
+                            MessageBox.Show("Incorrect ID No or Password, " +
+                                counter + " tries remaining", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if(counter == 0)
+                            {
+                                sh.lockLogin();
+                                counter = 3;
+                                new FrmLocked(0).Show();
+                            }
+                        }
+                    }
+                } else
                 {
-                    new FrmMain(loginPresenter.getLoggedInOfficerPosition(),loginPresenter.getLoggedInOfficerName()).Show();
-                    this.Hide();
+                    if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
+                    {
+                        new FrmMain(loginPresenter.getLoggedInOfficerPosition(), loginPresenter.getLoggedInOfficerName()).Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect ID No or Password", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Incorrect ID No or Password", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                
             } else
             {
                 MessageBox.Show("Please fill up all the fields correctly", "Calendae", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,6 +111,11 @@ namespace Code_Secret_SOEMS
             {
                 this.Hide();
                 new FrmAdviserRegistration().ShowDialog();
+            }
+
+            if (sh.isLoginLocked() && sh.isLocked())
+            {
+                new FrmLocked(1).ShowDialog();
             }
         }
 

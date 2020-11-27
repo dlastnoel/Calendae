@@ -35,6 +35,11 @@ namespace Code_Secret_SOEMS.Presenters
             return sh.isLoginLocked();
         }
 
+        public string getMinutes()
+        {
+            return sh.getMinutes();
+        }
+
         public void applyBoth(string theme, bool mode)
         {
             th.saveBoth(theme, mode);

@@ -39,11 +39,33 @@ namespace Code_Secret_SOEMS.Helpers
             return Properties.Settings.Default.loginLock;
         }
 
+        public bool isLocked()
+        {
+            return Properties.Settings.Default.lockStatus;
+        }
+
+        public void unlockLogin()
+        {
+            Properties.Settings.Default.lockStatus = false;
+            Properties.Settings.Default.Save();
+        }
+
+        public string getMinutes()
+        {
+            return Properties.Settings.Default.minutes.ToString();
+        }
+
         // Enables login lock
         public void enableLoginLock(byte minutes)
         {
             Properties.Settings.Default.loginLock = true;
             Properties.Settings.Default.minutes = minutes;
+            Properties.Settings.Default.Save();
+        }
+
+        public void lockLogin()
+        {
+            Properties.Settings.Default.lockStatus = true;
             Properties.Settings.Default.Save();
         }
 

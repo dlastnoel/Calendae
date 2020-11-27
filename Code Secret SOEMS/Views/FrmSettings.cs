@@ -37,7 +37,7 @@ namespace Code_Secret_SOEMS
             checkLoginLock.Checked = settingsPresenter.isLoginLocked();
             checkDarkMode.Checked = settingsPresenter.getCurrentMode();
             cmbTheme.SelectedIndex = cmbTheme.FindStringExact(settingsPresenter.getCurrentTheme());
-
+            txtTime.Text = settingsPresenter.getMinutes();
 
             if (checkLoginLock.Checked)
             {

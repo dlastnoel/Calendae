@@ -23,12 +23,13 @@ namespace Code_Secret_SOEMS.Models
         public string year_and_section { get; set; }
         public string password { get; set; }
 
-        private DatabaseHelper dbHelper = new DatabaseHelper();
-        private PasswordHelper ph = new PasswordHelper();
+        private DatabaseHelper dbHelper;
+        private PasswordHelper ph;
 
         public Officer()
         {
             dbHelper = new DatabaseHelper();
+            ph = new PasswordHelper();
         }
         
 

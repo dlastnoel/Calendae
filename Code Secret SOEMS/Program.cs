@@ -18,7 +18,7 @@ namespace Code_Secret_SOEMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLogin());
-            //new RestoreHelper();
+            //new RestoreHelper("lock");
         }
     }
 }
