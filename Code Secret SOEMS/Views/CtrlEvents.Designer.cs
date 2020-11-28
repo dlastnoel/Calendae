@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataEvents = new System.Windows.Forms.DataGridView();
             this.groupEventInfo = new System.Windows.Forms.GroupBox();
+            this.lblSwitchStatus = new System.Windows.Forms.Label();
+            this.switchIsActivated = new XanderUI.XUISwitch();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.lblEventDetails = new System.Windows.Forms.Label();
             this.txtEventDetails = new System.Windows.Forms.TextBox();
-            this.lblInfo2 = new System.Windows.Forms.Label();
             this.txtStudentSlots = new System.Windows.Forms.TextBox();
-            this.lblInfo1 = new System.Windows.Forms.Label();
             this.lblStudentSlots = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEventName = new System.Windows.Forms.TextBox();
             this.lblEventName = new System.Windows.Forms.Label();
             this.lblVenue = new System.Windows.Forms.Label();
-            this.txtEmailAddress = new System.Windows.Forms.TextBox();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.txtTime = new System.Windows.Forms.TextBox();
+            this.txtVenue = new System.Windows.Forms.TextBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.txtMiddleName = new System.Windows.Forms.TextBox();
+            this.txtDate = new System.Windows.Forms.TextBox();
             this.lblStudentRegistrationFee = new System.Windows.Forms.Label();
             this.txtStudentRegistrationFee = new System.Windows.Forms.TextBox();
             this.groupGuests = new System.Windows.Forms.GroupBox();
@@ -69,36 +70,39 @@
             this.dataEvents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataEvents.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataEvents.Location = new System.Drawing.Point(27, 42);
             this.dataEvents.Name = "dataEvents";
+            this.dataEvents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataEvents.Size = new System.Drawing.Size(884, 883);
             this.dataEvents.TabIndex = 30;
+            this.dataEvents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEvents_CellDoubleClick);
             // 
             // groupEventInfo
             // 
+            this.groupEventInfo.Controls.Add(this.lblSwitchStatus);
+            this.groupEventInfo.Controls.Add(this.switchIsActivated);
+            this.groupEventInfo.Controls.Add(this.lblStatus);
             this.groupEventInfo.Controls.Add(this.lblEventDetails);
             this.groupEventInfo.Controls.Add(this.txtEventDetails);
-            this.groupEventInfo.Controls.Add(this.lblInfo2);
             this.groupEventInfo.Controls.Add(this.txtStudentSlots);
-            this.groupEventInfo.Controls.Add(this.lblInfo1);
             this.groupEventInfo.Controls.Add(this.lblStudentSlots);
-            this.groupEventInfo.Controls.Add(this.textBox1);
+            this.groupEventInfo.Controls.Add(this.txtEventName);
             this.groupEventInfo.Controls.Add(this.lblEventName);
             this.groupEventInfo.Controls.Add(this.lblVenue);
-            this.groupEventInfo.Controls.Add(this.txtEmailAddress);
-            this.groupEventInfo.Controls.Add(this.txtFirstName);
+            this.groupEventInfo.Controls.Add(this.txtTime);
+            this.groupEventInfo.Controls.Add(this.txtVenue);
             this.groupEventInfo.Controls.Add(this.lblTime);
             this.groupEventInfo.Controls.Add(this.lblDate);
-            this.groupEventInfo.Controls.Add(this.txtMiddleName);
+            this.groupEventInfo.Controls.Add(this.txtDate);
             this.groupEventInfo.Controls.Add(this.lblStudentRegistrationFee);
             this.groupEventInfo.Controls.Add(this.txtStudentRegistrationFee);
             this.groupEventInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,6 +113,42 @@
             this.groupEventInfo.TabIndex = 32;
             this.groupEventInfo.TabStop = false;
             this.groupEventInfo.Text = "Event Information";
+            // 
+            // lblSwitchStatus
+            // 
+            this.lblSwitchStatus.AutoSize = true;
+            this.lblSwitchStatus.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSwitchStatus.Location = new System.Drawing.Point(162, 439);
+            this.lblSwitchStatus.Name = "lblSwitchStatus";
+            this.lblSwitchStatus.Size = new System.Drawing.Size(69, 14);
+            this.lblSwitchStatus.TabIndex = 39;
+            this.lblSwitchStatus.Text = "Deactivated";
+            // 
+            // switchIsActivated
+            // 
+            this.switchIsActivated.BackColor = System.Drawing.Color.Transparent;
+            this.switchIsActivated.HandleOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(71)))), ((int)(((byte)(89)))));
+            this.switchIsActivated.HandleOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Location = new System.Drawing.Point(96, 429);
+            this.switchIsActivated.Name = "switchIsActivated";
+            this.switchIsActivated.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(129)))), ((int)(((byte)(136)))));
+            this.switchIsActivated.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Size = new System.Drawing.Size(60, 30);
+            this.switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            this.switchIsActivated.SwitchStyle = XanderUI.XUISwitch.Style.Horizontal;
+            this.switchIsActivated.TabIndex = 8;
+            this.switchIsActivated.Text = "xuiSwitch1";
+            this.switchIsActivated.Click += new System.EventHandler(this.switchIsActivated_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(40, 439);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(50, 15);
+            this.lblStatus.TabIndex = 37;
+            this.lblStatus.Text = "Status: ";
             // 
             // lblEventDetails
             // 
@@ -127,18 +167,7 @@
             this.txtEventDetails.Multiline = true;
             this.txtEventDetails.Name = "txtEventDetails";
             this.txtEventDetails.Size = new System.Drawing.Size(487, 183);
-            this.txtEventDetails.TabIndex = 35;
-            // 
-            // lblInfo2
-            // 
-            this.lblInfo2.AutoSize = true;
-            this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo2.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo2.Location = new System.Drawing.Point(40, 439);
-            this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(175, 13);
-            this.lblInfo2.TabIndex = 34;
-            this.lblInfo2.Text = "Leave slots empty for unlimited slots";
+            this.txtEventDetails.TabIndex = 7;
             // 
             // txtStudentSlots
             // 
@@ -146,18 +175,7 @@
             this.txtStudentSlots.Location = new System.Drawing.Point(317, 191);
             this.txtStudentSlots.Name = "txtStudentSlots";
             this.txtStudentSlots.Size = new System.Drawing.Size(213, 23);
-            this.txtStudentSlots.TabIndex = 19;
-            // 
-            // lblInfo1
-            // 
-            this.lblInfo1.AutoSize = true;
-            this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo1.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo1.Location = new System.Drawing.Point(40, 421);
-            this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(198, 13);
-            this.lblInfo1.TabIndex = 33;
-            this.lblInfo1.Text = "Leave registration fee empty to set it free";
+            this.txtStudentSlots.TabIndex = 6;
             // 
             // lblStudentSlots
             // 
@@ -169,13 +187,13 @@
             this.lblStudentSlots.TabIndex = 18;
             this.lblStudentSlots.Text = "Slots";
             // 
-            // textBox1
+            // txtEventName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(43, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(487, 23);
-            this.textBox1.TabIndex = 17;
+            this.txtEventName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventName.Location = new System.Drawing.Point(43, 59);
+            this.txtEventName.Name = "txtEventName";
+            this.txtEventName.Size = new System.Drawing.Size(487, 23);
+            this.txtEventName.TabIndex = 1;
             // 
             // lblEventName
             // 
@@ -197,21 +215,21 @@
             this.lblVenue.TabIndex = 1;
             this.lblVenue.Text = "Venue";
             // 
-            // txtEmailAddress
+            // txtTime
             // 
-            this.txtEmailAddress.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailAddress.Location = new System.Drawing.Point(317, 147);
-            this.txtEmailAddress.Name = "txtEmailAddress";
-            this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
-            this.txtEmailAddress.TabIndex = 15;
+            this.txtTime.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTime.Location = new System.Drawing.Point(317, 147);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Size = new System.Drawing.Size(213, 23);
+            this.txtTime.TabIndex = 4;
             // 
-            // txtFirstName
+            // txtVenue
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(43, 103);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(487, 23);
-            this.txtFirstName.TabIndex = 2;
+            this.txtVenue.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVenue.Location = new System.Drawing.Point(43, 103);
+            this.txtVenue.Name = "txtVenue";
+            this.txtVenue.Size = new System.Drawing.Size(487, 23);
+            this.txtVenue.TabIndex = 2;
             // 
             // lblTime
             // 
@@ -233,13 +251,13 @@
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "Date";
             // 
-            // txtMiddleName
+            // txtDate
             // 
-            this.txtMiddleName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMiddleName.Location = new System.Drawing.Point(43, 147);
-            this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtDate.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDate.Location = new System.Drawing.Point(43, 147);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(213, 23);
+            this.txtDate.TabIndex = 3;
             // 
             // lblStudentRegistrationFee
             // 
@@ -257,7 +275,7 @@
             this.txtStudentRegistrationFee.Location = new System.Drawing.Point(43, 191);
             this.txtStudentRegistrationFee.Name = "txtStudentRegistrationFee";
             this.txtStudentRegistrationFee.Size = new System.Drawing.Size(213, 23);
-            this.txtStudentRegistrationFee.TabIndex = 6;
+            this.txtStudentRegistrationFee.TabIndex = 5;
             // 
             // groupGuests
             // 
@@ -293,7 +311,7 @@
             this.txtGuestSlots.Location = new System.Drawing.Point(317, 68);
             this.txtGuestSlots.Name = "txtGuestSlots";
             this.txtGuestSlots.Size = new System.Drawing.Size(213, 23);
-            this.txtGuestSlots.TabIndex = 19;
+            this.txtGuestSlots.TabIndex = 11;
             // 
             // lblInfo3
             // 
@@ -332,7 +350,7 @@
             this.txtGuestRegistrationFee.Location = new System.Drawing.Point(43, 68);
             this.txtGuestRegistrationFee.Name = "txtGuestRegistrationFee";
             this.txtGuestRegistrationFee.Size = new System.Drawing.Size(213, 23);
-            this.txtGuestRegistrationFee.TabIndex = 6;
+            this.txtGuestRegistrationFee.TabIndex = 10;
             // 
             // checkGuests
             // 
@@ -340,7 +358,7 @@
             this.checkGuests.Location = new System.Drawing.Point(953, 597);
             this.checkGuests.Name = "checkGuests";
             this.checkGuests.Size = new System.Drawing.Size(15, 14);
-            this.checkGuests.TabIndex = 36;
+            this.checkGuests.TabIndex = 9;
             this.checkGuests.UseVisualStyleBackColor = true;
             this.checkGuests.CheckedChanged += new System.EventHandler(this.checkGuests_CheckedChanged);
             // 
@@ -354,9 +372,10 @@
             this.btnDelete.Location = new System.Drawing.Point(1240, 805);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(292, 41);
-            this.btnDelete.TabIndex = 38;
+            this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -368,9 +387,10 @@
             this.btnAdd.Location = new System.Drawing.Point(941, 758);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(591, 41);
-            this.btnAdd.TabIndex = 37;
+            this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -382,9 +402,10 @@
             this.btnUpdate.Location = new System.Drawing.Point(941, 805);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(292, 41);
-            this.btnUpdate.TabIndex = 36;
+            this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnOpenForm
             // 
@@ -396,7 +417,7 @@
             this.btnOpenForm.Location = new System.Drawing.Point(0, 0);
             this.btnOpenForm.Name = "btnOpenForm";
             this.btnOpenForm.Size = new System.Drawing.Size(86, 31);
-            this.btnOpenForm.TabIndex = 39;
+            this.btnOpenForm.TabIndex = 15;
             this.btnOpenForm.Text = "Open Form";
             this.btnOpenForm.UseVisualStyleBackColor = false;
             this.btnOpenForm.Click += new System.EventHandler(this.btnOpenForm_Click);
@@ -432,20 +453,18 @@
 
         private System.Windows.Forms.DataGridView dataEvents;
         private System.Windows.Forms.GroupBox groupEventInfo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEventName;
         private System.Windows.Forms.Label lblEventName;
-        private System.Windows.Forms.TextBox txtEmailAddress;
+        private System.Windows.Forms.TextBox txtTime;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.TextBox txtMiddleName;
+        private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label lblStudentRegistrationFee;
         private System.Windows.Forms.TextBox txtStudentRegistrationFee;
         private System.Windows.Forms.Label lblVenue;
-        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.TextBox txtVenue;
         private System.Windows.Forms.TextBox txtStudentSlots;
         private System.Windows.Forms.Label lblStudentSlots;
-        private System.Windows.Forms.Label lblInfo2;
-        private System.Windows.Forms.Label lblInfo1;
         private System.Windows.Forms.GroupBox groupGuests;
         private System.Windows.Forms.Label lblInfo4;
         private System.Windows.Forms.TextBox txtGuestSlots;
@@ -460,5 +479,8 @@
         private System.Windows.Forms.Button btnOpenForm;
         private System.Windows.Forms.Label lblEventDetails;
         private System.Windows.Forms.TextBox txtEventDetails;
+        private System.Windows.Forms.Label lblSwitchStatus;
+        private XanderUI.XUISwitch switchIsActivated;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

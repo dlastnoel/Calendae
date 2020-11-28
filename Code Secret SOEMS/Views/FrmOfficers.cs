@@ -134,7 +134,6 @@ namespace Code_Secret_SOEMS
 
                                 MessageBox.Show("Officer successfully added", "Officers", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
-                                clearFields();
 
                                 this.Close();
                             }

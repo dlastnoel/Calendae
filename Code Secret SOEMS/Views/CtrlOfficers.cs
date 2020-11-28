@@ -47,6 +47,12 @@ namespace Code_Secret_SOEMS
             txtPassword.Clear();
             txtConfirmPassword.Clear();
             lblPasswordMessage.Text = "";
+
+            btnAdd.Text = "Add";
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
         }
 
         public CtrlOfficers()
@@ -64,6 +70,7 @@ namespace Code_Secret_SOEMS
         private void btnOpenForm_Click(object sender, EventArgs e)
         {
             new FrmOfficers(false, "").ShowDialog();
+            officerPresenter.loadOfficers(dataOfficers);
         }
 
         private void CtrlOfficers_SizeChanged(object sender, EventArgs e)
@@ -169,11 +176,6 @@ namespace Code_Secret_SOEMS
             } else
             {
                 clearFields();
-                btnAdd.Text = "Add";
-                btnUpdate.Enabled = false;
-                btnUpdate.FlatStyle = FlatStyle.Standard;
-                btnDelete.Enabled = false;
-                btnDelete.FlatStyle = FlatStyle.Standard;
             }
         }
 
