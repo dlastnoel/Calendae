@@ -52,8 +52,7 @@ namespace Code_Secret_SOEMS
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            new FrmStudentRegistration().Show();
-            this.Hide();
+            new FrmStudentRegistration("","").ShowDialog();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {

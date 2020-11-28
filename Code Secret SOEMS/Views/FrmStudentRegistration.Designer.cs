@@ -48,13 +48,15 @@
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.groupPersonalInfo = new System.Windows.Forms.GroupBox();
             this.groupSchoolInfo = new System.Windows.Forms.GroupBox();
-            this.cmbCourse = new System.Windows.Forms.ComboBox();
             this.lblIDNo = new System.Windows.Forms.Label();
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.lblYearAndSection = new System.Windows.Forms.Label();
             this.txtYearAndSection = new System.Windows.Forms.TextBox();
-            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtCourse = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
             this.groupSchoolInfo.SuspendLayout();
@@ -113,7 +115,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(43, 62);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(213, 23);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 1;
             // 
             // txtMiddleName
             // 
@@ -121,7 +123,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(43, 106);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtMiddleName.TabIndex = 2;
             // 
             // lblMiddleName
             // 
@@ -139,7 +141,7 @@
             this.txtLastName.Location = new System.Drawing.Point(43, 150);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(213, 23);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 3;
             // 
             // lblLastName
             // 
@@ -158,7 +160,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(487, 56);
-            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabIndex = 4;
             // 
             // lblAddress
             // 
@@ -177,7 +179,7 @@
             this.rbnMale.Location = new System.Drawing.Point(317, 163);
             this.rbnMale.Name = "rbnMale";
             this.rbnMale.Size = new System.Drawing.Size(53, 19);
-            this.rbnMale.TabIndex = 9;
+            this.rbnMale.TabIndex = 7;
             this.rbnMale.TabStop = true;
             this.rbnMale.Text = "Male";
             this.rbnMale.UseVisualStyleBackColor = true;
@@ -189,7 +191,7 @@
             this.rbnFemale.Location = new System.Drawing.Point(376, 163);
             this.rbnFemale.Name = "rbnFemale";
             this.rbnFemale.Size = new System.Drawing.Size(68, 19);
-            this.rbnFemale.TabIndex = 10;
+            this.rbnFemale.TabIndex = 8;
             this.rbnFemale.TabStop = true;
             this.rbnFemale.Text = "Female";
             this.rbnFemale.UseVisualStyleBackColor = true;
@@ -210,7 +212,7 @@
             this.txtContactNo.Location = new System.Drawing.Point(317, 62);
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(213, 23);
-            this.txtContactNo.TabIndex = 13;
+            this.txtContactNo.TabIndex = 5;
             // 
             // lblContactNo
             // 
@@ -228,7 +230,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(317, 106);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
-            this.txtEmailAddress.TabIndex = 15;
+            this.txtEmailAddress.TabIndex = 6;
             // 
             // lblEmailAddress
             // 
@@ -267,7 +269,7 @@
             // 
             // groupSchoolInfo
             // 
-            this.groupSchoolInfo.Controls.Add(this.cmbCourse);
+            this.groupSchoolInfo.Controls.Add(this.txtCourse);
             this.groupSchoolInfo.Controls.Add(this.lblIDNo);
             this.groupSchoolInfo.Controls.Add(this.txtIDNo);
             this.groupSchoolInfo.Controls.Add(this.lblCourse);
@@ -280,15 +282,6 @@
             this.groupSchoolInfo.TabIndex = 17;
             this.groupSchoolInfo.TabStop = false;
             this.groupSchoolInfo.Text = "School Information";
-            // 
-            // cmbCourse
-            // 
-            this.cmbCourse.BackColor = System.Drawing.Color.White;
-            this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(43, 106);
-            this.cmbCourse.Name = "cmbCourse";
-            this.cmbCourse.Size = new System.Drawing.Size(295, 23);
-            this.cmbCourse.TabIndex = 7;
             // 
             // lblIDNo
             // 
@@ -306,7 +299,7 @@
             this.txtIDNo.Location = new System.Drawing.Point(43, 62);
             this.txtIDNo.Name = "txtIDNo";
             this.txtIDNo.Size = new System.Drawing.Size(487, 23);
-            this.txtIDNo.TabIndex = 2;
+            this.txtIDNo.TabIndex = 9;
             // 
             // lblCourse
             // 
@@ -334,28 +327,69 @@
             this.txtYearAndSection.Location = new System.Drawing.Point(344, 106);
             this.txtYearAndSection.Name = "txtYearAndSection";
             this.txtYearAndSection.Size = new System.Drawing.Size(186, 23);
-            this.txtYearAndSection.TabIndex = 6;
+            this.txtYearAndSection.TabIndex = 11;
             // 
-            // btnRegister
+            // btnAdd
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(31, 503);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(591, 41);
-            this.btnRegister.TabIndex = 21;
-            this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(31, 503);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(591, 41);
+            this.btnAdd.TabIndex = 21;
+            this.btnAdd.Text = "Register";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(331, 550);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(291, 41);
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(31, 550);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(291, 41);
+            this.btnUpdate.TabIndex = 22;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtCourse
+            // 
+            this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourse.Location = new System.Drawing.Point(43, 106);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(295, 23);
+            this.txtCourse.TabIndex = 10;
             // 
             // FrmStudentRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(661, 566);
-            this.Controls.Add(this.btnRegister);
+            this.ClientSize = new System.Drawing.Size(661, 549);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupSchoolInfo);
             this.Controls.Add(this.groupPersonalInfo);
             this.Controls.Add(this.panelTop);
@@ -401,7 +435,9 @@
         private System.Windows.Forms.TextBox txtYearAndSection;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ComboBox cmbCourse;
-        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TextBox txtCourse;
     }
 }

@@ -42,8 +42,8 @@ namespace Code_Secret_SOEMS.Models
                     "contact AS 'Contact No.', " +
                     "email AS 'Email Address', " +
                     "gender AS 'Gender', " +
-                    "course AS 'Course' " +
-                    "year_and_section AS 'Year and Section " +
+                    "course AS 'Course', " +
+                    "year_and_section AS 'Year and Section' " +
                 "FROM students;");
             dbHelper.populateDataGridView(myDataGridView);
         }
@@ -51,8 +51,8 @@ namespace Code_Secret_SOEMS.Models
         public void addStudent()
         {
             dbHelper.createQuery("INSERT INTO students (id, first_name, middle_name, last_name, address, contact, email, gender, " +
-                "course, year_and_section, is_activated) VALUES (@id, @first_name, @last_name, @address, @contact, @email, @gender, " +
-                "@course, @year_section);");
+                "course, year_and_section, is_activated) VALUES (@id, @first_name, @middle_name, @last_name, @address, @contact, " +
+                "@email, @gender, @course, @year_and_section, @is_activated);");
 
             dbHelper.bindParam("@id", id);
             dbHelper.bindParam("@first_name", first_name);
@@ -63,7 +63,7 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.bindParam("@email", email);
             dbHelper.bindParam("@gender", gender);
             dbHelper.bindParam("@course", course);
-            dbHelper.bindParam("@year_and_seciton", year_and_section);
+            dbHelper.bindParam("@year_and_section", year_and_section);
             dbHelper.bindParam("@is_activated", is_activated);
 
             dbHelper.executeQuery();
@@ -102,8 +102,9 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.bindParam("@email", email);
             dbHelper.bindParam("@gender", gender);
             dbHelper.bindParam("@course", course);
-            dbHelper.bindParam("@year_and_seciton", year_and_section);
+            dbHelper.bindParam("@year_and_section", year_and_section);
             dbHelper.bindParam("@is_activated", is_activated);
+            dbHelper.bindParam("@current_id", currentID);
 
             dbHelper.executeQuery();
         }
@@ -112,6 +113,8 @@ namespace Code_Secret_SOEMS.Models
         {
             dbHelper.createQuery("DELETE FROM students WHERE id = @id");
             dbHelper.bindParam("@id", id);
+
+            dbHelper.executeQuery();
         }
 
         public string getStudentDetails(string item)

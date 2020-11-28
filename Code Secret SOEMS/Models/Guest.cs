@@ -10,6 +10,8 @@ namespace Code_Secret_SOEMS.Models
 {
     class Guest
     {
+
+
         DatabaseHelper dbHelper = new DatabaseHelper();
 
         public void loadGuests(DataGridView myDataGridView)

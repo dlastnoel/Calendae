@@ -57,6 +57,7 @@
             this.lblYearAndSection = new System.Windows.Forms.Label();
             this.txtYearAndSection = new System.Windows.Forms.TextBox();
             this.groupSecurity = new System.Windows.Forms.GroupBox();
+            this.lblPasswordMessage = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lblPasswordMessage = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
             this.groupSchoolInfo.SuspendLayout();
@@ -381,6 +381,15 @@
             this.groupSecurity.TabStop = false;
             this.groupSecurity.Text = "Security";
             // 
+            // lblPasswordMessage
+            // 
+            this.lblPasswordMessage.AutoSize = true;
+            this.lblPasswordMessage.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordMessage.Location = new System.Drawing.Point(17, 121);
+            this.lblPasswordMessage.Name = "lblPasswordMessage";
+            this.lblPasswordMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblPasswordMessage.TabIndex = 35;
+            // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -465,15 +474,6 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // lblPasswordMessage
-            // 
-            this.lblPasswordMessage.AutoSize = true;
-            this.lblPasswordMessage.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordMessage.Location = new System.Drawing.Point(17, 121);
-            this.lblPasswordMessage.Name = "lblPasswordMessage";
-            this.lblPasswordMessage.Size = new System.Drawing.Size(0, 13);
-            this.lblPasswordMessage.TabIndex = 35;
-            // 
             // FrmOfficers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,7 +492,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmAddOfficers";
+            this.Text = "Officer Form";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.groupPersonalInfo.ResumeLayout(false);
