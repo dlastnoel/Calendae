@@ -18,10 +18,10 @@ namespace Code_Secret_SOEMS.Models
         public int student_registration { get; set; }
         public int student_slots { get; set; }
         public string event_details { get; set; }
-        public int allow_guests { get; set; }
+        public bool allow_guests { get; set; }
         public int guest_registration { get; set; }
         public int guest_slots { get; set; }
-        public int is_activated { get; set; }
+        public bool is_activated { get; set; }
 
         private DatabaseHelper dbHelper;
 
@@ -91,7 +91,8 @@ namespace Code_Secret_SOEMS.Models
                     "event_details = @event_details, " +
                     "allow_guests = @allow_guests, " +
                     "guest_registration = @guest_registration, " +
-                    "guest_slots = @guest_slots " +
+                    "guest_slots = @guest_slots, " +
+                    "is_activated = @is_activated " +
                 "WHERE id = @id");
 
             dbHelper.bindParam("@event_name", event_name);

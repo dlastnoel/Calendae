@@ -17,7 +17,7 @@ namespace Code_Secret_SOEMS
         EventPresenter eventPresenter;
         ThemeHelper th;
         int currentID;
-        byte activation;
+        bool activation;
 
         private void populateFields()
         {
@@ -26,9 +26,9 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnDelete.Enabled = true;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
-                txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, activation, 
-                switchIsActivated, lblSwitchStatus);
+            activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
+                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, 
+                        lblSwitchStatus);
         }
 
         private void clearFields()
@@ -81,7 +81,7 @@ namespace Code_Secret_SOEMS
             
             if (position != "Adviser")
             {
-                activation = 0;
+                activation = false;
                 switchIsActivated.Hide();
                 lblStatus.Hide();
                 lblSwitchStatus.Hide();
@@ -132,21 +132,11 @@ namespace Code_Secret_SOEMS
                     {
                         if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                         {
-                            byte allow_guests;
-                            if (checkGuests.Checked)
-                            {
-                                allow_guests = 1;
-                            }
-                            else
-                            {
-                                allow_guests = 0;
-                            }
-
                             eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                                 int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                                allow_guests, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                                checkGuests.Checked, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
                             eventPresenter.addEvent();
-                            if (activation == 1)
+                            if (activation)
                             {
                                 MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
@@ -167,19 +157,9 @@ namespace Code_Secret_SOEMS
                     }
                     else
                     {
-                        byte allow_guests;
-                        if (checkGuests.Checked)
-                        {
-                            allow_guests = 1;
-                        }
-                        else
-                        {
-                            allow_guests = 0;
-                        }
-
                         eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                             int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                            allow_guests, 0, 0, activation);
+                            checkGuests.Checked, 0, 0, activation);
                         eventPresenter.addEvent();
                         MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
@@ -208,19 +188,9 @@ namespace Code_Secret_SOEMS
                 {
                     if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                     {
-                        byte allow_guests;
-                        if (checkGuests.Checked)
-                        {
-                            allow_guests = 1;
-                        }
-                        else
-                        {
-                            allow_guests = 0;
-                        }
-
                         eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                             int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                            allow_guests, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                            checkGuests.Checked, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
                         eventPresenter.updateEvent(currentID);
                         MessageBox.Show("Event successfully updated", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
@@ -235,19 +205,9 @@ namespace Code_Secret_SOEMS
                 }
                 else
                 {
-                    byte allow_guests;
-                    if (checkGuests.Checked)
-                    {
-                        allow_guests = 1;
-                    }
-                    else
-                    {
-                        allow_guests = 0;
-                    }
-
                     eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                         int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                        allow_guests, 0, 0, activation);
+                        checkGuests.Checked, 0, 0, activation);
                     eventPresenter.updateEvent(currentID);
                     MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -274,12 +234,12 @@ namespace Code_Secret_SOEMS
             if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
             {
                 lblSwitchStatus.Text = "Activated";
-                activation = 1;
+                activation = true;
             }
             else
             {
                 lblSwitchStatus.Text = "Deactivated";
-                activation = 0;
+                activation = false;
             }
         }
 

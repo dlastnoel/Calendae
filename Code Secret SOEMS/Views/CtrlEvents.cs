@@ -18,7 +18,7 @@ namespace Code_Secret_SOEMS
         ThemeHelper th;
         int currentID;
         string position;
-        byte activation;
+        bool activation;
 
         private void populateFields()
         {
@@ -31,18 +31,16 @@ namespace Code_Secret_SOEMS
             {
                 if (eventPresenter.checkEventStatus(currentID))
                 {
-                    eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
-                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, activation,
-                        switchIsActivated, lblSwitchStatus);
+                    activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
+                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
                 } else
                 {
                     MessageBox.Show("Event is not yet activated", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             } else
             {
-                eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
-                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, activation,
-                        switchIsActivated, lblSwitchStatus);
+                activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
+                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
             }
 
             if(checkGuests.Checked)
@@ -88,7 +86,7 @@ namespace Code_Secret_SOEMS
             this.position = position;
             if(this.position != "Adviser")
             {
-                activation = 0;
+                activation = false;
                 switchIsActivated.Hide();
                 lblStatus.Hide();
                 lblSwitchStatus.Hide();
@@ -165,20 +163,11 @@ namespace Code_Secret_SOEMS
                     {
                         if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                         {
-                            byte allow_guests;
-                            if (checkGuests.Checked)
-                            {
-                                allow_guests = 1;
-                            }
-                            else
-                            {
-                                allow_guests = 0;
-                            }
                             eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                                 int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                                allow_guests, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                                checkGuests.Checked, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
                             eventPresenter.addEvent();
-                            if(activation == 1)
+                            if(activation)
                             {
                                 MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
@@ -199,28 +188,9 @@ namespace Code_Secret_SOEMS
                     }
                     else
                     {
-                        byte is_activated;
-                        byte allow_guests;
-                        if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
-                        {
-                            is_activated = 1;
-                        }
-                        else
-                        {
-                            is_activated = 0;
-                        }
-                        if (checkGuests.Checked)
-                        {
-                            allow_guests = 1;
-                        }
-                        else
-                        {
-                            allow_guests = 0;
-                        }
-
                         eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                             int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                            allow_guests, 0, 0, is_activated);
+                            checkGuests.Checked, 0, 0, activation);
                         eventPresenter.addEvent();
                         MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
@@ -250,27 +220,10 @@ namespace Code_Secret_SOEMS
                 {
                     if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                     {
-                        byte is_activated;
-                        byte allow_guests;
-                        if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
-                        {
-                            is_activated = 1;
-                        }
-                        else
-                        {
-                            is_activated = 0;
-                        }
-                        if (checkGuests.Checked)
-                        {
-                            allow_guests = 1;
-                        }
-                        else
-                        {
-                            allow_guests = 0;
-                        }
+                        MessageBox.Show(activation.ToString());
                         eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                             int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                            allow_guests, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), is_activated);
+                            checkGuests.Checked, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
                         eventPresenter.updateEvent(currentID);
                         MessageBox.Show("Event successfully updated", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
@@ -286,28 +239,9 @@ namespace Code_Secret_SOEMS
                 }
                 else
                 {
-                    byte is_activated;
-                    byte allow_guests;
-                    if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
-                    {
-                        is_activated = 1;
-                    }
-                    else
-                    {
-                        is_activated = 0;
-                    }
-                    if (checkGuests.Checked)
-                    {
-                        allow_guests = 1;
-                    }
-                    else
-                    {
-                        allow_guests = 0;
-                    }
-
                     eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                         int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text, 
-                        allow_guests, 0, 0, is_activated);
+                        checkGuests.Checked, 0, 0, activation);
                     eventPresenter.updateEvent(currentID);
                     MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -368,11 +302,11 @@ namespace Code_Secret_SOEMS
             if(switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
             {
                 lblSwitchStatus.Text = "Activated";
-                activation = 1;
+                activation = true;
             } else
             {
                 lblSwitchStatus.Text = "Deactivated";
-                activation = 0;
+                activation = false;
             }
         }
     }
