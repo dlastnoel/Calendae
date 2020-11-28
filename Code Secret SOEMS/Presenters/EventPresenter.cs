@@ -20,7 +20,8 @@ namespace Code_Secret_SOEMS.Presenters
         }
 
         public void setEvent(string event_name, string venue, string date, string time,
-            int student_registration, int student_slots, string event_details, byte allow_guests, int guest_registration, int guest_slots, byte is_activated)
+            int student_registration, int student_slots, string event_details, byte allow_guests, int guest_registration, 
+            int guest_slots, byte is_activated)
         {
             _event.event_name = event_name;
             _event.venue = venue;
@@ -40,9 +41,16 @@ namespace Code_Secret_SOEMS.Presenters
             _event.addEvent();
         }
 
+        public bool checkEventStatus(int currentID)
+        {
+            _event.selectEvent(currentID);
+            return bool.Parse(_event.getEventItems("is_activated"));
+            
+        }
+
         public void prepareEvent(int currentID, TextBox txtEventName, TextBox txtVenue, TextBox txtDate, TextBox txtTime,
             TextBox txtStudentRegistration, TextBox txtStudentSlots, TextBox txtEventDetails, CheckBox chkGuests, TextBox txtGuestRegistration, 
-            TextBox txtGuestSlots, XUISwitch switchIsActivated, Label lblswitchStatus)
+            TextBox txtGuestSlots, int activation, XUISwitch switchIsActivated, Label lblswitchStatus)
         {
             _event.selectEvent(currentID);
             txtEventName.Text = _event.getEventItems("event_name");
@@ -63,10 +71,12 @@ namespace Code_Secret_SOEMS.Presenters
             txtGuestSlots.Text = _event.getEventItems("guest_slots");
             if(bool.Parse(_event.getEventItems("is_activated")) == true)
             {
+                activation = 1;
                 switchIsActivated.SwitchState = XUISwitch.State.On;
                 lblswitchStatus.Text = "Activated";
             } else
             {
+                activation = 0;
                 switchIsActivated.SwitchState = XUISwitch.State.Off;
                 lblswitchStatus.Text = "Deactivated";
             }

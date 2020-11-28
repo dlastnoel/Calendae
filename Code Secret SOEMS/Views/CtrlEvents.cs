@@ -17,6 +17,8 @@ namespace Code_Secret_SOEMS
         EventPresenter eventPresenter = new EventPresenter();
         ThemeHelper th;
         int currentID;
+        string position;
+        byte activation;
 
         private void populateFields()
         {
@@ -25,8 +27,23 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnDelete.Enabled = true;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
-                txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
+            if(position != "Adviser")
+            {
+                if (eventPresenter.checkEventStatus(currentID))
+                {
+                    eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
+                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, activation,
+                        switchIsActivated, lblSwitchStatus);
+                } else
+                {
+                    MessageBox.Show("Event is not yet activated", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            } else
+            {
+                eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
+                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, activation,
+                        switchIsActivated, lblSwitchStatus);
+            }
 
             if(checkGuests.Checked)
             {
@@ -59,7 +76,7 @@ namespace Code_Secret_SOEMS
             btnDelete.Enabled = false;
             btnDelete.FlatStyle = FlatStyle.Standard;
         }
-        public CtrlEvents()
+        public CtrlEvents(string position)
         {
             InitializeComponent();
 
@@ -67,6 +84,15 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Standard;
             btnDelete.Enabled = false;
             btnDelete.FlatStyle = FlatStyle.Standard;
+
+            this.position = position;
+            if(this.position != "Adviser")
+            {
+                activation = 0;
+                switchIsActivated.Hide();
+                lblStatus.Hide();
+                lblSwitchStatus.Hide();
+            }
         }
 
         private void checkGuests_CheckedChanged(object sender, EventArgs e)
@@ -82,7 +108,7 @@ namespace Code_Secret_SOEMS
 
         private void btnOpenForm_Click(object sender, EventArgs e)
         {
-            new FrmEvents(false, 0).ShowDialog();
+            new FrmEvents(position, false, 0).ShowDialog();
             eventPresenter.loadEvents(dataEvents);
         }
 
@@ -139,16 +165,7 @@ namespace Code_Secret_SOEMS
                     {
                         if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                         {
-                            byte is_activated;
                             byte allow_guests;
-                            if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
-                            {
-                                is_activated = 1;
-                            }
-                            else
-                            {
-                                is_activated = 0;
-                            }
                             if (checkGuests.Checked)
                             {
                                 allow_guests = 1;
@@ -159,10 +176,17 @@ namespace Code_Secret_SOEMS
                             }
                             eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
                                 int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                                allow_guests, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), is_activated);
+                                allow_guests, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
                             eventPresenter.addEvent();
-                            MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
+                            if(activation == 1)
+                            {
+                                MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
+                            } else
+                            {
+                                MessageBox.Show("Event successfully added and is pending for approval", "Events", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                             clearFields();
                             eventPresenter.loadEvents(dataEvents);
 
@@ -319,9 +343,23 @@ namespace Code_Secret_SOEMS
             }
             else
             {
-                FrmEvents frmEvents = new FrmEvents(true, currentID);
-                frmEvents.ShowDialog();
-                eventPresenter.loadEvents(dataEvents);
+                if(position != "Adviser")
+                {
+                    if(eventPresenter.checkEventStatus(currentID))
+                    {
+                        FrmEvents frmEvents = new FrmEvents(position, true, currentID);
+                        frmEvents.ShowDialog();
+                        eventPresenter.loadEvents(dataEvents);
+                    } else
+                    {
+                        MessageBox.Show("Event is not yet activated", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                } else
+                {
+                    FrmEvents frmEvents = new FrmEvents(position, true, currentID);
+                    frmEvents.ShowDialog();
+                    eventPresenter.loadEvents(dataEvents);
+                }
             }
         }
 
@@ -330,9 +368,11 @@ namespace Code_Secret_SOEMS
             if(switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
             {
                 lblSwitchStatus.Text = "Activated";
+                activation = 1;
             } else
             {
                 lblSwitchStatus.Text = "Deactivated";
+                activation = 0;
             }
         }
     }

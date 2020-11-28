@@ -39,7 +39,7 @@ namespace Code_Secret_SOEMS
                         currentUserControl = new CtrlOfficers();
                         break;
                     case "Events":
-                        currentUserControl = new CtrlEvents();
+                        currentUserControl = new CtrlEvents(position);
                         break;
                     case "Students":
                         currentUserControl = new CtrlStudents();
