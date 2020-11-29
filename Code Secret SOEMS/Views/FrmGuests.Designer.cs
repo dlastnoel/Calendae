@@ -156,7 +156,7 @@
             this.txtPosition.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPosition.Location = new System.Drawing.Point(43, 106);
             this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(487, 23);
+            this.txtPosition.Size = new System.Drawing.Size(327, 23);
             this.txtPosition.TabIndex = 6;
             // 
             // groupPersonalInfo
@@ -395,7 +395,7 @@
             // txtYear
             // 
             this.txtYear.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtYear.Location = new System.Drawing.Point(473, 106);
+            this.txtYear.Location = new System.Drawing.Point(317, 106);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(57, 23);
             this.txtYear.TabIndex = 7;
@@ -432,7 +432,7 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(470, 88);
+            this.lblYear.Location = new System.Drawing.Point(314, 88);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(33, 15);
             this.lblYear.TabIndex = 5;
@@ -443,7 +443,7 @@
             this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCourse.Location = new System.Drawing.Point(43, 106);
             this.txtCourse.Name = "txtCourse";
-            this.txtCourse.Size = new System.Drawing.Size(424, 23);
+            this.txtCourse.Size = new System.Drawing.Size(268, 23);
             this.txtCourse.TabIndex = 6;
             // 
             // btnDelete
@@ -499,8 +499,8 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.groupSchoolInfo);
             this.Controls.Add(this.groupWorkInfo);
+            this.Controls.Add(this.groupSchoolInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmGuests";
             this.ShowIcon = false;

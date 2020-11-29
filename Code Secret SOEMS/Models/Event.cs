@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS.Models
@@ -51,6 +50,18 @@ namespace Code_Secret_SOEMS.Models
         {
             dbHelper.createQuery("SELECT * FROM events WHERE id = @id;");
             dbHelper.bindParam("@id", id);
+        }
+
+        public void selectEventByName(string event_name)
+        {
+            dbHelper.createQuery("SELECT * FROM events WHERE event_name = @event_name");
+            dbHelper.bindParam("@event_name", event_name);
+        }
+
+        public List<string> getAllActiveEvents()
+        {
+            dbHelper.createQuery("SELECT * FROM events WHERE is_activated = 1");
+            return dbHelper.getResultList("event_name");
         }
         public string getEventItems(string item)
         {

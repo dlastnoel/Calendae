@@ -14,10 +14,62 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlGuests : UserControl
     {
-        private GuestPresenter guestPresenter = new GuestPresenter();
+        GuestPresenter guestPresenter;
+        int currentID;
+        bool activation;
+
+        private void populateFields()
+        {
+            btnAdd.Text = "Cancel";
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            activation = guestPresenter.prepareGuest(currentID, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
+                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtSchoolName, txtCourse, txtYear, txtWorksAt,
+                txtPosition, cmbEvents, switchIsActivated, lblSwitchStatus);
+        }
+
+        private void clearFields()
+        {
+            rbnStudent.Checked = false;
+            rbnWorking.Checked = false;
+            groupSchoolInfo.Enabled = false;
+            groupWorkInfo.Enabled = false;
+            txtFirstName.Clear();
+            txtMiddleName.Clear();
+            txtLastName.Clear();
+            txtAddress.Clear();
+            txtContactNo.Clear();
+            txtEmailAddress.Clear();
+            rbnMale.Checked = false;
+            rbnFemale.Checked = false;
+            txtSchoolName.Clear();
+            txtCourse.Clear();
+            txtYear.Clear();
+            txtWorksAt.Clear();
+            txtPosition.Clear();
+
+            btnAdd.Text = "Add";
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
+
+            switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            lblSwitchStatus.Text = "Deactivated";
+        }
+
         public CtrlGuests()
         {
             InitializeComponent();
+            guestPresenter = new GuestPresenter();
+            guestPresenter.setEvents(cmbEvents);
+
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
         }
 
         private void btnOpenForm_Click(object sender, EventArgs e)
@@ -67,7 +119,7 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblWorksAt);
             th.setLabelColor(lblPosition);
 
-            guestPresenter.loadStudents(dataGuests);
+            guestPresenter.loadGuests(dataGuests);
         }
 
         private void CtrlGuests_SizeChanged(object sender, EventArgs e)
@@ -79,6 +131,237 @@ namespace Code_Secret_SOEMS
             else
             {
                 btnOpenForm.Hide();
+            }
+        }
+
+        private void rbnStudent_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbnStudent.Checked)
+            {
+                groupSchoolInfo.Enabled = true;
+                groupWorkInfo.Enabled = false;
+            } else
+            {
+                groupSchoolInfo.Enabled = false;
+                groupWorkInfo.Enabled = true;
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (btnAdd.Text == "Add")
+            {
+                if (!String.IsNullOrEmpty(txtFirstName.Text) && !String.IsNullOrEmpty(txtMiddleName.Text) &&
+                    !String.IsNullOrEmpty(txtLastName.Text) && !String.IsNullOrEmpty(txtAddress.Text) &&
+                    !String.IsNullOrEmpty(txtContactNo.Text) && !String.IsNullOrEmpty(txtEmailAddress.Text) &&
+                    (rbnMale.Checked || rbnFemale.Checked) && cmbEvents.SelectedIndex != -1)
+                {
+                    if (rbnStudent.Checked)
+                    {
+                        if (!String.IsNullOrEmpty(txtSchoolName.Text) && !String.IsNullOrEmpty(txtCourse.Text) &&
+                            !String.IsNullOrEmpty(txtYear.Text))
+                        {
+                            char gender;
+                            if (rbnMale.Checked)
+                            {
+                                gender = 'M';
+                            }
+                            else
+                            {
+                                gender = 'F';
+                            }
+
+                            guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                            guestPresenter.addGuest();
+                            if (activation)
+                            {
+                                MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Guest successfully added and is pending for approval for the " + cmbEvents.Text, "Guests",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+                            clearFields();
+                            guestPresenter.loadGuests(dataGuests);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                        }
+                    }
+                    else if (rbnWorking.Checked)
+                    {
+                        if (!String.IsNullOrEmpty(txtWorksAt.Text) && !String.IsNullOrEmpty(txtPosition.Text))
+                        {
+                            char gender;
+                            if (rbnMale.Checked)
+                            {
+                                gender = 'M';
+                            }
+                            else
+                            {
+                                gender = 'F';
+                            }
+
+                            guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                            guestPresenter.addGuest();
+                            if (activation)
+                            {
+                                MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Guest successfully added and is pending for approval for the " + cmbEvents.Text, "Guests",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                }
+            } else
+            {
+                clearFields();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            guestPresenter.deleteEvent(currentID);
+            MessageBox.Show("Event successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            clearFields();
+            guestPresenter.loadGuests(dataGuests);
+        }
+
+        private void switchIsActivated_Click(object sender, EventArgs e)
+        {
+            if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+            {
+                lblSwitchStatus.Text = "Activated";
+                activation = true;
+            }
+            else
+            {
+                lblSwitchStatus.Text = "Deactivated";
+                activation = false;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtFirstName.Text) && !String.IsNullOrEmpty(txtMiddleName.Text) &&
+                    !String.IsNullOrEmpty(txtLastName.Text) && !String.IsNullOrEmpty(txtAddress.Text) &&
+                    !String.IsNullOrEmpty(txtContactNo.Text) && !String.IsNullOrEmpty(txtEmailAddress.Text) &&
+                    (rbnMale.Checked || rbnFemale.Checked) && cmbEvents.SelectedIndex != -1)
+            {
+                if (rbnStudent.Checked)
+                {
+                    if (!String.IsNullOrEmpty(txtSchoolName.Text) && !String.IsNullOrEmpty(txtCourse.Text) &&
+                        !String.IsNullOrEmpty(txtYear.Text))
+                    {
+                        char gender;
+                        if (rbnMale.Checked)
+                        {
+                            gender = 'M';
+                        }
+                        else
+                        {
+                            gender = 'F';
+                        }
+
+                        guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                        guestPresenter.updateGuest(currentID);
+                        MessageBox.Show("Guest info successfully updated", "Guests", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        clearFields();
+                        guestPresenter.loadGuests(dataGuests);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                    }
+                }
+                else if (rbnWorking.Checked)
+                {
+                    if (!String.IsNullOrEmpty(txtWorksAt.Text) && !String.IsNullOrEmpty(txtPosition.Text))
+                    {
+                        char gender;
+                        if (rbnMale.Checked)
+                        {
+                            gender = 'M';
+                        }
+                        else
+                        {
+                            gender = 'F';
+                        }
+
+                        guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                        guestPresenter.updateGuest(currentID);
+                        MessageBox.Show("Guest info successfully updated", "Guests", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        clearFields();
+                        guestPresenter.loadGuests(dataGuests);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dataGuests_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexRow = e.RowIndex;
+            DataGridViewRow dataGridViewRow = dataGuests.Rows[indexRow];
+            currentID = int.Parse(dataGridViewRow.Cells[0].Value.ToString());
+
+            if (this.Size == new Size(1576, 956))
+            {
+                populateFields();
+            }
+            else
+            {
+                /*FrmStudentRegistration frmStudentRegistration = new FrmStudentRegistration("form", currentID);
+                frmStudentRegistration.ShowDialog();
+                guestPresenter.loadGuests(dataGuests)*/
+                ;
             }
         }
     }

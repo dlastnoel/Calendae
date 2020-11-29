@@ -14,7 +14,7 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlEvents : UserControl
     {
-        EventPresenter eventPresenter = new EventPresenter();
+        EventPresenter eventPresenter;
         ThemeHelper th;
         int currentID;
         string position;
@@ -77,7 +77,7 @@ namespace Code_Secret_SOEMS
         public CtrlEvents(string position)
         {
             InitializeComponent();
-
+            eventPresenter = new EventPresenter();
             btnUpdate.Enabled = false;
             btnUpdate.FlatStyle = FlatStyle.Standard;
             btnDelete.Enabled = false;

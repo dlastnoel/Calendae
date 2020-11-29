@@ -35,6 +35,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.panelLeft = new XanderUI.XUIGradientPanel();
+            this.btnAbout = new FontAwesome.Sharp.IconButton();
+            this.btnSettings = new FontAwesome.Sharp.IconButton();
             this.pictureBoxCalendae = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtIDNo = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.lblIDNo = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnAbout = new FontAwesome.Sharp.IconButton();
-            this.btnSettings = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCalendae)).BeginInit();
@@ -105,6 +105,46 @@
             this.panelLeft.TabIndex = 5;
             this.panelLeft.TopLeft = System.Drawing.Color.Gold;
             this.panelLeft.TopRight = System.Drawing.Color.Red;
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAbout.ForeColor = System.Drawing.Color.Black;
+            this.btnAbout.IconChar = FontAwesome.Sharp.IconChar.Code;
+            this.btnAbout.IconColor = System.Drawing.Color.White;
+            this.btnAbout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAbout.IconSize = 25;
+            this.btnAbout.Location = new System.Drawing.Point(0, 490);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Rotation = 0D;
+            this.btnAbout.Size = new System.Drawing.Size(30, 30);
+            this.btnAbout.TabIndex = 3;
+            this.btnAbout.UseVisualStyleBackColor = false;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSettings.ForeColor = System.Drawing.Color.Black;
+            this.btnSettings.IconChar = FontAwesome.Sharp.IconChar.Cog;
+            this.btnSettings.IconColor = System.Drawing.Color.White;
+            this.btnSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSettings.IconSize = 25;
+            this.btnSettings.Location = new System.Drawing.Point(270, 490);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Rotation = 0D;
+            this.btnSettings.Size = new System.Drawing.Size(30, 30);
+            this.btnSettings.TabIndex = 2;
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // pictureBoxCalendae
             // 
@@ -186,46 +226,6 @@
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // btnAbout
-            // 
-            this.btnAbout.BackColor = System.Drawing.Color.Transparent;
-            this.btnAbout.FlatAppearance.BorderSize = 0;
-            this.btnAbout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbout.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAbout.ForeColor = System.Drawing.Color.Black;
-            this.btnAbout.IconChar = FontAwesome.Sharp.IconChar.Code;
-            this.btnAbout.IconColor = System.Drawing.Color.White;
-            this.btnAbout.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAbout.IconSize = 25;
-            this.btnAbout.Location = new System.Drawing.Point(0, 490);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Rotation = 0D;
-            this.btnAbout.Size = new System.Drawing.Size(30, 30);
-            this.btnAbout.TabIndex = 3;
-            this.btnAbout.UseVisualStyleBackColor = false;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSettings.IconChar = FontAwesome.Sharp.IconChar.Cog;
-            this.btnSettings.IconColor = System.Drawing.Color.White;
-            this.btnSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSettings.IconSize = 25;
-            this.btnSettings.Location = new System.Drawing.Point(270, 490);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Rotation = 0D;
-            this.btnSettings.Size = new System.Drawing.Size(30, 30);
-            this.btnSettings.TabIndex = 2;
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // FrmLogin
             // 

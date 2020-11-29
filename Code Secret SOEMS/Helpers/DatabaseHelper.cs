@@ -145,6 +145,20 @@ namespace Code_Secret_SOEMS.Helpers
             return data;
         }
 
+        public List<string> getResultList(string item)
+        {
+            List<string> myList = new List<string>();
+            openConnection();
+            sqlDataReader = commandQuery.ExecuteReader();
+            while(sqlDataReader.Read())
+            {
+                myList.Add(sqlDataReader[item].ToString());
+            }
+            closeConnection();
+
+            return myList;
+        }
+
         // Executes command query and populates dataGridView
         // myDataGridView - dataGridView to be populated
         public void populateDataGridView(DataGridView myDataGridView)

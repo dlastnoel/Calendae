@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSchoolName = new System.Windows.Forms.Label();
-            this.txtIDNo = new System.Windows.Forms.TextBox();
+            this.txtSchoolName = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.txtCourse = new System.Windows.Forms.TextBox();
             this.groupSchoolInfo = new System.Windows.Forms.GroupBox();
@@ -42,10 +42,18 @@
             this.btnOpenForm = new System.Windows.Forms.Button();
             this.dataGuests = new System.Windows.Forms.DataGridView();
             this.groupPersonalInfo = new System.Windows.Forms.GroupBox();
-            this.lblEvents = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.rbnMale = new System.Windows.Forms.RadioButton();
+            this.rbnFemale = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.rbnWorking = new System.Windows.Forms.RadioButton();
-            this.cmbCourse = new System.Windows.Forms.ComboBox();
             this.rbnStudent = new System.Windows.Forms.RadioButton();
+            this.lblSwitchStatus = new System.Windows.Forms.Label();
+            this.lblEvents = new System.Windows.Forms.Label();
+            this.switchIsActivated = new XanderUI.XUISwitch();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.cmbEvents = new System.Windows.Forms.ComboBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
@@ -55,20 +63,19 @@
             this.txtMiddleName = new System.Windows.Forms.TextBox();
             this.lblContactNo = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.lblGender = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.rbnFemale = new System.Windows.Forms.RadioButton();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.rbnMale = new System.Windows.Forms.RadioButton();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.groupWorkInfo = new System.Windows.Forms.GroupBox();
             this.lblWorksAt = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtWorksAt = new System.Windows.Forms.TextBox();
             this.lblPosition = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPosition = new System.Windows.Forms.TextBox();
             this.groupSchoolInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGuests)).BeginInit();
             this.groupPersonalInfo.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupWorkInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,13 +89,13 @@
             this.lblSchoolName.TabIndex = 1;
             this.lblSchoolName.Text = "School Name";
             // 
-            // txtIDNo
+            // txtSchoolName
             // 
-            this.txtIDNo.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDNo.Location = new System.Drawing.Point(43, 62);
-            this.txtIDNo.Name = "txtIDNo";
-            this.txtIDNo.Size = new System.Drawing.Size(487, 23);
-            this.txtIDNo.TabIndex = 2;
+            this.txtSchoolName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSchoolName.Location = new System.Drawing.Point(43, 62);
+            this.txtSchoolName.Name = "txtSchoolName";
+            this.txtSchoolName.Size = new System.Drawing.Size(487, 23);
+            this.txtSchoolName.TabIndex = 13;
             // 
             // lblCourse
             // 
@@ -106,16 +113,17 @@
             this.txtCourse.Location = new System.Drawing.Point(43, 106);
             this.txtCourse.Name = "txtCourse";
             this.txtCourse.Size = new System.Drawing.Size(424, 23);
-            this.txtCourse.TabIndex = 6;
+            this.txtCourse.TabIndex = 14;
             // 
             // groupSchoolInfo
             // 
             this.groupSchoolInfo.Controls.Add(this.txtYear);
             this.groupSchoolInfo.Controls.Add(this.lblSchoolName);
-            this.groupSchoolInfo.Controls.Add(this.txtIDNo);
+            this.groupSchoolInfo.Controls.Add(this.txtSchoolName);
             this.groupSchoolInfo.Controls.Add(this.lblCourse);
             this.groupSchoolInfo.Controls.Add(this.lblYear);
             this.groupSchoolInfo.Controls.Add(this.txtCourse);
+            this.groupSchoolInfo.Enabled = false;
             this.groupSchoolInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupSchoolInfo.Location = new System.Drawing.Point(941, 423);
             this.groupSchoolInfo.Name = "groupSchoolInfo";
@@ -130,7 +138,7 @@
             this.txtYear.Location = new System.Drawing.Point(473, 106);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(57, 23);
-            this.txtYear.TabIndex = 7;
+            this.txtYear.TabIndex = 15;
             // 
             // lblYear
             // 
@@ -152,9 +160,10 @@
             this.btnDelete.Location = new System.Drawing.Point(1240, 786);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(292, 41);
-            this.btnDelete.TabIndex = 43;
+            this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -166,9 +175,10 @@
             this.btnAdd.Location = new System.Drawing.Point(941, 739);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(591, 41);
-            this.btnAdd.TabIndex = 42;
+            this.btnAdd.TabIndex = 18;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -180,9 +190,10 @@
             this.btnUpdate.Location = new System.Drawing.Point(941, 786);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(292, 41);
-            this.btnUpdate.TabIndex = 41;
+            this.btnUpdate.TabIndex = 19;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnOpenForm
             // 
@@ -194,7 +205,7 @@
             this.btnOpenForm.Location = new System.Drawing.Point(0, 0);
             this.btnOpenForm.Name = "btnOpenForm";
             this.btnOpenForm.Size = new System.Drawing.Size(86, 31);
-            this.btnOpenForm.TabIndex = 44;
+            this.btnOpenForm.TabIndex = 21;
             this.btnOpenForm.Text = "Open Form";
             this.btnOpenForm.UseVisualStyleBackColor = false;
             this.btnOpenForm.SizeChanged += new System.EventHandler(this.btnOpenForm_SizeChanged);
@@ -218,13 +229,17 @@
             this.dataGuests.Name = "dataGuests";
             this.dataGuests.Size = new System.Drawing.Size(884, 883);
             this.dataGuests.TabIndex = 40;
+            this.dataGuests.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGuests_CellDoubleClick);
             // 
             // groupPersonalInfo
             // 
+            this.groupPersonalInfo.Controls.Add(this.panel2);
+            this.groupPersonalInfo.Controls.Add(this.panel1);
+            this.groupPersonalInfo.Controls.Add(this.lblSwitchStatus);
             this.groupPersonalInfo.Controls.Add(this.lblEvents);
-            this.groupPersonalInfo.Controls.Add(this.rbnWorking);
-            this.groupPersonalInfo.Controls.Add(this.cmbCourse);
-            this.groupPersonalInfo.Controls.Add(this.rbnStudent);
+            this.groupPersonalInfo.Controls.Add(this.switchIsActivated);
+            this.groupPersonalInfo.Controls.Add(this.lblStatus);
+            this.groupPersonalInfo.Controls.Add(this.cmbEvents);
             this.groupPersonalInfo.Controls.Add(this.lblFirstName);
             this.groupPersonalInfo.Controls.Add(this.txtEmailAddress);
             this.groupPersonalInfo.Controls.Add(this.txtFirstName);
@@ -234,19 +249,104 @@
             this.groupPersonalInfo.Controls.Add(this.txtMiddleName);
             this.groupPersonalInfo.Controls.Add(this.lblContactNo);
             this.groupPersonalInfo.Controls.Add(this.lblLastName);
-            this.groupPersonalInfo.Controls.Add(this.lblGender);
             this.groupPersonalInfo.Controls.Add(this.txtLastName);
-            this.groupPersonalInfo.Controls.Add(this.rbnFemale);
             this.groupPersonalInfo.Controls.Add(this.lblAddress);
-            this.groupPersonalInfo.Controls.Add(this.rbnMale);
             this.groupPersonalInfo.Controls.Add(this.txtAddress);
             this.groupPersonalInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupPersonalInfo.Location = new System.Drawing.Point(941, 106);
+            this.groupPersonalInfo.Location = new System.Drawing.Point(941, 68);
             this.groupPersonalInfo.Name = "groupPersonalInfo";
-            this.groupPersonalInfo.Size = new System.Drawing.Size(591, 311);
+            this.groupPersonalInfo.Size = new System.Drawing.Size(591, 349);
             this.groupPersonalInfo.TabIndex = 47;
             this.groupPersonalInfo.TabStop = false;
             this.groupPersonalInfo.Text = "Personal Information";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblGender);
+            this.panel2.Controls.Add(this.rbnMale);
+            this.panel2.Controls.Add(this.rbnFemale);
+            this.panel2.Location = new System.Drawing.Point(317, 172);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(213, 56);
+            this.panel2.TabIndex = 48;
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.Location = new System.Drawing.Point(24, 7);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(48, 15);
+            this.lblGender.TabIndex = 11;
+            this.lblGender.Text = "Gender";
+            // 
+            // rbnMale
+            // 
+            this.rbnMale.AutoSize = true;
+            this.rbnMale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnMale.Location = new System.Drawing.Point(27, 29);
+            this.rbnMale.Name = "rbnMale";
+            this.rbnMale.Size = new System.Drawing.Size(53, 19);
+            this.rbnMale.TabIndex = 10;
+            this.rbnMale.TabStop = true;
+            this.rbnMale.Text = "Male";
+            this.rbnMale.UseVisualStyleBackColor = true;
+            // 
+            // rbnFemale
+            // 
+            this.rbnFemale.AutoSize = true;
+            this.rbnFemale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnFemale.Location = new System.Drawing.Point(86, 29);
+            this.rbnFemale.Name = "rbnFemale";
+            this.rbnFemale.Size = new System.Drawing.Size(68, 19);
+            this.rbnFemale.TabIndex = 11;
+            this.rbnFemale.TabStop = true;
+            this.rbnFemale.Text = "Female";
+            this.rbnFemale.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rbnWorking);
+            this.panel1.Controls.Add(this.rbnStudent);
+            this.panel1.Location = new System.Drawing.Point(43, 39);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(213, 39);
+            this.panel1.TabIndex = 48;
+            // 
+            // rbnWorking
+            // 
+            this.rbnWorking.AutoSize = true;
+            this.rbnWorking.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnWorking.Location = new System.Drawing.Point(101, 10);
+            this.rbnWorking.Name = "rbnWorking";
+            this.rbnWorking.Size = new System.Drawing.Size(71, 19);
+            this.rbnWorking.TabIndex = 2;
+            this.rbnWorking.TabStop = true;
+            this.rbnWorking.Text = "Working";
+            this.rbnWorking.UseVisualStyleBackColor = true;
+            // 
+            // rbnStudent
+            // 
+            this.rbnStudent.AutoSize = true;
+            this.rbnStudent.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnStudent.Location = new System.Drawing.Point(26, 10);
+            this.rbnStudent.Name = "rbnStudent";
+            this.rbnStudent.Size = new System.Drawing.Size(69, 19);
+            this.rbnStudent.TabIndex = 1;
+            this.rbnStudent.TabStop = true;
+            this.rbnStudent.Text = "Student";
+            this.rbnStudent.UseVisualStyleBackColor = true;
+            this.rbnStudent.CheckedChanged += new System.EventHandler(this.rbnStudent_CheckedChanged);
+            // 
+            // lblSwitchStatus
+            // 
+            this.lblSwitchStatus.AutoSize = true;
+            this.lblSwitchStatus.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSwitchStatus.Location = new System.Drawing.Point(165, 303);
+            this.lblSwitchStatus.Name = "lblSwitchStatus";
+            this.lblSwitchStatus.Size = new System.Drawing.Size(69, 14);
+            this.lblSwitchStatus.TabIndex = 50;
+            this.lblSwitchStatus.Text = "Deactivated";
             // 
             // lblEvents
             // 
@@ -258,38 +358,40 @@
             this.lblEvents.TabIndex = 49;
             this.lblEvents.Text = "Select an Event";
             // 
-            // rbnWorking
+            // switchIsActivated
             // 
-            this.rbnWorking.AutoSize = true;
-            this.rbnWorking.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnWorking.Location = new System.Drawing.Point(118, 46);
-            this.rbnWorking.Name = "rbnWorking";
-            this.rbnWorking.Size = new System.Drawing.Size(71, 19);
-            this.rbnWorking.TabIndex = 17;
-            this.rbnWorking.TabStop = true;
-            this.rbnWorking.Text = "Working";
-            this.rbnWorking.UseVisualStyleBackColor = true;
+            this.switchIsActivated.BackColor = System.Drawing.Color.Transparent;
+            this.switchIsActivated.HandleOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(71)))), ((int)(((byte)(89)))));
+            this.switchIsActivated.HandleOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Location = new System.Drawing.Point(99, 293);
+            this.switchIsActivated.Name = "switchIsActivated";
+            this.switchIsActivated.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(129)))), ((int)(((byte)(136)))));
+            this.switchIsActivated.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Size = new System.Drawing.Size(60, 30);
+            this.switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            this.switchIsActivated.SwitchStyle = XanderUI.XUISwitch.Style.Horizontal;
+            this.switchIsActivated.TabIndex = 12;
+            this.switchIsActivated.Text = "xuiSwitch1";
+            this.switchIsActivated.Click += new System.EventHandler(this.switchIsActivated_Click);
             // 
-            // cmbCourse
+            // lblStatus
             // 
-            this.cmbCourse.BackColor = System.Drawing.Color.White;
-            this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(317, 57);
-            this.cmbCourse.Name = "cmbCourse";
-            this.cmbCourse.Size = new System.Drawing.Size(213, 23);
-            this.cmbCourse.TabIndex = 48;
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(43, 303);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(50, 15);
+            this.lblStatus.TabIndex = 49;
+            this.lblStatus.Text = "Status: ";
             // 
-            // rbnStudent
+            // cmbEvents
             // 
-            this.rbnStudent.AutoSize = true;
-            this.rbnStudent.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnStudent.Location = new System.Drawing.Point(43, 46);
-            this.rbnStudent.Name = "rbnStudent";
-            this.rbnStudent.Size = new System.Drawing.Size(69, 19);
-            this.rbnStudent.TabIndex = 16;
-            this.rbnStudent.TabStop = true;
-            this.rbnStudent.Text = "Student";
-            this.rbnStudent.UseVisualStyleBackColor = true;
+            this.cmbEvents.BackColor = System.Drawing.Color.White;
+            this.cmbEvents.FormattingEnabled = true;
+            this.cmbEvents.Location = new System.Drawing.Point(317, 57);
+            this.cmbEvents.Name = "cmbEvents";
+            this.cmbEvents.Size = new System.Drawing.Size(213, 23);
+            this.cmbEvents.TabIndex = 3;
             // 
             // lblFirstName
             // 
@@ -307,7 +409,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(317, 143);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
-            this.txtEmailAddress.TabIndex = 15;
+            this.txtEmailAddress.TabIndex = 9;
             // 
             // txtFirstName
             // 
@@ -315,7 +417,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(43, 99);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(213, 23);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 4;
             // 
             // lblEmailAddress
             // 
@@ -343,7 +445,7 @@
             this.txtContactNo.Location = new System.Drawing.Point(317, 99);
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(213, 23);
-            this.txtContactNo.TabIndex = 13;
+            this.txtContactNo.TabIndex = 8;
             // 
             // txtMiddleName
             // 
@@ -351,7 +453,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(43, 143);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
-            this.txtMiddleName.TabIndex = 4;
+            this.txtMiddleName.TabIndex = 5;
             // 
             // lblContactNo
             // 
@@ -373,16 +475,6 @@
             this.lblLastName.TabIndex = 5;
             this.lblLastName.Text = "Last Name";
             // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(314, 178);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(48, 15);
-            this.lblGender.TabIndex = 11;
-            this.lblGender.Text = "Gender";
-            // 
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -390,18 +482,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(213, 23);
             this.txtLastName.TabIndex = 6;
-            // 
-            // rbnFemale
-            // 
-            this.rbnFemale.AutoSize = true;
-            this.rbnFemale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnFemale.Location = new System.Drawing.Point(376, 200);
-            this.rbnFemale.Name = "rbnFemale";
-            this.rbnFemale.Size = new System.Drawing.Size(68, 19);
-            this.rbnFemale.TabIndex = 10;
-            this.rbnFemale.TabStop = true;
-            this.rbnFemale.Text = "Female";
-            this.rbnFemale.UseVisualStyleBackColor = true;
             // 
             // lblAddress
             // 
@@ -413,18 +493,6 @@
             this.lblAddress.TabIndex = 7;
             this.lblAddress.Text = "Address";
             // 
-            // rbnMale
-            // 
-            this.rbnMale.AutoSize = true;
-            this.rbnMale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnMale.Location = new System.Drawing.Point(317, 200);
-            this.rbnMale.Name = "rbnMale";
-            this.rbnMale.Size = new System.Drawing.Size(53, 19);
-            this.rbnMale.TabIndex = 9;
-            this.rbnMale.TabStop = true;
-            this.rbnMale.Text = "Male";
-            this.rbnMale.UseVisualStyleBackColor = true;
-            // 
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -432,14 +500,15 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(487, 56);
-            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabIndex = 7;
             // 
             // groupWorkInfo
             // 
             this.groupWorkInfo.Controls.Add(this.lblWorksAt);
-            this.groupWorkInfo.Controls.Add(this.textBox2);
+            this.groupWorkInfo.Controls.Add(this.txtWorksAt);
             this.groupWorkInfo.Controls.Add(this.lblPosition);
-            this.groupWorkInfo.Controls.Add(this.textBox3);
+            this.groupWorkInfo.Controls.Add(this.txtPosition);
+            this.groupWorkInfo.Enabled = false;
             this.groupWorkInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupWorkInfo.Location = new System.Drawing.Point(941, 581);
             this.groupWorkInfo.Name = "groupWorkInfo";
@@ -458,13 +527,13 @@
             this.lblWorksAt.TabIndex = 1;
             this.lblWorksAt.Text = "Works at";
             // 
-            // textBox2
+            // txtWorksAt
             // 
-            this.textBox2.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(43, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(487, 23);
-            this.textBox2.TabIndex = 2;
+            this.txtWorksAt.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWorksAt.Location = new System.Drawing.Point(43, 62);
+            this.txtWorksAt.Name = "txtWorksAt";
+            this.txtWorksAt.Size = new System.Drawing.Size(487, 23);
+            this.txtWorksAt.TabIndex = 16;
             // 
             // lblPosition
             // 
@@ -476,13 +545,13 @@
             this.lblPosition.TabIndex = 3;
             this.lblPosition.Text = "Position";
             // 
-            // textBox3
+            // txtPosition
             // 
-            this.textBox3.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(43, 106);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(487, 23);
-            this.textBox3.TabIndex = 6;
+            this.txtPosition.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPosition.Location = new System.Drawing.Point(43, 106);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(487, 23);
+            this.txtPosition.TabIndex = 17;
             // 
             // CtrlGuests
             // 
@@ -506,6 +575,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGuests)).EndInit();
             this.groupPersonalInfo.ResumeLayout(false);
             this.groupPersonalInfo.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupWorkInfo.ResumeLayout(false);
             this.groupWorkInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -514,7 +587,7 @@
 
         #endregion
         private System.Windows.Forms.Label lblSchoolName;
-        private System.Windows.Forms.TextBox txtIDNo;
+        private System.Windows.Forms.TextBox txtSchoolName;
         private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.TextBox txtCourse;
         private System.Windows.Forms.GroupBox groupSchoolInfo;
@@ -545,10 +618,15 @@
         private System.Windows.Forms.RadioButton rbnStudent;
         private System.Windows.Forms.GroupBox groupWorkInfo;
         private System.Windows.Forms.Label lblWorksAt;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtWorksAt;
         private System.Windows.Forms.Label lblPosition;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPosition;
         private System.Windows.Forms.Label lblEvents;
-        private System.Windows.Forms.ComboBox cmbCourse;
+        private System.Windows.Forms.ComboBox cmbEvents;
+        private System.Windows.Forms.Label lblSwitchStatus;
+        private XanderUI.XUISwitch switchIsActivated;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

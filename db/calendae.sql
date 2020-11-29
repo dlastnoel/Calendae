@@ -58,8 +58,9 @@ CREATE TABLE `events` (
   `guest_registration` int(11) DEFAULT NULL,
   `guest_slots` int(11) DEFAULT NULL,
   `is_activated` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `event_name` (`event_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,8 +69,36 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (2,'Meeting','Bahay ni Isiah','Bukas','8AM -5PM',0,0,'Meeting lang boss\r\n\r\nHAHAHA',1,50,10,1),(5,'Shot','Bahay ni Ian','Linggo','8am - 10pm',200,0,'SHOT MGA BOSS',1,500,10,1);
+INSERT INTO `events` VALUES (8,'Shot','Bahay ni Ian','Bukas','8am - 10pm',200,5,'Shot mga boss',1,500,0,1),(9,'Meeting','Bahay ni Isiah','Friday - Saturday','overnight',0,5,'G na hahahaha',0,0,0,1);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `guest_registration`
+--
+
+DROP TABLE IF EXISTS `guest_registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `guest_registration` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) DEFAULT NULL,
+  `guest_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  KEY `guest_id` (`guest_id`),
+  CONSTRAINT `guest_registration_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  CONSTRAINT `guest_registration_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `guests` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `guest_registration`
+--
+
+LOCK TABLES `guest_registration` WRITE;
+/*!40000 ALTER TABLE `guest_registration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `guest_registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -90,16 +119,16 @@ CREATE TABLE `guests` (
   `gender` char(1) DEFAULT NULL,
   `school_name` varchar(100) DEFAULT NULL,
   `course` varchar(100) DEFAULT NULL,
-  `year` char(1) DEFAULT NULL,
+  `year` varchar(50) DEFAULT NULL,
   `works_at` varchar(100) DEFAULT NULL,
   `position` varchar(100) DEFAULT NULL,
   `code` varchar(10) DEFAULT NULL,
-  `is_activated` tinyint(4) DEFAULT NULL,
+  `is_activated` tinyint(1) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   CONSTRAINT `guests_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,6 +137,7 @@ CREATE TABLE `guests` (
 
 LOCK TABLES `guests` WRITE;
 /*!40000 ALTER TABLE `guests` DISABLE KEYS */;
+INSERT INTO `guests` VALUES (1,'Mark Denver','Dening','Halog','Villa, Rosario, La Union','09987654321','markdenver@gmail.com','M','DMMMSU-MLUC CIT','BS Information Technology','4','','',NULL,1,8);
 /*!40000 ALTER TABLE `guests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,6 +173,34 @@ LOCK TABLES `officers` WRITE;
 /*!40000 ALTER TABLE `officers` DISABLE KEYS */;
 INSERT INTO `officers` VALUES ('181-1665-2','President','Ian Justin','Banera','Salazar','Concepcion, Rosario, La Union','09467170412','ian,salazar94@gmail.com','M','BS InfoTech','3F','hacZB3e1ty1FjPADMciLYV+lsN6e2CNPly6WkWjda9H0v8P/Yr63IA=='),('181-1668-2','Adviser','Noel Xavier','Milana','Ulpindo','Rosario, La Union','09126238743','noel.ulpindo@gmail.com','M','BS Information Technology','3F','f/HmDNuU9CXLH3JlNHYV1lznGGQ19l8oAkK6h16ZPtlLIBBm7fI9Hw=='),('181-1669-2','CEO','Isiah Neil','Boado','Villanueva','San Nicolas, Agoo, La Union','09123456789','isiahneil@gmail.com','M','BS Information Technology','3F','u3sQwlmDf7NVEqE3RxDXJov4BVkuXluLv/yeJEil4Sy0cTDsW7VneA=='),('181-2475-2','Hipster','Irish','Perez','Lagasca','Damortis Rosario La Union','09511847443','iris.lagasca@gmail.com','M','BSIT','3-','kiNtDk3bz3ecORbeUGDKWr+n6pwVZPaGM7GQGQb2/Y6C2Qc+80iR8w==');
 /*!40000 ALTER TABLE `officers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `student_registration`
+--
+
+DROP TABLE IF EXISTS `student_registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `student_registration` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) DEFAULT NULL,
+  `student_id` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  KEY `student_id` (`student_id`),
+  CONSTRAINT `student_registration_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  CONSTRAINT `student_registration_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `student_registration`
+--
+
+LOCK TABLES `student_registration` WRITE;
+/*!40000 ALTER TABLE `student_registration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student_registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -187,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-28 15:57:18
+-- Dump completed on 2020-11-29 15:55:58
