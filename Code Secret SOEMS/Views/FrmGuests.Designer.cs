@@ -37,10 +37,15 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.groupPersonalInfo = new System.Windows.Forms.GroupBox();
-            this.lblEvents = new System.Windows.Forms.Label();
-            this.cmbCourse = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.rbnMale = new System.Windows.Forms.RadioButton();
+            this.rbnFemale = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.rbnWorking = new System.Windows.Forms.RadioButton();
             this.rbnStudent = new System.Windows.Forms.RadioButton();
+            this.lblEvents = new System.Windows.Forms.Label();
+            this.cmbEvents = new System.Windows.Forms.ComboBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
@@ -50,16 +55,13 @@
             this.txtMiddleName = new System.Windows.Forms.TextBox();
             this.lblContactNo = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.lblGender = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.rbnFemale = new System.Windows.Forms.RadioButton();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.rbnMale = new System.Windows.Forms.RadioButton();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.groupSchoolInfo = new System.Windows.Forms.GroupBox();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
-            this.txtIDNo = new System.Windows.Forms.TextBox();
+            this.txtSchoolName = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
             this.txtCourse = new System.Windows.Forms.TextBox();
@@ -69,6 +71,8 @@
             this.panelTop.SuspendLayout();
             this.groupWorkInfo.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupSchoolInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,9 +83,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(3, 5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(107, 19);
+            this.lblTitle.Size = new System.Drawing.Size(172, 19);
             this.lblTitle.TabIndex = 18;
-            this.lblTitle.Text = "GUEST FORM";
+            this.lblTitle.Text = "GUEST REGISTRATION";
             // 
             // btnBack
             // 
@@ -90,6 +94,7 @@
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(593, 0);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(23, 30);
@@ -156,15 +161,15 @@
             this.txtPosition.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPosition.Location = new System.Drawing.Point(43, 106);
             this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(327, 23);
+            this.txtPosition.Size = new System.Drawing.Size(487, 23);
             this.txtPosition.TabIndex = 6;
             // 
             // groupPersonalInfo
             // 
+            this.groupPersonalInfo.Controls.Add(this.panel2);
+            this.groupPersonalInfo.Controls.Add(this.panel1);
             this.groupPersonalInfo.Controls.Add(this.lblEvents);
-            this.groupPersonalInfo.Controls.Add(this.cmbCourse);
-            this.groupPersonalInfo.Controls.Add(this.rbnWorking);
-            this.groupPersonalInfo.Controls.Add(this.rbnStudent);
+            this.groupPersonalInfo.Controls.Add(this.cmbEvents);
             this.groupPersonalInfo.Controls.Add(this.lblFirstName);
             this.groupPersonalInfo.Controls.Add(this.txtEmailAddress);
             this.groupPersonalInfo.Controls.Add(this.txtFirstName);
@@ -174,11 +179,8 @@
             this.groupPersonalInfo.Controls.Add(this.txtMiddleName);
             this.groupPersonalInfo.Controls.Add(this.lblContactNo);
             this.groupPersonalInfo.Controls.Add(this.lblLastName);
-            this.groupPersonalInfo.Controls.Add(this.lblGender);
             this.groupPersonalInfo.Controls.Add(this.txtLastName);
-            this.groupPersonalInfo.Controls.Add(this.rbnFemale);
             this.groupPersonalInfo.Controls.Add(this.lblAddress);
-            this.groupPersonalInfo.Controls.Add(this.rbnMale);
             this.groupPersonalInfo.Controls.Add(this.txtAddress);
             this.groupPersonalInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupPersonalInfo.Location = new System.Drawing.Point(12, 36);
@@ -187,6 +189,85 @@
             this.groupPersonalInfo.TabIndex = 53;
             this.groupPersonalInfo.TabStop = false;
             this.groupPersonalInfo.Text = "Personal Information";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblGender);
+            this.panel2.Controls.Add(this.rbnMale);
+            this.panel2.Controls.Add(this.rbnFemale);
+            this.panel2.Location = new System.Drawing.Point(317, 172);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(213, 56);
+            this.panel2.TabIndex = 49;
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.Location = new System.Drawing.Point(24, 7);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(48, 15);
+            this.lblGender.TabIndex = 11;
+            this.lblGender.Text = "Gender";
+            // 
+            // rbnMale
+            // 
+            this.rbnMale.AutoSize = true;
+            this.rbnMale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnMale.Location = new System.Drawing.Point(27, 29);
+            this.rbnMale.Name = "rbnMale";
+            this.rbnMale.Size = new System.Drawing.Size(53, 19);
+            this.rbnMale.TabIndex = 10;
+            this.rbnMale.TabStop = true;
+            this.rbnMale.Text = "Male";
+            this.rbnMale.UseVisualStyleBackColor = true;
+            // 
+            // rbnFemale
+            // 
+            this.rbnFemale.AutoSize = true;
+            this.rbnFemale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnFemale.Location = new System.Drawing.Point(86, 29);
+            this.rbnFemale.Name = "rbnFemale";
+            this.rbnFemale.Size = new System.Drawing.Size(68, 19);
+            this.rbnFemale.TabIndex = 11;
+            this.rbnFemale.TabStop = true;
+            this.rbnFemale.Text = "Female";
+            this.rbnFemale.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rbnWorking);
+            this.panel1.Controls.Add(this.rbnStudent);
+            this.panel1.Location = new System.Drawing.Point(43, 39);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(213, 39);
+            this.panel1.TabIndex = 50;
+            // 
+            // rbnWorking
+            // 
+            this.rbnWorking.AutoSize = true;
+            this.rbnWorking.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnWorking.Location = new System.Drawing.Point(101, 10);
+            this.rbnWorking.Name = "rbnWorking";
+            this.rbnWorking.Size = new System.Drawing.Size(71, 19);
+            this.rbnWorking.TabIndex = 2;
+            this.rbnWorking.TabStop = true;
+            this.rbnWorking.Text = "Working";
+            this.rbnWorking.UseVisualStyleBackColor = true;
+            this.rbnWorking.CheckedChanged += new System.EventHandler(this.rbnWorking_CheckedChanged);
+            // 
+            // rbnStudent
+            // 
+            this.rbnStudent.AutoSize = true;
+            this.rbnStudent.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnStudent.Location = new System.Drawing.Point(26, 10);
+            this.rbnStudent.Name = "rbnStudent";
+            this.rbnStudent.Size = new System.Drawing.Size(69, 19);
+            this.rbnStudent.TabIndex = 1;
+            this.rbnStudent.TabStop = true;
+            this.rbnStudent.Text = "Student";
+            this.rbnStudent.UseVisualStyleBackColor = true;
+            this.rbnStudent.CheckedChanged += new System.EventHandler(this.rbnStudent_CheckedChanged);
             // 
             // lblEvents
             // 
@@ -198,40 +279,14 @@
             this.lblEvents.TabIndex = 19;
             this.lblEvents.Text = "Select an Event";
             // 
-            // cmbCourse
+            // cmbEvents
             // 
-            this.cmbCourse.BackColor = System.Drawing.Color.White;
-            this.cmbCourse.FormattingEnabled = true;
-            this.cmbCourse.Location = new System.Drawing.Point(317, 55);
-            this.cmbCourse.Name = "cmbCourse";
-            this.cmbCourse.Size = new System.Drawing.Size(213, 23);
-            this.cmbCourse.TabIndex = 18;
-            // 
-            // rbnWorking
-            // 
-            this.rbnWorking.AutoSize = true;
-            this.rbnWorking.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnWorking.Location = new System.Drawing.Point(123, 46);
-            this.rbnWorking.Name = "rbnWorking";
-            this.rbnWorking.Size = new System.Drawing.Size(71, 19);
-            this.rbnWorking.TabIndex = 17;
-            this.rbnWorking.TabStop = true;
-            this.rbnWorking.Text = "Working";
-            this.rbnWorking.UseVisualStyleBackColor = true;
-            this.rbnWorking.CheckedChanged += new System.EventHandler(this.rbnWorking_CheckedChanged);
-            // 
-            // rbnStudent
-            // 
-            this.rbnStudent.AutoSize = true;
-            this.rbnStudent.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnStudent.Location = new System.Drawing.Point(48, 46);
-            this.rbnStudent.Name = "rbnStudent";
-            this.rbnStudent.Size = new System.Drawing.Size(69, 19);
-            this.rbnStudent.TabIndex = 16;
-            this.rbnStudent.TabStop = true;
-            this.rbnStudent.Text = "Student";
-            this.rbnStudent.UseVisualStyleBackColor = true;
-            this.rbnStudent.CheckedChanged += new System.EventHandler(this.rbnStudent_CheckedChanged);
+            this.cmbEvents.BackColor = System.Drawing.Color.White;
+            this.cmbEvents.FormattingEnabled = true;
+            this.cmbEvents.Location = new System.Drawing.Point(317, 55);
+            this.cmbEvents.Name = "cmbEvents";
+            this.cmbEvents.Size = new System.Drawing.Size(213, 23);
+            this.cmbEvents.TabIndex = 18;
             // 
             // lblFirstName
             // 
@@ -315,16 +370,6 @@
             this.lblLastName.TabIndex = 5;
             this.lblLastName.Text = "Last Name";
             // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(314, 178);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(48, 15);
-            this.lblGender.TabIndex = 11;
-            this.lblGender.Text = "Gender";
-            // 
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -332,18 +377,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(213, 23);
             this.txtLastName.TabIndex = 6;
-            // 
-            // rbnFemale
-            // 
-            this.rbnFemale.AutoSize = true;
-            this.rbnFemale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnFemale.Location = new System.Drawing.Point(376, 200);
-            this.rbnFemale.Name = "rbnFemale";
-            this.rbnFemale.Size = new System.Drawing.Size(68, 19);
-            this.rbnFemale.TabIndex = 10;
-            this.rbnFemale.TabStop = true;
-            this.rbnFemale.Text = "Female";
-            this.rbnFemale.UseVisualStyleBackColor = true;
             // 
             // lblAddress
             // 
@@ -354,18 +387,6 @@
             this.lblAddress.Size = new System.Drawing.Size(54, 15);
             this.lblAddress.TabIndex = 7;
             this.lblAddress.Text = "Address";
-            // 
-            // rbnMale
-            // 
-            this.rbnMale.AutoSize = true;
-            this.rbnMale.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnMale.Location = new System.Drawing.Point(317, 200);
-            this.rbnMale.Name = "rbnMale";
-            this.rbnMale.Size = new System.Drawing.Size(53, 19);
-            this.rbnMale.TabIndex = 9;
-            this.rbnMale.TabStop = true;
-            this.rbnMale.Text = "Male";
-            this.rbnMale.UseVisualStyleBackColor = true;
             // 
             // txtAddress
             // 
@@ -380,7 +401,7 @@
             // 
             this.groupSchoolInfo.Controls.Add(this.txtYear);
             this.groupSchoolInfo.Controls.Add(this.lblSchoolName);
-            this.groupSchoolInfo.Controls.Add(this.txtIDNo);
+            this.groupSchoolInfo.Controls.Add(this.txtSchoolName);
             this.groupSchoolInfo.Controls.Add(this.lblCourse);
             this.groupSchoolInfo.Controls.Add(this.lblYear);
             this.groupSchoolInfo.Controls.Add(this.txtCourse);
@@ -395,9 +416,9 @@
             // txtYear
             // 
             this.txtYear.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtYear.Location = new System.Drawing.Point(317, 106);
+            this.txtYear.Location = new System.Drawing.Point(469, 106);
             this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(57, 23);
+            this.txtYear.Size = new System.Drawing.Size(61, 23);
             this.txtYear.TabIndex = 7;
             // 
             // lblSchoolName
@@ -410,13 +431,13 @@
             this.lblSchoolName.TabIndex = 1;
             this.lblSchoolName.Text = "School Name";
             // 
-            // txtIDNo
+            // txtSchoolName
             // 
-            this.txtIDNo.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDNo.Location = new System.Drawing.Point(43, 62);
-            this.txtIDNo.Name = "txtIDNo";
-            this.txtIDNo.Size = new System.Drawing.Size(487, 23);
-            this.txtIDNo.TabIndex = 2;
+            this.txtSchoolName.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSchoolName.Location = new System.Drawing.Point(43, 62);
+            this.txtSchoolName.Name = "txtSchoolName";
+            this.txtSchoolName.Size = new System.Drawing.Size(487, 23);
+            this.txtSchoolName.TabIndex = 2;
             // 
             // lblCourse
             // 
@@ -432,7 +453,7 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(314, 88);
+            this.lblYear.Location = new System.Drawing.Point(466, 88);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(33, 15);
             this.lblYear.TabIndex = 5;
@@ -443,7 +464,7 @@
             this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCourse.Location = new System.Drawing.Point(43, 106);
             this.txtCourse.Name = "txtCourse";
-            this.txtCourse.Size = new System.Drawing.Size(268, 23);
+            this.txtCourse.Size = new System.Drawing.Size(420, 23);
             this.txtCourse.TabIndex = 6;
             // 
             // btnDelete
@@ -453,12 +474,13 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(311, 558);
+            this.btnDelete.Location = new System.Drawing.Point(312, 558);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(292, 41);
+            this.btnDelete.Size = new System.Drawing.Size(293, 41);
             this.btnDelete.TabIndex = 50;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -469,10 +491,11 @@
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(12, 511);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(591, 41);
+            this.btnAdd.Size = new System.Drawing.Size(592, 41);
             this.btnAdd.TabIndex = 49;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -483,24 +506,25 @@
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Location = new System.Drawing.Point(12, 558);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(292, 41);
+            this.btnUpdate.Size = new System.Drawing.Size(293, 41);
             this.btnUpdate.TabIndex = 48;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FrmGuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(616, 619);
+            this.ClientSize = new System.Drawing.Size(616, 607);
             this.Controls.Add(this.groupPersonalInfo);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.groupWorkInfo);
             this.Controls.Add(this.groupSchoolInfo);
+            this.Controls.Add(this.groupWorkInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmGuests";
             this.ShowIcon = false;
@@ -513,6 +537,10 @@
             this.groupWorkInfo.PerformLayout();
             this.groupPersonalInfo.ResumeLayout(false);
             this.groupPersonalInfo.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupSchoolInfo.ResumeLayout(false);
             this.groupSchoolInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -529,8 +557,6 @@
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.TextBox txtPosition;
         private System.Windows.Forms.GroupBox groupPersonalInfo;
-        private System.Windows.Forms.RadioButton rbnWorking;
-        private System.Windows.Forms.RadioButton rbnStudent;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtEmailAddress;
         private System.Windows.Forms.TextBox txtFirstName;
@@ -540,16 +566,13 @@
         private System.Windows.Forms.TextBox txtMiddleName;
         private System.Windows.Forms.Label lblContactNo;
         private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.RadioButton rbnFemale;
         private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.RadioButton rbnMale;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.GroupBox groupSchoolInfo;
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Label lblSchoolName;
-        private System.Windows.Forms.TextBox txtIDNo;
+        private System.Windows.Forms.TextBox txtSchoolName;
         private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.TextBox txtCourse;
@@ -557,6 +580,13 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblEvents;
-        private System.Windows.Forms.ComboBox cmbCourse;
+        private System.Windows.Forms.ComboBox cmbEvents;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.RadioButton rbnMale;
+        private System.Windows.Forms.RadioButton rbnFemale;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbnWorking;
+        private System.Windows.Forms.RadioButton rbnStudent;
     }
 }

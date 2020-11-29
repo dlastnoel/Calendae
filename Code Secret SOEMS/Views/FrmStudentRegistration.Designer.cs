@@ -48,6 +48,7 @@
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.groupPersonalInfo = new System.Windows.Forms.GroupBox();
             this.groupSchoolInfo = new System.Windows.Forms.GroupBox();
+            this.txtCourse = new System.Windows.Forms.TextBox();
             this.lblIDNo = new System.Windows.Forms.Label();
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtCourse = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
             this.groupSchoolInfo.SuspendLayout();
@@ -91,6 +91,7 @@
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(638, 0);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(23, 30);
@@ -283,6 +284,14 @@
             this.groupSchoolInfo.TabStop = false;
             this.groupSchoolInfo.Text = "School Information";
             // 
+            // txtCourse
+            // 
+            this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourse.Location = new System.Drawing.Point(43, 106);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(295, 23);
+            this.txtCourse.TabIndex = 10;
+            // 
             // lblIDNo
             // 
             this.lblIDNo.AutoSize = true;
@@ -373,20 +382,12 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtCourse
-            // 
-            this.txtCourse.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourse.Location = new System.Drawing.Point(43, 106);
-            this.txtCourse.Name = "txtCourse";
-            this.txtCourse.Size = new System.Drawing.Size(295, 23);
-            this.txtCourse.TabIndex = 10;
-            // 
             // FrmStudentRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(661, 549);
+            this.ClientSize = new System.Drawing.Size(661, 604);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);

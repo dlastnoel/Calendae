@@ -25,7 +25,6 @@ namespace Code_Secret_SOEMS
             th = new ThemeHelper();
             th.setFormColor(this);
             th.setPanelColor(panelTop);
-            th.setControlButtonColor(btnClose);
             th.setButtonColor(btnTest);
             th.setButtonColor(btnSave);
             th.setLabelColor(lblServer);

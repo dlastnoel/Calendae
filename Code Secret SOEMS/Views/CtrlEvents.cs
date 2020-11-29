@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Code_Secret_SOEMS.Views;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
 
@@ -16,6 +17,7 @@ namespace Code_Secret_SOEMS
     {
         EventPresenter eventPresenter;
         ThemeHelper th;
+        FormHelper fh;
         int currentID;
         string position;
         bool activation;
@@ -78,6 +80,7 @@ namespace Code_Secret_SOEMS
         {
             InitializeComponent();
             eventPresenter = new EventPresenter();
+            fh = new FormHelper();
             btnUpdate.Enabled = false;
             btnUpdate.FlatStyle = FlatStyle.Standard;
             btnDelete.Enabled = false;
@@ -133,6 +136,7 @@ namespace Code_Secret_SOEMS
             th.setButtonColor(btnAdd);
             th.setButtonColor(btnUpdate);
             th.setButtonColor(btnDelete);
+            th.setButtonColor(btnShowDetails);
 
             th.setLabelColor(lblEventName);
             th.setLabelColor(lblVenue);
@@ -308,6 +312,13 @@ namespace Code_Secret_SOEMS
                 lblSwitchStatus.Text = "Deactivated";
                 activation = false;
             }
+        }
+
+        private void btnShowDetails_Click(object sender, EventArgs e)
+        {
+            fh.setEventID(currentID);
+            fh.setCurrentUserControl(this);
+            fh.setUserControl("Event Details",position);
         }
     }
 }

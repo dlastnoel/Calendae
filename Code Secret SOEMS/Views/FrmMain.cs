@@ -9,24 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS;
 using Code_Secret_SOEMS.Helpers;
+using Code_Secret_SOEMS.Views;
 
 namespace Code_Secret_SOEMS
 {
     public partial class FrmMain : Form
     {
+        FormHelper fh;
         private static UserControl currentUserControl;
         private string position;
         private string name;
+        public int event_id { get; set; }
 
         private void setUserControl(string userControl)
         {
+            fh.setCurrentForm(this);
+            fh.setCurrentLabel(lblTitle);
+            currentUserControl = fh.setUserControl(userControl, position);
+            fh.setCurrentUserControl(currentUserControl);
+        }
+        /*private void setUserControl(string userControl)
+        {
+            fh = new FormHelper();
             try
             {
                 this.Controls.Remove(currentUserControl);
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -40,6 +51,9 @@ namespace Code_Secret_SOEMS
                         break;
                     case "Events":
                         currentUserControl = new CtrlEvents(position);
+                        break;
+                    case "Event Details":
+                        currentUserControl = new CtrlEventDetails(fh.getEventID());
                         break;
                     case "Students":
                         currentUserControl = new CtrlStudents();
@@ -55,10 +69,11 @@ namespace Code_Secret_SOEMS
                 this.Controls.Add(currentUserControl);
                 lblTitle.Text = userControl;
             }
-        }
+        }*/
 
         private void triggerMaximize()
         {
+            currentUserControl = fh.getCurrentUserControl();
             if (this.WindowState == FormWindowState.Maximized)
             {
                 currentUserControl.Size = new Size(940, 614);
@@ -77,11 +92,13 @@ namespace Code_Secret_SOEMS
 
         private void setUserControlSize(FormWindowState myFormWindowState)
         {
-            if(myFormWindowState == FormWindowState.Maximized)
+            currentUserControl = fh.getCurrentUserControl();
+            if (myFormWindowState == FormWindowState.Maximized)
             {
                 if(Screen.PrimaryScreen.Bounds.Width >= 1920)
                 {
-                    currentUserControl.Size = new Size(1576, 956);
+                    
+                    currentUserControl .Size = new Size(1576, 956);
                 }
                 else
                 {
@@ -117,6 +134,7 @@ namespace Code_Secret_SOEMS
         {
             InitializeComponent();
             setFormTheme();
+            fh = new FormHelper();
             this.position = position;
             this.name = name;
             toolStripStatusOfficer.Text = this.position + ": " + this.name;
@@ -147,6 +165,7 @@ namespace Code_Secret_SOEMS
 
         private void btnMaximize_Click(object sender, EventArgs e)
         {
+            currentUserControl = fh.getCurrentUserControl();
             triggerMaximize();
         }
 

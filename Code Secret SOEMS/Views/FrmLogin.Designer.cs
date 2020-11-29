@@ -44,6 +44,7 @@
             this.lblIDNo = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.btnEvents = new FontAwesome.Sharp.IconButton();
             this.panelTop.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCalendae)).BeginInit();
@@ -227,6 +228,28 @@
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // btnEvents
+            // 
+            this.btnEvents.BackColor = System.Drawing.Color.Transparent;
+            this.btnEvents.FlatAppearance.BorderSize = 0;
+            this.btnEvents.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.btnEvents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEvents.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnEvents.ForeColor = System.Drawing.Color.Black;
+            this.btnEvents.IconChar = FontAwesome.Sharp.IconChar.SignInAlt;
+            this.btnEvents.IconColor = System.Drawing.Color.Black;
+            this.btnEvents.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEvents.IconSize = 25;
+            this.btnEvents.Location = new System.Drawing.Point(770, 490);
+            this.btnEvents.Name = "btnEvents";
+            this.btnEvents.Rotation = 0D;
+            this.btnEvents.Size = new System.Drawing.Size(30, 30);
+            this.btnEvents.TabIndex = 4;
+            this.btnEvents.UseVisualStyleBackColor = false;
+            this.btnEvents.Click += new System.EventHandler(this.btnEvents_Click);
+            this.btnEvents.MouseEnter += new System.EventHandler(this.btnEvents_MouseEnter);
+            this.btnEvents.MouseLeave += new System.EventHandler(this.btnEvents_MouseLeave);
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -234,6 +257,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 520);
+            this.Controls.Add(this.btnEvents);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.txtPassword);
@@ -272,6 +296,7 @@
         private System.Windows.Forms.Label lblTitle;
         private FontAwesome.Sharp.IconButton btnAbout;
         private FontAwesome.Sharp.IconButton btnSettings;
+        private FontAwesome.Sharp.IconButton btnEvents;
     }
 }
 

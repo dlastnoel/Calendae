@@ -16,18 +16,18 @@ namespace Code_Secret_SOEMS
     {
         GuestPresenter guestPresenter;
         int currentID;
-        bool activation;
 
         private void populateFields()
         {
-            btnAdd.Text = "Cancel";
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
             btnUpdate.Enabled = true;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnDelete.Enabled = true;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            activation = guestPresenter.prepareGuest(currentID, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
+            guestPresenter.prepareGuest(currentID, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
                 txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtSchoolName, txtCourse, txtYear, txtWorksAt,
-                txtPosition, cmbEvents, switchIsActivated, lblSwitchStatus);
+                txtPosition, cmbEvents);
         }
 
         private void clearFields()
@@ -55,9 +55,6 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Standard;
             btnDelete.Enabled = false;
             btnDelete.FlatStyle = FlatStyle.Standard;
-
-            switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
-            lblSwitchStatus.Text = "Deactivated";
         }
 
         public CtrlGuests()
@@ -74,7 +71,8 @@ namespace Code_Secret_SOEMS
 
         private void btnOpenForm_Click(object sender, EventArgs e)
         {
-            new FrmGuests().ShowDialog();
+            new FrmGuests("form",0).ShowDialog();
+            guestPresenter.loadGuests(dataGuests);
         }
 
         private void btnOpenForm_SizeChanged(object sender, EventArgs e)
@@ -173,18 +171,10 @@ namespace Code_Secret_SOEMS
 
                             guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
                             guestPresenter.addGuest();
-                            if (activation)
-                            {
-                                MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Guest successfully added and is pending for approval for the " + cmbEvents.Text, "Guests",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
 
                             clearFields();
                             guestPresenter.loadGuests(dataGuests);
@@ -211,18 +201,10 @@ namespace Code_Secret_SOEMS
 
                             guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
                             guestPresenter.addGuest();
-                            if (activation)
-                            {
-                                MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Guest successfully added and is pending for approval for the " + cmbEvents.Text, "Guests",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -250,24 +232,10 @@ namespace Code_Secret_SOEMS
         private void btnDelete_Click(object sender, EventArgs e)
         {
             guestPresenter.deleteEvent(currentID);
-            MessageBox.Show("Event successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Guest successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             clearFields();
             guestPresenter.loadGuests(dataGuests);
-        }
-
-        private void switchIsActivated_Click(object sender, EventArgs e)
-        {
-            if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
-            {
-                lblSwitchStatus.Text = "Activated";
-                activation = true;
-            }
-            else
-            {
-                lblSwitchStatus.Text = "Deactivated";
-                activation = false;
-            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -294,7 +262,7 @@ namespace Code_Secret_SOEMS
 
                         guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
                         guestPresenter.updateGuest(currentID);
                         MessageBox.Show("Guest info successfully updated", "Guests", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -324,7 +292,7 @@ namespace Code_Secret_SOEMS
 
                         guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
                         guestPresenter.updateGuest(currentID);
                         MessageBox.Show("Guest info successfully updated", "Guests", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -358,10 +326,9 @@ namespace Code_Secret_SOEMS
             }
             else
             {
-                /*FrmStudentRegistration frmStudentRegistration = new FrmStudentRegistration("form", currentID);
-                frmStudentRegistration.ShowDialog();
-                guestPresenter.loadGuests(dataGuests)*/
-                ;
+                FrmGuests frmGuests = new FrmGuests("form", currentID);
+                frmGuests.ShowDialog();
+                guestPresenter.loadGuests(dataGuests);
             }
         }
     }

@@ -72,18 +72,29 @@ namespace Code_Secret_SOEMS.Views
             th.setStripStatusColor(statusStripMain);
 
         }
-        public FrmEventRegistration()
+        public FrmEventRegistration(string mode)
         {
             InitializeComponent();
             setFormTheme();
             eventRegistrationPresenter = new EventRegistrationPresenter();
             toolStripStatusSchoolName.Text = eventRegistrationPresenter.getSchoolName();
             eventRegistrationPresenter.setEvents(cmbEvents);
+            if(String.IsNullOrEmpty(mode))
+            {
+                btnClose.Text = "←";
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if(btnClose.Text == "X")
+            {
+                this.Close();
+            } else
+            {
+                this.Close();
+                new FrmLogin().Show();
+            }
         }
 
         private void tmrMain_Tick(object sender, EventArgs e)
@@ -127,6 +138,11 @@ namespace Code_Secret_SOEMS.Views
             {
                 clearFields();
             }
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            new FrmAbout().ShowDialog();
         }
     }
 }

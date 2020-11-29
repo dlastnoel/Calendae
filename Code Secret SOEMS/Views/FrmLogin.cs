@@ -34,6 +34,7 @@ namespace Code_Secret_SOEMS
             th.setControlButtonColor(btnClose);
             th.setIconButtonColor(btnSettings);
             th.setIconButtonColor(btnAbout);
+            th.setIconButtonColor(btnEvents);
             th.setLabelColor(lblTitle);
             th.setLabelColor(lblIDNo);
             th.setLabelColor(lblPassword);
@@ -121,6 +122,22 @@ namespace Code_Secret_SOEMS
         private void btnAbout_Click(object sender, EventArgs e)
         {
             new FrmAbout().ShowDialog();
+        }
+
+        private void btnEvents_Click(object sender, EventArgs e)
+        {
+            new FrmEventRegistration("").Show();
+            this.Hide();
+        }
+
+        private void btnEvents_MouseEnter(object sender, EventArgs e)
+        {
+            btnEvents.IconColor = Color.White;
+        }
+
+        private void btnEvents_MouseLeave(object sender, EventArgs e)
+        {
+            btnEvents.IconColor = Color.Black;
         }
     }
 }

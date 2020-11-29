@@ -19,7 +19,8 @@ namespace Code_Secret_SOEMS
 
         private void populateFields()
         {
-            btnAdd.Text = "Cancel";
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
             btnUpdate.Enabled = true;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnDelete.Enabled = true;
@@ -77,7 +78,6 @@ namespace Code_Secret_SOEMS
             if(mode == "form")
             {
                 btnAdd.Text = "Add";
-                this.Size = new Size(661, 604);
                 lblTitle.Text = "STUDENT FORM";
                 this.Text = lblTitle.Text;
                 if (!String.IsNullOrEmpty(id))
@@ -96,6 +96,9 @@ namespace Code_Secret_SOEMS
                     btnUpdate.FlatStyle = FlatStyle.Standard;
                     btnDelete.Enabled = false;
                 }
+            } else
+            {
+                this.Size = new Size(661, 549);
             }
         }
 
@@ -137,7 +140,7 @@ namespace Code_Secret_SOEMS
                     MessageBox.Show("Please fill up the form correctly", "Students", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 }
-            } else if(btnAdd.Text == "Register")
+            } else
             {
                 if (!String.IsNullOrEmpty(txtIDNo.Text) && !String.IsNullOrEmpty(txtFirstName.Text) &&
                 !String.IsNullOrEmpty(txtMiddleName.Text) && !String.IsNullOrEmpty(txtLastName.Text) &&
@@ -167,9 +170,6 @@ namespace Code_Secret_SOEMS
                     MessageBox.Show("Please fill up the form correctly", "Students", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 }
-            } else
-            {
-                clearFields();
             }
         }
 

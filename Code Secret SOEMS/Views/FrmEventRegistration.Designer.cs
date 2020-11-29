@@ -173,6 +173,7 @@
             this.btnAbout.Size = new System.Drawing.Size(30, 30);
             this.btnAbout.TabIndex = 3;
             this.btnAbout.UseVisualStyleBackColor = false;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // pictureBoxCalendae
             // 

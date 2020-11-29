@@ -66,7 +66,13 @@ namespace Code_Secret_SOEMS.Presenters
             {
                 lblStudentSlots.Text = "Slots Left: " + student_slots.ToString();
             }
-            lblStudentRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
+            if(_event.getEventItems("student_registration") == "0")
+            {
+                lblStudentRegistrationFee.Text = "Registration Fee: Free";
+            } else
+            {
+                lblStudentRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
+            }
             if (bool.Parse(_event.getEventItems("allow_guests")))
             {
                 panelGuestRegistration.Enabled = true;
@@ -79,7 +85,14 @@ namespace Code_Secret_SOEMS.Presenters
                 {
                     lblGuestSlots.Text = "Guest Slots: " + guest_slots.ToString();
                 }
-                lblGuestRegistrationFee.Text = "Registration Fee: Php " + _event.getEventItems("guest_registration");
+                if (_event.getEventItems("guest_registration") == "0")
+                {
+                    lblGuestRegistrationFee.Text = "Registration Fee: Free";
+                }
+                else
+                {
+                    lblGuestRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
+                }
             } else
             {
                 panelGuestRegistration.Enabled = false;

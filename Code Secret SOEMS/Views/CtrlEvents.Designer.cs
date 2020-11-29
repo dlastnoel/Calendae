@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataEvents = new System.Windows.Forms.DataGridView();
             this.groupEventInfo = new System.Windows.Forms.GroupBox();
             this.lblSwitchStatus = new System.Windows.Forms.Label();
@@ -60,6 +60,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnOpenForm = new System.Windows.Forms.Button();
+            this.btnShowDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataEvents)).BeginInit();
             this.groupEventInfo.SuspendLayout();
             this.groupGuests.SuspendLayout();
@@ -70,14 +71,14 @@
             this.dataEvents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataEvents.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataEvents.Location = new System.Drawing.Point(27, 42);
             this.dataEvents.Name = "dataEvents";
@@ -414,7 +415,7 @@
             this.btnOpenForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenForm.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenForm.ForeColor = System.Drawing.Color.White;
-            this.btnOpenForm.Location = new System.Drawing.Point(0, 0);
+            this.btnOpenForm.Location = new System.Drawing.Point(27, 0);
             this.btnOpenForm.Name = "btnOpenForm";
             this.btnOpenForm.Size = new System.Drawing.Size(86, 31);
             this.btnOpenForm.TabIndex = 15;
@@ -422,11 +423,27 @@
             this.btnOpenForm.UseVisualStyleBackColor = false;
             this.btnOpenForm.Click += new System.EventHandler(this.btnOpenForm_Click);
             // 
+            // btnShowDetails
+            // 
+            this.btnShowDetails.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnShowDetails.FlatAppearance.BorderSize = 0;
+            this.btnShowDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowDetails.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowDetails.ForeColor = System.Drawing.Color.White;
+            this.btnShowDetails.Location = new System.Drawing.Point(941, 852);
+            this.btnShowDetails.Name = "btnShowDetails";
+            this.btnShowDetails.Size = new System.Drawing.Size(591, 41);
+            this.btnShowDetails.TabIndex = 36;
+            this.btnShowDetails.Text = "Show Details";
+            this.btnShowDetails.UseVisualStyleBackColor = false;
+            this.btnShowDetails.Click += new System.EventHandler(this.btnShowDetails_Click);
+            // 
             // CtrlEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnShowDetails);
             this.Controls.Add(this.btnOpenForm);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -482,5 +499,6 @@
         private System.Windows.Forms.Label lblSwitchStatus;
         private XanderUI.XUISwitch switchIsActivated;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnShowDetails;
     }
 }

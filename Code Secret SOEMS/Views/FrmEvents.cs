@@ -21,7 +21,8 @@ namespace Code_Secret_SOEMS
 
         private void populateFields()
         {
-            btnAdd.Text = "Cancel";
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
             btnUpdate.Enabled = true;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnDelete.Enabled = true;
@@ -59,7 +60,6 @@ namespace Code_Secret_SOEMS
             eventPresenter = new EventPresenter();
             th.setFormColor(this);
             th.setPanelColor(panelTop);
-            th.setControlButtonColor(btnBack);
             th.setGroupBoxColor(groupEventInfo);
             th.setGroupBoxColor(groupGuests);
             th.setCheckBoxColor(checkGuests);

@@ -34,6 +34,12 @@ namespace Code_Secret_SOEMS.Presenters
             return int.Parse(_event.getEventItems("id"));
         }
 
+        public string getEventName(int currentID)
+        {
+            _event.selectEvent(currentID);
+            return _event.getEventItems("event_name");
+        }
+
         public void setGuest(string first_name, string middle_name, string last_name, string address, string contact, 
             string email, char gender, string school_name, string course, string year, string works_at, string position, 
             bool is_activated, string event_name)
@@ -59,12 +65,11 @@ namespace Code_Secret_SOEMS.Presenters
             _guest.addGuest();
         }
 
-        public bool prepareGuest(int currentID, RadioButton rbnstudent, RadioButton rbnWorking, TextBox txtFirstName, 
+        public void prepareGuest(int currentID, RadioButton rbnstudent, RadioButton rbnWorking, TextBox txtFirstName, 
             TextBox txtMiddleName, TextBox txtLastName, TextBox txtAddress, TextBox txtContact, TextBox txtEmail,
             RadioButton rbnMale, RadioButton rbnFemale, TextBox txtSchoolName, TextBox txtCourse, TextBox txtYear,
-            TextBox txtWorksAt, TextBox txtPosition, ComboBox cmbEvents, XUISwitch switchIsActivated, Label lblswitchStatus)
+            TextBox txtWorksAt, TextBox txtPosition, ComboBox cmbEvents)
         {
-            bool activation;
             _guest.selectGuest(currentID);
             txtFirstName.Text = _guest.getGuestDetails("first_name");
             txtMiddleName.Text = _guest.getGuestDetails("middle_name");
@@ -92,19 +97,6 @@ namespace Code_Secret_SOEMS.Presenters
             txtWorksAt.Text = _guest.getGuestDetails("works_at");
             txtPosition.Text = _guest.getGuestDetails("position");
             cmbEvents.SelectedIndex = cmbEvents.FindStringExact(_guest.getGuestDetails("event_name"));
-            if(bool.Parse(_guest.getGuestDetails("is_activated")) == true)
-            {
-                activation = true;
-                switchIsActivated.SwitchState = XUISwitch.State.On;
-                lblswitchStatus.Text = "Activated";
-            } else
-            {
-                activation = false;
-                switchIsActivated.SwitchState = XUISwitch.State.On;
-                lblswitchStatus.Text = "Deactivated";
-            }
-
-            return activation;
         }
         public void updateGuest(int currentID)
         {
