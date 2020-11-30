@@ -151,6 +151,7 @@ namespace Code_Secret_SOEMS
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
                                 txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
                             guestPresenter.addGuest();
+                            guestPresenter.registerGuest();
 
                             MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -180,6 +181,7 @@ namespace Code_Secret_SOEMS
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
                                 txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
                             guestPresenter.addGuest();
+                            guestPresenter.registerGuest();
 
                             MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);

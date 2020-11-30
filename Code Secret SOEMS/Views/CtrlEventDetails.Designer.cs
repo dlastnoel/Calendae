@@ -32,8 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataStudentRegistrations = new System.Windows.Forms.DataGridView();
             this.dataGuestRegistrations = new System.Windows.Forms.DataGridView();
-            this.panelStudents = new System.Windows.Forms.Panel();
-            this.panelGuests = new System.Windows.Forms.Panel();
+            this.lblEventName = new System.Windows.Forms.Label();
+            this.lblDateAndTime = new System.Windows.Forms.Label();
+            this.lblStudentSlots = new System.Windows.Forms.Label();
+            this.lblStudentRegistrationFee = new System.Windows.Forms.Label();
+            this.lblGuestRegistrationFee = new System.Windows.Forms.Label();
+            this.lblGuestSlots = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataStudentRegistrations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGuestRegistrations)).BeginInit();
             this.SuspendLayout();
@@ -52,10 +56,10 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataStudentRegistrations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataStudentRegistrations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataStudentRegistrations.Location = new System.Drawing.Point(27, 42);
+            this.dataStudentRegistrations.Location = new System.Drawing.Point(27, 97);
             this.dataStudentRegistrations.Name = "dataStudentRegistrations";
             this.dataStudentRegistrations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataStudentRegistrations.Size = new System.Drawing.Size(747, 715);
+            this.dataStudentRegistrations.Size = new System.Drawing.Size(747, 823);
             this.dataStudentRegistrations.TabIndex = 31;
             // 
             // dataGuestRegistrations
@@ -72,35 +76,83 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGuestRegistrations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGuestRegistrations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGuestRegistrations.Location = new System.Drawing.Point(798, 42);
+            this.dataGuestRegistrations.Location = new System.Drawing.Point(798, 97);
             this.dataGuestRegistrations.Name = "dataGuestRegistrations";
             this.dataGuestRegistrations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGuestRegistrations.Size = new System.Drawing.Size(747, 715);
+            this.dataGuestRegistrations.Size = new System.Drawing.Size(747, 823);
             this.dataGuestRegistrations.TabIndex = 32;
             // 
-            // panelStudents
+            // lblEventName
             // 
-            this.panelStudents.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelStudents.Location = new System.Drawing.Point(27, 763);
-            this.panelStudents.Name = "panelStudents";
-            this.panelStudents.Size = new System.Drawing.Size(747, 157);
-            this.panelStudents.TabIndex = 33;
+            this.lblEventName.AutoSize = true;
+            this.lblEventName.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEventName.Location = new System.Drawing.Point(747, 0);
+            this.lblEventName.Name = "lblEventName";
+            this.lblEventName.Size = new System.Drawing.Size(89, 18);
+            this.lblEventName.TabIndex = 52;
+            this.lblEventName.Text = "Event Name";
             // 
-            // panelGuests
+            // lblDateAndTime
             // 
-            this.panelGuests.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGuests.Location = new System.Drawing.Point(798, 763);
-            this.panelGuests.Name = "panelGuests";
-            this.panelGuests.Size = new System.Drawing.Size(747, 157);
-            this.panelGuests.TabIndex = 34;
+            this.lblDateAndTime.AutoSize = true;
+            this.lblDateAndTime.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateAndTime.Location = new System.Drawing.Point(719, 18);
+            this.lblDateAndTime.Name = "lblDateAndTime";
+            this.lblDateAndTime.Size = new System.Drawing.Size(146, 18);
+            this.lblDateAndTime.TabIndex = 53;
+            this.lblDateAndTime.Text = "Event Date and Time";
+            // 
+            // lblStudentSlots
+            // 
+            this.lblStudentSlots.AutoSize = true;
+            this.lblStudentSlots.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentSlots.Location = new System.Drawing.Point(24, 76);
+            this.lblStudentSlots.Name = "lblStudentSlots";
+            this.lblStudentSlots.Size = new System.Drawing.Size(76, 18);
+            this.lblStudentSlots.TabIndex = 54;
+            this.lblStudentSlots.Text = "Slots Left:";
+            // 
+            // lblStudentRegistrationFee
+            // 
+            this.lblStudentRegistrationFee.AutoSize = true;
+            this.lblStudentRegistrationFee.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(266, 76);
+            this.lblStudentRegistrationFee.Name = "lblStudentRegistrationFee";
+            this.lblStudentRegistrationFee.Size = new System.Drawing.Size(122, 18);
+            this.lblStudentRegistrationFee.TabIndex = 55;
+            this.lblStudentRegistrationFee.Text = "Registration Fee:";
+            // 
+            // lblGuestRegistrationFee
+            // 
+            this.lblGuestRegistrationFee.AutoSize = true;
+            this.lblGuestRegistrationFee.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuestRegistrationFee.Location = new System.Drawing.Point(1038, 76);
+            this.lblGuestRegistrationFee.Name = "lblGuestRegistrationFee";
+            this.lblGuestRegistrationFee.Size = new System.Drawing.Size(122, 18);
+            this.lblGuestRegistrationFee.TabIndex = 57;
+            this.lblGuestRegistrationFee.Text = "Registration Fee:";
+            // 
+            // lblGuestSlots
+            // 
+            this.lblGuestSlots.AutoSize = true;
+            this.lblGuestSlots.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuestSlots.Location = new System.Drawing.Point(795, 76);
+            this.lblGuestSlots.Name = "lblGuestSlots";
+            this.lblGuestSlots.Size = new System.Drawing.Size(76, 18);
+            this.lblGuestSlots.TabIndex = 56;
+            this.lblGuestSlots.Text = "Slots Left:";
             // 
             // CtrlEventDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panelGuests);
-            this.Controls.Add(this.panelStudents);
+            this.Controls.Add(this.lblGuestRegistrationFee);
+            this.Controls.Add(this.lblGuestSlots);
+            this.Controls.Add(this.lblStudentRegistrationFee);
+            this.Controls.Add(this.lblStudentSlots);
+            this.Controls.Add(this.lblDateAndTime);
+            this.Controls.Add(this.lblEventName);
             this.Controls.Add(this.dataGuestRegistrations);
             this.Controls.Add(this.dataStudentRegistrations);
             this.Name = "CtrlEventDetails";
@@ -109,6 +161,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataStudentRegistrations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGuestRegistrations)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,7 +169,11 @@
 
         private System.Windows.Forms.DataGridView dataStudentRegistrations;
         private System.Windows.Forms.DataGridView dataGuestRegistrations;
-        private System.Windows.Forms.Panel panelStudents;
-        private System.Windows.Forms.Panel panelGuests;
+        private System.Windows.Forms.Label lblEventName;
+        private System.Windows.Forms.Label lblDateAndTime;
+        private System.Windows.Forms.Label lblStudentSlots;
+        private System.Windows.Forms.Label lblStudentRegistrationFee;
+        private System.Windows.Forms.Label lblGuestRegistrationFee;
+        private System.Windows.Forms.Label lblGuestSlots;
     }
 }

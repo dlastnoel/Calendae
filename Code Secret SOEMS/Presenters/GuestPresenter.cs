@@ -14,6 +14,7 @@ namespace Code_Secret_SOEMS.Presenters
     {
         Guest _guest = new Guest();
         Event _event = new Event();
+        EventDetails _eventDetails = new EventDetails();
 
         public void loadGuests(DataGridView mydataGridView)
         {
@@ -63,6 +64,13 @@ namespace Code_Secret_SOEMS.Presenters
         public void addGuest()
         {
             _guest.addGuest();
+        }
+
+        public void registerGuest()
+        {
+            _eventDetails.event_id = _guest.event_id;
+            _eventDetails.guest_id = _guest.getLastGuestID();
+            _eventDetails.addGuestParticipant();
         }
 
         public void prepareGuest(int currentID, RadioButton rbnstudent, RadioButton rbnWorking, TextBox txtFirstName, 

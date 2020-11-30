@@ -110,6 +110,11 @@ namespace Code_Secret_SOEMS.Models
             return dbHelper.getFromReader(item);
         }
 
+        public int getLastGuestID()
+        {
+            return dbHelper.getLastID();
+        }
+
         public void updateGuest(int currentID)
         {
             dbHelper.createQuery(

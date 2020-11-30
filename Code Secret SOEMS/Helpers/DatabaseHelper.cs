@@ -47,6 +47,19 @@ namespace Code_Secret_SOEMS.Helpers
                 ";PORT=" + this.port + ";PASSWORD=" + this.password + ";");
         }
 
+        public int getLastID()
+        {
+            return Convert.ToInt32(commandQuery.LastInsertedId);
+        }
+
+        public int getCount()
+        {
+            openConnection();
+            int count = int.Parse(commandQuery.ExecuteScalar().ToString());
+            closeConnection();
+            return count;
+        }
+
         // Tests connection settings and returns result as string
         public string testConnection()
         {

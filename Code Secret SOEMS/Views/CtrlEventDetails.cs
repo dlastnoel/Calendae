@@ -25,6 +25,8 @@ namespace Code_Secret_SOEMS.Views
         {
             eventDetailsPresenter.loadStudentRegistrations(event_id, dataStudentRegistrations);
             eventDetailsPresenter.loadGuestRegistrations(event_id, dataGuestRegistrations);
+            eventDetailsPresenter.populateEventDetails(event_id, lblEventName, lblDateAndTime, lblStudentSlots,
+                lblStudentRegistrationFee, lblGuestSlots, lblGuestRegistrationFee);
         }
     }
 }

@@ -144,5 +144,52 @@ namespace Code_Secret_SOEMS.Views
         {
             new FrmAbout().ShowDialog();
         }
+
+        private void btnStudentRegister_Click(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrEmpty(txtIDNo.Text))
+            {
+                if (eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 1)
+                {
+                    MessageBox.Show("You have successfully registered to " + cmbEvents.Text, "Event Registration",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else if(eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 2)
+                {
+                    MessageBox.Show("You are already registered to " + cmbEvents.Text, "Event Registration",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else if (eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 3)
+                {
+                    MessageBox.Show("Registration unsuccessful, your acount is not yet activated", "Event Registration", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            } else
+            {
+                MessageBox.Show("ID No. cannot be empty", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCheckStudentRegistration_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtIDNo.Text))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("ID No. cannot be empty", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuestRegister_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCode.Text))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Guest code cannot be empty", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

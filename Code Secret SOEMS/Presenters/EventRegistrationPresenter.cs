@@ -11,11 +11,15 @@ namespace Code_Secret_SOEMS.Presenters
     class EventRegistrationPresenter
     {
 
+        public int event_id { get; set; }
+        public string student_id { get; set; }
+        public int guest_id { get; set; }
         public int student_slots { get; set; }
         public int guest_slots { get; set; }
 
         Guest _guest = new Guest();
         Event _event = new Event();
+        EventDetails _eventDetails = new EventDetails();
         public string getSchoolName()
         {
             return Properties.Settings.Default.schoolName;
@@ -49,7 +53,7 @@ namespace Code_Secret_SOEMS.Presenters
             Label lblTime, TextBox txtEventDetails, Panel panelStudentRegistration, Label lblStudentSlots, Label lblStudentRegistrationFee,
             Panel panelGuestRegistration, Label lblGuestSlots, Label lblGuestRegistrationFee)
         {
-            _event.selectEvent(this.eventID(cmbEvents.Text));
+            event_id = eventID(cmbEvents.Text);
             lblEventName.Text = cmbEvents.Text;
             lblEventName.Left = (panelEvents.Width - lblEventName.Width) / 2;
             lblVenue.Text = "Venue: " + _event.getEventItems("venue");
@@ -58,13 +62,14 @@ namespace Code_Secret_SOEMS.Presenters
             txtEventDetails.Text = _event.getEventItems("event_details");
             student_slots = int.Parse(_event.getEventItems("student_slots"));
             panelStudentRegistration.Enabled = true;
-            if (student_slots == 0)
+            if(student_slots != 0)
             {
-                lblStudentSlots.Text = "Slots Left: Open";
+                lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("student_slots")) -
+                    _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id")))).ToString();
             }
             else
             {
-                lblStudentSlots.Text = "Slots Left: " + student_slots.ToString();
+                lblStudentSlots.Text = "Slots Left: Open";
             }
             if(_event.getEventItems("student_registration") == "0")
             {
@@ -77,13 +82,14 @@ namespace Code_Secret_SOEMS.Presenters
             {
                 panelGuestRegistration.Enabled = true;
                 guest_slots = int.Parse(_event.getEventItems("guest_slots"));
-                if (guest_slots == 0)
+                if (guest_slots != 0)
                 {
-                    lblGuestSlots.Text = "Slots Left: Open";
+                    lblGuestSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("guest_slots")) -
+                    _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id")))).ToString();
                 }
                 else
                 {
-                    lblGuestSlots.Text = "Guest Slots: " + guest_slots.ToString();
+                    lblGuestSlots.Text = "Guest Slots: Open";
                 }
                 if (_event.getEventItems("guest_registration") == "0")
                 {
@@ -99,6 +105,13 @@ namespace Code_Secret_SOEMS.Presenters
                 lblGuestSlots.Text = "Slots Left: ";
                 lblGuestRegistrationFee.Text = "Registration Fee: ";
             }
+        }
+
+        public int registerStudent(string student_id)
+        {
+            _eventDetails.event_id = event_id;
+            _eventDetails.student_id = student_id;
+            return _eventDetails.addStudentParticipant();
         }
     }
 }
