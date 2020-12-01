@@ -24,7 +24,7 @@ namespace Code_Secret_SOEMS.Presenters
         public void setEvents(ComboBox cmbEvents)
         {
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = _event.getAllActiveEvents();
+            bindingSource.DataSource = _event.getAllGuestAllowedActiveEvents();
             cmbEvents.DataSource = bindingSource;
             cmbEvents.SelectedIndex = -1;
         }
@@ -64,6 +64,12 @@ namespace Code_Secret_SOEMS.Presenters
         public void addGuest()
         {
             _guest.addGuest();
+        }
+
+        public string getCode()
+        {
+            _guest.selectGuest(_guest.getLastGuestID());
+            return _guest.getGuestDetails("code");
         }
 
         public void registerGuest()

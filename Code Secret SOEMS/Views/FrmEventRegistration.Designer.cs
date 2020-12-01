@@ -56,7 +56,6 @@
             this.lblStudentSlots = new System.Windows.Forms.Label();
             this.btnStudentRegister = new System.Windows.Forms.Button();
             this.lblIDNo = new System.Windows.Forms.Label();
-            this.btnCheckStudentRegistration = new System.Windows.Forms.Button();
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.lblStudentRegistration = new System.Windows.Forms.Label();
             this.panelGuestRegistration = new System.Windows.Forms.Panel();
@@ -327,20 +326,19 @@
             this.panelStudentRegistration.Controls.Add(this.lblStudentSlots);
             this.panelStudentRegistration.Controls.Add(this.btnStudentRegister);
             this.panelStudentRegistration.Controls.Add(this.lblIDNo);
-            this.panelStudentRegistration.Controls.Add(this.btnCheckStudentRegistration);
             this.panelStudentRegistration.Controls.Add(this.txtIDNo);
             this.panelStudentRegistration.Controls.Add(this.lblStudentRegistration);
             this.panelStudentRegistration.Enabled = false;
             this.panelStudentRegistration.Location = new System.Drawing.Point(925, 121);
             this.panelStudentRegistration.Name = "panelStudentRegistration";
-            this.panelStudentRegistration.Size = new System.Drawing.Size(343, 263);
+            this.panelStudentRegistration.Size = new System.Drawing.Size(343, 254);
             this.panelStudentRegistration.TabIndex = 54;
             // 
             // lblStudentRegistrationFee
             // 
             this.lblStudentRegistrationFee.AutoSize = true;
             this.lblStudentRegistrationFee.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(15, 71);
+            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(15, 94);
             this.lblStudentRegistrationFee.Name = "lblStudentRegistrationFee";
             this.lblStudentRegistrationFee.Size = new System.Drawing.Size(102, 15);
             this.lblStudentRegistrationFee.TabIndex = 59;
@@ -350,7 +348,7 @@
             // 
             this.lblStudentSlots.AutoSize = true;
             this.lblStudentSlots.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentSlots.Location = new System.Drawing.Point(53, 56);
+            this.lblStudentSlots.Location = new System.Drawing.Point(15, 79);
             this.lblStudentSlots.Name = "lblStudentSlots";
             this.lblStudentSlots.Size = new System.Drawing.Size(64, 15);
             this.lblStudentSlots.TabIndex = 57;
@@ -363,11 +361,11 @@
             this.btnStudentRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStudentRegister.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStudentRegister.ForeColor = System.Drawing.Color.White;
-            this.btnStudentRegister.Location = new System.Drawing.Point(18, 150);
+            this.btnStudentRegister.Location = new System.Drawing.Point(18, 173);
             this.btnStudentRegister.Name = "btnStudentRegister";
             this.btnStudentRegister.Size = new System.Drawing.Size(308, 39);
             this.btnStudentRegister.TabIndex = 58;
-            this.btnStudentRegister.Text = "Register";
+            this.btnStudentRegister.Text = "Register / Check Registration";
             this.btnStudentRegister.UseVisualStyleBackColor = false;
             this.btnStudentRegister.Click += new System.EventHandler(this.btnStudentRegister_Click);
             // 
@@ -375,31 +373,16 @@
             // 
             this.lblIDNo.AutoSize = true;
             this.lblIDNo.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDNo.Location = new System.Drawing.Point(15, 103);
+            this.lblIDNo.Location = new System.Drawing.Point(15, 126);
             this.lblIDNo.Name = "lblIDNo";
             this.lblIDNo.Size = new System.Drawing.Size(68, 15);
             this.lblIDNo.TabIndex = 56;
             this.lblIDNo.Text = "ID Number";
             // 
-            // btnCheckStudentRegistration
-            // 
-            this.btnCheckStudentRegistration.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnCheckStudentRegistration.FlatAppearance.BorderSize = 0;
-            this.btnCheckStudentRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckStudentRegistration.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckStudentRegistration.ForeColor = System.Drawing.Color.White;
-            this.btnCheckStudentRegistration.Location = new System.Drawing.Point(18, 195);
-            this.btnCheckStudentRegistration.Name = "btnCheckStudentRegistration";
-            this.btnCheckStudentRegistration.Size = new System.Drawing.Size(308, 39);
-            this.btnCheckStudentRegistration.TabIndex = 56;
-            this.btnCheckStudentRegistration.Text = "Check Registration";
-            this.btnCheckStudentRegistration.UseVisualStyleBackColor = false;
-            this.btnCheckStudentRegistration.Click += new System.EventHandler(this.btnCheckStudentRegistration_Click);
-            // 
             // txtIDNo
             // 
             this.txtIDNo.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDNo.Location = new System.Drawing.Point(18, 121);
+            this.txtIDNo.Location = new System.Drawing.Point(18, 144);
             this.txtIDNo.Name = "txtIDNo";
             this.txtIDNo.Size = new System.Drawing.Size(308, 23);
             this.txtIDNo.TabIndex = 57;
@@ -408,7 +391,7 @@
             // 
             this.lblStudentRegistration.AutoSize = true;
             this.lblStudentRegistration.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentRegistration.Location = new System.Drawing.Point(100, 12);
+            this.lblStudentRegistration.Location = new System.Drawing.Point(100, 35);
             this.lblStudentRegistration.Name = "lblStudentRegistration";
             this.lblStudentRegistration.Size = new System.Drawing.Size(145, 18);
             this.lblStudentRegistration.TabIndex = 57;
@@ -425,16 +408,16 @@
             this.panelGuestRegistration.Controls.Add(this.txtCode);
             this.panelGuestRegistration.Controls.Add(this.lblGuestRegistration);
             this.panelGuestRegistration.Enabled = false;
-            this.panelGuestRegistration.Location = new System.Drawing.Point(925, 396);
+            this.panelGuestRegistration.Location = new System.Drawing.Point(925, 381);
             this.panelGuestRegistration.Name = "panelGuestRegistration";
-            this.panelGuestRegistration.Size = new System.Drawing.Size(343, 263);
+            this.panelGuestRegistration.Size = new System.Drawing.Size(343, 278);
             this.panelGuestRegistration.TabIndex = 55;
             // 
             // lblGuestRegistrationFee
             // 
             this.lblGuestRegistrationFee.AutoSize = true;
             this.lblGuestRegistrationFee.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGuestRegistrationFee.Location = new System.Drawing.Point(15, 70);
+            this.lblGuestRegistrationFee.Location = new System.Drawing.Point(15, 85);
             this.lblGuestRegistrationFee.Name = "lblGuestRegistrationFee";
             this.lblGuestRegistrationFee.Size = new System.Drawing.Size(102, 15);
             this.lblGuestRegistrationFee.TabIndex = 65;
@@ -444,7 +427,7 @@
             // 
             this.lblGuestSlots.AutoSize = true;
             this.lblGuestSlots.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGuestSlots.Location = new System.Drawing.Point(53, 55);
+            this.lblGuestSlots.Location = new System.Drawing.Point(15, 70);
             this.lblGuestSlots.Name = "lblGuestSlots";
             this.lblGuestSlots.Size = new System.Drawing.Size(64, 15);
             this.lblGuestSlots.TabIndex = 62;
@@ -457,7 +440,7 @@
             this.btnGuestRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuestRegister.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuestRegister.ForeColor = System.Drawing.Color.White;
-            this.btnGuestRegister.Location = new System.Drawing.Point(18, 149);
+            this.btnGuestRegister.Location = new System.Drawing.Point(18, 164);
             this.btnGuestRegister.Name = "btnGuestRegister";
             this.btnGuestRegister.Size = new System.Drawing.Size(308, 39);
             this.btnGuestRegister.TabIndex = 64;
@@ -469,7 +452,7 @@
             // 
             this.lblCode.AutoSize = true;
             this.lblCode.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCode.Location = new System.Drawing.Point(15, 102);
+            this.lblCode.Location = new System.Drawing.Point(15, 117);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(36, 15);
             this.lblCode.TabIndex = 60;
@@ -482,17 +465,18 @@
             this.btnCheckGuestRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckGuestRegistration.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckGuestRegistration.ForeColor = System.Drawing.Color.White;
-            this.btnCheckGuestRegistration.Location = new System.Drawing.Point(18, 194);
+            this.btnCheckGuestRegistration.Location = new System.Drawing.Point(18, 209);
             this.btnCheckGuestRegistration.Name = "btnCheckGuestRegistration";
             this.btnCheckGuestRegistration.Size = new System.Drawing.Size(308, 39);
             this.btnCheckGuestRegistration.TabIndex = 61;
             this.btnCheckGuestRegistration.Text = "Check Registration";
             this.btnCheckGuestRegistration.UseVisualStyleBackColor = false;
+            this.btnCheckGuestRegistration.Click += new System.EventHandler(this.btnCheckGuestRegistration_Click);
             // 
             // txtCode
             // 
             this.txtCode.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.Location = new System.Drawing.Point(18, 120);
+            this.txtCode.Location = new System.Drawing.Point(18, 135);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(308, 23);
             this.txtCode.TabIndex = 63;
@@ -501,7 +485,7 @@
             // 
             this.lblGuestRegistration.AutoSize = true;
             this.lblGuestRegistration.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGuestRegistration.Location = new System.Drawing.Point(100, 12);
+            this.lblGuestRegistration.Location = new System.Drawing.Point(100, 27);
             this.lblGuestRegistration.Name = "lblGuestRegistration";
             this.lblGuestRegistration.Size = new System.Drawing.Size(133, 18);
             this.lblGuestRegistration.TabIndex = 58;
@@ -590,7 +574,6 @@
         private System.Windows.Forms.Panel panelStudentRegistration;
         private System.Windows.Forms.Label lblStudentRegistration;
         private System.Windows.Forms.Panel panelGuestRegistration;
-        private System.Windows.Forms.Button btnCheckStudentRegistration;
         private System.Windows.Forms.Label lblGuestRegistration;
         private System.Windows.Forms.Button btnStudentRegister;
         private System.Windows.Forms.Label lblIDNo;

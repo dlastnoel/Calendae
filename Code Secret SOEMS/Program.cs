@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Views;
+using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS
 {
@@ -20,6 +21,8 @@ namespace Code_Secret_SOEMS
             Application.Run(new FrmLogin());
             //Application.Run(new FrmEventRegistration());
             //new RestoreHelper("lock");
+
+            
         }
     }
 }

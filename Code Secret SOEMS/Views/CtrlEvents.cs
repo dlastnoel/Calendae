@@ -75,6 +75,7 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Standard;
             btnDelete.Enabled = false;
             btnDelete.FlatStyle = FlatStyle.Standard;
+            btnShowDetails.Hide();
         }
         public CtrlEvents(string position)
         {
@@ -109,7 +110,7 @@ namespace Code_Secret_SOEMS
 
         private void btnOpenForm_Click(object sender, EventArgs e)
         {
-            new FrmEvents(position, false, 0).ShowDialog();
+            new FrmEvents(this, position, false, 0).ShowDialog();
             eventPresenter.loadEvents(dataEvents);
         }
 
@@ -278,6 +279,7 @@ namespace Code_Secret_SOEMS
             if (this.Size == new Size(1576, 956))
             {
                 populateFields();
+                btnShowDetails.Show();
             }
             else
             {
@@ -285,7 +287,7 @@ namespace Code_Secret_SOEMS
                 {
                     if(eventPresenter.checkEventStatus(currentID))
                     {
-                        FrmEvents frmEvents = new FrmEvents(position, true, currentID);
+                        FrmEvents frmEvents = new FrmEvents(this, position, true, currentID);
                         frmEvents.ShowDialog();
                         eventPresenter.loadEvents(dataEvents);
                     } else
@@ -294,7 +296,7 @@ namespace Code_Secret_SOEMS
                     }
                 } else
                 {
-                    FrmEvents frmEvents = new FrmEvents(position, true, currentID);
+                    FrmEvents frmEvents = new FrmEvents(this, position, true, currentID);
                     frmEvents.ShowDialog();
                     eventPresenter.loadEvents(dataEvents);
                 }

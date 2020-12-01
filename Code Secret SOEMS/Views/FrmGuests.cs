@@ -111,10 +111,12 @@ namespace Code_Secret_SOEMS
                 }
             } else
             {
-                cmbEvents.Text = guestPresenter.getEventName(int.Parse(mode));
+                //int event_id = guestPresenter.eventID(cmbEvents.Text);
+                //cmbEvents.Text = guestPresenter.getEventName(int.Parse(mode));
+                cmbEvents.Text = mode;
                 cmbEvents.Enabled = false;
+                btnAdd.Text = "Register";
                 this.Size = new Size(616, 557);
-                btnAdd.Location = new Point(7, 511);
             }
         }
 
@@ -195,13 +197,13 @@ namespace Code_Secret_SOEMS
                     }
                     else
                     {
-                        MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                        MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                    MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
                 }
             }
@@ -229,16 +231,19 @@ namespace Code_Secret_SOEMS
 
                             guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
                                 txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
+                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, false, cmbEvents.Text);
                             guestPresenter.addGuest();
 
-                            MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
+                            MessageBox.Show("Your registration to " + cmbEvents.Text + " is successful and is pending for approval", 
+                                "Guests", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Your registration code is " + guestPresenter.getCode() + ". Use this code to check your " +
+                                "status of registration later on. Thank you!", "Guest Registration", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
+                            MessageBox.Show("Please fill up the form correctly", "Guest Registration", MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
                         }
                     }
@@ -261,25 +266,28 @@ namespace Code_Secret_SOEMS
                                 txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, false, cmbEvents.Text);
                             guestPresenter.addGuest();
 
-                            MessageBox.Show("Guest successfully registered to " + cmbEvents.Text + " and is pending for approval",
+                            MessageBox.Show("Your registration to " + cmbEvents.Text + " is successful and is pending for approval",
                                 "Guests", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Your registration code is " + guestPresenter.getCode() + ". Use this code to check your " +
+                                "status of registration later on. Thank you!", "Guest Registration", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Please fill up the form correctly", "Guests", MessageBoxButtons.OK,
+                            MessageBox.Show("Please fill up the form correctly", "Guest Registration", MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                        MessageBox.Show("Please fill up the form correctly", "Guest Registration", MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                    MessageBox.Show("Please fill up the form correctly", "Guest Registration", MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);
                 }
             }

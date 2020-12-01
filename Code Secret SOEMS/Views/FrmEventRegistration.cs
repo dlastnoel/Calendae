@@ -62,7 +62,6 @@ namespace Code_Secret_SOEMS.Views
             th.setLabelColor(lblGuestSlots);
             th.setLabelColor(lblGuestRegistrationFee);
             th.setButtonColor(btnClear);
-            th.setButtonColor(btnCheckStudentRegistration);
             th.setButtonColor(btnStudentRegister);
             th.setButtonColor(btnCheckGuestRegistration);
             th.setButtonColor(btnGuestRegister);
@@ -153,10 +152,20 @@ namespace Code_Secret_SOEMS.Views
                 {
                     MessageBox.Show("You have successfully registered to " + cmbEvents.Text, "Event Registration",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearFields();
                 } else if(eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 2)
                 {
                     MessageBox.Show("You are already registered to " + cmbEvents.Text, "Event Registration",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult prompt = MessageBox.Show("Do you want to unregister from " + cmbEvents.Text + "?",
+                        "Event Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(prompt ==  DialogResult.Yes)
+                    {
+                        eventRegistrationPresenter.unregisterStudent(txtIDNo.Text);
+                        MessageBox.Show("You have successfully unregistered from " + cmbEvents.Text, "Event Registration",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtIDNo.Clear();
+                    }
                 } else if (eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 3)
                 {
                     MessageBox.Show("Registration unsuccessful, your acount is not yet activated", "Event Registration", MessageBoxButtons.OK,
@@ -182,9 +191,31 @@ namespace Code_Secret_SOEMS.Views
 
         private void btnGuestRegister_Click(object sender, EventArgs e)
         {
+            new FrmGuests(lblEventName.Text, 0).ShowDialog();
+        }
+
+        private void btnCheckGuestRegistration_Click(object sender, EventArgs e)
+        {
             if (!String.IsNullOrEmpty(txtCode.Text))
             {
-
+                // 0 - code not found
+                // 1 - event not found
+                // 2 - guest approved
+                // 3 - guest pending
+                if (eventRegistrationPresenter.checkGuestRegistration(txtCode.Text) == 3)
+                {
+                    MessageBox.Show("The registration of " + eventRegistrationPresenter.getGuestFullName() +
+                        " is still pending", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else if (eventRegistrationPresenter.checkGuestRegistration(txtCode.Text) == 2)
+                {
+                    MessageBox.Show("The registration of " + eventRegistrationPresenter.getGuestFullName() +
+                        " was already approved. See you there! ", "Event Registration", MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Registration not found", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                txtCode.Clear();
             }
             else
             {

@@ -36,9 +36,9 @@ namespace Code_Secret_SOEMS.Helpers
             currentForm = myForm;
         }
 
-        public void setCurrentUserControl(UserControl userControl)
+        public void setCurrentUserControl(UserControl myUserControl)
         {
-            currentUserControl = userControl;
+            currentUserControl = myUserControl;
         }
 
         public UserControl getCurrentUserControl()

@@ -11,6 +11,7 @@ namespace Code_Secret_SOEMS.Presenters
     class EventDetailsPresenter
     {
         Event _event = new Event();
+        Guest _guest = new Guest();
         EventDetails _eventDetails = new EventDetails();
 
         public void loadStudentRegistrations(int event_id, DataGridView myDataGridview)
@@ -23,8 +24,9 @@ namespace Code_Secret_SOEMS.Presenters
             _eventDetails.loadGuestRegistrations(event_id, myDataGridview);
         }
 
-        public void populateEventDetails(int event_id, Label lblEventName, Label lblDateAndTime, Label lblStudentSlots,
-            Label lblStudentRegistrationFee, Label lblGuestSlots, Label lblGuestRegistrationFee)
+        public void populateEventDetails(int event_id, UserControl CtrlEventDetails, Label lblEventName, 
+            Label lblDateAndTime, Label lblStudentSlots, Label lblStudentRegistrationFee, 
+            Label lblGuestSlots, Label lblGuestRegistrationFee)
         {
             _event.selectEvent(event_id);
             lblEventName.Text = _event.getEventItems("event_name");
@@ -61,6 +63,21 @@ namespace Code_Secret_SOEMS.Presenters
             {
                 lblGuestRegistrationFee.Text = "Registration Fee: Free";
             }
+        }
+
+        public void unregisterStudent(int event_id, string student_id)
+        {
+            _eventDetails.removeStudentParticipant(event_id, student_id);
+        }
+
+        public void unregisterGuest(int guest_id)
+        {
+            _eventDetails.removeGuestParticipant(guest_id);
+        }
+
+        public void registerGuest(int guest_id)
+        {
+            _guest.registerGuest(guest_id);
         }
     }
 }

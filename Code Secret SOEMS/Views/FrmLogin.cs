@@ -31,6 +31,7 @@ namespace Code_Secret_SOEMS
             th.setGradientPanelColor(panelLeft);
             th.setButtonColor(btnLogin);
             th.setButtonColor(btnRegister);
+            th.setIconButton(btnEvents);
             th.setControlButtonColor(btnClose);
             th.setIconButtonColor(btnSettings);
             th.setIconButtonColor(btnAbout);

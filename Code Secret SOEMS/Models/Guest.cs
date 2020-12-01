@@ -115,6 +115,15 @@ namespace Code_Secret_SOEMS.Models
             return dbHelper.getLastID();
         }
 
+        public void registerGuest(int guest_id)
+        {
+            dbHelper.createQuery("UPDATE guests SET is_activated = @is_activated WHERE id = @guest_id");
+            dbHelper.bindParam("@is_activated", 1);
+            dbHelper.bindParam("@guest_id", guest_id);
+
+            dbHelper.executeQuery();
+        }
+
         public void updateGuest(int currentID)
         {
             dbHelper.createQuery(

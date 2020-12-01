@@ -250,6 +250,17 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
+        public void setIconButton(IconButton myButton)
+        {
+            if(isDark())
+            {
+                myButton.IconColor = Color.White;
+            } else
+            {
+                myButton.IconColor = Color.Black;
+            }
+        }
+
         // Sets the hover color for the icon buttons (based from theme)
         public void setIconButtonColor(IconButton myButton)
         {

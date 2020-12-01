@@ -30,57 +30,17 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataStudentRegistrations = new System.Windows.Forms.DataGridView();
-            this.dataGuestRegistrations = new System.Windows.Forms.DataGridView();
             this.lblEventName = new System.Windows.Forms.Label();
             this.lblDateAndTime = new System.Windows.Forms.Label();
             this.lblStudentSlots = new System.Windows.Forms.Label();
             this.lblStudentRegistrationFee = new System.Windows.Forms.Label();
             this.lblGuestRegistrationFee = new System.Windows.Forms.Label();
             this.lblGuestSlots = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataStudentRegistrations)).BeginInit();
+            this.dataGuestRegistrations = new System.Windows.Forms.DataGridView();
+            this.dataStudentRegistrations = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGuestRegistrations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataStudentRegistrations)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataStudentRegistrations
-            // 
-            this.dataStudentRegistrations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataStudentRegistrations.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataStudentRegistrations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataStudentRegistrations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataStudentRegistrations.Location = new System.Drawing.Point(27, 97);
-            this.dataStudentRegistrations.Name = "dataStudentRegistrations";
-            this.dataStudentRegistrations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataStudentRegistrations.Size = new System.Drawing.Size(747, 823);
-            this.dataStudentRegistrations.TabIndex = 31;
-            // 
-            // dataGuestRegistrations
-            // 
-            this.dataGuestRegistrations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGuestRegistrations.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGuestRegistrations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGuestRegistrations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGuestRegistrations.Location = new System.Drawing.Point(798, 97);
-            this.dataGuestRegistrations.Name = "dataGuestRegistrations";
-            this.dataGuestRegistrations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGuestRegistrations.Size = new System.Drawing.Size(747, 823);
-            this.dataGuestRegistrations.TabIndex = 32;
             // 
             // lblEventName
             // 
@@ -142,6 +102,48 @@
             this.lblGuestSlots.TabIndex = 56;
             this.lblGuestSlots.Text = "Slots Left:";
             // 
+            // dataGuestRegistrations
+            // 
+            this.dataGuestRegistrations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGuestRegistrations.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGuestRegistrations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGuestRegistrations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGuestRegistrations.Location = new System.Drawing.Point(798, 97);
+            this.dataGuestRegistrations.Name = "dataGuestRegistrations";
+            this.dataGuestRegistrations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGuestRegistrations.Size = new System.Drawing.Size(747, 823);
+            this.dataGuestRegistrations.TabIndex = 32;
+            this.dataGuestRegistrations.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGuestRegistrations_CellDoubleClick);
+            // 
+            // dataStudentRegistrations
+            // 
+            this.dataStudentRegistrations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataStudentRegistrations.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataStudentRegistrations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataStudentRegistrations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataStudentRegistrations.Location = new System.Drawing.Point(27, 97);
+            this.dataStudentRegistrations.Name = "dataStudentRegistrations";
+            this.dataStudentRegistrations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataStudentRegistrations.Size = new System.Drawing.Size(747, 823);
+            this.dataStudentRegistrations.TabIndex = 31;
+            this.dataStudentRegistrations.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataStudentRegistrations_CellDoubleClick);
+            // 
             // CtrlEventDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,22 +160,22 @@
             this.Name = "CtrlEventDetails";
             this.Size = new System.Drawing.Size(1576, 956);
             this.Load += new System.EventHandler(this.CtrlEventDetails_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataStudentRegistrations)).EndInit();
+            this.SizeChanged += new System.EventHandler(this.CtrlEventDetails_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGuestRegistrations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataStudentRegistrations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataStudentRegistrations;
-        private System.Windows.Forms.DataGridView dataGuestRegistrations;
         private System.Windows.Forms.Label lblEventName;
         private System.Windows.Forms.Label lblDateAndTime;
         private System.Windows.Forms.Label lblStudentSlots;
         private System.Windows.Forms.Label lblStudentRegistrationFee;
         private System.Windows.Forms.Label lblGuestRegistrationFee;
         private System.Windows.Forms.Label lblGuestSlots;
+        private System.Windows.Forms.DataGridView dataGuestRegistrations;
+        private System.Windows.Forms.DataGridView dataStudentRegistrations;
     }
 }

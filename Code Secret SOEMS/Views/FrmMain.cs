@@ -82,7 +82,7 @@ namespace Code_Secret_SOEMS
             }
             else
             {
-                if (Screen.PrimaryScreen.Bounds.Width >= 1920)
+                if (Screen.GetBounds(this).Width >= 1920)
                 {
                     currentUserControl.Size = new Size(1576, 956);
                 }
@@ -95,7 +95,7 @@ namespace Code_Secret_SOEMS
             currentUserControl = fh.getCurrentUserControl();
             if (myFormWindowState == FormWindowState.Maximized)
             {
-                if(Screen.PrimaryScreen.Bounds.Width >= 1920)
+                if(Screen.GetBounds(this).Width >= 1920)
                 {
                     
                     currentUserControl .Size = new Size(1576, 956);
@@ -184,19 +184,20 @@ namespace Code_Secret_SOEMS
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             setUserControl("Dashboard");
-            if(this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            if(this.WindowState == FormWindowState.Maximized && Screen.GetBounds(this).Width == 1920)
             {
                 currentUserControl.Size = new Size(1576, 956);
             } else
             {
                 currentUserControl.Size = new Size(940, 614);
             }
+            
         }
 
         private void btnOfficers_Click(object sender, EventArgs e)
         {
             setUserControl("Officers");
-            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            if (this.WindowState == FormWindowState.Maximized && Screen.GetBounds(this).Width == 1920)
             {
                 currentUserControl.Size = new Size(1576, 956);
             }
@@ -209,7 +210,7 @@ namespace Code_Secret_SOEMS
         private void btnEvents_Click(object sender, EventArgs e)
         {
             setUserControl("Events");
-            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            if (this.WindowState == FormWindowState.Maximized && Screen.GetBounds(this).Width == 1920)
             {
                 currentUserControl.Size = new Size(1576, 956);
             }
@@ -222,7 +223,7 @@ namespace Code_Secret_SOEMS
         private void btnStudents_Click(object sender, EventArgs e)
         {
             setUserControl("Students");
-            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            if (this.WindowState == FormWindowState.Maximized && Screen.GetBounds(this).Width == 1920)
             {
                 currentUserControl.Size = new Size(1576, 956);
             }
@@ -235,7 +236,7 @@ namespace Code_Secret_SOEMS
         private void btnGuests_Click(object sender, EventArgs e)
         {
             setUserControl("Guests");
-            if (this.WindowState == FormWindowState.Maximized && Screen.PrimaryScreen.Bounds.Width == 1920)
+            if (this.WindowState == FormWindowState.Maximized && Screen.GetBounds(this).Width == 1920)
             {
                 currentUserControl.Size = new Size(1576, 956);
             }

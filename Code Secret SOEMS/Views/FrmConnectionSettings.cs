@@ -49,12 +49,14 @@ namespace Code_Secret_SOEMS
 
                 MessageBox.Show("Connection settings updated successfully", "Connection Settings", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                this.Close();
             } else if(String.IsNullOrEmpty(txtServer.Text) && String.IsNullOrEmpty(txtUser.Text) &&
                 String.IsNullOrEmpty(txtPort.Text) && String.IsNullOrEmpty(txtPassword.Text))
             {
                 sh.setDefaultConnectionSettings();
                 MessageBox.Show("Connection settings reverted to default", "Connection Settings", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                this.Close();
             } else
             {
                 MessageBox.Show("Please fill up the fields correctly", "Connection Settings", MessageBoxButtons.OK,

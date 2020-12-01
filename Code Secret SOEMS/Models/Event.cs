@@ -63,6 +63,14 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.createQuery("SELECT * FROM events WHERE is_activated = 1");
             return dbHelper.getResultList("event_name");
         }
+        public List<string> getAllGuestAllowedActiveEvents()
+        {
+            dbHelper.createQuery("SELECT * FROM events WHERE allow_guests = @allow_guests AND is_activated = @is_activated");
+            dbHelper.bindParam("@allow_guests", 1);
+            dbHelper.bindParam("@is_activated", 1);
+            return dbHelper.getResultList("event_name");
+        }
+
         public string getEventItems(string item)
         {
             return dbHelper.getFromReader(item);

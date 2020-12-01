@@ -16,6 +16,9 @@ namespace Code_Secret_SOEMS
     {
         EventPresenter eventPresenter;
         ThemeHelper th;
+        FormHelper fh;
+        private UserControl currentUserControl;
+        string position;
         int currentID;
         bool activation;
 
@@ -53,11 +56,12 @@ namespace Code_Secret_SOEMS
             btnDelete.Enabled = false;
             btnDelete.FlatStyle = FlatStyle.Standard;
         }
-        public FrmEvents(string position, bool update, int id)
+        public FrmEvents(UserControl userControl, string position, bool update, int id)
         {
             InitializeComponent();
             th = new ThemeHelper();
             eventPresenter = new EventPresenter();
+            fh = new FormHelper();
             th.setFormColor(this);
             th.setPanelColor(panelTop);
             th.setGroupBoxColor(groupEventInfo);
@@ -66,6 +70,7 @@ namespace Code_Secret_SOEMS
             th.setButtonColor(btnAdd);
             th.setButtonColor(btnUpdate);
             th.setButtonColor(btnDelete);
+            th.setButtonColor(btnShowDetails);
 
             th.setLabelColor(lblEventName);
             th.setLabelColor(lblVenue);
@@ -78,13 +83,14 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblGuestSlots);
 
             currentID = id;
-            
-            if (position != "Adviser")
+            this.position = position;
+            if (this.position != "Adviser")
             {
                 activation = false;
                 switchIsActivated.Hide();
                 lblStatus.Hide();
                 lblSwitchStatus.Hide();
+                this.Size = new Size(614, 673);
             }
 
             if (update)
@@ -101,7 +107,9 @@ namespace Code_Secret_SOEMS
                 btnUpdate.FlatStyle = FlatStyle.Standard;
                 btnDelete.Enabled = false;
                 btnDelete.FlatStyle = FlatStyle.Standard;
+                this.Size = new Size(614, 673);
             }
+            currentUserControl = userControl;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -252,6 +260,14 @@ namespace Code_Secret_SOEMS
             {
                 groupGuests.Enabled = false;
             }
+        }
+
+        private void btnShowDetails_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            fh.setEventID(currentID);
+            fh.setCurrentUserControl(currentUserControl);
+            fh.setUserControl("Event Details", position);
         }
     }
 }

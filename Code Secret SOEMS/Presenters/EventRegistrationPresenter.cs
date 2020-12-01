@@ -62,16 +62,23 @@ namespace Code_Secret_SOEMS.Presenters
             txtEventDetails.Text = _event.getEventItems("event_details");
             student_slots = int.Parse(_event.getEventItems("student_slots"));
             panelStudentRegistration.Enabled = true;
-            if(student_slots != 0)
+            if (student_slots != 0)
             {
-                lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("student_slots")) -
-                    _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id")))).ToString();
+                if(int.Parse(_event.getEventItems("student_slots")) - _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id"))) != 0)
+                {
+                    lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("student_slots")) -
+                        _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id")))).ToString();
+                } else
+                {
+                    lblStudentSlots.Text = "All slots have been taken";
+                    panelStudentRegistration.Enabled = false;
+                }
             }
             else
             {
                 lblStudentSlots.Text = "Slots Left: Open";
             }
-            if(_event.getEventItems("student_registration") == "0")
+            if (_event.getEventItems("student_registration") == "0")
             {
                 lblStudentRegistrationFee.Text = "Registration Fee: Free";
             } else
@@ -84,12 +91,20 @@ namespace Code_Secret_SOEMS.Presenters
                 guest_slots = int.Parse(_event.getEventItems("guest_slots"));
                 if (guest_slots != 0)
                 {
-                    lblGuestSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("guest_slots")) -
-                    _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id")))).ToString();
+                    if(int.Parse(_event.getEventItems("guest_slots")) -
+                    _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id"))) != 0)
+                    {
+                        lblGuestSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("guest_slots")) -
+                        _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id")))).ToString();
+                    } else
+                    {
+                        lblGuestSlots.Text = "All slots have been taken";
+                        panelStudentRegistration.Enabled = false;
+                    }
                 }
                 else
                 {
-                    lblGuestSlots.Text = "Guest Slots: Open";
+                    lblGuestSlots.Text = "Slots Left: Open";
                 }
                 if (_event.getEventItems("guest_registration") == "0")
                 {
@@ -113,5 +128,21 @@ namespace Code_Secret_SOEMS.Presenters
             _eventDetails.student_id = student_id;
             return _eventDetails.addStudentParticipant();
         }
+
+        public void unregisterStudent(string student_id)
+        {
+            _eventDetails.removeStudentParticipant(event_id, student_id);
+        }
+        public string getGuestFullName()
+        {
+            return _eventDetails.getEventDetails("first_name") + " " + _eventDetails.getEventDetails("middle_name") + " " +
+                _eventDetails.getEventDetails("last_name");
+        }
+        public int checkGuestRegistration(string code)
+        {
+            _eventDetails.event_id = event_id;
+            return _eventDetails.selectGuestByCode(code);
+        }
+
     }
 }

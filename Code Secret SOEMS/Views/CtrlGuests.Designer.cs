@@ -92,7 +92,7 @@
             this.txtSchoolName.Location = new System.Drawing.Point(43, 62);
             this.txtSchoolName.Name = "txtSchoolName";
             this.txtSchoolName.Size = new System.Drawing.Size(487, 23);
-            this.txtSchoolName.TabIndex = 13;
+            this.txtSchoolName.TabIndex = 15;
             // 
             // lblCourse
             // 
@@ -110,7 +110,7 @@
             this.txtCourse.Location = new System.Drawing.Point(43, 106);
             this.txtCourse.Name = "txtCourse";
             this.txtCourse.Size = new System.Drawing.Size(424, 23);
-            this.txtCourse.TabIndex = 14;
+            this.txtCourse.TabIndex = 16;
             // 
             // groupSchoolInfo
             // 
@@ -125,7 +125,7 @@
             this.groupSchoolInfo.Location = new System.Drawing.Point(941, 423);
             this.groupSchoolInfo.Name = "groupSchoolInfo";
             this.groupSchoolInfo.Size = new System.Drawing.Size(591, 152);
-            this.groupSchoolInfo.TabIndex = 46;
+            this.groupSchoolInfo.TabIndex = 14;
             this.groupSchoolInfo.TabStop = false;
             this.groupSchoolInfo.Text = "School Information";
             // 
@@ -135,7 +135,7 @@
             this.txtYear.Location = new System.Drawing.Point(473, 106);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(57, 23);
-            this.txtYear.TabIndex = 15;
+            this.txtYear.TabIndex = 17;
             // 
             // lblYear
             // 
@@ -157,7 +157,7 @@
             this.btnDelete.Location = new System.Drawing.Point(1240, 786);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(292, 41);
-            this.btnDelete.TabIndex = 20;
+            this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -172,7 +172,7 @@
             this.btnAdd.Location = new System.Drawing.Point(941, 739);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(591, 41);
-            this.btnAdd.TabIndex = 18;
+            this.btnAdd.TabIndex = 21;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -187,7 +187,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(941, 786);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(292, 41);
-            this.btnUpdate.TabIndex = 19;
+            this.btnUpdate.TabIndex = 22;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -250,7 +250,7 @@
             this.groupPersonalInfo.Location = new System.Drawing.Point(941, 111);
             this.groupPersonalInfo.Name = "groupPersonalInfo";
             this.groupPersonalInfo.Size = new System.Drawing.Size(591, 306);
-            this.groupPersonalInfo.TabIndex = 47;
+            this.groupPersonalInfo.TabIndex = 3;
             this.groupPersonalInfo.TabStop = false;
             this.groupPersonalInfo.Text = "Personal Information";
             // 
@@ -262,7 +262,7 @@
             this.panel2.Location = new System.Drawing.Point(317, 172);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(213, 56);
-            this.panel2.TabIndex = 48;
+            this.panel2.TabIndex = 11;
             // 
             // lblGender
             // 
@@ -281,7 +281,7 @@
             this.rbnMale.Location = new System.Drawing.Point(27, 29);
             this.rbnMale.Name = "rbnMale";
             this.rbnMale.Size = new System.Drawing.Size(53, 19);
-            this.rbnMale.TabIndex = 10;
+            this.rbnMale.TabIndex = 12;
             this.rbnMale.TabStop = true;
             this.rbnMale.Text = "Male";
             this.rbnMale.UseVisualStyleBackColor = true;
@@ -293,7 +293,7 @@
             this.rbnFemale.Location = new System.Drawing.Point(86, 29);
             this.rbnFemale.Name = "rbnFemale";
             this.rbnFemale.Size = new System.Drawing.Size(68, 19);
-            this.rbnFemale.TabIndex = 11;
+            this.rbnFemale.TabIndex = 13;
             this.rbnFemale.TabStop = true;
             this.rbnFemale.Text = "Female";
             this.rbnFemale.UseVisualStyleBackColor = true;
@@ -305,7 +305,7 @@
             this.panel1.Location = new System.Drawing.Point(43, 39);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(213, 39);
-            this.panel1.TabIndex = 48;
+            this.panel1.TabIndex = 0;
             // 
             // rbnWorking
             // 
@@ -349,7 +349,7 @@
             this.cmbEvents.Location = new System.Drawing.Point(317, 57);
             this.cmbEvents.Name = "cmbEvents";
             this.cmbEvents.Size = new System.Drawing.Size(213, 23);
-            this.cmbEvents.TabIndex = 3;
+            this.cmbEvents.TabIndex = 4;
             // 
             // lblFirstName
             // 
@@ -367,7 +367,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(317, 143);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(213, 23);
-            this.txtEmailAddress.TabIndex = 9;
+            this.txtEmailAddress.TabIndex = 10;
             // 
             // txtFirstName
             // 
@@ -375,7 +375,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(43, 99);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(213, 23);
-            this.txtFirstName.TabIndex = 4;
+            this.txtFirstName.TabIndex = 5;
             // 
             // lblEmailAddress
             // 
@@ -403,7 +403,7 @@
             this.txtContactNo.Location = new System.Drawing.Point(317, 99);
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(213, 23);
-            this.txtContactNo.TabIndex = 8;
+            this.txtContactNo.TabIndex = 9;
             // 
             // txtMiddleName
             // 
@@ -411,7 +411,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(43, 143);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(213, 23);
-            this.txtMiddleName.TabIndex = 5;
+            this.txtMiddleName.TabIndex = 6;
             // 
             // lblContactNo
             // 
@@ -439,7 +439,7 @@
             this.txtLastName.Location = new System.Drawing.Point(43, 187);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(213, 23);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 7;
             // 
             // lblAddress
             // 
@@ -458,7 +458,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(487, 56);
-            this.txtAddress.TabIndex = 7;
+            this.txtAddress.TabIndex = 8;
             // 
             // groupWorkInfo
             // 
@@ -471,7 +471,7 @@
             this.groupWorkInfo.Location = new System.Drawing.Point(941, 581);
             this.groupWorkInfo.Name = "groupWorkInfo";
             this.groupWorkInfo.Size = new System.Drawing.Size(591, 152);
-            this.groupWorkInfo.TabIndex = 47;
+            this.groupWorkInfo.TabIndex = 18;
             this.groupWorkInfo.TabStop = false;
             this.groupWorkInfo.Text = "Work Information";
             // 
@@ -491,7 +491,7 @@
             this.txtWorksAt.Location = new System.Drawing.Point(43, 62);
             this.txtWorksAt.Name = "txtWorksAt";
             this.txtWorksAt.Size = new System.Drawing.Size(487, 23);
-            this.txtWorksAt.TabIndex = 16;
+            this.txtWorksAt.TabIndex = 19;
             // 
             // lblPosition
             // 
@@ -509,7 +509,7 @@
             this.txtPosition.Location = new System.Drawing.Point(43, 106);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(487, 23);
-            this.txtPosition.TabIndex = 17;
+            this.txtPosition.TabIndex = 20;
             // 
             // CtrlGuests
             // 
