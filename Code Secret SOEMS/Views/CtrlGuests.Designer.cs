@@ -199,7 +199,7 @@
             this.btnOpenForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenForm.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenForm.ForeColor = System.Drawing.Color.White;
-            this.btnOpenForm.Location = new System.Drawing.Point(0, 0);
+            this.btnOpenForm.Location = new System.Drawing.Point(27, 0);
             this.btnOpenForm.Name = "btnOpenForm";
             this.btnOpenForm.Size = new System.Drawing.Size(86, 31);
             this.btnOpenForm.TabIndex = 21;

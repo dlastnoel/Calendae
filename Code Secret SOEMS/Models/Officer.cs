@@ -79,6 +79,15 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.executeQuery();
         }
 
+        public string getAdviser()
+        {
+            dbHelper.createQuery("SELECT * FROM officers WHERE position = @position");
+            dbHelper.bindParam("@position", "Adviser");
+
+            return dbHelper.getFromReader("first_name") + " " + dbHelper.getFromReader("middle_name") + " " +
+                dbHelper.getFromReader("last_name");
+        }
+
         public bool loginOfficer(string id, string userPassword)
         {
             string hashPassword;

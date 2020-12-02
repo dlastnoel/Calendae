@@ -64,11 +64,12 @@ namespace Code_Secret_SOEMS.Presenters
             panelStudentRegistration.Enabled = true;
             if (student_slots != 0)
             {
-                if(int.Parse(_event.getEventItems("student_slots")) - _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id"))) != 0)
+                if (int.Parse(_event.getEventItems("student_slots")) - _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id"))) != 0)
                 {
                     lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("student_slots")) -
                         _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id")))).ToString();
-                } else
+                }
+                else
                 {
                     lblStudentSlots.Text = "All slots have been taken";
                     panelStudentRegistration.Enabled = false;
@@ -81,7 +82,8 @@ namespace Code_Secret_SOEMS.Presenters
             if (_event.getEventItems("student_registration") == "0")
             {
                 lblStudentRegistrationFee.Text = "Registration Fee: Free";
-            } else
+            }
+            else
             {
                 lblStudentRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
             }
@@ -91,12 +93,13 @@ namespace Code_Secret_SOEMS.Presenters
                 guest_slots = int.Parse(_event.getEventItems("guest_slots"));
                 if (guest_slots != 0)
                 {
-                    if(int.Parse(_event.getEventItems("guest_slots")) -
+                    if (int.Parse(_event.getEventItems("guest_slots")) -
                     _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id"))) != 0)
                     {
                         lblGuestSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("guest_slots")) -
                         _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id")))).ToString();
-                    } else
+                    }
+                    else
                     {
                         lblGuestSlots.Text = "All slots have been taken";
                         panelStudentRegistration.Enabled = false;
@@ -114,7 +117,8 @@ namespace Code_Secret_SOEMS.Presenters
                 {
                     lblGuestRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
                 }
-            } else
+            }
+            else
             {
                 panelGuestRegistration.Enabled = false;
                 lblGuestSlots.Text = "Slots Left: ";

@@ -16,29 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `courses`
---
-
-DROP TABLE IF EXISTS `courses`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `courses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `course` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `courses`
---
-
-LOCK TABLES `courses` WRITE;
-/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `events`
 --
 
@@ -69,36 +46,36 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (8,'Shot','Bahay ni Ian','Bukas','8am - 10pm',200,5,'Shot mga boss',1,500,0,1),(9,'Meeting','Bahay ni Isiah','Friday - Saturday','overnight',0,5,'G na hahahaha',0,0,0,1);
+INSERT INTO `events` VALUES (8,'Shot','Bahay ni Ian','Bukas','8am - 10pm',200,5,'Shot mga boss',1,500,0,1),(9,'Meeting','Bahay ni Isiah','Friday - Saturday','overnight',0,1,'G na hahahaha',0,0,0,1);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `guest_registration`
+-- Table structure for table `guest_registrations`
 --
 
-DROP TABLE IF EXISTS `guest_registration`;
+DROP TABLE IF EXISTS `guest_registrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `guest_registration` (
+CREATE TABLE `guest_registrations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event_id` int(11) DEFAULT NULL,
   `guest_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `guest_id` (`guest_id`),
-  CONSTRAINT `guest_registration_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
-  CONSTRAINT `guest_registration_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `guests` (`id`)
+  CONSTRAINT `guest_registrations_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  CONSTRAINT `guest_registrations_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `guests` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `guest_registration`
+-- Dumping data for table `guest_registrations`
 --
 
-LOCK TABLES `guest_registration` WRITE;
-/*!40000 ALTER TABLE `guest_registration` DISABLE KEYS */;
-/*!40000 ALTER TABLE `guest_registration` ENABLE KEYS */;
+LOCK TABLES `guest_registrations` WRITE;
+/*!40000 ALTER TABLE `guest_registrations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `guest_registrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,7 +105,7 @@ CREATE TABLE `guests` (
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   CONSTRAINT `guests_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +114,7 @@ CREATE TABLE `guests` (
 
 LOCK TABLES `guests` WRITE;
 /*!40000 ALTER TABLE `guests` DISABLE KEYS */;
-INSERT INTO `guests` VALUES (1,'Mark Denver','Dening','Halog','Villa, Rosario, La Union','09987654321','markdenver@gmail.com','M','DMMMSU-MLUC CIT','BS Information Technology','4','','',NULL,1,8);
+INSERT INTO `guests` VALUES (8,'Paul William','B','Martin','Bauang, La Union','09192837465','paulmartin@gmail.com','M','DMMMSU-MLUC CIT','College of Information Technology','3','','','pXVvdUS6',1,8);
 /*!40000 ALTER TABLE `guests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,31 +153,32 @@ INSERT INTO `officers` VALUES ('181-1665-2','President','Ian Justin','Banera','S
 UNLOCK TABLES;
 
 --
--- Table structure for table `student_registration`
+-- Table structure for table `student_registrations`
 --
 
-DROP TABLE IF EXISTS `student_registration`;
+DROP TABLE IF EXISTS `student_registrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `student_registration` (
+CREATE TABLE `student_registrations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event_id` int(11) DEFAULT NULL,
   `student_id` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`),
   KEY `student_id` (`student_id`),
-  CONSTRAINT `student_registration_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
-  CONSTRAINT `student_registration_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `student_registrations_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  CONSTRAINT `student_registrations_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `student_registration`
+-- Dumping data for table `student_registrations`
 --
 
-LOCK TABLES `student_registration` WRITE;
-/*!40000 ALTER TABLE `student_registration` DISABLE KEYS */;
-/*!40000 ALTER TABLE `student_registration` ENABLE KEYS */;
+LOCK TABLES `student_registrations` WRITE;
+/*!40000 ALTER TABLE `student_registrations` DISABLE KEYS */;
+INSERT INTO `student_registrations` VALUES (4,9,'181-1666-2');
+/*!40000 ALTER TABLE `student_registrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -232,7 +210,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES ('181-1666-2','Iris','Perez','Lagasca','Damortis, Rosario, La Union','09283922122','irislagasca@gmail.com','M','BS Information Technology','3F',1),('181-16661-2','Mary Hart','Camba','Abenoja','Naguilian, La Union','09976273611','maryhart@gmail.com','F','BS Information Technology','3C',0);
+INSERT INTO `students` VALUES ('181-1665-2','Ian Justin','Banera','Salazar','Concepcion, Rosario, La Union','09467170412','ian.salazar94@gmail.com','M','BS Information Technology','3F',1),('181-1666-2','Iris','Perez','Lagasca','Damortis, Rosario, La Union','09283922122','irislagasca@gmail.com','M','BS Information Technology','3F',1),('181-16661-2','Mary Hart','Camba','Abenoja','Naguilian, La Union','09976273611','maryhart@gmail.com','F','BS Information Technology','3C',1);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -245,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-29 15:55:58
+-- Dump completed on 2020-12-02 14:03:40

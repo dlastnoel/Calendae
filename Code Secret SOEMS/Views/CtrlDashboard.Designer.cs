@@ -87,12 +87,12 @@
             this.lblTotalIGP = new System.Windows.Forms.Label();
             this.panelIGPGained = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblAdviser = new System.Windows.Forms.Label();
             this.lblOrganization = new System.Windows.Forms.Label();
             this.lblSchool = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.lblAdviser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconEvents)).BeginInit();
             this.panelEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconStudents)).BeginInit();
@@ -716,6 +716,7 @@
             this.btnEvents.TabIndex = 7;
             this.btnEvents.Text = "Events";
             this.btnEvents.UseVisualStyleBackColor = false;
+            this.btnEvents.Click += new System.EventHandler(this.btnEvents_Click);
             // 
             // btnStudents
             // 
@@ -739,6 +740,7 @@
             this.btnStudents.TabIndex = 8;
             this.btnStudents.Text = "Students";
             this.btnStudents.UseVisualStyleBackColor = false;
+            this.btnStudents.Click += new System.EventHandler(this.btnStudents_Click);
             // 
             // lblIncomingRequests
             // 
@@ -774,6 +776,7 @@
             this.btnGuests.TabIndex = 9;
             this.btnGuests.Text = "Guests";
             this.btnGuests.UseVisualStyleBackColor = false;
+            this.btnGuests.Click += new System.EventHandler(this.btnGuests_Click);
             // 
             // iconIncomingRequests
             // 
@@ -901,6 +904,18 @@
             this.panel1.Size = new System.Drawing.Size(605, 226);
             this.panel1.TabIndex = 25;
             // 
+            // lblAdviser
+            // 
+            this.lblAdviser.AutoSize = true;
+            this.lblAdviser.BackColor = System.Drawing.Color.Transparent;
+            this.lblAdviser.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdviser.ForeColor = System.Drawing.Color.White;
+            this.lblAdviser.Location = new System.Drawing.Point(31, 163);
+            this.lblAdviser.Name = "lblAdviser";
+            this.lblAdviser.Size = new System.Drawing.Size(137, 19);
+            this.lblAdviser.TabIndex = 41;
+            this.lblAdviser.Text = "Adviser: John Doe";
+            // 
             // lblOrganization
             // 
             this.lblOrganization.AutoSize = true;
@@ -960,18 +975,6 @@
             this.txtNotes.Size = new System.Drawing.Size(900, 305);
             this.txtNotes.TabIndex = 26;
             this.txtNotes.Text = "Write notes here...";
-            // 
-            // lblAdviser
-            // 
-            this.lblAdviser.AutoSize = true;
-            this.lblAdviser.BackColor = System.Drawing.Color.Transparent;
-            this.lblAdviser.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdviser.ForeColor = System.Drawing.Color.White;
-            this.lblAdviser.Location = new System.Drawing.Point(31, 163);
-            this.lblAdviser.Name = "lblAdviser";
-            this.lblAdviser.Size = new System.Drawing.Size(137, 19);
-            this.lblAdviser.TabIndex = 41;
-            this.lblAdviser.Text = "Adviser: John Doe";
             // 
             // CtrlDashboard
             // 

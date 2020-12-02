@@ -62,6 +62,25 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.populateDataGridView(myDataGridView);
         }
 
+        public List<string> getInactiveGuestIds()
+        {
+            dbHelper.createQuery("SELECT * FROM guests WHERE is_activated = 0;");
+            return dbHelper.getResultList("id");
+        }
+
+        public int countAllGuestsRegistered()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM guests WHERE is_activated = @is_activated;");
+            dbHelper.bindParam("@is_activated", 1);
+            return dbHelper.getCount();
+        }
+        public int countAllGuestsUnregistered()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM guests WHERE is_activated = @is_activated");
+            dbHelper.bindParam("@is_activated", 0);
+            return dbHelper.getCount();
+        }
+
         public void addGuest()
         {
             dbHelper.createQuery("INSERT INTO guests (first_name, middle_name, last_name, address, contact, email, gender, " +
@@ -103,6 +122,26 @@ namespace Code_Secret_SOEMS.Models
                     "events.id = guests.event_id " +
                 "WHERE guests.id = @id; ");
             dbHelper.bindParam("@id", currentID);
+        }
+
+        public void activateGuest(int guest_id)
+        {
+            dbHelper.createQuery("UPDATE guests SET is_activated = @is_activated WHERE " +
+                "id = @guest_id;");
+            dbHelper.bindParam("@is_activated", 1);
+            dbHelper.bindParam("@guest_id", guest_id);
+
+            dbHelper.executeQuery();
+        }
+
+        public void deactivateGuest(int guest_id)
+        {
+            dbHelper.createQuery("UPDATE guests SET is_activated = @is_activated WHERE " +
+                "id = @guest_id;");
+            dbHelper.bindParam("@is_activated", 0);
+            dbHelper.bindParam("@guest_id", guest_id);
+
+            dbHelper.executeQuery();
         }
 
         public string getGuestDetails(string item)

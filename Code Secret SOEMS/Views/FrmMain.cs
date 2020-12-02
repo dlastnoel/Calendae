@@ -128,7 +128,10 @@ namespace Code_Secret_SOEMS
             th.setIconButtonColor(btnSettings);
             th.setLabelColor(lblTitle);
             th.setStripStatusColor(statusStripMain);
-            
+            th.setToolStripStatusLabelColor(toolStripStatusOfficer);
+            th.setToolStripStatusLabelColor(toolStripStatusDate);
+            th.setToolStripStatusLabelColor(toolStripStatusTime);
+
         }
         public FrmMain(string position, string name)
         {

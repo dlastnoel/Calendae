@@ -59,12 +59,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupSecurity = new System.Windows.Forms.GroupBox();
+            this.lblPasswordMessage = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.btnOpenForm = new System.Windows.Forms.Button();
-            this.lblPasswordMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataOfficers)).BeginInit();
             this.groupSchoolInfo.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
@@ -410,6 +410,15 @@
             this.groupSecurity.TabStop = false;
             this.groupSecurity.Text = "Security";
             // 
+            // lblPasswordMessage
+            // 
+            this.lblPasswordMessage.AutoSize = true;
+            this.lblPasswordMessage.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordMessage.Location = new System.Drawing.Point(40, 118);
+            this.lblPasswordMessage.Name = "lblPasswordMessage";
+            this.lblPasswordMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblPasswordMessage.TabIndex = 15;
+            // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -456,22 +465,13 @@
             this.btnOpenForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenForm.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenForm.ForeColor = System.Drawing.Color.White;
-            this.btnOpenForm.Location = new System.Drawing.Point(0, 0);
+            this.btnOpenForm.Location = new System.Drawing.Point(27, 0);
             this.btnOpenForm.Name = "btnOpenForm";
             this.btnOpenForm.Size = new System.Drawing.Size(86, 31);
             this.btnOpenForm.TabIndex = 29;
             this.btnOpenForm.Text = "Open Form";
             this.btnOpenForm.UseVisualStyleBackColor = false;
             this.btnOpenForm.Click += new System.EventHandler(this.btnOpenForm_Click);
-            // 
-            // lblPasswordMessage
-            // 
-            this.lblPasswordMessage.AutoSize = true;
-            this.lblPasswordMessage.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasswordMessage.Location = new System.Drawing.Point(40, 118);
-            this.lblPasswordMessage.Name = "lblPasswordMessage";
-            this.lblPasswordMessage.Size = new System.Drawing.Size(0, 13);
-            this.lblPasswordMessage.TabIndex = 15;
             // 
             // CtrlOfficers
             // 

@@ -22,7 +22,6 @@ namespace Code_Secret_SOEMS
             settingsPresenter = new SettingsPresenter();
             th.setFormColor(this);
             th.setPanelColor(panelTop);
-            th.setControlButtonColor(btnClose);
             th.setGroupBoxColor(groupSecurity);
             th.setGroupBoxColor(groupTheme);
             th.setButtonColor(btnSecurityApply);

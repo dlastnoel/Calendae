@@ -48,6 +48,44 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.populateDataGridView(myDataGridView);
         }
 
+        public int countAllStudents()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM students;");
+            return dbHelper.getCount();
+        }
+
+        public int countAllInactiveStudents()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM students WHERE is_activated = @is_activated");
+            dbHelper.bindParam("@is_activated", 0);
+            return dbHelper.getCount();
+        }
+        
+        public List<string> getInactiveStudentIds()
+        {
+            dbHelper.createQuery("SELECT * FROM students WHERE is_activated = 0;");
+            return dbHelper.getResultList("id");
+        }
+
+        public void activateStudent(string student_id)
+        {
+            dbHelper.createQuery("UPDATE students SET is_activated = @is_activated WHERE " +
+                "id = @student_id;");
+            dbHelper.bindParam("@is_activated", 1);
+            dbHelper.bindParam("@student_id", student_id);
+
+            dbHelper.executeQuery();
+        }
+        public void deactivateStudent(string student_id)
+        {
+            dbHelper.createQuery("UPDATE students SET is_activated = @is_activated WHERE " +
+                "id = @student_id;");
+            dbHelper.bindParam("@is_activated", 0);
+            dbHelper.bindParam("@student_id", student_id);
+
+            dbHelper.executeQuery();
+        }
+
         public void addStudent()
         {
             dbHelper.createQuery("INSERT INTO students (id, first_name, middle_name, last_name, address, contact, email, gender, " +

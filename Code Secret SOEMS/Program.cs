@@ -19,7 +19,10 @@ namespace Code_Secret_SOEMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLogin());
-            //Application.Run(new FrmEventRegistration());
+            //Application.Run(new FrmEventRegistration(""));
+            //Application.Run(new FrmEventRequests());
+            //Application.Run(new FrmStudentRequests());
+            //Application.Run(new FrmGuestRequests());
             //new RestoreHelper("lock");
 
             

@@ -103,7 +103,6 @@ namespace Code_Secret_SOEMS
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new FrmLogin().Show();
             this.Close();
         }
 

@@ -51,6 +51,19 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.createQuery("SELECT * FROM events WHERE id = @id;");
             dbHelper.bindParam("@id", id);
         }
+        public int countAllActiveEvents()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM events WHERE is_activated = @is_activated");
+            dbHelper.bindParam("@is_activated", 1);
+            return dbHelper.getCount();
+        }
+
+        public int countAllInactiveEvents()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM events WHERE is_activated = @is_activated");
+            dbHelper.bindParam("@is_activated", 0);
+            return dbHelper.getCount();
+        }
 
         public void selectEventByName(string event_name)
         {
@@ -62,6 +75,13 @@ namespace Code_Secret_SOEMS.Models
         {
             dbHelper.createQuery("SELECT * FROM events WHERE is_activated = 1");
             return dbHelper.getResultList("event_name");
+        }
+
+        public List<string> getInactiveEventIds()
+        {
+            dbHelper.createQuery("SELECT COUNT(*) FROM events WHERE is_activated = 0;");
+            dbHelper.createQuery("SELECT * FROM events WHERE is_activated = 0;");
+            return dbHelper.getResultList("id");
         }
         public List<string> getAllGuestAllowedActiveEvents()
         {
@@ -93,6 +113,26 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.bindParam("@guest_registration", guest_registration);
             dbHelper.bindParam("@guest_slots", guest_slots);
             dbHelper.bindParam("@is_activated", is_activated);
+
+            dbHelper.executeQuery();
+        }
+
+        public void activateEvent(int event_id)
+        {
+            dbHelper.createQuery("UPDATE events SET is_activated = @is_activated WHERE " +
+                "id = @event_id");
+            dbHelper.bindParam("@is_activated", 1);
+            dbHelper.bindParam("@event_id", event_id);
+
+            dbHelper.executeQuery();
+        }
+
+        public void deactivateEvent(int event_id)
+        {
+            dbHelper.createQuery("UPDATE events SET is_activated = @is_activated WHERE " +
+                "id = @event_id");
+            dbHelper.bindParam("@is_activated", 0);
+            dbHelper.bindParam("@event_id", event_id);
 
             dbHelper.executeQuery();
         }
