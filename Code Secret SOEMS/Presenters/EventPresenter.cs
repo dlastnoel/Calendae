@@ -48,9 +48,23 @@ namespace Code_Secret_SOEMS.Presenters
             
         }
 
+        public void eventActivation(int currentID, XUISwitch switchIsActivated, Label lblSwitchStatus)
+        {
+            if(switchIsActivated.SwitchState == XUISwitch.State.On)
+            {
+                _event.activateEvent(currentID);
+                lblSwitchStatus.Text = "Activated";
+            } else
+            {
+                _event.deactivateEvent(currentID);
+                lblSwitchStatus.Text = "Activated";
+            }
+        }
+
+
         public bool prepareEvent(int currentID, TextBox txtEventName, TextBox txtVenue, TextBox txtDate, TextBox txtTime,
             TextBox txtStudentRegistration, TextBox txtStudentSlots, TextBox txtEventDetails, CheckBox chkGuests, TextBox txtGuestRegistration, 
-            TextBox txtGuestSlots, XUISwitch switchIsActivated, Label lblswitchStatus)
+            TextBox txtGuestSlots, XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
             bool activation;
             _event.selectEvent(currentID);
@@ -74,12 +88,12 @@ namespace Code_Secret_SOEMS.Presenters
             {
                 activation = true;
                 switchIsActivated.SwitchState = XUISwitch.State.On;
-                lblswitchStatus.Text = "Activated";
+                lblSwitchStatus.Text = "Activated";
             } else
             {
                 activation = false;
                 switchIsActivated.SwitchState = XUISwitch.State.Off;
-                lblswitchStatus.Text = "Deactivated";
+                lblSwitchStatus.Text = "Deactivated";
             }
 
             return activation;

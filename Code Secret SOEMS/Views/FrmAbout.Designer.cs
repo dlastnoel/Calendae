@@ -32,15 +32,15 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.panelLeft = new XanderUI.XUIGradientPanel();
+            this.pictureBoxCalendae = new System.Windows.Forms.PictureBox();
             this.lblAbout1 = new System.Windows.Forms.Label();
             this.lblAbout2 = new System.Windows.Forms.Label();
             this.lblAbout3 = new System.Windows.Forms.Label();
             this.pictureBoxCodeSecret = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCalendae = new System.Windows.Forms.PictureBox();
             this.panelTop.SuspendLayout();
             this.panelLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCodeSecret)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCalendae)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCodeSecret)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -93,6 +93,17 @@
             this.panelLeft.TopLeft = System.Drawing.Color.Gold;
             this.panelLeft.TopRight = System.Drawing.Color.Red;
             // 
+            // pictureBoxCalendae
+            // 
+            this.pictureBoxCalendae.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCalendae.Image = global::Code_Secret_SOEMS.Properties.Resources.calendae;
+            this.pictureBoxCalendae.Location = new System.Drawing.Point(55, 121);
+            this.pictureBoxCalendae.Name = "pictureBoxCalendae";
+            this.pictureBoxCalendae.Size = new System.Drawing.Size(200, 200);
+            this.pictureBoxCalendae.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCalendae.TabIndex = 0;
+            this.pictureBoxCalendae.TabStop = false;
+            // 
             // lblAbout1
             // 
             this.lblAbout1.AutoSize = true;
@@ -109,10 +120,10 @@
             this.lblAbout2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAbout2.Location = new System.Drawing.Point(379, 297);
             this.lblAbout2.Name = "lblAbout2";
-            this.lblAbout2.Size = new System.Drawing.Size(169, 95);
+            this.lblAbout2.Size = new System.Drawing.Size(170, 95);
             this.lblAbout2.TabIndex = 21;
             this.lblAbout2.Text = "Team Members\r\nIris P. Lagasca\r\nIan Justin B. Salazar\r\nNoel Xavier M. Ulpindo\r\nIsi" +
-    "ah Neil Villanueva";
+    "ah Neil B. Villanueva";
             // 
             // lblAbout3
             // 
@@ -135,17 +146,6 @@
             this.pictureBoxCodeSecret.TabIndex = 2;
             this.pictureBoxCodeSecret.TabStop = false;
             // 
-            // pictureBoxCalendae
-            // 
-            this.pictureBoxCalendae.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCalendae.Image = global::Code_Secret_SOEMS.Properties.Resources.calendae;
-            this.pictureBoxCalendae.Location = new System.Drawing.Point(55, 121);
-            this.pictureBoxCalendae.Name = "pictureBoxCalendae";
-            this.pictureBoxCalendae.Size = new System.Drawing.Size(200, 200);
-            this.pictureBoxCalendae.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCalendae.TabIndex = 0;
-            this.pictureBoxCalendae.TabStop = false;
-            // 
             // FrmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,8 +166,8 @@
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelLeft.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCodeSecret)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCalendae)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCodeSecret)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -25,11 +25,12 @@ namespace Code_Secret_SOEMS
             btnDelete.Enabled = true;
             btnDelete.FlatStyle = FlatStyle.Flat;
             studentPresenter.prepareStudent(currentID, txtFirstName, txtMiddleName, txtLastName, txtAddress, txtContactNo,
-                txtEmailAddress, rbnMale, rbnFemale, txtIDNo, txtCourse, txtYearAndSection);
+                txtEmailAddress, rbnMale, rbnFemale, txtIDNo, txtCourse, txtYearAndSection, switchIsActivated, lblSwitchStatus);
         }
 
         private void clearFields()
         {
+            currentID = "";
             txtIDNo.Clear();
             txtFirstName.Clear();
             txtMiddleName.Clear();
@@ -202,6 +203,14 @@ namespace Code_Secret_SOEMS
             MessageBox.Show("Student successfully deleted", "Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             studentPresenter.loadStudents(dataStudents);
+        }
+
+        private void switchIsActivated_Click(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrEmpty(currentID))
+            {
+                studentPresenter.studentActivation(currentID, switchIsActivated, lblSwitchStatus);
+            }
         }
     }
 }

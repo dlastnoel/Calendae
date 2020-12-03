@@ -57,6 +57,7 @@ namespace Code_Secret_SOEMS
 
         private void clearFields()
         {
+            currentID = 0;
             txtEventName.Clear();
             txtVenue.Clear();
             txtDate.Clear();
@@ -305,14 +306,9 @@ namespace Code_Secret_SOEMS
 
         private void switchIsActivated_Click(object sender, EventArgs e)
         {
-            if(switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+            if(currentID != 0)
             {
-                lblSwitchStatus.Text = "Activated";
-                activation = true;
-            } else
-            {
-                lblSwitchStatus.Text = "Deactivated";
-                activation = false;
+                eventPresenter.eventActivation(currentID, switchIsActivated, lblSwitchStatus);
             }
         }
 

@@ -87,7 +87,7 @@ namespace Code_Secret_SOEMS.Presenters
         public void prepareGuest(int currentID, RadioButton rbnstudent, RadioButton rbnWorking, TextBox txtFirstName, 
             TextBox txtMiddleName, TextBox txtLastName, TextBox txtAddress, TextBox txtContact, TextBox txtEmail,
             RadioButton rbnMale, RadioButton rbnFemale, TextBox txtSchoolName, TextBox txtCourse, TextBox txtYear,
-            TextBox txtWorksAt, TextBox txtPosition, ComboBox cmbEvents)
+            TextBox txtWorksAt, TextBox txtPosition, XUISwitch switchIsActivated, Label lblSwitchStatus, ComboBox cmbEvents)
         {
             _guest.selectGuest(currentID);
             txtFirstName.Text = _guest.getGuestDetails("first_name");
@@ -115,7 +115,30 @@ namespace Code_Secret_SOEMS.Presenters
             txtYear.Text = _guest.getGuestDetails("year");
             txtWorksAt.Text = _guest.getGuestDetails("works_at");
             txtPosition.Text = _guest.getGuestDetails("position");
+            if(bool.Parse(_guest.getGuestDetails("is_activated")) == true)
+            {
+                switchIsActivated.SwitchState = XUISwitch.State.On;
+                lblSwitchStatus.Text = "Activated";
+            } else
+            {
+                switchIsActivated.SwitchState = XUISwitch.State.Off;
+                lblSwitchStatus.Text = "Deactivated";
+            }
             cmbEvents.SelectedIndex = cmbEvents.FindStringExact(_guest.getGuestDetails("event_name"));
+        }
+
+        public void guestActivation(int currentID, XUISwitch switchIsActivated, Label lblSwitchStatus)
+        {
+            if (switchIsActivated.SwitchState == XUISwitch.State.On)
+            {
+                _guest.activateGuest(currentID);
+                lblSwitchStatus.Text = "Activated";
+            }
+            else
+            {
+                _guest.deactivateGuest(currentID);
+                lblSwitchStatus.Text = "Deactivated";
+            }
         }
         public void updateGuest(int currentID)
         {

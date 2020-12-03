@@ -15,7 +15,7 @@ namespace Code_Secret_SOEMS
     public partial class CtrlGuests : UserControl
     {
         GuestPresenter guestPresenter;
-        int currentID;
+        int currentID = 0;
 
         private void populateFields()
         {
@@ -27,11 +27,12 @@ namespace Code_Secret_SOEMS
             btnDelete.FlatStyle = FlatStyle.Flat;
             guestPresenter.prepareGuest(currentID, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
                 txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtSchoolName, txtCourse, txtYear, txtWorksAt,
-                txtPosition, cmbEvents);
+                txtPosition, switchIsActivated, lblSwitchStatus, cmbEvents);
         }
 
         private void clearFields()
         {
+            currentID = 0;
             rbnStudent.Checked = false;
             rbnWorking.Checked = false;
             groupSchoolInfo.Enabled = false;
@@ -331,6 +332,14 @@ namespace Code_Secret_SOEMS
                 FrmGuests frmGuests = new FrmGuests("form", currentID);
                 frmGuests.ShowDialog();
                 guestPresenter.loadGuests(dataGuests);
+            }
+        }
+
+        private void switchIsActivated_Click(object sender, EventArgs e)
+        {
+            if(currentID != 0)
+            {
+                guestPresenter.guestActivation(currentID, switchIsActivated, lblSwitchStatus);
             }
         }
     }

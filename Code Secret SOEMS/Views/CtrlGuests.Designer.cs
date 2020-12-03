@@ -42,6 +42,9 @@
             this.btnOpenForm = new System.Windows.Forms.Button();
             this.dataGuests = new System.Windows.Forms.DataGridView();
             this.groupPersonalInfo = new System.Windows.Forms.GroupBox();
+            this.lblSwitchStatus = new System.Windows.Forms.Label();
+            this.switchIsActivated = new XanderUI.XUISwitch();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblGender = new System.Windows.Forms.Label();
             this.rbnMale = new System.Windows.Forms.RadioButton();
@@ -230,6 +233,9 @@
             // 
             // groupPersonalInfo
             // 
+            this.groupPersonalInfo.Controls.Add(this.lblSwitchStatus);
+            this.groupPersonalInfo.Controls.Add(this.switchIsActivated);
+            this.groupPersonalInfo.Controls.Add(this.lblStatus);
             this.groupPersonalInfo.Controls.Add(this.panel2);
             this.groupPersonalInfo.Controls.Add(this.panel1);
             this.groupPersonalInfo.Controls.Add(this.lblEvents);
@@ -247,12 +253,48 @@
             this.groupPersonalInfo.Controls.Add(this.lblAddress);
             this.groupPersonalInfo.Controls.Add(this.txtAddress);
             this.groupPersonalInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupPersonalInfo.Location = new System.Drawing.Point(941, 111);
+            this.groupPersonalInfo.Location = new System.Drawing.Point(941, 62);
             this.groupPersonalInfo.Name = "groupPersonalInfo";
-            this.groupPersonalInfo.Size = new System.Drawing.Size(591, 306);
+            this.groupPersonalInfo.Size = new System.Drawing.Size(591, 355);
             this.groupPersonalInfo.TabIndex = 3;
             this.groupPersonalInfo.TabStop = false;
             this.groupPersonalInfo.Text = "Personal Information";
+            // 
+            // lblSwitchStatus
+            // 
+            this.lblSwitchStatus.AutoSize = true;
+            this.lblSwitchStatus.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSwitchStatus.Location = new System.Drawing.Point(164, 303);
+            this.lblSwitchStatus.Name = "lblSwitchStatus";
+            this.lblSwitchStatus.Size = new System.Drawing.Size(69, 14);
+            this.lblSwitchStatus.TabIndex = 52;
+            this.lblSwitchStatus.Text = "Deactivated";
+            // 
+            // switchIsActivated
+            // 
+            this.switchIsActivated.BackColor = System.Drawing.Color.Transparent;
+            this.switchIsActivated.HandleOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(71)))), ((int)(((byte)(89)))));
+            this.switchIsActivated.HandleOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Location = new System.Drawing.Point(98, 293);
+            this.switchIsActivated.Name = "switchIsActivated";
+            this.switchIsActivated.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(129)))), ((int)(((byte)(136)))));
+            this.switchIsActivated.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Size = new System.Drawing.Size(60, 30);
+            this.switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            this.switchIsActivated.SwitchStyle = XanderUI.XUISwitch.Style.Horizontal;
+            this.switchIsActivated.TabIndex = 50;
+            this.switchIsActivated.Text = "xuiSwitch1";
+            this.switchIsActivated.Click += new System.EventHandler(this.switchIsActivated_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(42, 303);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(50, 15);
+            this.lblStatus.TabIndex = 51;
+            this.lblStatus.Text = "Status: ";
             // 
             // panel2
             // 
@@ -583,5 +625,8 @@
         private System.Windows.Forms.ComboBox cmbEvents;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblSwitchStatus;
+        private XanderUI.XUISwitch switchIsActivated;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

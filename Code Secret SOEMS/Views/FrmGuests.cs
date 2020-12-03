@@ -28,11 +28,12 @@ namespace Code_Secret_SOEMS
             btnDelete.FlatStyle = FlatStyle.Flat;
             guestPresenter.prepareGuest(currentID, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
                 txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtSchoolName, txtCourse, txtYear, txtWorksAt,
-                txtPosition, cmbEvents);
+                txtPosition, switchIsActivated, lblSwitchStatus, cmbEvents);
         }
 
         private void clearFields()
         {
+            currentID = 0;
             rbnStudent.Checked = false;
             rbnWorking.Checked = false;
             groupSchoolInfo.Enabled = false;
@@ -116,7 +117,7 @@ namespace Code_Secret_SOEMS
                 cmbEvents.Text = mode;
                 cmbEvents.Enabled = false;
                 btnAdd.Text = "Register";
-                this.Size = new Size(616, 557);
+                this.Size = new Size(616, 580);
             }
         }
 
@@ -395,6 +396,14 @@ namespace Code_Secret_SOEMS
 
             clearFields();
             this.Close();
+        }
+
+        private void switchIsActivated_Click(object sender, EventArgs e)
+        {
+            if(currentID != 0)
+            {
+                guestPresenter.guestActivation(currentID, switchIsActivated, lblSwitchStatus);
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Models;
+using XanderUI;
 
 namespace Code_Secret_SOEMS.Presenters
 {
@@ -37,10 +38,23 @@ namespace Code_Secret_SOEMS.Presenters
         {
             _student.addStudent();
         }
+        public void studentActivation(string currentID, XUISwitch switchIsActivated, Label lblSwitchStatus)
+        {
+            if (switchIsActivated.SwitchState == XUISwitch.State.On)
+            {
+                _student.activateStudent(currentID);
+                lblSwitchStatus.Text = "Activated";
+            }
+            else
+            {
+                _student.deactivateStudent(currentID);
+                lblSwitchStatus.Text = "Deactivated";
+            }
+        }
 
         public void prepareStudent(string currentID, TextBox txtFirstName, TextBox txtMiddleName, TextBox txtLastName,
             TextBox txtAddress, TextBox txtContact, TextBox txtEmailAddress, RadioButton rbnMale, RadioButton rbnFemale,
-            TextBox txtIDNo, TextBox txtCourse, TextBox txtYearAndSection)
+            TextBox txtIDNo, TextBox txtCourse, TextBox txtYearAndSection, XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
             _student.selectStudent(currentID);
             txtIDNo.Text = _student.getStudentDetails("id");
@@ -59,6 +73,16 @@ namespace Code_Secret_SOEMS.Presenters
             }
             txtCourse.Text = _student.getStudentDetails("course");
             txtYearAndSection.Text = _student.getStudentDetails("year_and_section");
+            if (bool.Parse(_student.getStudentDetails("is_activated")) == true)
+            {
+                switchIsActivated.SwitchState = XUISwitch.State.On;
+                lblSwitchStatus.Text = "Activated";
+            }
+            else
+            {
+                switchIsActivated.SwitchState = XUISwitch.State.Off;
+                lblSwitchStatus.Text = "Deactivated";
+            }
         }
 
         public void updateStudent(string currentID)

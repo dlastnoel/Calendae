@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -57,6 +57,9 @@
             this.lblAddress = new System.Windows.Forms.Label();
             this.rbnMale = new System.Windows.Forms.RadioButton();
             this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblSwitchStatus = new System.Windows.Forms.Label();
+            this.switchIsActivated = new XanderUI.XUISwitch();
+            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataStudents)).BeginInit();
             this.groupSchoolInfo.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
@@ -127,14 +130,14 @@
             this.dataStudents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataStudents.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataStudents.Location = new System.Drawing.Point(27, 42);
             this.dataStudents.Name = "dataStudents";
@@ -214,7 +217,10 @@
             // 
             // groupPersonalInfo
             // 
+            this.groupPersonalInfo.Controls.Add(this.lblSwitchStatus);
             this.groupPersonalInfo.Controls.Add(this.lblFirstName);
+            this.groupPersonalInfo.Controls.Add(this.switchIsActivated);
+            this.groupPersonalInfo.Controls.Add(this.lblStatus);
             this.groupPersonalInfo.Controls.Add(this.txtEmailAddress);
             this.groupPersonalInfo.Controls.Add(this.txtFirstName);
             this.groupPersonalInfo.Controls.Add(this.lblEmailAddress);
@@ -230,9 +236,9 @@
             this.groupPersonalInfo.Controls.Add(this.rbnMale);
             this.groupPersonalInfo.Controls.Add(this.txtAddress);
             this.groupPersonalInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupPersonalInfo.Location = new System.Drawing.Point(941, 199);
+            this.groupPersonalInfo.Location = new System.Drawing.Point(941, 176);
             this.groupPersonalInfo.Name = "groupPersonalInfo";
-            this.groupPersonalInfo.Size = new System.Drawing.Size(591, 279);
+            this.groupPersonalInfo.Size = new System.Drawing.Size(591, 302);
             this.groupPersonalInfo.TabIndex = 38;
             this.groupPersonalInfo.TabStop = false;
             this.groupPersonalInfo.Text = "Personal Information";
@@ -380,6 +386,42 @@
             this.txtAddress.Size = new System.Drawing.Size(487, 56);
             this.txtAddress.TabIndex = 4;
             // 
+            // lblSwitchStatus
+            // 
+            this.lblSwitchStatus.AutoSize = true;
+            this.lblSwitchStatus.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSwitchStatus.Location = new System.Drawing.Point(167, 266);
+            this.lblSwitchStatus.Name = "lblSwitchStatus";
+            this.lblSwitchStatus.Size = new System.Drawing.Size(69, 14);
+            this.lblSwitchStatus.TabIndex = 61;
+            this.lblSwitchStatus.Text = "Deactivated";
+            // 
+            // switchIsActivated
+            // 
+            this.switchIsActivated.BackColor = System.Drawing.Color.Transparent;
+            this.switchIsActivated.HandleOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(71)))), ((int)(((byte)(89)))));
+            this.switchIsActivated.HandleOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Location = new System.Drawing.Point(101, 256);
+            this.switchIsActivated.Name = "switchIsActivated";
+            this.switchIsActivated.OffColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(129)))), ((int)(((byte)(136)))));
+            this.switchIsActivated.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.switchIsActivated.Size = new System.Drawing.Size(60, 30);
+            this.switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            this.switchIsActivated.SwitchStyle = XanderUI.XUISwitch.Style.Horizontal;
+            this.switchIsActivated.TabIndex = 59;
+            this.switchIsActivated.Text = "xuiSwitch1";
+            this.switchIsActivated.Click += new System.EventHandler(this.switchIsActivated_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(45, 266);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(50, 15);
+            this.lblStatus.TabIndex = 60;
+            this.lblStatus.Text = "Status: ";
+            // 
             // CtrlStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -434,5 +476,8 @@
         private System.Windows.Forms.RadioButton rbnMale;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtCourse;
+        private System.Windows.Forms.Label lblSwitchStatus;
+        private XanderUI.XUISwitch switchIsActivated;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
