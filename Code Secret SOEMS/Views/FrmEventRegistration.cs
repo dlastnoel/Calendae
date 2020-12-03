@@ -34,6 +34,7 @@ namespace Code_Secret_SOEMS.Views
             lblGuestRegistrationFee.Text = "Registration Fee";
             panelStudentRegistration.Enabled = false;
             panelGuestRegistration.Enabled = false;
+            eventRegistrationPresenter.setEvents(cmbEvents);
         }
 
         private void setFormTheme()

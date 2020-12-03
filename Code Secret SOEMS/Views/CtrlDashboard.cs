@@ -16,12 +16,14 @@ namespace Code_Secret_SOEMS
     public partial class CtrlDashboard : UserControl
     {
         DashboardPresenter dashboardPresenter;
-        public CtrlDashboard()
+        string position;
+        public CtrlDashboard(string position)
         {
             InitializeComponent();
             dashboardPresenter = new DashboardPresenter();
             lblSchool.Text = dashboardPresenter.getSchoolName();
             lblOrganization.Text = dashboardPresenter.getOrganization();
+            this.position = position;
         }
         private void reset()
         {
@@ -39,14 +41,23 @@ namespace Code_Secret_SOEMS
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
-            if(lblIncomingEvents.Text != "0")
+            if(position == "Adviser")
             {
-                new FrmEventRequests().ShowDialog();
-                reset();
+
+                if (lblIncomingEvents.Text != "0")
+                {
+                    new FrmEventRequests().ShowDialog();
+                    reset();
+                }
+                else
+                {
+                    MessageBox.Show("There are no incoming requests for events at this time", "Calendae",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             } else
             {
-                MessageBox.Show("There are no incoming requests for events at this time", "Calendae",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Action is restricted", "Calendae",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

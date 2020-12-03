@@ -66,7 +66,7 @@ namespace Code_Secret_SOEMS.Helpers
                 switch (userControl)
                 {
                     case "Dashboard":
-                        currentUserControl = new CtrlDashboard();
+                        currentUserControl = new CtrlDashboard(position);
                         break;
                     case "Officers":
                         currentUserControl = new CtrlOfficers();

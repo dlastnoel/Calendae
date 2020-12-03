@@ -14,6 +14,8 @@ namespace Code_Secret_SOEMS.Presenters
     class GuestRequestPresenter
     {
         Guest _guest;
+        Event _event;
+        EventDetails _eventDetails;
         List<string> listGuestId;
         FlowLayoutPanel flowLayoutGuest;
         ThemeHelper th;
@@ -23,8 +25,17 @@ namespace Code_Secret_SOEMS.Presenters
         {
             _guest = new Guest();
             listGuestId = _guest.getInactiveGuestIds();
+            _event = new Event();
+            _eventDetails = new EventDetails();
             flowLayoutGuest = myFlowLayoutPanel;
             th = new ThemeHelper();
+        }
+
+        public void registerGuest(int event_id, int guest_id)
+        {
+            _eventDetails.event_id = event_id;
+            _eventDetails.guest_id = guest_id;
+            _eventDetails.addGuestParticipant();
         }
 
         public void setGuestRequests()
@@ -138,10 +149,15 @@ namespace Code_Secret_SOEMS.Presenters
                     {
                         g1.deactivateGuest(int.Parse(guestId));
                         lblSwitchStatus.Text = "Deactivated";
+                        g1.deactivateGuest(int.Parse(guestId));
+                        _eventDetails.removeGuestParticipant(int.Parse(guestId));
                     }
                     else
                     {
                         g1.activateGuest(int.Parse(guestId));
+                        _event.selectEventByName(_guest.getGuestDetails("event_name"));
+                        int event_id = int.Parse(_event.getEventItems("id"));
+                        registerGuest(event_id, int.Parse(guestId));
                         lblSwitchStatus.Text = "Activated";
                     }
                 };

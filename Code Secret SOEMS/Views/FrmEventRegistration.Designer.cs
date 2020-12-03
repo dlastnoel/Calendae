@@ -68,6 +68,7 @@
             this.lblGuestRegistration = new System.Windows.Forms.Label();
             this.tmrMain = new System.Windows.Forms.Timer(this.components);
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCalendae)).BeginInit();
@@ -510,12 +511,27 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(529, 56);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(87, 21);
+            this.btnRefresh.TabIndex = 61;
+            this.btnRefresh.Text = "REFRESH";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            // 
             // FrmEventRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.panelGuestRegistration);
             this.Controls.Add(this.panelStudentRegistration);
@@ -588,5 +604,6 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Timer tmrMain;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

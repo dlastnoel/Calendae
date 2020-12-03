@@ -21,14 +21,19 @@ namespace Code_Secret_SOEMS.Presenters
             return _officer.loginOfficer(id, password);
         }
 
-        public string getLoggedInOfficerPosition()
+        public string getOfficerPosition()
         {
-            return _officer.getLoggedInOfficer("position");
+            return _officer.getOfficerDetails("position");
         }
 
-        public string getLoggedInOfficerName()
+        public string getOfficerName()
         {
-            return _officer.getLoggedInOfficer("first_name");
+            return _officer.getOfficerDetails("first_name");
+        }
+
+        public string getOfficerId()
+        {
+            return _officer.getOfficerDetails("id");
         }
     }
 }

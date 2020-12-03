@@ -79,6 +79,11 @@ namespace Code_Secret_SOEMS.Presenters
             _eventDetails.addGuestParticipant();
         }
 
+        public void deactivateGuest(int guest_id)
+        {
+            _guest.deactivateGuest(guest_id);
+        }
+
         public void prepareGuest(int currentID, RadioButton rbnstudent, RadioButton rbnWorking, TextBox txtFirstName, 
             TextBox txtMiddleName, TextBox txtLastName, TextBox txtAddress, TextBox txtContact, TextBox txtEmail,
             RadioButton rbnMale, RadioButton rbnFemale, TextBox txtSchoolName, TextBox txtCourse, TextBox txtYear,
@@ -117,7 +122,7 @@ namespace Code_Secret_SOEMS.Presenters
             _guest.updateGuest(currentID);
         }
 
-        public void deleteEvent(int currentID)
+        public void deleteGuest(int currentID)
         {
             _guest.deleteGuest(currentID);
         }

@@ -19,6 +19,7 @@ namespace Code_Secret_SOEMS
         private static UserControl currentUserControl;
         private string position;
         private string name;
+        private string officer_id;
         public int event_id { get; set; }
 
         private void setUserControl(string userControl)
@@ -27,6 +28,16 @@ namespace Code_Secret_SOEMS
             fh.setCurrentLabel(lblTitle);
             currentUserControl = fh.setUserControl(userControl, position);
             fh.setCurrentUserControl(currentUserControl);
+        }
+
+        private void promptLogout()
+        {
+            DialogResult prompt = MessageBox.Show("Logout?", "Calendae", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (prompt == DialogResult.Yes)
+            {
+                this.Hide();
+                new FrmLogin().Show();
+            }
         }
         /*private void setUserControl(string userControl)
         {
@@ -126,6 +137,7 @@ namespace Code_Secret_SOEMS
             th.setIconButtonColor(btnGuests);
             th.setIconButtonColor(btnOfficers);
             th.setIconButtonColor(btnSettings);
+            th.setIconButtonColor(btnLogout);
             th.setLabelColor(lblTitle);
             th.setStripStatusColor(statusStripMain);
             th.setToolStripStatusLabelColor(toolStripStatusOfficer);
@@ -133,18 +145,20 @@ namespace Code_Secret_SOEMS
             th.setToolStripStatusLabelColor(toolStripStatusTime);
 
         }
-        public FrmMain(string position, string name)
+        public FrmMain(string id, string position, string name)
         {
             InitializeComponent();
             setFormTheme();
             fh = new FormHelper();
             this.position = position;
             this.name = name;
+            this.officer_id = id;
             toolStripStatusOfficer.Text = this.position + ": " + this.name;
 
             if(position != "Adviser")
             {
                 btnOfficers.Hide();
+                btnLogout.Location = btnSettings.Location;
                 btnSettings.Location = btnGuests.Location;
                 btnGuests.Location = btnStudents.Location;
                 btnStudents.Location = btnEvents.Location;
@@ -154,11 +168,7 @@ namespace Code_Secret_SOEMS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            DialogResult prompt = MessageBox.Show("Logout?", "Calendae", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (prompt == DialogResult.Yes) {
-                this.Hide();
-                new FrmLogin().Show();
-            }
+            promptLogout();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -266,6 +276,11 @@ namespace Code_Secret_SOEMS
         private void panelTop_DoubleClick(object sender, EventArgs e)
         {
             triggerMaximize();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            promptLogout();
         }
     }
 }

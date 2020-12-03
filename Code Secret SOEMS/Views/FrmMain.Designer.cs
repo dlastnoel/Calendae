@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panelLeft = new XanderUI.XUIGradientPanel();
+            this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.btnSettings = new FontAwesome.Sharp.IconButton();
             this.btnGuests = new FontAwesome.Sharp.IconButton();
             this.btnStudents = new FontAwesome.Sharp.IconButton();
@@ -57,6 +58,7 @@
             // 
             this.panelLeft.BottomLeft = System.Drawing.Color.Red;
             this.panelLeft.BottomRight = System.Drawing.Color.Gold;
+            this.panelLeft.Controls.Add(this.btnLogout);
             this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.btnGuests);
             this.panelLeft.Controls.Add(this.btnStudents);
@@ -72,6 +74,29 @@
             this.panelLeft.TabIndex = 6;
             this.panelLeft.TopLeft = System.Drawing.Color.Gold;
             this.panelLeft.TopRight = System.Drawing.Color.Red;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.btnLogout.IconColor = System.Drawing.Color.White;
+            this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLogout.IconSize = 30;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 458);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Rotation = 0D;
+            this.btnLogout.Size = new System.Drawing.Size(258, 48);
+            this.btnLogout.TabIndex = 8;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnSettings
             // 
@@ -373,5 +398,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusOfficer;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusDate;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusTime;
+        private FontAwesome.Sharp.IconButton btnLogout;
     }
 }

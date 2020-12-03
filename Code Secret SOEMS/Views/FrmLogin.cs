@@ -70,7 +70,9 @@ namespace Code_Secret_SOEMS
                     {
                         if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
                         {
-                            new FrmMain(loginPresenter.getLoggedInOfficerPosition(), loginPresenter.getLoggedInOfficerName()).Show();
+                            new FrmMain(loginPresenter.getOfficerId(), 
+                                loginPresenter.getOfficerPosition(), 
+                                loginPresenter.getOfficerName()).Show();
                             this.Hide();
                         }
                         else
@@ -90,7 +92,9 @@ namespace Code_Secret_SOEMS
                 {
                     if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
                     {
-                        new FrmMain(loginPresenter.getLoggedInOfficerPosition(), loginPresenter.getLoggedInOfficerName()).Show();
+                        new FrmMain(loginPresenter.getOfficerId(),
+                                loginPresenter.getOfficerPosition(),
+                                loginPresenter.getOfficerName()).Show();
                         this.Hide();
                     }
                     else

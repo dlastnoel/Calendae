@@ -390,7 +390,7 @@ namespace Code_Secret_SOEMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            guestPresenter.deleteEvent(currentID);
+            guestPresenter.deleteGuest(currentID);
             MessageBox.Show("Guest successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             clearFields();

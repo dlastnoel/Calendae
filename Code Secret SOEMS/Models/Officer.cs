@@ -49,8 +49,7 @@ namespace Code_Secret_SOEMS.Models
                     "gender AS 'Gender', " +
                     "course AS 'Course', " +
                     "year_and_section AS 'Year and Section' " +
-                "FROM officers WHERE " +
-                    "position != 'Adviser';");
+                "FROM officers;");
             dbHelper.populateDataGridView(myDataGridView);
         }
 
@@ -113,11 +112,6 @@ namespace Code_Secret_SOEMS.Models
                 // no user found
                 return false;
             }
-        }
-
-        public string getLoggedInOfficer(string item)
-        {
-            return dbHelper.getFromReader(item);
         }
 
         public void selectOfficer(string id)

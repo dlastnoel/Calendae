@@ -14,7 +14,8 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class CtrlEventDetails : UserControl
     {
-        EventDetailsPresenter eventDetailsPresenter = new EventDetailsPresenter();
+        EventDetailsPresenter eventDetailsPresenter;
+        GuestPresenter guestPresenter;
         ThemeHelper th = new ThemeHelper();
         int event_id;
         public CtrlEventDetails(int event_id)
@@ -51,6 +52,8 @@ namespace Code_Secret_SOEMS.Views
 
         private void CtrlEventDetails_Load(object sender, EventArgs e)
         {
+            eventDetailsPresenter = new EventDetailsPresenter();
+            guestPresenter = new GuestPresenter();
             th.setLabelColor(lblEventName);
             th.setLabelColor(lblDateAndTime);
             th.setLabelColor(lblStudentSlots);
@@ -58,10 +61,11 @@ namespace Code_Secret_SOEMS.Views
             th.setLabelColor(lblGuestSlots);
             th.setLabelColor(lblGuestRegistrationFee);
 
-            eventDetailsPresenter.loadStudentRegistrations(event_id, dataStudentRegistrations);
-            eventDetailsPresenter.loadGuestRegistrations(event_id, dataGuestRegistrations);
             eventDetailsPresenter.populateEventDetails(event_id, this, lblEventName, lblDateAndTime, lblStudentSlots,
                 lblStudentRegistrationFee, lblGuestSlots, lblGuestRegistrationFee);
+            eventDetailsPresenter.loadStudentRegistrations(event_id, dataStudentRegistrations);
+            eventDetailsPresenter.loadGuestRegistrations(event_id, dataGuestRegistrations);
+            
             triggerFormChange();
 
         }
