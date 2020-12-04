@@ -30,6 +30,13 @@ namespace Code_Secret_SOEMS
             dashboardPresenter.setDashboardTile(lblActiveEvents, lblStudentsRegistered, lblGuestsRegistered);
             dashboardPresenter.setIncomingRequests(lblIncomingEvents, lblIncomingStudents, lblIncomingGuests);
             dashboardPresenter.setAdviser(lblAdviser);
+            dashboardPresenter.setRecentEvent(panelRecentEventCover, lblRecentEventName, lblRecentEventVenue,
+                lblRecentEventDate, lblRecentEventTime, lblRecentEventStudents, lblRecentEventStudentFee,
+                lblRecentEventGuests, lblRecentEventGuestFee, lblRecentEventIGP);
+            dashboardPresenter.setUpcomingEvent(panelUpcomingEventCover, lblUpcomingEventName, lblUpcomingEventVenue,
+                lblUpcomingEventDate, lblUpcomingEventTime, lblUpcomingEventStudents, lblUpcomingEventStudentFee,
+                lblUpcomingEventGuests, lblUpcomingEventGuestFee, lblUpcomingEventIGP);
+            dashboardPresenter.loadNotes(txtNotes);
         }
 
         private void CtrlDashboard_Load(object sender, EventArgs e)
@@ -85,6 +92,11 @@ namespace Code_Secret_SOEMS
                 MessageBox.Show("There are no incoming requests for guests at this time", "Calendae",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void txtNotes_MouseLeave(object sender, EventArgs e)
+        {
+            dashboardPresenter.saveNotes(txtNotes.Text);
         }
     }
 }

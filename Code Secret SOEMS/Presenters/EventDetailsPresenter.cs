@@ -30,7 +30,8 @@ namespace Code_Secret_SOEMS.Presenters
         {
             _event.selectEvent(event_id);
             lblEventName.Text = _event.getEventItems("event_name");
-            lblDateAndTime.Text = _event.getEventItems("date") + " at " + _event.getEventItems("time");
+            lblDateAndTime.Text = _event.getEventItems("date_from") + " - " + _event.getEventItems("date_to") +
+                " @ " + _event.getEventItems("time");
             if (_event.getEventItems("student_slots") != "0")
             {
                 lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("student_slots")) -

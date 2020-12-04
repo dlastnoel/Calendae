@@ -57,7 +57,7 @@ namespace Code_Secret_SOEMS.Presenters
             lblEventName.Text = cmbEvents.Text;
             lblEventName.Left = (panelEvents.Width - lblEventName.Width) / 2;
             lblVenue.Text = "Venue: " + _event.getEventItems("venue");
-            lblDate.Text = "Date: " + _event.getEventItems("date");
+            lblDate.Text = "Date: " + _event.getEventItems("date_from") + " - " + _event.getEventItems("date_to");
             lblTime.Text = "Time: " + _event.getEventItems("time");
             txtEventDetails.Text = _event.getEventItems("event_details");
             student_slots = int.Parse(_event.getEventItems("student_slots"));

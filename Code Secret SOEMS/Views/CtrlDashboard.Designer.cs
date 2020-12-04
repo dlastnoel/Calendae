@@ -41,24 +41,30 @@
             this.lblGuestsRegistered = new System.Windows.Forms.Label();
             this.panelGuests = new System.Windows.Forms.Panel();
             this.lblRecentEvent = new System.Windows.Forms.Label();
-            this.lblRecentEventTitle = new System.Windows.Forms.Label();
-            this.lblRecentEventStudents = new System.Windows.Forms.Label();
-            this.lblRecentEventGuests = new System.Windows.Forms.Label();
-            this.lblRecentEventIGP = new System.Windows.Forms.Label();
-            this.lblRecentEventVenue = new System.Windows.Forms.Label();
-            this.lblRecentEventDate = new System.Windows.Forms.Label();
-            this.lblRecentEventTime = new System.Windows.Forms.Label();
             this.panelRecentEvent = new System.Windows.Forms.Panel();
+            this.lblRecentEventGuestFee = new System.Windows.Forms.Label();
+            this.lblRecentEventStudentFee = new System.Windows.Forms.Label();
+            this.lblRecentEventTime = new System.Windows.Forms.Label();
+            this.lblRecentEventDate = new System.Windows.Forms.Label();
+            this.lblRecentEventVenue = new System.Windows.Forms.Label();
+            this.lblRecentEventIGP = new System.Windows.Forms.Label();
+            this.lblRecentEventGuests = new System.Windows.Forms.Label();
+            this.lblRecentEventStudents = new System.Windows.Forms.Label();
+            this.lblRecentEventName = new System.Windows.Forms.Label();
             this.iconRecentEvent = new FontAwesome.Sharp.IconPictureBox();
             this.lblUpcomingEvent = new System.Windows.Forms.Label();
-            this.lblUpcomingEventTitle = new System.Windows.Forms.Label();
+            this.lblUpcomingEventName = new System.Windows.Forms.Label();
             this.lblUpcomingEventStudents = new System.Windows.Forms.Label();
             this.lblUpcomingEventGuests = new System.Windows.Forms.Label();
             this.lblUpcomingEventIGP = new System.Windows.Forms.Label();
             this.lblUpcomingEventVenue = new System.Windows.Forms.Label();
             this.lblUpcomingEventDate = new System.Windows.Forms.Label();
-            this.lbUpcomingEventTime = new System.Windows.Forms.Label();
+            this.lblUpcomingEventTime = new System.Windows.Forms.Label();
             this.panelUpcomingEvent = new System.Windows.Forms.Panel();
+            this.panelUpcomingEventCover = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblUpcomingEventGuestFee = new System.Windows.Forms.Label();
+            this.lblUpcomingEventStudentFee = new System.Windows.Forms.Label();
             this.iconUpcomingEvent = new FontAwesome.Sharp.IconPictureBox();
             this.panelOfficers = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
@@ -93,6 +99,8 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
+            this.panelRecentEventCover = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconEvents)).BeginInit();
             this.panelEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconStudents)).BeginInit();
@@ -102,6 +110,7 @@
             this.panelRecentEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconRecentEvent)).BeginInit();
             this.panelUpcomingEvent.SuspendLayout();
+            this.panelUpcomingEventCover.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconUpcomingEvent)).BeginInit();
             this.panelOfficers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconOfficers)).BeginInit();
@@ -111,6 +120,7 @@
             this.panelIGPGained.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            this.panelRecentEventCover.SuspendLayout();
             this.SuspendLayout();
             // 
             // iconEvents
@@ -269,77 +279,48 @@
             this.lblRecentEvent.TabIndex = 12;
             this.lblRecentEvent.Text = "Recent Event";
             // 
-            // lblRecentEventTitle
+            // panelRecentEvent
             // 
-            this.lblRecentEventTitle.AutoSize = true;
-            this.lblRecentEventTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblRecentEventTitle.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentEventTitle.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventTitle.Location = new System.Drawing.Point(15, 104);
-            this.lblRecentEventTitle.Name = "lblRecentEventTitle";
-            this.lblRecentEventTitle.Size = new System.Drawing.Size(169, 23);
-            this.lblRecentEventTitle.TabIndex = 13;
-            this.lblRecentEventTitle.Text = "Sample Event Title";
+            this.panelRecentEvent.BackColor = System.Drawing.Color.Crimson;
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventGuestFee);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventStudentFee);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventTime);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventDate);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventVenue);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventIGP);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventGuests);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventStudents);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEventName);
+            this.panelRecentEvent.Controls.Add(this.iconRecentEvent);
+            this.panelRecentEvent.Controls.Add(this.lblRecentEvent);
+            this.panelRecentEvent.Location = new System.Drawing.Point(16, 183);
+            this.panelRecentEvent.Name = "panelRecentEvent";
+            this.panelRecentEvent.Size = new System.Drawing.Size(282, 428);
+            this.panelRecentEvent.TabIndex = 9;
             // 
-            // lblRecentEventStudents
+            // lblRecentEventGuestFee
             // 
-            this.lblRecentEventStudents.AutoSize = true;
-            this.lblRecentEventStudents.BackColor = System.Drawing.Color.Transparent;
-            this.lblRecentEventStudents.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentEventStudents.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventStudents.Location = new System.Drawing.Point(3, 297);
-            this.lblRecentEventStudents.Name = "lblRecentEventStudents";
-            this.lblRecentEventStudents.Size = new System.Drawing.Size(195, 19);
-            this.lblRecentEventStudents.TabIndex = 14;
-            this.lblRecentEventStudents.Text = "Students participated: 123";
+            this.lblRecentEventGuestFee.AutoSize = true;
+            this.lblRecentEventGuestFee.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventGuestFee.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventGuestFee.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventGuestFee.Location = new System.Drawing.Point(3, 337);
+            this.lblRecentEventGuestFee.Name = "lblRecentEventGuestFee";
+            this.lblRecentEventGuestFee.Size = new System.Drawing.Size(146, 19);
+            this.lblRecentEventGuestFee.TabIndex = 34;
+            this.lblRecentEventGuestFee.Text = "Guest Fee: Php 666";
             // 
-            // lblRecentEventGuests
+            // lblRecentEventStudentFee
             // 
-            this.lblRecentEventGuests.AutoSize = true;
-            this.lblRecentEventGuests.BackColor = System.Drawing.Color.Transparent;
-            this.lblRecentEventGuests.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentEventGuests.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventGuests.Location = new System.Drawing.Point(3, 322);
-            this.lblRecentEventGuests.Name = "lblRecentEventGuests";
-            this.lblRecentEventGuests.Size = new System.Drawing.Size(181, 19);
-            this.lblRecentEventGuests.TabIndex = 15;
-            this.lblRecentEventGuests.Text = "Guests participated: 123";
-            // 
-            // lblRecentEventIGP
-            // 
-            this.lblRecentEventIGP.AutoSize = true;
-            this.lblRecentEventIGP.BackColor = System.Drawing.Color.Transparent;
-            this.lblRecentEventIGP.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentEventIGP.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventIGP.Location = new System.Drawing.Point(4, 346);
-            this.lblRecentEventIGP.Name = "lblRecentEventIGP";
-            this.lblRecentEventIGP.Size = new System.Drawing.Size(194, 19);
-            this.lblRecentEventIGP.TabIndex = 16;
-            this.lblRecentEventIGP.Text = "IGP Acquired: Php 123456";
-            // 
-            // lblRecentEventVenue
-            // 
-            this.lblRecentEventVenue.AutoSize = true;
-            this.lblRecentEventVenue.BackColor = System.Drawing.Color.Transparent;
-            this.lblRecentEventVenue.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentEventVenue.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventVenue.Location = new System.Drawing.Point(15, 151);
-            this.lblRecentEventVenue.Name = "lblRecentEventVenue";
-            this.lblRecentEventVenue.Size = new System.Drawing.Size(57, 19);
-            this.lblRecentEventVenue.TabIndex = 20;
-            this.lblRecentEventVenue.Text = "Venue:";
-            // 
-            // lblRecentEventDate
-            // 
-            this.lblRecentEventDate.AutoSize = true;
-            this.lblRecentEventDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblRecentEventDate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecentEventDate.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventDate.Location = new System.Drawing.Point(15, 194);
-            this.lblRecentEventDate.Name = "lblRecentEventDate";
-            this.lblRecentEventDate.Size = new System.Drawing.Size(46, 19);
-            this.lblRecentEventDate.TabIndex = 21;
-            this.lblRecentEventDate.Text = "Date:";
+            this.lblRecentEventStudentFee.AutoSize = true;
+            this.lblRecentEventStudentFee.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventStudentFee.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventStudentFee.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventStudentFee.Location = new System.Drawing.Point(3, 286);
+            this.lblRecentEventStudentFee.Name = "lblRecentEventStudentFee";
+            this.lblRecentEventStudentFee.Size = new System.Drawing.Size(160, 19);
+            this.lblRecentEventStudentFee.TabIndex = 33;
+            this.lblRecentEventStudentFee.Text = "Student Fee: Php 666";
             // 
             // lblRecentEventTime
             // 
@@ -347,28 +328,83 @@
             this.lblRecentEventTime.BackColor = System.Drawing.Color.Transparent;
             this.lblRecentEventTime.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecentEventTime.ForeColor = System.Drawing.Color.White;
-            this.lblRecentEventTime.Location = new System.Drawing.Point(15, 241);
+            this.lblRecentEventTime.Location = new System.Drawing.Point(3, 239);
             this.lblRecentEventTime.Name = "lblRecentEventTime";
             this.lblRecentEventTime.Size = new System.Drawing.Size(49, 19);
-            this.lblRecentEventTime.TabIndex = 22;
+            this.lblRecentEventTime.TabIndex = 32;
             this.lblRecentEventTime.Text = "Time:";
             // 
-            // panelRecentEvent
+            // lblRecentEventDate
             // 
-            this.panelRecentEvent.BackColor = System.Drawing.Color.Crimson;
-            this.panelRecentEvent.Controls.Add(this.iconRecentEvent);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventTime);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventDate);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventVenue);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventIGP);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventGuests);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventStudents);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEventTitle);
-            this.panelRecentEvent.Controls.Add(this.lblRecentEvent);
-            this.panelRecentEvent.Location = new System.Drawing.Point(16, 183);
-            this.panelRecentEvent.Name = "panelRecentEvent";
-            this.panelRecentEvent.Size = new System.Drawing.Size(282, 428);
-            this.panelRecentEvent.TabIndex = 9;
+            this.lblRecentEventDate.AutoSize = true;
+            this.lblRecentEventDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventDate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventDate.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventDate.Location = new System.Drawing.Point(3, 199);
+            this.lblRecentEventDate.Name = "lblRecentEventDate";
+            this.lblRecentEventDate.Size = new System.Drawing.Size(46, 19);
+            this.lblRecentEventDate.TabIndex = 31;
+            this.lblRecentEventDate.Text = "Date:";
+            // 
+            // lblRecentEventVenue
+            // 
+            this.lblRecentEventVenue.AutoSize = true;
+            this.lblRecentEventVenue.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventVenue.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventVenue.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventVenue.Location = new System.Drawing.Point(3, 160);
+            this.lblRecentEventVenue.Name = "lblRecentEventVenue";
+            this.lblRecentEventVenue.Size = new System.Drawing.Size(57, 19);
+            this.lblRecentEventVenue.TabIndex = 30;
+            this.lblRecentEventVenue.Text = "Venue:";
+            // 
+            // lblRecentEventIGP
+            // 
+            this.lblRecentEventIGP.AutoSize = true;
+            this.lblRecentEventIGP.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventIGP.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventIGP.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventIGP.Location = new System.Drawing.Point(3, 366);
+            this.lblRecentEventIGP.Name = "lblRecentEventIGP";
+            this.lblRecentEventIGP.Size = new System.Drawing.Size(182, 19);
+            this.lblRecentEventIGP.TabIndex = 29;
+            this.lblRecentEventIGP.Text = "IGP Gained: Php 123456";
+            // 
+            // lblRecentEventGuests
+            // 
+            this.lblRecentEventGuests.AutoSize = true;
+            this.lblRecentEventGuests.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventGuests.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventGuests.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventGuests.Location = new System.Drawing.Point(3, 318);
+            this.lblRecentEventGuests.Name = "lblRecentEventGuests";
+            this.lblRecentEventGuests.Size = new System.Drawing.Size(148, 19);
+            this.lblRecentEventGuests.TabIndex = 28;
+            this.lblRecentEventGuests.Text = "Current Guests: 123";
+            // 
+            // lblRecentEventStudents
+            // 
+            this.lblRecentEventStudents.AutoSize = true;
+            this.lblRecentEventStudents.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventStudents.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventStudents.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventStudents.Location = new System.Drawing.Point(5, 267);
+            this.lblRecentEventStudents.Name = "lblRecentEventStudents";
+            this.lblRecentEventStudents.Size = new System.Drawing.Size(162, 19);
+            this.lblRecentEventStudents.TabIndex = 27;
+            this.lblRecentEventStudents.Text = "Current Students: 123";
+            // 
+            // lblRecentEventName
+            // 
+            this.lblRecentEventName.AutoSize = true;
+            this.lblRecentEventName.BackColor = System.Drawing.Color.Transparent;
+            this.lblRecentEventName.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentEventName.ForeColor = System.Drawing.Color.White;
+            this.lblRecentEventName.Location = new System.Drawing.Point(49, 117);
+            this.lblRecentEventName.Name = "lblRecentEventName";
+            this.lblRecentEventName.Size = new System.Drawing.Size(169, 23);
+            this.lblRecentEventName.TabIndex = 26;
+            this.lblRecentEventName.Text = "Sample Event Title";
             // 
             // iconRecentEvent
             // 
@@ -395,17 +431,17 @@
             this.lblUpcomingEvent.TabIndex = 12;
             this.lblUpcomingEvent.Text = "Upcoming Event";
             // 
-            // lblUpcomingEventTitle
+            // lblUpcomingEventName
             // 
-            this.lblUpcomingEventTitle.AutoSize = true;
-            this.lblUpcomingEventTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblUpcomingEventTitle.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUpcomingEventTitle.ForeColor = System.Drawing.Color.White;
-            this.lblUpcomingEventTitle.Location = new System.Drawing.Point(14, 104);
-            this.lblUpcomingEventTitle.Name = "lblUpcomingEventTitle";
-            this.lblUpcomingEventTitle.Size = new System.Drawing.Size(169, 23);
-            this.lblUpcomingEventTitle.TabIndex = 13;
-            this.lblUpcomingEventTitle.Text = "Sample Event Title";
+            this.lblUpcomingEventName.AutoSize = true;
+            this.lblUpcomingEventName.BackColor = System.Drawing.Color.Transparent;
+            this.lblUpcomingEventName.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpcomingEventName.ForeColor = System.Drawing.Color.White;
+            this.lblUpcomingEventName.Location = new System.Drawing.Point(53, 117);
+            this.lblUpcomingEventName.Name = "lblUpcomingEventName";
+            this.lblUpcomingEventName.Size = new System.Drawing.Size(181, 23);
+            this.lblUpcomingEventName.TabIndex = 13;
+            this.lblUpcomingEventName.Text = "Sample Event Name";
             // 
             // lblUpcomingEventStudents
             // 
@@ -413,11 +449,11 @@
             this.lblUpcomingEventStudents.BackColor = System.Drawing.Color.Transparent;
             this.lblUpcomingEventStudents.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingEventStudents.ForeColor = System.Drawing.Color.White;
-            this.lblUpcomingEventStudents.Location = new System.Drawing.Point(7, 297);
+            this.lblUpcomingEventStudents.Location = new System.Drawing.Point(3, 267);
             this.lblUpcomingEventStudents.Name = "lblUpcomingEventStudents";
-            this.lblUpcomingEventStudents.Size = new System.Drawing.Size(160, 19);
+            this.lblUpcomingEventStudents.Size = new System.Drawing.Size(162, 19);
             this.lblUpcomingEventStudents.TabIndex = 14;
-            this.lblUpcomingEventStudents.Text = "Current students: 123";
+            this.lblUpcomingEventStudents.Text = "Current Students: 123";
             // 
             // lblUpcomingEventGuests
             // 
@@ -425,7 +461,7 @@
             this.lblUpcomingEventGuests.BackColor = System.Drawing.Color.Transparent;
             this.lblUpcomingEventGuests.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingEventGuests.ForeColor = System.Drawing.Color.White;
-            this.lblUpcomingEventGuests.Location = new System.Drawing.Point(7, 322);
+            this.lblUpcomingEventGuests.Location = new System.Drawing.Point(3, 317);
             this.lblUpcomingEventGuests.Name = "lblUpcomingEventGuests";
             this.lblUpcomingEventGuests.Size = new System.Drawing.Size(148, 19);
             this.lblUpcomingEventGuests.TabIndex = 15;
@@ -437,7 +473,7 @@
             this.lblUpcomingEventIGP.BackColor = System.Drawing.Color.Transparent;
             this.lblUpcomingEventIGP.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingEventIGP.ForeColor = System.Drawing.Color.White;
-            this.lblUpcomingEventIGP.Location = new System.Drawing.Point(7, 346);
+            this.lblUpcomingEventIGP.Location = new System.Drawing.Point(3, 365);
             this.lblUpcomingEventIGP.Name = "lblUpcomingEventIGP";
             this.lblUpcomingEventIGP.Size = new System.Drawing.Size(196, 19);
             this.lblUpcomingEventIGP.TabIndex = 16;
@@ -449,7 +485,7 @@
             this.lblUpcomingEventVenue.BackColor = System.Drawing.Color.Transparent;
             this.lblUpcomingEventVenue.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingEventVenue.ForeColor = System.Drawing.Color.White;
-            this.lblUpcomingEventVenue.Location = new System.Drawing.Point(14, 151);
+            this.lblUpcomingEventVenue.Location = new System.Drawing.Point(3, 160);
             this.lblUpcomingEventVenue.Name = "lblUpcomingEventVenue";
             this.lblUpcomingEventVenue.Size = new System.Drawing.Size(57, 19);
             this.lblUpcomingEventVenue.TabIndex = 20;
@@ -461,40 +497,89 @@
             this.lblUpcomingEventDate.BackColor = System.Drawing.Color.Transparent;
             this.lblUpcomingEventDate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpcomingEventDate.ForeColor = System.Drawing.Color.White;
-            this.lblUpcomingEventDate.Location = new System.Drawing.Point(17, 194);
+            this.lblUpcomingEventDate.Location = new System.Drawing.Point(3, 199);
             this.lblUpcomingEventDate.Name = "lblUpcomingEventDate";
             this.lblUpcomingEventDate.Size = new System.Drawing.Size(46, 19);
             this.lblUpcomingEventDate.TabIndex = 21;
             this.lblUpcomingEventDate.Text = "Date:";
             // 
-            // lbUpcomingEventTime
+            // lblUpcomingEventTime
             // 
-            this.lbUpcomingEventTime.AutoSize = true;
-            this.lbUpcomingEventTime.BackColor = System.Drawing.Color.Transparent;
-            this.lbUpcomingEventTime.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUpcomingEventTime.ForeColor = System.Drawing.Color.White;
-            this.lbUpcomingEventTime.Location = new System.Drawing.Point(14, 241);
-            this.lbUpcomingEventTime.Name = "lbUpcomingEventTime";
-            this.lbUpcomingEventTime.Size = new System.Drawing.Size(49, 19);
-            this.lbUpcomingEventTime.TabIndex = 22;
-            this.lbUpcomingEventTime.Text = "Time:";
+            this.lblUpcomingEventTime.AutoSize = true;
+            this.lblUpcomingEventTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblUpcomingEventTime.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpcomingEventTime.ForeColor = System.Drawing.Color.White;
+            this.lblUpcomingEventTime.Location = new System.Drawing.Point(3, 238);
+            this.lblUpcomingEventTime.Name = "lblUpcomingEventTime";
+            this.lblUpcomingEventTime.Size = new System.Drawing.Size(49, 19);
+            this.lblUpcomingEventTime.TabIndex = 22;
+            this.lblUpcomingEventTime.Text = "Time:";
             // 
             // panelUpcomingEvent
             // 
             this.panelUpcomingEvent.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelUpcomingEvent.Controls.Add(this.panelUpcomingEventCover);
+            this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventGuestFee);
+            this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventStudentFee);
             this.panelUpcomingEvent.Controls.Add(this.iconUpcomingEvent);
-            this.panelUpcomingEvent.Controls.Add(this.lbUpcomingEventTime);
+            this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventTime);
             this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventDate);
             this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventVenue);
             this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventIGP);
             this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventGuests);
             this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventStudents);
-            this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventTitle);
+            this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEventName);
             this.panelUpcomingEvent.Controls.Add(this.lblUpcomingEvent);
             this.panelUpcomingEvent.Location = new System.Drawing.Point(329, 183);
             this.panelUpcomingEvent.Name = "panelUpcomingEvent";
             this.panelUpcomingEvent.Size = new System.Drawing.Size(282, 428);
             this.panelUpcomingEvent.TabIndex = 23;
+            // 
+            // panelUpcomingEventCover
+            // 
+            this.panelUpcomingEventCover.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelUpcomingEventCover.Controls.Add(this.label3);
+            this.panelUpcomingEventCover.Location = new System.Drawing.Point(0, 105);
+            this.panelUpcomingEventCover.Name = "panelUpcomingEventCover";
+            this.panelUpcomingEventCover.Size = new System.Drawing.Size(282, 292);
+            this.panelUpcomingEventCover.TabIndex = 29;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(33, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(222, 69);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Information on\r\nthe next upcoming event\r\nwill appear here";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblUpcomingEventGuestFee
+            // 
+            this.lblUpcomingEventGuestFee.AutoSize = true;
+            this.lblUpcomingEventGuestFee.BackColor = System.Drawing.Color.Transparent;
+            this.lblUpcomingEventGuestFee.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpcomingEventGuestFee.ForeColor = System.Drawing.Color.White;
+            this.lblUpcomingEventGuestFee.Location = new System.Drawing.Point(3, 336);
+            this.lblUpcomingEventGuestFee.Name = "lblUpcomingEventGuestFee";
+            this.lblUpcomingEventGuestFee.Size = new System.Drawing.Size(146, 19);
+            this.lblUpcomingEventGuestFee.TabIndex = 25;
+            this.lblUpcomingEventGuestFee.Text = "Guest Fee: Php 666";
+            // 
+            // lblUpcomingEventStudentFee
+            // 
+            this.lblUpcomingEventStudentFee.AutoSize = true;
+            this.lblUpcomingEventStudentFee.BackColor = System.Drawing.Color.Transparent;
+            this.lblUpcomingEventStudentFee.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpcomingEventStudentFee.ForeColor = System.Drawing.Color.White;
+            this.lblUpcomingEventStudentFee.Location = new System.Drawing.Point(3, 286);
+            this.lblUpcomingEventStudentFee.Name = "lblUpcomingEventStudentFee";
+            this.lblUpcomingEventStudentFee.Size = new System.Drawing.Size(160, 19);
+            this.lblUpcomingEventStudentFee.TabIndex = 24;
+            this.lblUpcomingEventStudentFee.Text = "Student Fee: Php 666";
             // 
             // iconUpcomingEvent
             // 
@@ -975,12 +1060,36 @@
             this.txtNotes.Size = new System.Drawing.Size(900, 305);
             this.txtNotes.TabIndex = 26;
             this.txtNotes.Text = "Write notes here...";
+            this.txtNotes.MouseLeave += new System.EventHandler(this.txtNotes_MouseLeave);
+            // 
+            // panelRecentEventCover
+            // 
+            this.panelRecentEventCover.BackColor = System.Drawing.Color.Crimson;
+            this.panelRecentEventCover.Controls.Add(this.label2);
+            this.panelRecentEventCover.Location = new System.Drawing.Point(16, 287);
+            this.panelRecentEventCover.Name = "panelRecentEventCover";
+            this.panelRecentEventCover.Size = new System.Drawing.Size(282, 292);
+            this.panelRecentEventCover.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(22, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(227, 69);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Information on\r\nrecently conducted event\r\nwill appear here";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CtrlDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panelRecentEventCover);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelIGPGained);
@@ -1008,6 +1117,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconRecentEvent)).EndInit();
             this.panelUpcomingEvent.ResumeLayout(false);
             this.panelUpcomingEvent.PerformLayout();
+            this.panelUpcomingEventCover.ResumeLayout(false);
+            this.panelUpcomingEventCover.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconUpcomingEvent)).EndInit();
             this.panelOfficers.ResumeLayout(false);
             this.panelOfficers.PerformLayout();
@@ -1021,6 +1132,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            this.panelRecentEventCover.ResumeLayout(false);
+            this.panelRecentEventCover.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1041,22 +1154,15 @@
         private System.Windows.Forms.Label lblGuestsRegistered;
         private System.Windows.Forms.Panel panelGuests;
         private System.Windows.Forms.Label lblRecentEvent;
-        private System.Windows.Forms.Label lblRecentEventTitle;
-        private System.Windows.Forms.Label lblRecentEventStudents;
-        private System.Windows.Forms.Label lblRecentEventGuests;
-        private System.Windows.Forms.Label lblRecentEventIGP;
-        private System.Windows.Forms.Label lblRecentEventVenue;
-        private System.Windows.Forms.Label lblRecentEventDate;
-        private System.Windows.Forms.Label lblRecentEventTime;
         private System.Windows.Forms.Panel panelRecentEvent;
         private System.Windows.Forms.Label lblUpcomingEvent;
-        private System.Windows.Forms.Label lblUpcomingEventTitle;
+        private System.Windows.Forms.Label lblUpcomingEventName;
         private System.Windows.Forms.Label lblUpcomingEventStudents;
         private System.Windows.Forms.Label lblUpcomingEventGuests;
         private System.Windows.Forms.Label lblUpcomingEventIGP;
         private System.Windows.Forms.Label lblUpcomingEventVenue;
         private System.Windows.Forms.Label lblUpcomingEventDate;
-        private System.Windows.Forms.Label lbUpcomingEventTime;
+        private System.Windows.Forms.Label lblUpcomingEventTime;
         private System.Windows.Forms.Panel panelUpcomingEvent;
         private System.Windows.Forms.Panel panelOfficers;
         private System.Windows.Forms.Label lblOfficers;
@@ -1093,5 +1199,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label lblAdviser;
+        private System.Windows.Forms.Label lblUpcomingEventGuestFee;
+        private System.Windows.Forms.Label lblUpcomingEventStudentFee;
+        private System.Windows.Forms.Label lblRecentEventGuestFee;
+        private System.Windows.Forms.Label lblRecentEventStudentFee;
+        private System.Windows.Forms.Label lblRecentEventTime;
+        private System.Windows.Forms.Label lblRecentEventDate;
+        private System.Windows.Forms.Label lblRecentEventVenue;
+        private System.Windows.Forms.Label lblRecentEventIGP;
+        private System.Windows.Forms.Label lblRecentEventGuests;
+        private System.Windows.Forms.Label lblRecentEventStudents;
+        private System.Windows.Forms.Label lblRecentEventName;
+        private System.Windows.Forms.Panel panelRecentEventCover;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelUpcomingEventCover;
+        private System.Windows.Forms.Label label3;
     }
 }

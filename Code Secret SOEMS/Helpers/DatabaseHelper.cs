@@ -55,27 +55,28 @@ namespace Code_Secret_SOEMS.Helpers
         public int getCount()
         {
             openConnection();
-            int count = int.Parse(commandQuery.ExecuteScalar().ToString());
+            int count;
+            count = int.Parse(commandQuery.ExecuteScalar().ToString());
             closeConnection();
             return count;
         }
 
         // Tests connection settings and returns result as string
-        public string testConnection()
+        public bool testConnection()
         {
-            string message;
+            bool result;
             try
             {
                 openConnection();
-                message = "Test connection succeeded";
+                result = true;
                 closeConnection();
             }
             catch
             {
-                message = "Test connection failed";
+                result = false;
             }
 
-            return message;
+            return result;
         }
 
         // Open MySQL Connection

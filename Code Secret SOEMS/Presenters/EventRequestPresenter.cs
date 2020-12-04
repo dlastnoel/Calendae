@@ -46,7 +46,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblDate.Location = new Point(6, 39);
                 lblDate.Name = "lblDate";
                 lblDate.Size = new Size(37, 15);
-                lblDate.Text = "Date: " + _event.getEventItems("date");
+                lblDate.Text = "Date: " + _event.getEventItems("date_from") + " - " + _event.getEventItems("date_to");
 
                 Label lblTime = new Label();
                 lblTime.AutoSize = true;

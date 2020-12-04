@@ -63,6 +63,17 @@ namespace Code_Secret_SOEMS.Helpers
             Properties.Settings.Default.Save();
         }
 
+        public string getNotes()
+        {
+            return Properties.Settings.Default.notes;
+        }
+
+        public void saveNotes(string notes)
+        {
+            Properties.Settings.Default.notes = notes;
+            Properties.Settings.Default.Save();
+        }
+
         public void lockLogin()
         {
             Properties.Settings.Default.lockStatus = true;

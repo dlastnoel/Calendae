@@ -43,7 +43,7 @@ namespace Code_Secret_SOEMS
         {
 
             if (!String.IsNullOrEmpty(txtServer.Text) && !String.IsNullOrEmpty(txtUser.Text) &&
-                !String.IsNullOrEmpty(txtPort.Text) && !String.IsNullOrEmpty(txtPassword.Text))
+                !String.IsNullOrEmpty(txtPort.Text))
             {
                 sh.setConnectionSettings(txtServer.Text, txtUser.Text, txtPort.Text, txtPassword.Text);
 
@@ -67,10 +67,16 @@ namespace Code_Secret_SOEMS
         private void btnTest_Click(object sender, EventArgs e)
         {
             if(!String.IsNullOrEmpty(txtServer.Text) && !String.IsNullOrEmpty(txtUser.Text) &&
-                !String.IsNullOrEmpty(txtPort.Text) && !String.IsNullOrEmpty(txtPassword.Text))
+                !String.IsNullOrEmpty(txtPort.Text))
             {
                 dh = new DatabaseHelper(txtServer.Text, txtUser.Text, txtPort.Text, txtPassword.Text);
-                MessageBox.Show(dh.testConnection(), "Test Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(dh.testConnection())
+                {
+                    MessageBox.Show("Test connection succeeded", "Test Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Test connection failed", "Test Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             } else
             {
                 MessageBox.Show("Please fill up the fields correctly", "Connection Settings", MessageBoxButtons.OK,

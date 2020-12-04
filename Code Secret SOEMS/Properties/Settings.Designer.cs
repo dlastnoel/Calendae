@@ -178,5 +178,17 @@ namespace Code_Secret_SOEMS.Properties {
                 this["lockStatus"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string notes {
+            get {
+                return ((string)(this["notes"]));
+            }
+            set {
+                this["notes"] = value;
+            }
+        }
     }
 }

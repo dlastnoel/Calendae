@@ -16,6 +16,7 @@ namespace Code_Secret_SOEMS
     public partial class FrmLogin : Form
     {
         LoginPresenter loginPresenter;
+        DatabaseHelper dh;
         SettingsHelper sh;
         ThemeHelper th;
         private static byte counter = 3;
@@ -23,6 +24,7 @@ namespace Code_Secret_SOEMS
         {
             InitializeComponent();
             loginPresenter = new LoginPresenter();
+            dh = new DatabaseHelper();
             sh = new SettingsHelper();
             th = new ThemeHelper();
             th.setFormColor(this);
@@ -112,15 +114,23 @@ namespace Code_Secret_SOEMS
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            if (sh.isFirstRun())
+            if(dh.testConnection())
             {
-                this.Hide();
-                new FrmAdviserRegistration().ShowDialog();
-            }
-
-            if (sh.isLoginLocked() && sh.isLocked())
+                if (sh.isFirstRun())
+                {
+                    this.Hide();
+                    new FrmAdviserRegistration().ShowDialog();
+                }
+                else if (sh.isLoginLocked() && sh.isLocked())
+                {
+                    new FrmLocked(1).ShowDialog();
+                }
+            } else
             {
-                new FrmLocked(1).ShowDialog();
+                MessageBox.Show("Connection to the server is not successful", "Calendae",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new FrmConnectionSettings().ShowDialog();
+                loginPresenter = new LoginPresenter();
             }
         }
 

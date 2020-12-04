@@ -12,7 +12,8 @@ namespace Code_Secret_SOEMS.Models
     {
         public string event_name { get; set; }
         public string venue { get; set; }
-        public string date { get; set; }
+        public string date_from { get; set; }
+        public string date_to { get; set; }
         public string time { get; set; }
         public int student_registration { get; set; }
         public int student_slots { get; set; }
@@ -35,7 +36,7 @@ namespace Code_Secret_SOEMS.Models
                     "id AS 'ID', " +
                     "IF(is_activated = 1, 'Activated', 'Deactivated') AS 'Status', " +
                     "event_name AS 'Event Name', " +
-                    "date AS 'Date', " +
+                    "CONCAT(date_from, ' ', date_to)  AS 'Date', " +
                     "time AS 'Time', " +
                     "student_registration AS 'Student Registration', " +
                     "IF(student_slots = 0, 'Open', student_slots) AS 'Student Slots', " +
@@ -98,13 +99,15 @@ namespace Code_Secret_SOEMS.Models
 
         public void addEvent()
         {
-            dbHelper.createQuery("INSERT INTO events (event_name, venue, date, time, student_registration, " +
-                "student_slots, event_details, allow_guests, guest_registration, guest_slots, is_activated) VALUES (@event_name, @venue, @date, " +
-                "@time, @student_registration, @student_slots, @event_details, @allow_guests, @guest_registration, @guest_slots, @is_activated);");
+            dbHelper.createQuery("INSERT INTO events (event_name, venue, date_from, date_to, time, student_registration, " +
+                "student_slots, event_details, allow_guests, guest_registration, guest_slots, is_activated) VALUES " +
+                "(@event_name, @venue, @date_from, @date_to, @time, @student_registration, " +
+                "@student_slots, @event_details, @allow_guests, @guest_registration, @guest_slots, @is_activated);");
 
             dbHelper.bindParam("@event_name", event_name);
             dbHelper.bindParam("@venue", venue);
-            dbHelper.bindParam("@date", date);
+            dbHelper.bindParam("@date_from", date_from);
+            dbHelper.bindParam("@date_to", date_to);
             dbHelper.bindParam("@time", time);
             dbHelper.bindParam("@student_registration", student_registration);
             dbHelper.bindParam("@student_slots", student_slots);
@@ -143,7 +146,8 @@ namespace Code_Secret_SOEMS.Models
                 "UPDATE events SET " +
                     "event_name = @event_name, " +
                     "venue = @venue, " +
-                    "date = @date, " +
+                    "date_from = @date_from, " +
+                    "date_to = @date_to" +
                     "time = @time, " +
                     "student_registration = @student_registration, " +
                     "student_slots = @student_slots, " +
@@ -156,7 +160,8 @@ namespace Code_Secret_SOEMS.Models
 
             dbHelper.bindParam("@event_name", event_name);
             dbHelper.bindParam("@venue", venue);
-            dbHelper.bindParam("@date", date);
+            dbHelper.bindParam("@date_from", date_from);
+            dbHelper.bindParam("@date_to", date_to);
             dbHelper.bindParam("@time", time);
             dbHelper.bindParam("@student_registration", student_registration);
             dbHelper.bindParam("@student_slots", student_slots);

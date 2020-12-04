@@ -19,14 +19,15 @@ namespace Code_Secret_SOEMS.Presenters
             _event.loadEvents(mydataGridView);
         }
 
-        public void setEvent(string event_name, string venue, string date, string time,
-            int student_registration, int student_slots, string event_details, bool allow_guests, int guest_registration, 
-            int guest_slots, bool is_activated)
+        public void setEvent(string event_name, string venue, string date_from, string date_to, string time_from,
+            string time_to, int student_registration, int student_slots, string event_details, bool allow_guests, 
+            int guest_registration, int guest_slots, bool is_activated)
         {
             _event.event_name = event_name;
             _event.venue = venue;
-            _event.date = date; ;
-            _event.time = time;
+            _event.date_from = date_from;
+            _event.date_to = date_to;
+            _event.time = time_from + " - " + time_to;
             _event.student_registration = student_registration;
             _event.student_slots = student_slots;
             _event.event_details = event_details;
@@ -62,28 +63,32 @@ namespace Code_Secret_SOEMS.Presenters
         }
 
 
-        public bool prepareEvent(int currentID, TextBox txtEventName, TextBox txtVenue, TextBox txtDate, TextBox txtTime,
-            TextBox txtStudentRegistration, TextBox txtStudentSlots, TextBox txtEventDetails, CheckBox chkGuests, TextBox txtGuestRegistration, 
-            TextBox txtGuestSlots, XUISwitch switchIsActivated, Label lblSwitchStatus)
+        public bool prepareEvent(int currentID, TextBox txtEventName, TextBox txtVenue, DateTimePicker dateFrom, 
+            DateTimePicker dateTo, DateTimePicker timeFrom, DateTimePicker timeTo, TextBox txtStudentRegistration, TextBox txtStudentSlots,
+            TextBox txtEventDetails, CheckBox chkGuests, TextBox txtGuestRegistration, TextBox txtGuestSlots, 
+            XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
             bool activation;
             _event.selectEvent(currentID);
             txtEventName.Text = _event.getEventItems("event_name");
             txtVenue.Text = _event.getEventItems("venue");
-            txtDate.Text = _event.getEventItems("date");
-            txtTime.Text = _event.getEventItems("time");
+            dateFrom.Value = Convert.ToDateTime(_event.getEventItems("date_from"));
+            dateTo.Value = Convert.ToDateTime(_event.getEventItems("date_to"));
+            string[] times = _event.getEventItems("time").Split(new string[] {" - "}, StringSplitOptions.None);
+            timeFrom.Value = Convert.ToDateTime(times[0]);
+            timeTo.Value = Convert.ToDateTime(times[1]);
             txtStudentRegistration.Text = _event.getEventItems("student_registration");
             txtStudentSlots.Text = _event.getEventItems("student_slots");
             txtEventDetails.Text = _event.getEventItems("event_details");
             if(bool.Parse(_event.getEventItems("allow_guests")) == true)
             {
                 chkGuests.Checked = true;
+                txtGuestRegistration.Text = _event.getEventItems("guest_registration");
+                txtGuestSlots.Text = _event.getEventItems("guest_slots");
             } else
             {
                 chkGuests.Checked = false;
             }
-            txtGuestRegistration.Text = _event.getEventItems("guest_registration");
-            txtGuestSlots.Text = _event.getEventItems("guest_slots");
             if(bool.Parse(_event.getEventItems("is_activated")) == true)
             {
                 activation = true;

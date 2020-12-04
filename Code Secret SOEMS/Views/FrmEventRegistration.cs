@@ -22,19 +22,8 @@ namespace Code_Secret_SOEMS.Views
 
         private void clearFields()
         {
-            cmbEvents.SelectedIndex = -1;
-            lblEventName.Text = "Event Name";
-            lblVenue.Text = "Venue:";
-            lblDate.Text = "Date:";
-            lblTime.Text = "Time:";
-            txtEventDetails.Clear();
-            lblStudentSlots.Text = "Slots Left";
-            lblStudentRegistrationFee.Text = "Registration Fee:";
-            lblGuestSlots.Text = "Slots Left";
-            lblGuestRegistrationFee.Text = "Registration Fee";
-            panelStudentRegistration.Enabled = false;
-            panelGuestRegistration.Enabled = false;
-            eventRegistrationPresenter.setEvents(cmbEvents);
+            txtCode.Clear();
+            txtIDNo.Clear();
         }
 
         private void setFormTheme()
@@ -134,10 +123,20 @@ namespace Code_Secret_SOEMS.Views
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if(cmbEvents.SelectedIndex != -1)
-            {
-                clearFields();
-            }
+            lblEventName.Text = "Event Name";
+            lblVenue.Text = "Venue:";
+            lblDate.Text = "Date:";
+            lblTime.Text = "Time:";
+            txtEventDetails.Clear();
+            lblStudentSlots.Text = "Slots Left";
+            lblStudentRegistrationFee.Text = "Registration Fee:";
+            lblGuestSlots.Text = "Slots Left";
+            lblGuestRegistrationFee.Text = "Registration Fee";
+            panelStudentRegistration.Enabled = false;
+            panelGuestRegistration.Enabled = false;
+            eventRegistrationPresenter.setEvents(cmbEvents);
+            cmbEvents.SelectedIndex = -1;
+            clearFields();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
@@ -167,6 +166,7 @@ namespace Code_Secret_SOEMS.Views
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtIDNo.Clear();
                     }
+                    clearFields();
                 } else if (eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 3)
                 {
                     MessageBox.Show("Registration unsuccessful, your acount is not yet activated", "Event Registration", MessageBoxButtons.OK,
@@ -193,6 +193,7 @@ namespace Code_Secret_SOEMS.Views
         private void btnGuestRegister_Click(object sender, EventArgs e)
         {
             new FrmGuests(lblEventName.Text, 0).ShowDialog();
+            clearFields();
         }
 
         private void btnCheckGuestRegistration_Click(object sender, EventArgs e)

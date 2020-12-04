@@ -31,6 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataEvents = new System.Windows.Forms.DataGridView();
             this.groupEventInfo = new System.Windows.Forms.GroupBox();
+            this.timeTo = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTo = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateFrom = new System.Windows.Forms.DateTimePicker();
+            this.timeFrom = new System.Windows.Forms.DateTimePicker();
             this.lblSwitchStatus = new System.Windows.Forms.Label();
             this.switchIsActivated = new XanderUI.XUISwitch();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -40,18 +46,14 @@
             this.lblStudentSlots = new System.Windows.Forms.Label();
             this.txtEventName = new System.Windows.Forms.TextBox();
             this.lblEventName = new System.Windows.Forms.Label();
-            this.lblVenue = new System.Windows.Forms.Label();
-            this.txtTime = new System.Windows.Forms.TextBox();
-            this.txtVenue = new System.Windows.Forms.TextBox();
             this.lblTime = new System.Windows.Forms.Label();
+            this.lblVenue = new System.Windows.Forms.Label();
+            this.txtVenue = new System.Windows.Forms.TextBox();
             this.lblDate = new System.Windows.Forms.Label();
-            this.txtDate = new System.Windows.Forms.TextBox();
             this.lblStudentRegistrationFee = new System.Windows.Forms.Label();
             this.txtStudentRegistrationFee = new System.Windows.Forms.TextBox();
             this.groupGuests = new System.Windows.Forms.GroupBox();
-            this.lblInfo4 = new System.Windows.Forms.Label();
             this.txtGuestSlots = new System.Windows.Forms.TextBox();
-            this.lblInfo3 = new System.Windows.Forms.Label();
             this.lblGuestSlots = new System.Windows.Forms.Label();
             this.lblGuestRegistrationFee = new System.Windows.Forms.Label();
             this.txtGuestRegistrationFee = new System.Windows.Forms.TextBox();
@@ -89,6 +91,12 @@
             // 
             // groupEventInfo
             // 
+            this.groupEventInfo.Controls.Add(this.timeTo);
+            this.groupEventInfo.Controls.Add(this.label2);
+            this.groupEventInfo.Controls.Add(this.dateTo);
+            this.groupEventInfo.Controls.Add(this.label1);
+            this.groupEventInfo.Controls.Add(this.dateFrom);
+            this.groupEventInfo.Controls.Add(this.timeFrom);
             this.groupEventInfo.Controls.Add(this.lblSwitchStatus);
             this.groupEventInfo.Controls.Add(this.switchIsActivated);
             this.groupEventInfo.Controls.Add(this.lblStatus);
@@ -98,22 +106,88 @@
             this.groupEventInfo.Controls.Add(this.lblStudentSlots);
             this.groupEventInfo.Controls.Add(this.txtEventName);
             this.groupEventInfo.Controls.Add(this.lblEventName);
-            this.groupEventInfo.Controls.Add(this.lblVenue);
-            this.groupEventInfo.Controls.Add(this.txtTime);
-            this.groupEventInfo.Controls.Add(this.txtVenue);
             this.groupEventInfo.Controls.Add(this.lblTime);
+            this.groupEventInfo.Controls.Add(this.lblVenue);
+            this.groupEventInfo.Controls.Add(this.txtVenue);
             this.groupEventInfo.Controls.Add(this.lblDate);
-            this.groupEventInfo.Controls.Add(this.txtDate);
             this.groupEventInfo.Controls.Add(this.lblStudentRegistrationFee);
             this.groupEventInfo.Controls.Add(this.txtStudentRegistrationFee);
             this.groupEventInfo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupEventInfo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupEventInfo.Location = new System.Drawing.Point(941, 116);
+            this.groupEventInfo.Location = new System.Drawing.Point(941, 92);
             this.groupEventInfo.Name = "groupEventInfo";
-            this.groupEventInfo.Size = new System.Drawing.Size(591, 474);
+            this.groupEventInfo.Size = new System.Drawing.Size(591, 498);
             this.groupEventInfo.TabIndex = 32;
             this.groupEventInfo.TabStop = false;
             this.groupEventInfo.Text = "Event Information";
+            // 
+            // timeTo
+            // 
+            this.timeTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.timeTo.CustomFormat = "hh:mm tt";
+            this.timeTo.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeTo.Location = new System.Drawing.Point(168, 191);
+            this.timeTo.Name = "timeTo";
+            this.timeTo.ShowUpDown = true;
+            this.timeTo.Size = new System.Drawing.Size(103, 23);
+            this.timeTo.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(150, 191);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 23);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "-";
+            // 
+            // dateTo
+            // 
+            this.dateTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dateTo.CustomFormat = "MMMM dd, yyyy";
+            this.dateTo.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTo.Location = new System.Drawing.Point(302, 147);
+            this.dateTo.Name = "dateTo";
+            this.dateTo.Size = new System.Drawing.Size(228, 23);
+            this.dateTo.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(279, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 23);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "-";
+            // 
+            // dateFrom
+            // 
+            this.dateFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dateFrom.CustomFormat = "MMMM dd, yyyy";
+            this.dateFrom.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateFrom.Location = new System.Drawing.Point(43, 147);
+            this.dateFrom.Name = "dateFrom";
+            this.dateFrom.Size = new System.Drawing.Size(228, 23);
+            this.dateFrom.TabIndex = 3;
+            this.dateFrom.Value = new System.DateTime(2020, 12, 4, 0, 0, 0, 0);
+            // 
+            // timeFrom
+            // 
+            this.timeFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.timeFrom.CustomFormat = "hh:mm tt";
+            this.timeFrom.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeFrom.Location = new System.Drawing.Point(43, 191);
+            this.timeFrom.Name = "timeFrom";
+            this.timeFrom.ShowUpDown = true;
+            this.timeFrom.Size = new System.Drawing.Size(103, 23);
+            this.timeFrom.TabIndex = 5;
+            this.timeFrom.Value = new System.DateTime(2020, 12, 4, 12, 57, 0, 0);
             // 
             // lblSwitchStatus
             // 
@@ -137,7 +211,7 @@
             this.switchIsActivated.Size = new System.Drawing.Size(60, 30);
             this.switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
             this.switchIsActivated.SwitchStyle = XanderUI.XUISwitch.Style.Horizontal;
-            this.switchIsActivated.TabIndex = 8;
+            this.switchIsActivated.TabIndex = 10;
             this.switchIsActivated.Text = "xuiSwitch1";
             this.switchIsActivated.Click += new System.EventHandler(this.switchIsActivated_Click);
             // 
@@ -168,21 +242,21 @@
             this.txtEventDetails.Multiline = true;
             this.txtEventDetails.Name = "txtEventDetails";
             this.txtEventDetails.Size = new System.Drawing.Size(487, 183);
-            this.txtEventDetails.TabIndex = 7;
+            this.txtEventDetails.TabIndex = 9;
             // 
             // txtStudentSlots
             // 
             this.txtStudentSlots.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentSlots.Location = new System.Drawing.Point(317, 191);
+            this.txtStudentSlots.Location = new System.Drawing.Point(436, 191);
             this.txtStudentSlots.Name = "txtStudentSlots";
-            this.txtStudentSlots.Size = new System.Drawing.Size(213, 23);
-            this.txtStudentSlots.TabIndex = 6;
+            this.txtStudentSlots.Size = new System.Drawing.Size(93, 23);
+            this.txtStudentSlots.TabIndex = 8;
             // 
             // lblStudentSlots
             // 
             this.lblStudentSlots.AutoSize = true;
             this.lblStudentSlots.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentSlots.Location = new System.Drawing.Point(314, 173);
+            this.lblStudentSlots.Location = new System.Drawing.Point(454, 173);
             this.lblStudentSlots.Name = "lblStudentSlots";
             this.lblStudentSlots.Size = new System.Drawing.Size(36, 15);
             this.lblStudentSlots.TabIndex = 18;
@@ -206,6 +280,16 @@
             this.lblEventName.TabIndex = 16;
             this.lblEventName.Text = "Event Name";
             // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(40, 173);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(37, 15);
+            this.lblTime.TabIndex = 14;
+            this.lblTime.Text = "Time";
+            // 
             // lblVenue
             // 
             this.lblVenue.AutoSize = true;
@@ -216,14 +300,6 @@
             this.lblVenue.TabIndex = 1;
             this.lblVenue.Text = "Venue";
             // 
-            // txtTime
-            // 
-            this.txtTime.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTime.Location = new System.Drawing.Point(317, 147);
-            this.txtTime.Name = "txtTime";
-            this.txtTime.Size = new System.Drawing.Size(213, 23);
-            this.txtTime.TabIndex = 4;
-            // 
             // txtVenue
             // 
             this.txtVenue.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,16 +307,6 @@
             this.txtVenue.Name = "txtVenue";
             this.txtVenue.Size = new System.Drawing.Size(487, 23);
             this.txtVenue.TabIndex = 2;
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(314, 129);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(37, 15);
-            this.lblTime.TabIndex = 14;
-            this.lblTime.Text = "Time";
             // 
             // lblDate
             // 
@@ -252,19 +318,11 @@
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "Date";
             // 
-            // txtDate
-            // 
-            this.txtDate.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDate.Location = new System.Drawing.Point(43, 147);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(213, 23);
-            this.txtDate.TabIndex = 3;
-            // 
             // lblStudentRegistrationFee
             // 
             this.lblStudentRegistrationFee.AutoSize = true;
             this.lblStudentRegistrationFee.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(40, 173);
+            this.lblStudentRegistrationFee.Location = new System.Drawing.Point(299, 173);
             this.lblStudentRegistrationFee.Name = "lblStudentRegistrationFee";
             this.lblStudentRegistrationFee.Size = new System.Drawing.Size(99, 15);
             this.lblStudentRegistrationFee.TabIndex = 5;
@@ -273,16 +331,14 @@
             // txtStudentRegistrationFee
             // 
             this.txtStudentRegistrationFee.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentRegistrationFee.Location = new System.Drawing.Point(43, 191);
+            this.txtStudentRegistrationFee.Location = new System.Drawing.Point(302, 191);
             this.txtStudentRegistrationFee.Name = "txtStudentRegistrationFee";
-            this.txtStudentRegistrationFee.Size = new System.Drawing.Size(213, 23);
-            this.txtStudentRegistrationFee.TabIndex = 5;
+            this.txtStudentRegistrationFee.Size = new System.Drawing.Size(128, 23);
+            this.txtStudentRegistrationFee.TabIndex = 7;
             // 
             // groupGuests
             // 
-            this.groupGuests.Controls.Add(this.lblInfo4);
             this.groupGuests.Controls.Add(this.txtGuestSlots);
-            this.groupGuests.Controls.Add(this.lblInfo3);
             this.groupGuests.Controls.Add(this.lblGuestSlots);
             this.groupGuests.Controls.Add(this.lblGuestRegistrationFee);
             this.groupGuests.Controls.Add(this.txtGuestRegistrationFee);
@@ -290,21 +346,10 @@
             this.groupGuests.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupGuests.Location = new System.Drawing.Point(941, 596);
             this.groupGuests.Name = "groupGuests";
-            this.groupGuests.Size = new System.Drawing.Size(591, 156);
+            this.groupGuests.Size = new System.Drawing.Size(591, 120);
             this.groupGuests.TabIndex = 35;
             this.groupGuests.TabStop = false;
             this.groupGuests.Text = "       Allow Guests?";
-            // 
-            // lblInfo4
-            // 
-            this.lblInfo4.AutoSize = true;
-            this.lblInfo4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo4.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo4.Location = new System.Drawing.Point(40, 121);
-            this.lblInfo4.Name = "lblInfo4";
-            this.lblInfo4.Size = new System.Drawing.Size(175, 13);
-            this.lblInfo4.TabIndex = 34;
-            this.lblInfo4.Text = "Leave slots empty for unlimited slots";
             // 
             // txtGuestSlots
             // 
@@ -312,18 +357,7 @@
             this.txtGuestSlots.Location = new System.Drawing.Point(317, 68);
             this.txtGuestSlots.Name = "txtGuestSlots";
             this.txtGuestSlots.Size = new System.Drawing.Size(213, 23);
-            this.txtGuestSlots.TabIndex = 11;
-            // 
-            // lblInfo3
-            // 
-            this.lblInfo3.AutoSize = true;
-            this.lblInfo3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo3.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo3.Location = new System.Drawing.Point(40, 103);
-            this.lblInfo3.Name = "lblInfo3";
-            this.lblInfo3.Size = new System.Drawing.Size(198, 13);
-            this.lblInfo3.TabIndex = 33;
-            this.lblInfo3.Text = "Leave registration fee empty to set it free";
+            this.txtGuestSlots.TabIndex = 13;
             // 
             // lblGuestSlots
             // 
@@ -351,7 +385,7 @@
             this.txtGuestRegistrationFee.Location = new System.Drawing.Point(43, 68);
             this.txtGuestRegistrationFee.Name = "txtGuestRegistrationFee";
             this.txtGuestRegistrationFee.Size = new System.Drawing.Size(213, 23);
-            this.txtGuestRegistrationFee.TabIndex = 10;
+            this.txtGuestRegistrationFee.TabIndex = 12;
             // 
             // checkGuests
             // 
@@ -359,7 +393,7 @@
             this.checkGuests.Location = new System.Drawing.Point(953, 597);
             this.checkGuests.Name = "checkGuests";
             this.checkGuests.Size = new System.Drawing.Size(15, 14);
-            this.checkGuests.TabIndex = 9;
+            this.checkGuests.TabIndex = 11;
             this.checkGuests.UseVisualStyleBackColor = true;
             this.checkGuests.CheckedChanged += new System.EventHandler(this.checkGuests_CheckedChanged);
             // 
@@ -370,10 +404,10 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(1240, 805);
+            this.btnDelete.Location = new System.Drawing.Point(1240, 769);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(292, 41);
-            this.btnDelete.TabIndex = 14;
+            this.btnDelete.TabIndex = 15;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -385,10 +419,10 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(941, 758);
+            this.btnAdd.Location = new System.Drawing.Point(941, 722);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(591, 41);
-            this.btnAdd.TabIndex = 12;
+            this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -400,10 +434,10 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(941, 805);
+            this.btnUpdate.Location = new System.Drawing.Point(941, 769);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(292, 41);
-            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.TabIndex = 14;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -430,10 +464,10 @@
             this.btnShowDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowDetails.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowDetails.ForeColor = System.Drawing.Color.White;
-            this.btnShowDetails.Location = new System.Drawing.Point(941, 852);
+            this.btnShowDetails.Location = new System.Drawing.Point(941, 816);
             this.btnShowDetails.Name = "btnShowDetails";
             this.btnShowDetails.Size = new System.Drawing.Size(591, 41);
-            this.btnShowDetails.TabIndex = 36;
+            this.btnShowDetails.TabIndex = 16;
             this.btnShowDetails.Text = "Show Details";
             this.btnShowDetails.UseVisualStyleBackColor = false;
             this.btnShowDetails.Visible = false;
@@ -473,10 +507,8 @@
         private System.Windows.Forms.GroupBox groupEventInfo;
         private System.Windows.Forms.TextBox txtEventName;
         private System.Windows.Forms.Label lblEventName;
-        private System.Windows.Forms.TextBox txtTime;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label lblStudentRegistrationFee;
         private System.Windows.Forms.TextBox txtStudentRegistrationFee;
         private System.Windows.Forms.Label lblVenue;
@@ -484,9 +516,7 @@
         private System.Windows.Forms.TextBox txtStudentSlots;
         private System.Windows.Forms.Label lblStudentSlots;
         private System.Windows.Forms.GroupBox groupGuests;
-        private System.Windows.Forms.Label lblInfo4;
         private System.Windows.Forms.TextBox txtGuestSlots;
-        private System.Windows.Forms.Label lblInfo3;
         private System.Windows.Forms.Label lblGuestSlots;
         private System.Windows.Forms.Label lblGuestRegistrationFee;
         private System.Windows.Forms.TextBox txtGuestRegistrationFee;
@@ -501,5 +531,11 @@
         private XanderUI.XUISwitch switchIsActivated;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnShowDetails;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateFrom;
+        private System.Windows.Forms.DateTimePicker timeTo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTo;
+        private System.Windows.Forms.DateTimePicker timeFrom;
     }
 }

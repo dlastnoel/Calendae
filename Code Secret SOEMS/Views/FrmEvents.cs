@@ -30,9 +30,9 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnDelete.Enabled = true;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, txtDate, txtTime, txtStudentRegistrationFee,
-                        txtStudentSlots, txtEventDetails, checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, 
-                        lblSwitchStatus);
+            activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, dateFrom, dateTo,
+                timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails, checkGuests, 
+                txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
         }
 
         private void clearFields()
@@ -40,8 +40,6 @@ namespace Code_Secret_SOEMS
             currentID = 0;
             txtEventName.Clear();
             txtVenue.Clear();
-            txtDate.Clear();
-            txtTime.Clear();
             txtStudentRegistrationFee.Clear();
             txtStudentSlots.Clear();
             txtEventDetails.Clear();
@@ -50,6 +48,9 @@ namespace Code_Secret_SOEMS
             txtGuestSlots.Clear();
             switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
             lblSwitchStatus.Text = "Deactivated";
+
+            dateFrom.Value = DateTime.Now.Date;
+            dateTo.Value = DateTime.Now.Date;
 
             btnAdd.Text = "Add";
             btnUpdate.Enabled = false;
@@ -133,46 +134,65 @@ namespace Code_Secret_SOEMS
         {
             if (btnAdd.Text == "Add")
             {
-                if (!String.IsNullOrEmpty(txtEventName.Text) && !String.IsNullOrEmpty(txtVenue.Text) && !String.IsNullOrEmpty(txtDate.Text) &&
-                !String.IsNullOrEmpty(txtTime.Text) && !String.IsNullOrEmpty(txtStudentRegistrationFee.Text) &&
+                /*TimeSpan event_date = dateTo.Value.Date.Subtract(dateFrom.Value.Date);
+                TimeSpan event_time = timeTo.Value.TimeOfDay - timeFrom.Value.TimeOfDay;
+                MessageBox.Show(event_date.TotalDays.ToString());
+                MessageBox.Show(event_time.TotalMinutes.ToString());*/
+                MessageBox.Show((DateTime.Today.Date.Subtract(dateFrom.Value.Date).TotalDays).ToString());
+                MessageBox.Show((dateTo.Value.Date.Subtract(dateFrom.Value.Date).TotalDays).ToString());
+                if (!String.IsNullOrEmpty(txtEventName.Text) && !String.IsNullOrEmpty(txtVenue.Text) &&
+                   DateTime.Today.Date.Subtract(dateFrom.Value.Date).TotalDays <= 0 &&
+                   dateTo.Value.Date.Subtract(dateFrom.Value.Date).TotalDays >= -0.9 &&
+                !String.IsNullOrEmpty(timeFrom.Text) && !String.IsNullOrEmpty(timeTo.Text) &&
+                !String.IsNullOrEmpty(txtStudentRegistrationFee.Text) &&
                 !String.IsNullOrEmpty(txtStudentSlots.Text) && !String.IsNullOrEmpty(txtEventDetails.Text))
                 {
-                    if (checkGuests.Checked)
+                    if (dateFrom.Value != DateTime.Now.Date)
                     {
-                        if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
+                        if (checkGuests.Checked)
                         {
-                            eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
-                                int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                                checkGuests.Checked, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
-                            eventPresenter.addEvent();
-                            if (activation)
+                            if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                             {
-                                MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
+                                eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
+                                    timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
+                                    int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
+                                    int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                                eventPresenter.addEvent();
+                                if (activation)
+                                {
+                                    MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Event successfully added and is pending for approval", "Events",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                this.Close();
+
                             }
                             else
                             {
-                                MessageBox.Show("Event successfully added and is pending for approval", "Events",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
                             }
-                            this.Close();
-
                         }
                         else
                         {
-                            MessageBox.Show("Please fill up the form correctly", "Events", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                            eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
+                                    timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
+                                    int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
+                                    0, 0, activation);
+                            eventPresenter.addEvent();
+                            MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                            this.Close();
                         }
                     }
                     else
                     {
-                        eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
-                            int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                            checkGuests.Checked, 0, 0, activation);
-                        eventPresenter.addEvent();
-                        MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                        this.Close();
+                        MessageBox.Show("You cannot set an event happening today", "Events",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -189,17 +209,20 @@ namespace Code_Secret_SOEMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtEventName.Text) && !String.IsNullOrEmpty(txtVenue.Text) && !String.IsNullOrEmpty(txtDate.Text) &&
-                !String.IsNullOrEmpty(txtTime.Text) && !String.IsNullOrEmpty(txtStudentRegistrationFee.Text) &&
-                !String.IsNullOrEmpty(txtStudentSlots.Text) && !String.IsNullOrEmpty(txtEventDetails.Text))
+            if (!String.IsNullOrEmpty(txtEventName.Text) && !String.IsNullOrEmpty(txtVenue.Text) &&
+                 !String.IsNullOrEmpty(timeFrom.Text) && !String.IsNullOrEmpty(timeTo.Text) &&
+                 !String.IsNullOrEmpty(txtStudentRegistrationFee.Text) &&
+                 !String.IsNullOrEmpty(txtStudentSlots.Text) && !String.IsNullOrEmpty(txtEventDetails.Text))
             {
                 if (checkGuests.Checked)
                 {
                     if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                     {
-                        eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
-                            int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                            checkGuests.Checked, int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                        MessageBox.Show(activation.ToString());
+                        eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
+                            timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
+                            int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
+                            int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
                         eventPresenter.updateEvent(currentID);
                         MessageBox.Show("Event successfully updated", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
@@ -214,9 +237,10 @@ namespace Code_Secret_SOEMS
                 }
                 else
                 {
-                    eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, txtDate.Text, txtTime.Text,
-                        int.Parse(txtStudentRegistrationFee.Text), int.Parse(txtStudentSlots.Text), txtEventDetails.Text,
-                        checkGuests.Checked, 0, 0, activation);
+                    eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
+                        timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
+                        int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
+                        0, 0, activation);
                     eventPresenter.updateEvent(currentID);
                     MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -243,6 +267,15 @@ namespace Code_Secret_SOEMS
             if(currentID != 0)
             {
                 eventPresenter.eventActivation(currentID, switchIsActivated, lblSwitchStatus);
+            } else
+            {
+                if(switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+                {
+                    lblSwitchStatus.Text = "Activated";
+                } else
+                {
+                    lblSwitchStatus.Text = "Deactivated";
+                }
             }
         }
 

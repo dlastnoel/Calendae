@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -213,6 +214,197 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.createQuery("SELECT COUNT(*) FROM guest_registrations WHERE event_id = @event_id");
             dbHelper.bindParam("@event_id", event_id);
             return dbHelper.getCount();
+        }
+
+        public bool recentEvent()
+        {
+            dbHelper.createQuery(
+                "SELECT " +
+                    "COUNT(*) " +
+                "FROM events " +
+                "WHERE " +
+                    "STR_TO_DATE(date_to, '%M %d, %Y') < CURDATE() AND " +
+                    "is_activated = 1 " +
+                "ORDER BY " +
+                    "STR_TO_DATE(date_to, '%M %d, %Y') " +
+                "LIMIT 1; ");
+
+            if (dbHelper.getCount() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool upcomingEvent()
+        {
+            dbHelper.createQuery(
+                "SELECT " +
+                    "COUNT(*) " +
+                "FROM events " +
+                "WHERE " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                    "is_activated = 1 " +
+                "ORDER BY " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') " +
+                "LIMIT 1;");
+
+            if (dbHelper.getCount() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string getEventDetailItems(string item)
+        {
+            return dbHelper.getFromReader(item);
+        }
+
+        public void selectStudentsUpcomingEvent()
+        {
+            dbHelper.createQuery(
+                "SELECT " +
+                    "COUNT(*) " +
+                "FROM events " +
+                "INNER JOIN student_registrations ON " +
+                    "student_registrations.event_id = events.id " +
+                "WHERE " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                    "is_activated = 1 " +
+                "ORDER BY " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') " +
+                "LIMIT 1;"
+                );
+            if(dbHelper.getCount() > 0)
+            {
+                dbHelper.createQuery(
+                "SELECT " +
+                    "events.id, " +
+                    "event_name, " +
+                    "venue, " +
+                    "date_from, " +
+                    "date_to, " +
+                    "time, " +
+                    "student_registration, " +
+                    "COUNT(student_registrations.student_id) AS student_count, " +
+                    "allow_guests " +
+                    "FROM events " +
+                "INNER JOIN student_registrations ON " +
+                    "student_registrations.event_id = events.id " +
+                "WHERE " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                    "is_activated = 1 " +
+                "ORDER BY " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') " +
+                "LIMIT 1; ");
+            } else
+            {
+                dbHelper.createQuery(
+                "SELECT" +
+                    "*," +
+                    "1-1 AS 'student_count'" +
+                "FROM events " +
+                "WHERE " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                    "is_activated = 1;");
+            }
+        }
+
+        public void selectGuestsUpcomingEvent()
+        {
+            dbHelper.createQuery(
+                "SELECT " +
+                    "COUNT(*) " +
+                "FROM events " +
+                "INNER JOIN guest_registrations ON " +
+                    "guest_registrations.event_id = events.id " +
+                "WHERE " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                    "is_activated = 1 " +
+                "ORDER BY " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') " +
+                "LIMIT 1;"
+                );
+            if(dbHelper.getCount() > 0)
+            {
+                dbHelper.createQuery(
+                    "SELECT " +
+                        "events.id, " +
+                        "event_name, " +
+                        "venue, " +
+                        "date_from, " +
+                        "date_to, " +
+                        "time, " +
+                        "guest_registration, " +
+                        "COUNT(guest_registrations.guest_id) AS guest_count, " +
+                    "FROM events " +
+                    "INNER JOIN student_registrations ON " +
+                        "guest_registrations.event_id = events.id " +
+                    "WHERE " +
+                        "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                        "is_activated = 1" +
+                    "ORDER BY " +
+                        "STR_TO_DATE(date_from, '%M %d, %Y') " +
+                    "LIMIT 1; ");
+            } else
+            {
+                dbHelper.createQuery(
+                "SELECT" +
+                    "*," +
+                    "1-1 AS 'guest_count'" +
+                "FROM events " +
+                "WHERE " +
+                    "STR_TO_DATE(date_from, '%M %d, %Y') > CURDATE() AND " +
+                    "is_activated = 1;");
+            }
+            
+        }
+
+        public void selectStudentsRecentEvent()
+        {
+            dbHelper.createQuery(
+                "SELECT " +
+                    "events.id, " +
+                    "event_name, " +
+                    "venue, " +
+                    "date_from, " +
+                    "date_to, " +
+                    "time, " +
+                    "student_registration, " +
+                    "COUNT(student_registrations.student_id) AS student_count, " +
+                    "allow_guests " +
+                "FROM events " +
+                "INNER JOIN student_registrations ON " +
+                "student_registrations.event_id = events.id " +
+                "WHERE STR_TO_DATE(date_to, '%M %d, %Y') < CURDATE() " +
+                "ORDER BY STR_TO_DATE(date_to, '%M %d, %Y') " +
+                "LIMIT 1;");
+        }
+        public void selectGuestsRecentEvent()
+        {
+            dbHelper.createQuery(
+                "SELECT " +
+                    "events.id, " +
+                    "event_name, " +
+                    "venue, " +
+                    "date_from, " +
+                    "date_to, " +
+                    "time, " +
+                    "guest_registration, " +
+                    "COUNT(guest_registrations.guest_id) AS guest_count, " +
+                "FROM events " +
+                "INNER JOIN guest_registrations ON " +
+                "guest_registrations.event_id = events.id " +
+                "WHERE STR_TO_DATE(date_to, '%M %d, %Y') < NOW() " +
+                "ORDER BY STR_TO_DATE(date_to, '%M %d, %Y') " +
+                "LIMIT 1; ");
         }
     }
 }
