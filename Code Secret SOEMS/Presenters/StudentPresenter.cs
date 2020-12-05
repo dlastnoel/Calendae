@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Code_Secret_SOEMS.Models;
 using XanderUI;
 
@@ -11,15 +6,25 @@ namespace Code_Secret_SOEMS.Presenters
 {
     class StudentPresenter
     {
-        Student _student = new Student();
+        private Student _student;
+
+        public StudentPresenter()
+        {
+            _student = new Student();
+        }
 
         public void loadStudents(DataGridView mydataGridView)
         {
             _student.loadStudents(mydataGridView);
         }
 
+        public void searchStudents(string search, DataGridView myDataGridView)
+        {
+            _student.searchStudents(search, myDataGridView);
+        }
+
         public void setStudent(string id, string first_name, string middle_name, string last_name, string address, 
-            string contact, string email, char gender, string course, string year_and_section, int is_activated)
+            string contact, string email, char gender, string course, string year_and_section, bool is_activated)
         {
             _student.id = id;
             _student.first_name = first_name;
@@ -42,12 +47,12 @@ namespace Code_Secret_SOEMS.Presenters
         {
             if (switchIsActivated.SwitchState == XUISwitch.State.On)
             {
-                _student.activateStudent(currentID);
+                _student.studentActivation(currentID, 1);
                 lblSwitchStatus.Text = "Activated";
             }
             else
             {
-                _student.deactivateStudent(currentID);
+                _student.studentActivation(currentID, 0);
                 lblSwitchStatus.Text = "Deactivated";
             }
         }
@@ -57,23 +62,23 @@ namespace Code_Secret_SOEMS.Presenters
             TextBox txtIDNo, TextBox txtCourse, TextBox txtYearAndSection, XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
             _student.selectStudent(currentID);
-            txtIDNo.Text = _student.getStudentDetails("id");
-            txtFirstName.Text = _student.getStudentDetails("first_name");
-            txtMiddleName.Text = _student.getStudentDetails("middle_name");
-            txtLastName.Text = _student.getStudentDetails("last_name");
-            txtAddress.Text = _student.getStudentDetails("address");
-            txtContact.Text = _student.getStudentDetails("contact");
-            txtEmailAddress.Text = _student.getStudentDetails("email");
-            if(_student.getStudentDetails("gender") == "M")
+            txtIDNo.Text = _student.getStudentData("id");
+            txtFirstName.Text = _student.getStudentData("first_name");
+            txtMiddleName.Text = _student.getStudentData("middle_name");
+            txtLastName.Text = _student.getStudentData("last_name");
+            txtAddress.Text = _student.getStudentData("address");
+            txtContact.Text = _student.getStudentData("contact");
+            txtEmailAddress.Text = _student.getStudentData("email");
+            if(_student.getStudentData("gender") == "M")
             {
                 rbnMale.Checked = true;
             } else
             {
                 rbnFemale.Checked = false;
             }
-            txtCourse.Text = _student.getStudentDetails("course");
-            txtYearAndSection.Text = _student.getStudentDetails("year_and_section");
-            if (bool.Parse(_student.getStudentDetails("is_activated")) == true)
+            txtCourse.Text = _student.getStudentData("course");
+            txtYearAndSection.Text = _student.getStudentData("year_and_section");
+            if (bool.Parse(_student.getStudentData("is_activated")) == true)
             {
                 switchIsActivated.SwitchState = XUISwitch.State.On;
                 lblSwitchStatus.Text = "Activated";

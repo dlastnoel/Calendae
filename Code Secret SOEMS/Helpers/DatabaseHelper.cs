@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -47,18 +44,16 @@ namespace Code_Secret_SOEMS.Helpers
                 ";PORT=" + this.port + ";PASSWORD=" + this.password + ";");
         }
 
-        public int getLastID()
+        // Open MySQL Connection
+        public void openConnection()
         {
-            return Convert.ToInt32(commandQuery.LastInsertedId);
+            connection.Open();
         }
 
-        public int getCount()
+        // Close MySQL Connection
+        public void closeConnection()
         {
-            openConnection();
-            int count;
-            count = int.Parse(commandQuery.ExecuteScalar().ToString());
-            closeConnection();
-            return count;
+            connection.Close();
         }
 
         // Tests connection settings and returns result as string
@@ -79,18 +74,6 @@ namespace Code_Secret_SOEMS.Helpers
             return result;
         }
 
-        // Open MySQL Connection
-        public void openConnection()
-        {
-            connection.Open();
-        }
-
-        // Close MySQL Connection
-        public void closeConnection()
-        {
-            connection.Close();
-        }
-
         // Creates command query
         public void createQuery(string query)
         {
@@ -99,6 +82,16 @@ namespace Code_Secret_SOEMS.Helpers
             commandQuery = new MySqlCommand(query, connection);
 
             closeConnection();
+        }
+
+        // Counts the COUNT(*) function of the command query
+        public int getCount()
+        {
+            openConnection();
+            int count;
+            count = int.Parse(commandQuery.ExecuteScalar().ToString());
+            closeConnection();
+            return count;
         }
 
         // Binds parameters from commannd query if any
@@ -141,9 +134,14 @@ namespace Code_Secret_SOEMS.Helpers
             return reader;
         }
 
+        // Retuns the last ID of the query executed
+        public int getLastId()
+        {
+            return Convert.ToInt32(commandQuery.LastInsertedId);
+        }
+
         // Extracts value from reader
-        // item - field from reader to be read
-        public string getFromReader(string item)
+        public string getFromReader(string field)
         {
             string data = "";
             openConnection();
@@ -151,7 +149,7 @@ namespace Code_Secret_SOEMS.Helpers
             sqlDataReader = commandQuery.ExecuteReader();
             if(sqlDataReader.Read())
             {
-                data = sqlDataReader[item].ToString();
+                data = sqlDataReader[field].ToString();
             }
 
             closeConnection();
@@ -159,14 +157,15 @@ namespace Code_Secret_SOEMS.Helpers
             return data;
         }
 
-        public List<string> getResultList(string item)
+        // Extracts values from reader and returns as a string List
+        public List<string> getResultList(string field)
         {
             List<string> myList = new List<string>();
             openConnection();
             sqlDataReader = commandQuery.ExecuteReader();
             while(sqlDataReader.Read())
             {
-                myList.Add(sqlDataReader[item].ToString());
+                myList.Add(sqlDataReader[field].ToString());
             }
             closeConnection();
 
@@ -185,7 +184,6 @@ namespace Code_Secret_SOEMS.Helpers
             myDataGridView.DataSource = dataSet.Tables[0];
 
             closeConnection();
-
         }
     }
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 
@@ -13,10 +6,10 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class FrmLocked : Form
     {
-        SettingsHelper sh;
-        ThemeHelper th;
-        DateTime time;
-        byte mode;
+        private SettingsHelper sh;
+        private ThemeHelper th;
+        private DateTime time;
+        private byte mode;
         public FrmLocked(byte mode)
         {
             InitializeComponent();

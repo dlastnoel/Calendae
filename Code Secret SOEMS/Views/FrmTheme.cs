@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -14,8 +7,9 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmTheme : Form
     {
-        SettingsPresenter settingsPresenter;
-        ThemeHelper th;
+        private SettingsPresenter settingsPresenter;
+        private ThemeHelper th;
+
         private void setFormTheme()
         {
             th = new ThemeHelper();

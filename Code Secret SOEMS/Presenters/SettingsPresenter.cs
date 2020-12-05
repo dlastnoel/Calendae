@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Code_Secret_SOEMS.Helpers;
+﻿using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS.Presenters
 {
     class SettingsPresenter
     {
-        SettingsHelper sh = new SettingsHelper();
-        ThemeHelper th = new ThemeHelper();
+        private SettingsHelper sh = new SettingsHelper();
+        private ThemeHelper th = new ThemeHelper();
+
+        public SettingsPresenter()
+        {
+            sh = new SettingsHelper();
+            th = new ThemeHelper();
+        }
         public string getCurrentTheme()
         {
             return th.getCurrentTheme();
@@ -23,12 +24,12 @@ namespace Code_Secret_SOEMS.Presenters
 
         public void applyTheme(string theme)
         {
-            th.saveTheme(theme);
+            th.saveTheme(theme, false);
         }
 
         public void applyMode(bool mode)
         {
-            th.saveMode(mode);
+            th.saveTheme("", mode);
         }
         public bool isLoginLocked()
         {
@@ -42,7 +43,7 @@ namespace Code_Secret_SOEMS.Presenters
 
         public void applyBoth(string theme, bool mode)
         {
-            th.saveBoth(theme, mode);
+            th.saveTheme(theme, mode);
         }
         public void enableLoginLock(byte minutes)
         {

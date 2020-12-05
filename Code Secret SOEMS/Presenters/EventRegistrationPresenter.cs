@@ -1,25 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Code_Secret_SOEMS.Models;
 
 namespace Code_Secret_SOEMS.Presenters
 {
     class EventRegistrationPresenter
     {
-
         public int event_id { get; set; }
         public string student_id { get; set; }
         public int guest_id { get; set; }
         public int student_slots { get; set; }
         public int guest_slots { get; set; }
 
-        Guest _guest = new Guest();
-        Event _event = new Event();
-        EventDetails _eventDetails = new EventDetails();
+        private Guest _guest;
+        private Event _event;
+        private EventDetails _eventDetails;
+
+        public EventRegistrationPresenter()
+        {
+            _guest = new Guest();
+            _event = new Event();
+            _eventDetails = new EventDetails();
+        }
         public string getSchoolName()
         {
             return Properties.Settings.Default.schoolName;
@@ -36,7 +37,7 @@ namespace Code_Secret_SOEMS.Presenters
         public int eventID(string event_name)
         {
             _event.selectEventByName(event_name);
-            return int.Parse(_event.getEventItems("id"));
+            return int.Parse(_event.getEventData("id"));
         }
 
         public int getStudentSlots()
@@ -56,18 +57,18 @@ namespace Code_Secret_SOEMS.Presenters
             event_id = eventID(cmbEvents.Text);
             lblEventName.Text = cmbEvents.Text;
             lblEventName.Left = (panelEvents.Width - lblEventName.Width) / 2;
-            lblVenue.Text = "Venue: " + _event.getEventItems("venue");
-            lblDate.Text = "Date: " + _event.getEventItems("date_from") + " - " + _event.getEventItems("date_to");
-            lblTime.Text = "Time: " + _event.getEventItems("time");
-            txtEventDetails.Text = _event.getEventItems("event_details");
-            student_slots = int.Parse(_event.getEventItems("student_slots"));
+            lblVenue.Text = "Venue: " + _event.getEventData("venue");
+            lblDate.Text = "Date: " + _event.getEventData("date_from") + " - " + _event.getEventData("date_to");
+            lblTime.Text = "Time: " + _event.getEventData("time");
+            txtEventDetails.Text = _event.getEventData("event_details");
+            student_slots = int.Parse(_event.getEventData("student_slots"));
             panelStudentRegistration.Enabled = true;
             if (student_slots != 0)
             {
-                if (int.Parse(_event.getEventItems("student_slots")) - _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id"))) != 0)
+                if (int.Parse(_event.getEventData("student_slots")) - _eventDetails.getRegisteredStudents(int.Parse(_event.getEventData("id"))) != 0)
                 {
-                    lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("student_slots")) -
-                        _eventDetails.getRegisteredStudents(int.Parse(_event.getEventItems("id")))).ToString();
+                    lblStudentSlots.Text = "Slots Left: " + (int.Parse(_event.getEventData("student_slots")) -
+                        _eventDetails.getRegisteredStudents(int.Parse(_event.getEventData("id")))).ToString();
                 }
                 else
                 {
@@ -79,25 +80,25 @@ namespace Code_Secret_SOEMS.Presenters
             {
                 lblStudentSlots.Text = "Slots Left: Open";
             }
-            if (_event.getEventItems("student_registration") == "0")
+            if (_event.getEventData("student_registration") == "0")
             {
                 lblStudentRegistrationFee.Text = "Registration Fee: Free";
             }
             else
             {
-                lblStudentRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
+                lblStudentRegistrationFee.Text = "Registation Fee: Php " + _event.getEventData("student_registration");
             }
-            if (bool.Parse(_event.getEventItems("allow_guests")))
+            if (bool.Parse(_event.getEventData("allow_guests")))
             {
                 panelGuestRegistration.Enabled = true;
-                guest_slots = int.Parse(_event.getEventItems("guest_slots"));
+                guest_slots = int.Parse(_event.getEventData("guest_slots"));
                 if (guest_slots != 0)
                 {
-                    if (int.Parse(_event.getEventItems("guest_slots")) -
-                    _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id"))) != 0)
+                    if (int.Parse(_event.getEventData("guest_slots")) -
+                    _eventDetails.getRegisteredGuests(int.Parse(_event.getEventData("id"))) != 0)
                     {
-                        lblGuestSlots.Text = "Slots Left: " + (int.Parse(_event.getEventItems("guest_slots")) -
-                        _eventDetails.getRegisteredGuests(int.Parse(_event.getEventItems("id")))).ToString();
+                        lblGuestSlots.Text = "Slots Left: " + (int.Parse(_event.getEventData("guest_slots")) -
+                        _eventDetails.getRegisteredGuests(int.Parse(_event.getEventData("id")))).ToString();
                     }
                     else
                     {
@@ -109,13 +110,13 @@ namespace Code_Secret_SOEMS.Presenters
                 {
                     lblGuestSlots.Text = "Slots Left: Open";
                 }
-                if (_event.getEventItems("guest_registration") == "0")
+                if (_event.getEventData("guest_registration") == "0")
                 {
                     lblGuestRegistrationFee.Text = "Registration Fee: Free";
                 }
                 else
                 {
-                    lblGuestRegistrationFee.Text = "Registation Fee: Php " + _event.getEventItems("student_registration");
+                    lblGuestRegistrationFee.Text = "Registation Fee: Php " + _event.getEventData("student_registration");
                 }
             }
             else

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Code_Secret_SOEMS.Views;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
 
@@ -15,71 +8,13 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlEvents : UserControl
     {
-        EventPresenter eventPresenter;
-        ThemeHelper th;
-        FormHelper fh;
-        int currentID;
-        string position;
-        bool activation;
+        private EventPresenter eventPresenter;
+        private ThemeHelper th;
+        private FormHelper fh;
+        private int event_id;
+        private string position;
+        private bool activation;
 
-        private void populateFields()
-        {
-            btnAdd.Text = "Cancel";
-            btnUpdate.Enabled = true;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnDelete.Enabled = true;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            if(position != "Adviser")
-            {
-                if (eventPresenter.checkEventStatus(currentID))
-                {
-                    activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, 
-                        dateFrom, dateTo, timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails, 
-                        checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
-                } else
-                {
-                    MessageBox.Show("Event is not yet activated", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            } else
-            {
-                activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, dateFrom, dateTo, 
-                    timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails, checkGuests, 
-                    txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
-            }
-
-            if(checkGuests.Checked)
-            {
-                groupGuests.Enabled = true;
-            } else
-            {
-                groupGuests.Enabled = false;
-            }
-
-        }
-
-        private void clearFields()
-        {
-            currentID = 0;
-            txtEventName.Clear();
-            txtVenue.Clear();
-            txtStudentRegistrationFee.Clear();
-            txtStudentSlots.Clear();
-            txtEventDetails.Clear();
-            checkGuests.Checked = false;
-            txtGuestRegistrationFee.Clear();
-            txtGuestSlots.Clear();
-            switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
-            lblSwitchStatus.Text = "Deactivated";
-            dateFrom.Value = DateTime.Now.Date;
-            dateTo.Value = DateTime.Now.Date;
-
-            btnAdd.Text = "Add";
-            btnUpdate.Enabled = false;
-            btnUpdate.FlatStyle = FlatStyle.Standard;
-            btnDelete.Enabled = false;
-            btnDelete.FlatStyle = FlatStyle.Standard;
-            btnShowDetails.Hide();
-        }
         public CtrlEvents(string position)
         {
             InitializeComponent();
@@ -165,9 +100,11 @@ namespace Code_Secret_SOEMS
                 /*TimeSpan event_date = dateTo.Value.Date.Subtract(dateFrom.Value.Date);
                 TimeSpan event_time = timeTo.Value.TimeOfDay - timeFrom.Value.TimeOfDay;
                 MessageBox.Show(event_date.TotalDays.ToString());
-                MessageBox.Show(event_time.TotalMinutes.ToString());*/
+                MessageBox.Show(event_time.TotalMinutes.ToString());
                 MessageBox.Show((DateTime.Today.Date.Subtract(dateFrom.Value.Date).TotalDays).ToString());
-                MessageBox.Show((dateTo.Value.Date.Subtract(dateFrom.Value.Date).TotalDays).ToString());
+                MessageBox.Show((dateTo.Value.Date.Subtract(dateFrom.Value.Date).TotalDays).ToString());*/
+                    
+                // Check fields
                 if (!String.IsNullOrEmpty(txtEventName.Text) && !String.IsNullOrEmpty(txtVenue.Text) && 
                    DateTime.Today.Date.Subtract(dateFrom.Value.Date).TotalDays <= 0 &&
                    dateTo.Value.Date.Subtract(dateFrom.Value.Date).TotalDays >= -0.9 &&
@@ -177,14 +114,12 @@ namespace Code_Secret_SOEMS
                 {
                     if(dateFrom.Value != DateTime.Now.Date)
                     {
+                        // Check if allow guest
                         if (checkGuests.Checked)
                         {
                             if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                             {
-                                eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                                    timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                                    int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                                    int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                                setEvent(true);
                                 eventPresenter.addEvent();
                                 if (activation)
                                 {
@@ -193,7 +128,7 @@ namespace Code_Secret_SOEMS
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Event successfully added and is pending for approval", "Events",
+                                    MessageBox.Show("Event successfully with a deactivated status", "Events",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 clearFields();
@@ -206,15 +141,21 @@ namespace Code_Secret_SOEMS
                                         MessageBoxIcon.Error);
                             }
                         }
+                        // Not allow guest
                         else
                         {
-                            eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                                    timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                                    int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                                    0, 0, activation);
+                            setEvent(false);
                             eventPresenter.addEvent();
-                            MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
+                            if(activation)
+                                {
+                                MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
+                            }
+                                else
+                            {
+                                MessageBox.Show("Event successfully added and is pending for approval", "Events",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                             clearFields();
                             eventPresenter.loadEvents(dataEvents);
                         }
@@ -248,11 +189,8 @@ namespace Code_Secret_SOEMS
                     if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                     {
                         MessageBox.Show(activation.ToString());
-                        eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                            timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                            int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                            int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
-                        eventPresenter.updateEvent(currentID);
+                        setEvent(true);
+                        eventPresenter.updateEvent(event_id);
                         MessageBox.Show("Event successfully updated", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                         clearFields();
@@ -267,12 +205,9 @@ namespace Code_Secret_SOEMS
                 }
                 else
                 {
-                    eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                        timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                        int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                        0, 0, activation);
-                    eventPresenter.updateEvent(currentID);
-                    MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
+                    setEvent(false);
+                    eventPresenter.updateEvent(event_id);
+                    MessageBox.Show("Event successfully updated", "Events", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                     clearFields();
                     eventPresenter.loadEvents(dataEvents);
@@ -287,7 +222,7 @@ namespace Code_Secret_SOEMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            eventPresenter.deleteEvent(currentID);
+            eventPresenter.deleteEvent(event_id);
             MessageBox.Show("Event successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             clearFields();
@@ -298,29 +233,34 @@ namespace Code_Secret_SOEMS
         {
             int indexRow = e.RowIndex;
             DataGridViewRow dataGridViewRow = dataEvents.Rows[indexRow];
-            currentID = int.Parse(dataGridViewRow.Cells[0].Value.ToString());
+            event_id = int.Parse(dataGridViewRow.Cells[0].Value.ToString());
 
             if (this.Size == new Size(1576, 956))
             {
                 populateFields();
                 btnShowDetails.Show();
+                eventPresenter.loadEvents(dataEvents);
+                txtSearch.Text = "Search";
+                txtSearch.ForeColor = Color.Gray;
             }
             else
             {
                 if(position != "Adviser")
                 {
-                    if(eventPresenter.checkEventStatus(currentID))
+                    if(eventPresenter.checkEventStatus(event_id))
                     {
-                        FrmEvents frmEvents = new FrmEvents(this, position, true, currentID);
+                        FrmEvents frmEvents = new FrmEvents(this, position, true, event_id);
                         frmEvents.ShowDialog();
                         eventPresenter.loadEvents(dataEvents);
+                        txtSearch.Text = "Search";
+                        txtSearch.ForeColor = Color.Gray;
                     } else
                     {
                         MessageBox.Show("Event is not yet activated", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 } else
                 {
-                    FrmEvents frmEvents = new FrmEvents(this, position, true, currentID);
+                    FrmEvents frmEvents = new FrmEvents(this, position, true, event_id);
                     frmEvents.ShowDialog();
                     eventPresenter.loadEvents(dataEvents);
                 }
@@ -329,11 +269,9 @@ namespace Code_Secret_SOEMS
 
         private void switchIsActivated_Click(object sender, EventArgs e)
         {
-            if(currentID != 0)
+            if(event_id != 0)
             {
-                eventPresenter.eventActivation(currentID, switchIsActivated, lblSwitchStatus);
-            } else
-            {
+                eventPresenter.eventActivation(event_id, switchIsActivated, lblSwitchStatus);
                 if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
                 {
                     lblSwitchStatus.Text = "Activated";
@@ -342,14 +280,137 @@ namespace Code_Secret_SOEMS
                 {
                     lblSwitchStatus.Text = "Deactivated";
                 }
+                eventPresenter.loadEvents(dataEvents);
+            } else if(position == "Adviser")
+            {
+                if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+                {
+                    activation = true;
+                    lblSwitchStatus.Text = "Activated";
+                }
+                else
+                {
+                    activation = false;
+                    lblSwitchStatus.Text = "Deactivated";
+                }
             }
         }
 
         private void btnShowDetails_Click(object sender, EventArgs e)
         {
-            fh.setEventID(currentID);
+            fh.setEventId(event_id);
             fh.setCurrentUserControl(this);
             fh.setUserControl("Event Details",position);
+        }
+
+        private void populateFields()
+        {
+            btnAdd.Text = "Cancel";
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            if (position != "Adviser")
+            {
+                if (eventPresenter.checkEventStatus(event_id))
+                {
+                    eventPresenter.prepareEvent(event_id, txtEventName, txtVenue,
+                        dateFrom, dateTo, timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails,
+                        checkGuests, txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
+                }
+                else
+                {
+                    MessageBox.Show("Action restricted. Please wait until event is activated", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                eventPresenter.prepareEvent(event_id, txtEventName, txtVenue, dateFrom, dateTo,
+                    timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails, checkGuests,
+                    txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
+            }
+
+            if (checkGuests.Checked)
+            {
+                groupGuests.Enabled = true;
+            }
+            else
+            {
+                groupGuests.Enabled = false;
+            }
+
+        }
+        private void clearFields()
+        {
+            event_id = 0;
+            txtEventName.Clear();
+            txtVenue.Clear();
+            txtStudentRegistrationFee.Clear();
+            txtStudentSlots.Clear();
+            txtEventDetails.Clear();
+            checkGuests.Checked = false;
+            txtGuestRegistrationFee.Clear();
+            txtGuestSlots.Clear();
+            switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            lblSwitchStatus.Text = "Deactivated";
+            dateFrom.Value = DateTime.Now.Date;
+            dateTo.Value = DateTime.Now.Date;
+
+            btnAdd.Text = "Add";
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
+            btnShowDetails.Hide();
+        }
+
+        private void setEvent(bool guests)
+        {
+            int guest_fee;
+            int guest_slots;
+
+            if (guests)
+            {
+                guest_fee = int.Parse(txtGuestRegistrationFee.Text);
+                guest_slots = int.Parse(txtGuestSlots.Text);
+            } else
+            {
+                guest_fee = 0;
+                guest_slots = 0;
+            }
+            eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
+                timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
+                int.Parse(txtStudentSlots.Text), txtEventDetails.Text, guests,
+                guest_fee, guest_slots, activation);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrEmpty(txtSearch.Text))
+            {
+                eventPresenter.searchEvent(txtSearch.Text, dataEvents);
+            } else
+            {
+                eventPresenter.loadEvents(dataEvents);
+            }
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            if(txtSearch.Text == "Search")
+            {
+                txtSearch.Clear();
+                txtSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(txtSearch.Text))
+            {
+                txtSearch.Text = "Search";
+                txtSearch.ForeColor = Color.Gray;
+            }
         }
     }
 }

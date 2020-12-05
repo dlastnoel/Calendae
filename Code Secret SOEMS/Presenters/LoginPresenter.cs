@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Code_Secret_SOEMS.Models;
+﻿using Code_Secret_SOEMS.Models;
 
 namespace Code_Secret_SOEMS.Presenters
 {
@@ -23,17 +18,12 @@ namespace Code_Secret_SOEMS.Presenters
 
         public string getOfficerPosition()
         {
-            return _officer.getOfficerDetails("position");
+            return _officer.getOfficerData("position");
         }
 
         public string getOfficerName()
         {
-            return _officer.getOfficerDetails("first_name");
-        }
-
-        public string getOfficerId()
-        {
-            return _officer.getOfficerDetails("id");
+            return _officer.getOfficerData("first_name");
         }
     }
 }

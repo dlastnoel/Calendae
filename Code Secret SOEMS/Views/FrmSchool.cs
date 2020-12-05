@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -14,8 +7,8 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class FrmSchool : Form
     {
-        SettingsHelper sh;
-        SchoolPresenter schoolPresenter;
+        private SettingsHelper sh;
+        private SchoolPresenter schoolPresenter;
         public FrmSchool()
         {
             InitializeComponent();
@@ -32,10 +25,8 @@ namespace Code_Secret_SOEMS.Views
             if (!String.IsNullOrEmpty(txtSchoolName.Text) && !String.IsNullOrEmpty(txtOrganization.Text))
             {
                 schoolPresenter.setSchoolName(txtSchoolName.Text, txtOrganization.Text);
-                MessageBox.Show("Organization successfully registered \n You  will now redirected to" +
+                MessageBox.Show("Organization successfully registered \n You  will now redirected to " +
                     "login window", "Organization Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                sh.disableFirstRun();
 
                 this.Close();
                 new FrmLogin().Show();

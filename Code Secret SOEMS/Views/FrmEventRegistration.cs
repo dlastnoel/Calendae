@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Presenters;
 using Code_Secret_SOEMS.Helpers;
@@ -14,8 +7,8 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class FrmEventRegistration : Form
     {
-        ThemeHelper th;
-        EventRegistrationPresenter eventRegistrationPresenter;
+        private ThemeHelper th;
+        private EventRegistrationPresenter eventRegistrationPresenter;
         int student_slots;
         int guest_slots;
         bool change = false;
@@ -35,8 +28,8 @@ namespace Code_Secret_SOEMS.Views
             th.setLabelColor(lblTitle);
             th.setDragPanelColor(panelTop);
             th.setControlButtonColor(btnClose);
-            th.setIconButtonColor(btnTheme);
-            th.setIconButtonColor(btnAbout);
+            th.setIconButtonBackColor(btnTheme);
+            th.setIconButtonBackColor(btnAbout);
             th.setLabelColor(lblEvent);
             th.setLabelColor(lblEventName);
             th.setLabelColor(lblVenue);
@@ -111,13 +104,7 @@ namespace Code_Secret_SOEMS.Views
         {
             if(change)
             {
-                if(cmbEvents.SelectedIndex != -1)
-                {
-                    eventRegistrationPresenter.prepareEvent(cmbEvents, panelEvents, lblEventName, lblVenue, lblDate, lblTime, txtEventDetails,
-                        panelStudentRegistration, lblStudentSlots, lblStudentRegistrationFee, panelGuestRegistration, lblGuestSlots, lblGuestRegistrationFee);
-                    student_slots = eventRegistrationPresenter.getStudentSlots();
-                    guest_slots = eventRegistrationPresenter.getGuestSlots();
-                }
+                populateEventDetails();
             }
         }
 
@@ -153,6 +140,7 @@ namespace Code_Secret_SOEMS.Views
                     MessageBox.Show("You have successfully registered to " + cmbEvents.Text, "Event Registration",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFields();
+                    populateEventDetails();
                 } else if(eventRegistrationPresenter.registerStudent(txtIDNo.Text) == 2)
                 {
                     MessageBox.Show("You are already registered to " + cmbEvents.Text, "Event Registration",
@@ -178,22 +166,11 @@ namespace Code_Secret_SOEMS.Views
             }
         }
 
-        private void btnCheckStudentRegistration_Click(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txtIDNo.Text))
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("ID No. cannot be empty", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnGuestRegister_Click(object sender, EventArgs e)
         {
             new FrmGuests(lblEventName.Text, 0).ShowDialog();
             clearFields();
+            populateEventDetails();
         }
 
         private void btnCheckGuestRegistration_Click(object sender, EventArgs e)
@@ -222,6 +199,17 @@ namespace Code_Secret_SOEMS.Views
             else
             {
                 MessageBox.Show("Guest code cannot be empty", "Event Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void populateEventDetails()
+        {
+            if (cmbEvents.SelectedIndex != -1)
+            {
+                eventRegistrationPresenter.prepareEvent(cmbEvents, panelEvents, lblEventName, lblVenue, lblDate, lblTime, txtEventDetails,
+                    panelStudentRegistration, lblStudentSlots, lblStudentRegistrationFee, panelGuestRegistration, lblGuestSlots, lblGuestRegistrationFee);
+                student_slots = eventRegistrationPresenter.getStudentSlots();
+                guest_slots = eventRegistrationPresenter.getGuestSlots();
             }
         }
     }

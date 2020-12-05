@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Models;
@@ -12,12 +8,22 @@ namespace Code_Secret_SOEMS.Presenters
 {
     class DashboardPresenter
     {
-        Event _event = new Event();
-        EventDetails _eventDetails = new EventDetails();
-        Student _student = new Student();
-        Guest _guest = new Guest();
-        Officer _officer = new Officer();
-        SettingsHelper sh = new SettingsHelper();
+        private Event _event;
+        private EventDetails _eventDetails;
+        private Student _student;
+        private Guest _guest;
+        private Officer _officer;
+        private SettingsHelper sh;
+
+        public DashboardPresenter()
+        {
+            _event = new Event();
+            _eventDetails = new EventDetails();
+            _student = new Student();
+            _guest = new Guest();
+            _officer = new Officer();
+            sh = new SettingsHelper();
+        }
 
         public string getSchoolName()
         {
@@ -36,15 +42,15 @@ namespace Code_Secret_SOEMS.Presenters
 
         public void setDashboardTile(Label lblActiveEvents, Label lblStudentsRegistered, Label lblGuestsRegistered)
         {
-            lblActiveEvents.Text = _event.countAllActiveEvents().ToString();
-            lblStudentsRegistered.Text = _student.countAllStudents().ToString();
-            lblGuestsRegistered.Text = _guest.countAllGuestsRegistered().ToString();
-            if (_student.countAllStudents() > 99)
+            lblActiveEvents.Text = _event.countEvents(1).ToString();
+            lblStudentsRegistered.Text = _student.countAllStudents(1).ToString();
+            lblGuestsRegistered.Text = _guest.countGuestRegistration(1).ToString();
+            if (_student.countAllStudents(1) > 99)
             {
                 lblStudentsRegistered.Font = new Font("Roboto", 60, FontStyle.Regular);
                 lblStudentsRegistered.Location = new Point(-5, 11);
             }
-            if(_guest.countAllGuestsRegistered() > 99)
+            if(_guest.countGuestRegistration(1) > 99)
             {
                 lblGuestsRegistered.Font = new Font("Roboto", 60, FontStyle.Regular);
                 lblGuestsRegistered.Location = new Point(-5, 11);
@@ -53,9 +59,9 @@ namespace Code_Secret_SOEMS.Presenters
 
         public void setIncomingRequests(Label lblIncomingEvents, Label lblIncomingStudents, Label lblIncomingGuests)
         {
-            lblIncomingEvents.Text = _event.countAllInactiveEvents().ToString();
-            lblIncomingStudents.Text = _student.countAllInactiveStudents().ToString();
-            lblIncomingGuests.Text = _guest.countAllGuestsUnregistered().ToString();
+            lblIncomingEvents.Text = _event.countEvents(0).ToString();
+            lblIncomingStudents.Text = _student.countAllStudents(0).ToString();
+            lblIncomingGuests.Text = _guest.countGuestRegistration(0).ToString();
         }
 
         public void setRecentEvent(Panel panelRecentEventCover, Label lblRecentEventName, Label lblRecentEventVenue,
@@ -118,7 +124,7 @@ namespace Code_Secret_SOEMS.Presenters
                     lblRecentEventGuests.Text = "Guests Attended: N/A";
                     lblRecentEventGuestFee.Text = "Guest Fee: N/A";
                 }
-                lblRecentEventIGP.Text = "Expected IGP: Php " + (student_igp + guest_igp).ToString();
+                lblRecentEventIGP.Text = "IGP Gained: Php " + (student_igp + guest_igp).ToString();
             }
         }
 

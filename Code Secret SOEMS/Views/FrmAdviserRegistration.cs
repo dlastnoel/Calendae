@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -14,13 +7,16 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class FrmAdviserRegistration : Form
     {
-        FormHelper fh;
-        AdviserRegistrationPresenter adviserRegistrationPresenter;
+        private AdviserRegistrationPresenter adviserRegistrationPresenter;
+        private ThemeHelper th;
+        private FormHelper fh;
+        private SettingsHelper sh;
         public FrmAdviserRegistration()
         {
             InitializeComponent();
-            ThemeHelper th = new ThemeHelper();
+            th = new ThemeHelper();
             fh = new FormHelper();
+            sh = new SettingsHelper();
             adviserRegistrationPresenter = new AdviserRegistrationPresenter();
             th.setFormColor(this);
             th.setPanelColor(panelTop);
@@ -66,7 +62,7 @@ namespace Code_Secret_SOEMS.Views
 
                         MessageBox.Show("Adviser successfully added", "Adviser Registration", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
+                        sh.disableFirstRun();
                         this.Close();
 
                         new FrmSchool().ShowDialog();
@@ -88,6 +84,11 @@ namespace Code_Secret_SOEMS.Views
                 MessageBox.Show("Please fill up the form correctly", "Adviser Registration", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

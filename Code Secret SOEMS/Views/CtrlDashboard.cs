@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -15,8 +8,8 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlDashboard : UserControl
     {
-        DashboardPresenter dashboardPresenter;
-        string position;
+        private DashboardPresenter dashboardPresenter;
+        private string position;
         public CtrlDashboard(string position)
         {
             InitializeComponent();
@@ -25,7 +18,7 @@ namespace Code_Secret_SOEMS
             lblOrganization.Text = dashboardPresenter.getOrganization();
             this.position = position;
         }
-        private void reset()
+        private void refresh()
         {
             dashboardPresenter.setDashboardTile(lblActiveEvents, lblStudentsRegistered, lblGuestsRegistered);
             dashboardPresenter.setIncomingRequests(lblIncomingEvents, lblIncomingStudents, lblIncomingGuests);
@@ -43,18 +36,17 @@ namespace Code_Secret_SOEMS
         {
             ThemeHelper th = new ThemeHelper();
             th.setUserControlColor(this);
-            reset();
+            refresh();
         }
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
             if(position == "Adviser")
             {
-
                 if (lblIncomingEvents.Text != "0")
                 {
                     new FrmEventRequests().ShowDialog();
-                    reset();
+                    refresh();
                 }
                 else
                 {
@@ -73,7 +65,7 @@ namespace Code_Secret_SOEMS
             if(lblIncomingStudents.Text != "0")
             {
                 new FrmStudentRequests().ShowDialog();
-                reset();
+                refresh();
             } else
             {
                 MessageBox.Show("There are no incoming requests for students at this time", "Calendae",
@@ -86,7 +78,7 @@ namespace Code_Secret_SOEMS
             if(lblIncomingGuests.Text != "0")
             {
                 new FrmGuestRequests().ShowDialog();
-                reset();
+                refresh();
             } else
             {
                 MessageBox.Show("There are no incoming requests for guests at this time", "Calendae",

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 
@@ -13,9 +6,9 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmConnectionSettings : Form
     {
-        SettingsHelper sh;
-        DatabaseHelper dh;
-        ThemeHelper th;
+        private SettingsHelper sh;
+        private DatabaseHelper dh;
+        private ThemeHelper th;
 
         public FrmConnectionSettings()
         {

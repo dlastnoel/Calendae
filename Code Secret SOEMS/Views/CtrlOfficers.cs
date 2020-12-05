@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -14,46 +8,9 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlOfficers : UserControl
     {
-        FormHelper fh;
-        OfficerPresenter officerPresenter;
-        string currentID;
-
-        private void populateFields()
-        {
-            btnAdd.Text = "Cancel";
-            btnUpdate.Enabled = true;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnDelete.Enabled = true;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            officerPresenter.prepareOfficer(currentID, txtIDNo, txtPosition, txtFirstName, txtMiddleName, txtLastName,
-                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtCourse, txtYearAndSection);
-
-        }
-
-        private void clearFields()
-        {
-            txtIDNo.Clear();
-            txtPosition.Clear();
-            txtFirstName.Clear();
-            txtMiddleName.Clear();
-            txtLastName.Clear();
-            txtAddress.Clear();
-            txtContactNo.Clear();
-            txtEmailAddress.Clear();
-            rbnMale.Checked = false;
-            rbnFemale.Checked = false;
-            txtCourse.Clear();
-            txtYearAndSection.Clear();
-            txtPassword.Clear();
-            txtConfirmPassword.Clear();
-            lblPasswordMessage.Text = "";
-
-            btnAdd.Text = "Add";
-            btnUpdate.Enabled = false;
-            btnUpdate.FlatStyle = FlatStyle.Standard;
-            btnDelete.Enabled = false;
-            btnDelete.FlatStyle = FlatStyle.Standard;
-        }
+        private FormHelper fh;
+        private OfficerPresenter officerPresenter;
+        private string currentID;
 
         public CtrlOfficers()
         {
@@ -129,20 +86,8 @@ namespace Code_Secret_SOEMS
                         if (txtPassword.Text.Length >= 8)
                         {
                             if (txtPosition.Text != "Adviser")
-                            {   
-                                char gender;
-                                if (rbnMale.Checked)
-                                {
-                                    gender = 'M';
-                                }
-                                else
-                                {
-                                    gender = 'F';
-                                }
-
-                                officerPresenter.setOfficer(txtIDNo.Text, txtPosition.Text, txtFirstName.Text,
-                                    txtMiddleName.Text, txtLastName.Text, txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text,
-                                    gender, txtCourse.Text, txtYearAndSection.Text, txtPassword.Text);
+                            {
+                                setOfficer();
                                 officerPresenter.addOfficer();
 
                                 MessageBox.Show("Officer successfully added", "Officers", MessageBoxButtons.OK,
@@ -260,6 +205,60 @@ namespace Code_Secret_SOEMS
         private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
         {
             fh.passwordMessage(txtPassword.Text, txtConfirmPassword.Text, lblPasswordMessage);
+        }
+
+        private void populateFields()
+        {
+            btnAdd.Text = "Cancel";
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            officerPresenter.prepareOfficer(currentID, txtIDNo, txtPosition, txtFirstName, txtMiddleName, txtLastName,
+                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtCourse, txtYearAndSection);
+
+        }
+
+        private void clearFields()
+        {
+            txtIDNo.Clear();
+            txtPosition.Clear();
+            txtFirstName.Clear();
+            txtMiddleName.Clear();
+            txtLastName.Clear();
+            txtAddress.Clear();
+            txtContactNo.Clear();
+            txtEmailAddress.Clear();
+            rbnMale.Checked = false;
+            rbnFemale.Checked = false;
+            txtCourse.Clear();
+            txtYearAndSection.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            lblPasswordMessage.Text = "";
+
+            btnAdd.Text = "Add";
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
+        }
+
+        private void setOfficer()
+        {
+            char gender;
+            if (rbnMale.Checked)
+            {
+                gender = 'M';
+            }
+            else
+            {
+                gender = 'F';
+            }
+
+            officerPresenter.setOfficer(txtIDNo.Text, txtPosition.Text, txtFirstName.Text,
+                txtMiddleName.Text, txtLastName.Text, txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text,
+                gender, txtCourse.Text, txtYearAndSection.Text, txtPassword.Text);
         }
     }
 }

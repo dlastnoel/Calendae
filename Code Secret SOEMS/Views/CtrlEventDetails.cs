@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Presenters;
 using Code_Secret_SOEMS.Helpers;
@@ -14,14 +8,73 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class CtrlEventDetails : UserControl
     {
-        EventDetailsPresenter eventDetailsPresenter;
-        GuestPresenter guestPresenter;
-        ThemeHelper th = new ThemeHelper();
-        int event_id;
+        private EventDetailsPresenter eventDetailsPresenter;
+        private GuestPresenter guestPresenter;
+        private ThemeHelper th = new ThemeHelper();
+        private int event_id;
         public CtrlEventDetails(int event_id)
         {
             InitializeComponent();
             this.event_id = event_id;
+        }
+
+        private void CtrlEventDetails_Load(object sender, EventArgs e)
+        {
+            eventDetailsPresenter = new EventDetailsPresenter();
+            guestPresenter = new GuestPresenter();
+            th.setLabelColor(lblEventName);
+            th.setLabelColor(lblDateAndTime);
+            th.setLabelColor(lblStudentSlots);
+            th.setLabelColor(lblStudentRegistrationFee);
+            th.setLabelColor(lblGuestSlots);
+            th.setLabelColor(lblGuestRegistrationFee);
+
+            eventDetailsPresenter.populateEventDetails(event_id, this, lblEventName, lblDateAndTime, lblStudentSlots,
+                lblStudentRegistrationFee, lblGuestSlots, lblGuestRegistrationFee);
+            loadData();
+            
+            triggerFormChange();
+
+        }
+
+        private void CtrlEventDetails_SizeChanged(object sender, EventArgs e)
+        {
+            triggerFormChange();
+        }
+
+        private void dataStudentRegistrations_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexRow = e.RowIndex;
+            DataGridViewRow dataGridViewRow = dataStudentRegistrations.Rows[indexRow];
+            DialogResult prompt = MessageBox.Show("Do you want to unregister " + dataGridViewRow.Cells[1].Value.ToString() + " " +
+                dataGridViewRow.Cells[2].Value.ToString() + " " + dataGridViewRow.Cells[3].Value.ToString() + " from " + lblEventName.Text + 
+                "?", "Event Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(prompt == DialogResult.Yes)
+            {
+                eventDetailsPresenter.unregisterStudent(event_id, dataGridViewRow.Cells[0].Value.ToString());
+                MessageBox.Show(dataGridViewRow.Cells[1].Value.ToString() + " " + dataGridViewRow.Cells[2].Value.ToString() + " " +
+                    dataGridViewRow.Cells[3].Value.ToString() + " successfully unregistered from " + lblEventName.Text, "Event Details",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                eventDetailsPresenter.unregisterStudent(event_id, dataGridViewRow.Cells[0].Value.ToString());
+                loadData();
+            }
+        }
+
+        private void dataGuestRegistrations_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexRow = e.RowIndex;
+            DataGridViewRow dataGridViewRow = dataGuestRegistrations.Rows[indexRow];
+            DialogResult prompt = MessageBox.Show("Do you want to unregister " + dataGridViewRow.Cells[2].Value.ToString() + " " +
+            dataGridViewRow.Cells[3].Value.ToString() + " "+ dataGridViewRow.Cells[4].Value.ToString() + " from " + lblEventName.Text + 
+            "?", "Event Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (prompt == DialogResult.Yes)
+            {
+                MessageBox.Show(dataGridViewRow.Cells[2].Value.ToString() + " " + dataGridViewRow.Cells[3].Value.ToString() + " " +
+                dataGridViewRow.Cells[4].Value.ToString() + " successfully unregistered from " + lblEventName.Text, "Event Details",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                eventDetailsPresenter.unregisterGuest(int.Parse(dataGridViewRow.Cells[0].Value.ToString()));
+                loadData();
+            }
         }
 
         private void triggerFormChange()
@@ -50,64 +103,10 @@ namespace Code_Secret_SOEMS.Views
             }
         }
 
-        private void CtrlEventDetails_Load(object sender, EventArgs e)
+        private void loadData()
         {
-            eventDetailsPresenter = new EventDetailsPresenter();
-            guestPresenter = new GuestPresenter();
-            th.setLabelColor(lblEventName);
-            th.setLabelColor(lblDateAndTime);
-            th.setLabelColor(lblStudentSlots);
-            th.setLabelColor(lblStudentRegistrationFee);
-            th.setLabelColor(lblGuestSlots);
-            th.setLabelColor(lblGuestRegistrationFee);
-
-            eventDetailsPresenter.populateEventDetails(event_id, this, lblEventName, lblDateAndTime, lblStudentSlots,
-                lblStudentRegistrationFee, lblGuestSlots, lblGuestRegistrationFee);
             eventDetailsPresenter.loadStudentRegistrations(event_id, dataStudentRegistrations);
             eventDetailsPresenter.loadGuestRegistrations(event_id, dataGuestRegistrations);
-            
-            triggerFormChange();
-
-        }
-
-        private void CtrlEventDetails_SizeChanged(object sender, EventArgs e)
-        {
-            triggerFormChange();
-        }
-
-        private void dataStudentRegistrations_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indexRow = e.RowIndex;
-            DataGridViewRow dataGridViewRow = dataStudentRegistrations.Rows[indexRow];
-            DialogResult prompt = MessageBox.Show("Do you want to unregister " + dataGridViewRow.Cells[1].Value.ToString() + " " +
-                dataGridViewRow.Cells[2].Value.ToString() + " " + dataGridViewRow.Cells[3].Value.ToString() + " from " + lblEventName.Text + 
-                "?", "Event Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(prompt == DialogResult.Yes)
-            {
-                eventDetailsPresenter.unregisterStudent(event_id, dataGridViewRow.Cells[0].Value.ToString());
-                MessageBox.Show(dataGridViewRow.Cells[1].Value.ToString() + " " + dataGridViewRow.Cells[2].Value.ToString() + " " +
-                    dataGridViewRow.Cells[3].Value.ToString() + " successfully unregistered from " + lblEventName.Text, "Event Details",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                eventDetailsPresenter.unregisterStudent(event_id, dataGridViewRow.Cells[0].Value.ToString());
-                eventDetailsPresenter.loadStudentRegistrations(event_id, dataStudentRegistrations);
-            }
-        }
-
-        private void dataGuestRegistrations_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indexRow = e.RowIndex;
-            DataGridViewRow dataGridViewRow = dataGuestRegistrations.Rows[indexRow];
-            DialogResult prompt = MessageBox.Show("Do you want to unregister " + dataGridViewRow.Cells[2].Value.ToString() + " " +
-            dataGridViewRow.Cells[3].Value.ToString() + " "+ dataGridViewRow.Cells[4].Value.ToString() + " from " + lblEventName.Text + 
-            "?", "Event Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (prompt == DialogResult.Yes)
-            {
-                MessageBox.Show(dataGridViewRow.Cells[2].Value.ToString() + " " + dataGridViewRow.Cells[3].Value.ToString() + " " +
-                dataGridViewRow.Cells[4].Value.ToString() + " successfully unregistered from " + lblEventName.Text, "Event Details",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                eventDetailsPresenter.unregisterGuest(int.Parse(dataGridViewRow.Cells[0].Value.ToString()));
-                eventDetailsPresenter.loadGuestRegistrations(event_id, dataGuestRegistrations);
-            }
         }
     }
 }

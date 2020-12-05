@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Models;
 using XanderUI;
@@ -13,13 +10,12 @@ namespace Code_Secret_SOEMS.Presenters
 {
     class GuestRequestPresenter
     {
-        Guest _guest;
-        Event _event;
-        EventDetails _eventDetails;
-        List<string> listGuestId;
-        FlowLayoutPanel flowLayoutGuest;
-        ThemeHelper th;
-
+        private Guest _guest;
+        private Event _event;
+        private EventDetails _eventDetails;
+        private List<string> listGuestId;
+        private FlowLayoutPanel flowLayoutGuest;
+        private ThemeHelper th;
 
         public GuestRequestPresenter(FlowLayoutPanel myFlowLayoutPanel)
         {
@@ -50,7 +46,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblEventName.Location = new Point(9, 5);
                 lblEventName.Name = "lblEventName";
                 lblEventName.Size = new Size(41, 15);
-                lblEventName.Text = "Event: " + _guest.getGuestDetails("event_name");
+                lblEventName.Text = "Event: " + _guest.getGuestData("event_name");
 
                 Label lblFullName = new Label();
                 lblFullName.AutoSize = true;
@@ -58,8 +54,8 @@ namespace Code_Secret_SOEMS.Presenters
                 lblFullName.Location = new Point(9, 25);
                 lblFullName.Name = "lblFullName";
                 lblFullName.Size = new Size(68, 15);
-                lblFullName.Text = "Full Name: " + _guest.getGuestDetails("first_name") + " " +
-                    _guest.getGuestDetails("middle_name") + " " + _guest.getGuestDetails("last_name");
+                lblFullName.Text = "Full Name: " + _guest.getGuestData("first_name") + " " +
+                    _guest.getGuestData("middle_name") + " " + _guest.getGuestData("last_name");
 
                 Label lblGender = new Label();
                 lblGender.AutoSize = true;
@@ -67,7 +63,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblGender.Location = new Point(9, 45);
                 lblGender.Name = "lblGender";
                 lblGender.Size = new Size(57, 15);
-                if(_guest.getGuestDetails("gender") == "M")
+                if(_guest.getGuestData("gender") == "M")
                 {
                     lblGender.Text = "Gender: Male" ;
                 } else
@@ -81,7 +77,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblAddress.Location = new Point(8, 65);
                 lblAddress.Name = "lblAddress";
                 lblAddress.Size = new Size(51, 15);
-                lblAddress.Text = "Address: " + _guest.getGuestDetails("address");
+                lblAddress.Text = "Address: " + _guest.getGuestData("address");
 
                 Label lblContactNo = new Label();
                 lblContactNo.AutoSize = true;
@@ -89,7 +85,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblContactNo.Location = new Point(9, 85);
                 lblContactNo.Name = "lblContactNo";
                 lblContactNo.Size = new Size(103, 15);
-                lblContactNo.Text = "Contact Number: " + _guest.getGuestDetails("contact");
+                lblContactNo.Text = "Contact Number: " + _guest.getGuestData("contact");
 
                 Label lblEmailAddress = new Label();
                 lblEmailAddress.AutoSize = true;
@@ -97,7 +93,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblEmailAddress.Location = new Point(9, 105);
                 lblEmailAddress.Name = "lblEmailAddress";
                 lblEmailAddress.Size = new Size(92, 15);
-                lblEmailAddress.Text = "Email Address: " + _guest.getGuestDetails("email");
+                lblEmailAddress.Text = "Email Address: " + _guest.getGuestData("email");
 
                 Label lblInfo1 = new Label();
                 lblInfo1.AutoSize = true;
@@ -112,15 +108,15 @@ namespace Code_Secret_SOEMS.Presenters
                 lblInfo2.Location = new Point(8, 145);
                 lblInfo2.Name = "lblInfo2";
                 lblInfo2.Size = new Size(38, 15);
-                if (!String.IsNullOrEmpty(_guest.getGuestDetails("school_name")))
+                if (!String.IsNullOrEmpty(_guest.getGuestData("school_name")))
                 {
-                    lblInfo1.Text = "School Name: " + _guest.getGuestDetails("school_name");
-                    lblInfo2.Text = "Course & Year: " + _guest.getGuestDetails("course") + " - " + 
-                        _guest.getGuestDetails("year");
+                    lblInfo1.Text = "School Name: " + _guest.getGuestData("school_name");
+                    lblInfo2.Text = "Course & Year: " + _guest.getGuestData("course") + " - " + 
+                        _guest.getGuestData("year");
                 } else
                 {
-                    lblInfo1.Text = "Works at: " + _guest.getGuestDetails("works_at");
-                    lblInfo2.Text = "Position: " + _guest.getGuestDetails("position");
+                    lblInfo1.Text = "Works at: " + _guest.getGuestData("works_at");
+                    lblInfo2.Text = "Position: " + _guest.getGuestData("position");
                 }
 
                 Label lblSwitchStatus = new Label();
@@ -147,16 +143,16 @@ namespace Code_Secret_SOEMS.Presenters
                     Guest g1 = new Guest();
                     if (switchIsActivated.SwitchState == XUISwitch.State.Off)
                     {
-                        g1.deactivateGuest(int.Parse(guestId));
+                        g1.guestActivation(int.Parse(guestId), 0);
                         lblSwitchStatus.Text = "Deactivated";
-                        g1.deactivateGuest(int.Parse(guestId));
+                        g1.guestActivation(int.Parse(guestId), 1);
                         _eventDetails.removeGuestParticipant(int.Parse(guestId));
                     }
                     else
                     {
-                        g1.activateGuest(int.Parse(guestId));
-                        _event.selectEventByName(_guest.getGuestDetails("event_name"));
-                        int event_id = int.Parse(_event.getEventItems("id"));
+                        g1.guestActivation(int.Parse(guestId), 1);
+                        _event.selectEventByName(_guest.getGuestData("event_name"));
+                        int event_id = int.Parse(_event.getEventData("id"));
                         registerGuest(event_id, int.Parse(guestId));
                         lblSwitchStatus.Text = "Activated";
                     }

@@ -1,24 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using XanderUI;
-using XanderUI.Designers;
 using Code_Secret_SOEMS.Models;
 
 namespace Code_Secret_SOEMS.Presenters
 {
     class GuestPresenter
     {
-        Guest _guest = new Guest();
-        Event _event = new Event();
-        EventDetails _eventDetails = new EventDetails();
+        private Guest _guest;
+        private Event _event;
+        private EventDetails _eventDetails;
 
+        public GuestPresenter()
+        {
+            _guest = new Guest();
+            _event = new Event();
+            _eventDetails = new EventDetails();
+        }
         public void loadGuests(DataGridView mydataGridView)
         {
             _guest.loadGuests(mydataGridView);
+        }
+
+        public void searchGuests(string name, DataGridView myDataGridView)
+        {
+            _guest.searchGuests(name, myDataGridView);
         }
 
         public void setEvents(ComboBox cmbEvents)
@@ -32,13 +38,13 @@ namespace Code_Secret_SOEMS.Presenters
         public int eventID(string event_name)
         {
             _event.selectEventByName(event_name);
-            return int.Parse(_event.getEventItems("id"));
+            return int.Parse(_event.getEventData("id"));
         }
 
         public string getEventName(int currentID)
         {
             _event.selectEvent(currentID);
-            return _event.getEventItems("event_name");
+            return _event.getEventData("event_name");
         }
 
         public void setGuest(string first_name, string middle_name, string last_name, string address, string contact, 
@@ -69,7 +75,7 @@ namespace Code_Secret_SOEMS.Presenters
         public string getCode()
         {
             _guest.selectGuest(_guest.getLastGuestID());
-            return _guest.getGuestDetails("code");
+            return _guest.getGuestData("code");
         }
 
         public void registerGuest()
@@ -81,7 +87,7 @@ namespace Code_Secret_SOEMS.Presenters
 
         public void deactivateGuest(int guest_id)
         {
-            _guest.deactivateGuest(guest_id);
+            _guest.guestActivation(guest_id, 0);
         }
 
         public void prepareGuest(int currentID, RadioButton rbnstudent, RadioButton rbnWorking, TextBox txtFirstName, 
@@ -90,32 +96,32 @@ namespace Code_Secret_SOEMS.Presenters
             TextBox txtWorksAt, TextBox txtPosition, XUISwitch switchIsActivated, Label lblSwitchStatus, ComboBox cmbEvents)
         {
             _guest.selectGuest(currentID);
-            txtFirstName.Text = _guest.getGuestDetails("first_name");
-            txtMiddleName.Text = _guest.getGuestDetails("middle_name");
-            txtLastName.Text = _guest.getGuestDetails("last_name");
-            txtAddress.Text = _guest.getGuestDetails("address");
-            txtContact.Text = _guest.getGuestDetails("contact");
-            txtEmail.Text = _guest.getGuestDetails("email");
-            if(_guest.getGuestDetails("gender") == "M")
+            txtFirstName.Text = _guest.getGuestData("first_name");
+            txtMiddleName.Text = _guest.getGuestData("middle_name");
+            txtLastName.Text = _guest.getGuestData("last_name");
+            txtAddress.Text = _guest.getGuestData("address");
+            txtContact.Text = _guest.getGuestData("contact");
+            txtEmail.Text = _guest.getGuestData("email");
+            if(_guest.getGuestData("gender") == "M")
             {
                 rbnMale.Checked = true;
             } else
             {
                 rbnFemale.Checked = true;
             }
-            if(!String.IsNullOrEmpty(_guest.getGuestDetails("school_name")))
+            if(!String.IsNullOrEmpty(_guest.getGuestData("school_name")))
             {
                 rbnstudent.Checked = true;
             } else
             {
                 rbnWorking.Checked = true;
             }
-            txtSchoolName.Text = _guest.getGuestDetails("school_name");
-            txtCourse.Text = _guest.getGuestDetails("course");
-            txtYear.Text = _guest.getGuestDetails("year");
-            txtWorksAt.Text = _guest.getGuestDetails("works_at");
-            txtPosition.Text = _guest.getGuestDetails("position");
-            if(bool.Parse(_guest.getGuestDetails("is_activated")) == true)
+            txtSchoolName.Text = _guest.getGuestData("school_name");
+            txtCourse.Text = _guest.getGuestData("course");
+            txtYear.Text = _guest.getGuestData("year");
+            txtWorksAt.Text = _guest.getGuestData("works_at");
+            txtPosition.Text = _guest.getGuestData("position");
+            if(bool.Parse(_guest.getGuestData("is_activated")) == true)
             {
                 switchIsActivated.SwitchState = XUISwitch.State.On;
                 lblSwitchStatus.Text = "Activated";
@@ -124,19 +130,19 @@ namespace Code_Secret_SOEMS.Presenters
                 switchIsActivated.SwitchState = XUISwitch.State.Off;
                 lblSwitchStatus.Text = "Deactivated";
             }
-            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(_guest.getGuestDetails("event_name"));
+            cmbEvents.SelectedIndex = cmbEvents.FindStringExact(_guest.getGuestData("event_name"));
         }
 
         public void guestActivation(int currentID, XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
             if (switchIsActivated.SwitchState == XUISwitch.State.On)
             {
-                _guest.activateGuest(currentID);
+                _guest.guestActivation(currentID, 1);
                 lblSwitchStatus.Text = "Activated";
             }
             else
             {
-                _guest.deactivateGuest(currentID);
+                _guest.guestActivation(currentID, 0);
                 lblSwitchStatus.Text = "Deactivated";
             }
         }

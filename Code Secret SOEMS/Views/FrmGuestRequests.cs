@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using XanderUI;
 using Code_Secret_SOEMS.Presenters;
 using Code_Secret_SOEMS.Helpers;
 
@@ -15,8 +7,8 @@ namespace Code_Secret_SOEMS.Views
 {
     public partial class FrmGuestRequests : Form
     {
-        ThemeHelper th;
-        GuestRequestPresenter guestRequestPresenter;
+        private ThemeHelper th;
+        private GuestRequestPresenter guestRequestPresenter;
         public FrmGuestRequests()
         {
             InitializeComponent();

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Presenters;
 using Code_Secret_SOEMS.Helpers;
@@ -14,41 +8,10 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmStudentRegistration : Form
     {
-        StudentPresenter studentPresenter;
-        string currentID;
+        private StudentPresenter studentPresenter;
+        private string currentID;
+        private bool activation;
 
-        private void populateFields()
-        {
-            btnAdd.Enabled = false;
-            btnAdd.FlatStyle = FlatStyle.Standard;
-            btnUpdate.Enabled = true;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnDelete.Enabled = true;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            studentPresenter.prepareStudent(currentID, txtFirstName, txtMiddleName, txtLastName, txtAddress, txtContactNo,
-                txtEmailAddress, rbnMale, rbnFemale, txtIDNo, txtCourse, txtYearAndSection, switchIsActivated, lblSwitchStatus);
-        }
-        private void clearFields()
-        {
-            currentID = "";
-            txtIDNo.Clear();
-            txtFirstName.Clear();
-            txtMiddleName.Clear();
-            txtLastName.Clear();
-            txtAddress.Clear();
-            txtContactNo.Clear();
-            txtEmailAddress.Clear();
-            rbnMale.Checked = false;
-            rbnFemale.Checked = false;
-            txtCourse.Clear();
-            txtYearAndSection.Clear();
-
-            btnAdd.Text = "Add";
-            btnUpdate.Enabled = false;
-            btnUpdate.FlatStyle = FlatStyle.Standard;
-            btnDelete.Enabled = false;
-            btnDelete.FlatStyle = FlatStyle.Standard;
-        }
         public FrmStudentRegistration(string mode, string id)
         {
             InitializeComponent();
@@ -98,6 +61,10 @@ namespace Code_Secret_SOEMS
                 }
             } else
             {
+                lblStatus.Hide();
+                switchIsActivated.Hide();
+                lblSwitchStatus.Hide();
+                activation = false;
                 this.Size = new Size(661, 563);
             }
         }
@@ -116,18 +83,7 @@ namespace Code_Secret_SOEMS
                 !String.IsNullOrEmpty(txtAddress.Text) && !String.IsNullOrEmpty(txtContactNo.Text) &&
                 !String.IsNullOrEmpty(txtEmailAddress.Text) && (rbnMale.Checked == true || rbnFemale.Checked == true))
                 {
-                    char gender;
-                    if (rbnMale.Checked)
-                    {
-                        gender = 'M';
-                    }
-                    else
-                    {
-                        gender = 'F';
-                    }
-
-                    studentPresenter.setStudent(txtIDNo.Text, txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                        txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtCourse.Text, txtYearAndSection.Text, 1);
+                    setStudent();
                     studentPresenter.addStudent();
 
                     MessageBox.Show("Student successfully added", "Students", MessageBoxButtons.OK,
@@ -146,18 +102,7 @@ namespace Code_Secret_SOEMS
                 !String.IsNullOrEmpty(txtAddress.Text) && !String.IsNullOrEmpty(txtContactNo.Text) &&
                 !String.IsNullOrEmpty(txtEmailAddress.Text) && (rbnMale.Checked == true || rbnFemale.Checked == true))
                 {
-                    char gender;
-                    if (rbnMale.Checked)
-                    {
-                        gender = 'M';
-                    }
-                    else
-                    {
-                        gender = 'F';
-                    }
-
-                    studentPresenter.setStudent(txtIDNo.Text, txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                        txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtCourse.Text, txtYearAndSection.Text, 0);
+                    setStudent();
                     studentPresenter.addStudent();
 
                     MessageBox.Show("Account successfully added and is pending for approval", "Student Registration", MessageBoxButtons.OK,
@@ -179,18 +124,7 @@ namespace Code_Secret_SOEMS
                 !String.IsNullOrEmpty(txtAddress.Text) && !String.IsNullOrEmpty(txtContactNo.Text) &&
                 !String.IsNullOrEmpty(txtEmailAddress.Text) && (rbnMale.Checked == true || rbnFemale.Checked == true))
             {
-                char gender;
-                if (rbnMale.Checked)
-                {
-                    gender = 'M';
-                }
-                else
-                {
-                    gender = 'F';
-                }
-
-                studentPresenter.setStudent(txtIDNo.Text, txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                    txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtCourse.Text, txtYearAndSection.Text, 1);
+                setStudent();
                 studentPresenter.updateStudent(currentID);
 
                 MessageBox.Show("Student successfully updated", "Students", MessageBoxButtons.OK,
@@ -217,7 +151,48 @@ namespace Code_Secret_SOEMS
             if(!String.IsNullOrEmpty(currentID))
             {
                 studentPresenter.studentActivation(currentID, switchIsActivated, lblSwitchStatus);
+            } else if(this.Size == new Size(661, 563))
+            {
+                if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+                {
+                    activation = true;
+                    lblSwitchStatus.Text = "Activated";
+                }
+                else
+                {
+                    activation = false;
+                    lblSwitchStatus.Text = "Deactivated";
+                }
             }
+        }
+
+        private void populateFields()
+        {
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            studentPresenter.prepareStudent(currentID, txtFirstName, txtMiddleName, txtLastName, txtAddress, txtContactNo,
+                txtEmailAddress, rbnMale, rbnFemale, txtIDNo, txtCourse, txtYearAndSection, switchIsActivated, lblSwitchStatus);
+        }
+
+        private void setStudent()
+        {
+
+            char gender;
+            if (rbnMale.Checked)
+            {
+                gender = 'M';
+            }
+            else
+            {
+                gender = 'F';
+            }
+
+            studentPresenter.setStudent(txtIDNo.Text, txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtCourse.Text, txtYearAndSection.Text, activation);
         }
     }
 }

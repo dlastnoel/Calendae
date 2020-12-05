@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Models;
 
@@ -10,8 +6,12 @@ namespace Code_Secret_SOEMS.Presenters
 {
     class OfficerPresenter
     {
-        Officer _officer = new Officer();
+        Officer _officer;
 
+        public OfficerPresenter()
+        {
+            _officer = new Officer();
+        }
         public void loadOfficers(DataGridView myDataGridview)
         {
             _officer.loadOfficers(myDataGridview);
@@ -44,15 +44,15 @@ namespace Code_Secret_SOEMS.Presenters
             TextBox txtCourse, TextBox txtYearAndSection)
         {
             _officer.selectOfficer(currentIDNo);
-            txtIDNo.Text = _officer.getOfficerDetails("id");
-            txtPosition.Text = _officer.getOfficerDetails("position");
-            txtFirstName.Text = _officer.getOfficerDetails("first_name");
-            txtMiddleName.Text = _officer.getOfficerDetails("middle_name");
-            txtLastName.Text = _officer.getOfficerDetails("last_name");
-            txtAddress.Text = _officer.getOfficerDetails("address");
-            txtContact.Text = _officer.getOfficerDetails("contact");
-            txtEmail.Text = _officer.getOfficerDetails("email");
-            if (_officer.getOfficerDetails("gender") == "M")
+            txtIDNo.Text = _officer.getOfficerData("id");
+            txtPosition.Text = _officer.getOfficerData("position");
+            txtFirstName.Text = _officer.getOfficerData("first_name");
+            txtMiddleName.Text = _officer.getOfficerData("middle_name");
+            txtLastName.Text = _officer.getOfficerData("last_name");
+            txtAddress.Text = _officer.getOfficerData("address");
+            txtContact.Text = _officer.getOfficerData("contact");
+            txtEmail.Text = _officer.getOfficerData("email");
+            if (_officer.getOfficerData("gender") == "M")
             {
                 rbnMale.Checked = true;
             }
@@ -60,8 +60,8 @@ namespace Code_Secret_SOEMS.Presenters
             {
                 rbnFemale.Checked = true;
             }
-            txtCourse.Text = _officer.getOfficerDetails("course");
-            txtYearAndSection.Text = _officer.getOfficerDetails("year_and_section");
+            txtCourse.Text = _officer.getOfficerData("course");
+            txtYearAndSection.Text = _officer.getOfficerData("year_and_section");
         }
 
         public void updateOfficer(string currentIDNo)

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using XanderUI;
 using Code_Secret_SOEMS.Models;
@@ -13,10 +10,10 @@ namespace Code_Secret_SOEMS.Presenters
 {
     class EventRequestPresenter
     {
-        Event _event;
-        List<string> listEventIds;
-        FlowLayoutPanel flowLayoutEvent;
-        ThemeHelper th;
+        private Event _event;
+        private List<string> listEventIds;
+        private FlowLayoutPanel flowLayoutEvent;
+        private ThemeHelper th;
 
         public EventRequestPresenter(FlowLayoutPanel myFlowLayoutPanel)
         {
@@ -37,7 +34,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblVenue.Location = new Point(6, 19);
                 lblVenue.Name = "lblVenue";
                 lblVenue.Size = new Size(46, 15);
-                lblVenue.Text = "Venue: " + _event.getEventItems("venue");
+                lblVenue.Text = "Venue: " + _event.getEventData("venue");
                 
 
                 Label lblDate = new Label();
@@ -46,7 +43,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblDate.Location = new Point(6, 39);
                 lblDate.Name = "lblDate";
                 lblDate.Size = new Size(37, 15);
-                lblDate.Text = "Date: " + _event.getEventItems("date_from") + " - " + _event.getEventItems("date_to");
+                lblDate.Text = "Date: " + _event.getEventData("date_from") + " - " + _event.getEventData("date_to");
 
                 Label lblTime = new Label();
                 lblTime.AutoSize = true;
@@ -54,7 +51,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblTime.Location = new Point(6, 59);
                 lblTime.Name = "lblTime";
                 lblTime.Size = new Size(40, 15);
-                lblTime.Text = "Time: " + _event.getEventItems("time");
+                lblTime.Text = "Time: " + _event.getEventData("time");
 
                 Label lblStudentRegistrationFee = new Label();
                 lblStudentRegistrationFee.AutoSize = true;
@@ -62,10 +59,10 @@ namespace Code_Secret_SOEMS.Presenters
                 lblStudentRegistrationFee.Location = new Point(6, 99);
                 lblStudentRegistrationFee.Name = "lblStudentRegistrationFee";
                 lblStudentRegistrationFee.Size = new Size(149, 15);
-                if(_event.getEventItems("student_registration") != "0")
+                if(_event.getEventData("student_registration") != "0")
                 {
                     lblStudentRegistrationFee.Text = "Student Registration Fee: Php " + 
-                        _event.getEventItems("student_registration");
+                        _event.getEventData("student_registration");
                 } else
                 {
                     lblStudentRegistrationFee.Text = "Student Registration Fee: Free";
@@ -77,9 +74,9 @@ namespace Code_Secret_SOEMS.Presenters
                 lblStudentSlots.Location = new Point(6, 79);
                 lblStudentSlots.Name = "lblStudentSlots";
                 lblStudentSlots.Size = new Size(86, 15);
-                if(_event.getEventItems("student_slots") != "0")
+                if(_event.getEventData("student_slots") != "0")
                 {
-                    lblStudentSlots.Text = "Student Slots: " + _event.getEventItems("student_slots");
+                    lblStudentSlots.Text = "Student Slots: " + _event.getEventData("student_slots");
                 }
                  else
                 {
@@ -101,19 +98,19 @@ namespace Code_Secret_SOEMS.Presenters
                 lblGuestSlots.Size = new Size(76, 15);
 
 
-                if (_event.getEventItems("allow_guests") != "0")
+                if (_event.getEventData("allow_guests") != "0")
                 {
-                    if(_event.getEventItems("guest_registration") != "0")
+                    if(_event.getEventData("guest_registration") != "0")
                     {
                         lblGuestRegistrationFee.Text = "Guest Registration Fee: Php " +
-                            _event.getEventItems("guest_registration");
+                            _event.getEventData("guest_registration");
                     } else
                     {
                         lblGuestRegistrationFee.Text = "Guest Registration Fee: Free";
                     }
-                    if(_event.getEventItems("guest_slots") != "0")
+                    if(_event.getEventData("guest_slots") != "0")
                     {
-                        lblGuestSlots.Text = "Guest Slots: " + _event.getEventItems("guest_slots");
+                        lblGuestSlots.Text = "Guest Slots: " + _event.getEventData("guest_slots");
                     } else
                     {
                         lblGuestSlots.Text = "Guest Slots: Open";
@@ -141,7 +138,7 @@ namespace Code_Secret_SOEMS.Presenters
                 txtEventDetails.Name = "txtEventDetails";
                 txtEventDetails.ReadOnly = true;
                 txtEventDetails.Size = new Size(302, 102);
-                txtEventDetails.Text = _event.getEventItems("event_details");
+                txtEventDetails.Text = _event.getEventData("event_details");
 
                 Label lblSwitchStatus = new Label();
                 lblSwitchStatus.AutoSize = true;
@@ -167,11 +164,11 @@ namespace Code_Secret_SOEMS.Presenters
                     Event e1 = new Event();
                     if (switchIsActivated.SwitchState == XUISwitch.State.Off)
                     {
-                        e1.deactivateEvent(int.Parse(eventId));
+                        e1.eventActivation(int.Parse(eventId), 0);
                         lblSwitchStatus.Text = "Deactivated";
                     } else
                     {
-                        e1.activateEvent(int.Parse(eventId));
+                        e1.eventActivation(int.Parse(eventId), 1);
                         lblSwitchStatus.Text = "Activated";
                     }
                 };
@@ -193,7 +190,7 @@ namespace Code_Secret_SOEMS.Presenters
                 groupEvent.Name = "groupEvent";
                 groupEvent.Size = new Size(629, 170);
                 groupEvent.TabStop = false;
-                groupEvent.Text = _event.getEventItems("event_name");
+                groupEvent.Text = _event.getEventData("event_name");
 
                 th.setLabelColor(lblVenue);
                 th.setLabelColor(lblDate);

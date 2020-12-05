@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 
@@ -20,15 +16,17 @@ namespace Code_Secret_SOEMS.Models
         public char gender { get; set; }
         public string course { get; set; }
         public string year_and_section { get; set; }
-        public int is_activated { get; set; }
+        public bool is_activated { get; set; }
 
-        DatabaseHelper dbHelper = new DatabaseHelper();
+        private DatabaseHelper dbHelper;
 
+        // Construcor
         public Student()
         {
             dbHelper = new DatabaseHelper();
         }
 
+        // Load student data on DataGridView
         public void loadStudents(DataGridView myDataGridView)
         {
             dbHelper.createQuery(
@@ -48,44 +46,67 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.populateDataGridView(myDataGridView);
         }
 
-        public int countAllStudents()
+        // Search and load student data on DataGridView
+        public void searchStudents(string search, DataGridView myDataGridView)
         {
-            dbHelper.createQuery("SELECT COUNT(*) FROM students;");
-            return dbHelper.getCount();
+            dbHelper.createQuery(
+                "SELECT " +
+                    "id AS 'Student ID No.', " +
+                    "IF(is_activated = 1, 'Activated', 'Deactivated') AS 'Status', " +
+                    "first_name AS 'First Name', " +
+                    "middle_name AS 'Middle Name', " +
+                    "last_name AS 'Last Name', " +
+                    "address AS 'Address', " +
+                    "contact AS 'Contact No.', " +
+                    "email AS 'Email Address', " +
+                    "gender AS 'Gender', " +
+                    "course AS 'Course', " +
+                    "year_and_section AS 'Year and Section' " +
+                "FROM students " +
+                "WHERE id LIKE CONCAT('%',@search,'%') " +
+                "OR WHERE id LIKE CONCAT('%',@search,'%') " +
+                "OR WHERE first_name LIKE CONCAT('%',@search,'%') " +
+                "OR WHERE middle_name LIKE CONCAT('%',@search,'%') " +
+                "OR WHERE last_name LIKE CONCAT('%',@search,'%') ;");
+            dbHelper.bindParam("@search", search);
+            dbHelper.populateDataGridView(myDataGridView);
         }
 
-        public int countAllInactiveStudents()
+        // Count all students (active/inactive/both)
+        public int countAllStudents(int? is_activated)
         {
-            dbHelper.createQuery("SELECT COUNT(*) FROM students WHERE is_activated = @is_activated");
-            dbHelper.bindParam("@is_activated", 0);
+            if(is_activated != null)
+            {
+                dbHelper.createQuery("SELECT COUNT(*) FROM students WHERE is_activated = @is_activated");
+                dbHelper.bindParam("@is_activated", is_activated);
+            } else
+            {
+                dbHelper.createQuery("SELECT COUNT(*) FROM students;");
+            }
             return dbHelper.getCount();
+
         }
         
+        // Gets all inactive students
+        // Returns result as string List (student_id)
         public List<string> getInactiveStudentIds()
         {
             dbHelper.createQuery("SELECT * FROM students WHERE is_activated = 0;");
             return dbHelper.getResultList("id");
         }
 
-        public void activateStudent(string student_id)
+        // Updates student activation (activate/deactivate)
+        public void studentActivation(string student_id, int is_activated)
         {
             dbHelper.createQuery("UPDATE students SET is_activated = @is_activated WHERE " +
                 "id = @student_id;");
-            dbHelper.bindParam("@is_activated", 1);
-            dbHelper.bindParam("@student_id", student_id);
-
-            dbHelper.executeQuery();
-        }
-        public void deactivateStudent(string student_id)
-        {
-            dbHelper.createQuery("UPDATE students SET is_activated = @is_activated WHERE " +
-                "id = @student_id;");
-            dbHelper.bindParam("@is_activated", 0);
+            dbHelper.bindParam("@is_activated", is_activated);
             dbHelper.bindParam("@student_id", student_id);
 
             dbHelper.executeQuery();
         }
 
+        // Add student
         public void addStudent()
         {
             dbHelper.createQuery("INSERT INTO students (id, first_name, middle_name, last_name, address, contact, email, gender, " +
@@ -107,13 +128,15 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.executeQuery();
         }
 
+        // Select student by id
         public void selectStudent(string id)
         {
             dbHelper.createQuery("SELECT * FROM students WHERE id = @id");
             dbHelper.bindParam("@id", id);
         }
 
-        public void updateStudent(string currentID)
+        // Updates student
+        public void updateStudent(string student_id)
         {
             dbHelper.createQuery(
                 "UPDATE students SET " +
@@ -126,8 +149,7 @@ namespace Code_Secret_SOEMS.Models
                     "email = @email, " +
                     "gender = @gender, " +
                     "course = @course, " +
-                    "year_and_section = @year_and_section, " +
-                    "is_activated = @is_activated " +
+                    "year_and_section = @year_and_section " +
                  "WHERE id = @current_id;"
                 );
 
@@ -142,20 +164,23 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.bindParam("@course", course);
             dbHelper.bindParam("@year_and_section", year_and_section);
             dbHelper.bindParam("@is_activated", is_activated);
-            dbHelper.bindParam("@current_id", currentID);
+            dbHelper.bindParam("@current_id", student_id);
 
             dbHelper.executeQuery();
         }
 
-        public void deleteStudent(string id)
+        // Deletes student
+        public void deleteStudent(string student_id)
         {
             dbHelper.createQuery("DELETE FROM students WHERE id = @id");
-            dbHelper.bindParam("@id", id);
+            dbHelper.bindParam("@id", student_id);
 
             dbHelper.executeQuery();
         }
 
-        public string getStudentDetails(string item)
+        // Reads query
+        // Returns result as string
+        public string getStudentData(string item)
         {
             return dbHelper.getFromReader(item);
         }

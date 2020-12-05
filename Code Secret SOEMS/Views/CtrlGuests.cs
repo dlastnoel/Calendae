@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -14,49 +8,9 @@ namespace Code_Secret_SOEMS
 {
     public partial class CtrlGuests : UserControl
     {
-        GuestPresenter guestPresenter;
-        int currentID = 0;
-
-        private void populateFields()
-        {
-            btnAdd.Enabled = false;
-            btnAdd.FlatStyle = FlatStyle.Standard;
-            btnUpdate.Enabled = true;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnDelete.Enabled = true;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            guestPresenter.prepareGuest(currentID, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
-                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtSchoolName, txtCourse, txtYear, txtWorksAt,
-                txtPosition, switchIsActivated, lblSwitchStatus, cmbEvents);
-        }
-
-        private void clearFields()
-        {
-            currentID = 0;
-            rbnStudent.Checked = false;
-            rbnWorking.Checked = false;
-            groupSchoolInfo.Enabled = false;
-            groupWorkInfo.Enabled = false;
-            txtFirstName.Clear();
-            txtMiddleName.Clear();
-            txtLastName.Clear();
-            txtAddress.Clear();
-            txtContactNo.Clear();
-            txtEmailAddress.Clear();
-            rbnMale.Checked = false;
-            rbnFemale.Checked = false;
-            txtSchoolName.Clear();
-            txtCourse.Clear();
-            txtYear.Clear();
-            txtWorksAt.Clear();
-            txtPosition.Clear();
-
-            btnAdd.Text = "Add";
-            btnUpdate.Enabled = false;
-            btnUpdate.FlatStyle = FlatStyle.Standard;
-            btnDelete.Enabled = false;
-            btnDelete.FlatStyle = FlatStyle.Standard;
-        }
+        private GuestPresenter guestPresenter;
+        private int guest_id = 0;
+        private bool activation;
 
         public CtrlGuests()
         {
@@ -68,24 +22,6 @@ namespace Code_Secret_SOEMS
             btnUpdate.FlatStyle = FlatStyle.Standard;
             btnDelete.Enabled = false;
             btnDelete.FlatStyle = FlatStyle.Standard;
-        }
-
-        private void btnOpenForm_Click(object sender, EventArgs e)
-        {
-            new FrmGuests("form",0).ShowDialog();
-            guestPresenter.loadGuests(dataGuests);
-        }
-
-        private void btnOpenForm_SizeChanged(object sender, EventArgs e)
-        {
-            if (this.Size == new Size(940, 614))
-            {
-                btnOpenForm.Show();
-            }
-            else
-            {
-                btnOpenForm.Hide();
-            }
         }
 
         private void CtrlGuests_Load(object sender, EventArgs e)
@@ -119,6 +55,24 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblPosition);
 
             guestPresenter.loadGuests(dataGuests);
+        }
+
+        private void btnOpenForm_Click(object sender, EventArgs e)
+        {
+            new FrmGuests("form", 0).ShowDialog();
+            guestPresenter.loadGuests(dataGuests);
+        }
+
+        private void btnOpenForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.Size == new Size(940, 614))
+            {
+                btnOpenForm.Show();
+            }
+            else
+            {
+                btnOpenForm.Hide();
+            }
         }
 
         private void CtrlGuests_SizeChanged(object sender, EventArgs e)
@@ -160,19 +114,7 @@ namespace Code_Secret_SOEMS
                         if (!String.IsNullOrEmpty(txtSchoolName.Text) && !String.IsNullOrEmpty(txtCourse.Text) &&
                             !String.IsNullOrEmpty(txtYear.Text))
                         {
-                            char gender;
-                            if (rbnMale.Checked)
-                            {
-                                gender = 'M';
-                            }
-                            else
-                            {
-                                gender = 'F';
-                            }
-
-                            guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
+                            setGuest();
                             guestPresenter.addGuest();
                             guestPresenter.registerGuest();
                             MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
@@ -191,19 +133,7 @@ namespace Code_Secret_SOEMS
                     {
                         if (!String.IsNullOrEmpty(txtWorksAt.Text) && !String.IsNullOrEmpty(txtPosition.Text))
                         {
-                            char gender;
-                            if (rbnMale.Checked)
-                            {
-                                gender = 'M';
-                            }
-                            else
-                            {
-                                gender = 'F';
-                            }
-
-                            guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
+                            setGuest();
                             guestPresenter.addGuest();
                             guestPresenter.registerGuest();
                             MessageBox.Show("Guest successfully registered to " + cmbEvents.Text, "Guests", MessageBoxButtons.OK,
@@ -234,7 +164,7 @@ namespace Code_Secret_SOEMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            guestPresenter.deactivateGuest(currentID);
+            guestPresenter.deactivateGuest(guest_id);
             MessageBox.Show("Guest successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             clearFields();
@@ -253,20 +183,9 @@ namespace Code_Secret_SOEMS
                     if (!String.IsNullOrEmpty(txtSchoolName.Text) && !String.IsNullOrEmpty(txtCourse.Text) &&
                         !String.IsNullOrEmpty(txtYear.Text))
                     {
-                        char gender;
-                        if (rbnMale.Checked)
-                        {
-                            gender = 'M';
-                        }
-                        else
-                        {
-                            gender = 'F';
-                        }
 
-                        guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
-                        guestPresenter.updateGuest(currentID);
+                        setGuest();
+                        guestPresenter.updateGuest(guest_id);
                         MessageBox.Show("Guest info successfully updated", "Guests", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
@@ -283,20 +202,9 @@ namespace Code_Secret_SOEMS
                 {
                     if (!String.IsNullOrEmpty(txtWorksAt.Text) && !String.IsNullOrEmpty(txtPosition.Text))
                     {
-                        char gender;
-                        if (rbnMale.Checked)
-                        {
-                            gender = 'M';
-                        }
-                        else
-                        {
-                            gender = 'F';
-                        }
 
-                        guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
-                                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
-                                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, true, cmbEvents.Text);
-                        guestPresenter.updateGuest(currentID);
+                        setGuest();
+                        guestPresenter.updateGuest(guest_id);
                         MessageBox.Show("Guest info successfully updated", "Guests", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
@@ -321,7 +229,9 @@ namespace Code_Secret_SOEMS
         {
             int indexRow = e.RowIndex;
             DataGridViewRow dataGridViewRow = dataGuests.Rows[indexRow];
-            currentID = int.Parse(dataGridViewRow.Cells[0].Value.ToString());
+            guest_id = int.Parse(dataGridViewRow.Cells[0].Value.ToString());
+            txtSearch.Text = "Search";
+            txtSearch.ForeColor = Color.Gray;
 
             if (this.Size == new Size(1576, 956))
             {
@@ -329,17 +239,131 @@ namespace Code_Secret_SOEMS
             }
             else
             {
-                FrmGuests frmGuests = new FrmGuests("form", currentID);
+                FrmGuests frmGuests = new FrmGuests("form", guest_id);
                 frmGuests.ShowDialog();
                 guestPresenter.loadGuests(dataGuests);
+                txtSearch.Text = "Search";
+                txtSearch.ForeColor = Color.Gray;
             }
         }
 
         private void switchIsActivated_Click(object sender, EventArgs e)
         {
-            if(currentID != 0)
+            if(guest_id != 0)
             {
-                guestPresenter.guestActivation(currentID, switchIsActivated, lblSwitchStatus);
+                guestPresenter.guestActivation(guest_id, switchIsActivated, lblSwitchStatus);
+                if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+                {
+                    lblSwitchStatus.Text = "Activated";
+                }
+                else
+                {
+                    lblSwitchStatus.Text = "Deactivated";
+                }
+                guestPresenter.loadGuests(dataGuests);
+            } else
+            {
+                if (switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
+                {
+                    activation = true;
+                    lblSwitchStatus.Text = "Activated";
+                }
+                else
+                {
+                    activation = false;
+                    lblSwitchStatus.Text = "Deactivated";
+                }
+            }
+        }
+
+        private void populateFields()
+        {
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            guestPresenter.prepareGuest(guest_id, rbnStudent, rbnWorking, txtFirstName, txtMiddleName, txtLastName,
+                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtSchoolName, txtCourse, txtYear, txtWorksAt,
+                txtPosition, switchIsActivated, lblSwitchStatus, cmbEvents);
+        }
+
+        private void clearFields()
+        {
+            guest_id = 0;
+            rbnStudent.Checked = false;
+            rbnWorking.Checked = false;
+            groupSchoolInfo.Enabled = false;
+            groupWorkInfo.Enabled = false;
+            txtFirstName.Clear();
+            txtMiddleName.Clear();
+            txtLastName.Clear();
+            txtAddress.Clear();
+            txtContactNo.Clear();
+            txtEmailAddress.Clear();
+            rbnMale.Checked = false;
+            rbnFemale.Checked = false;
+            txtSchoolName.Clear();
+            txtCourse.Clear();
+            txtYear.Clear();
+            txtWorksAt.Clear();
+            txtPosition.Clear();
+
+            btnAdd.Text = "Add";
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
+
+            txtSearch.Text = "Search";
+            txtSearch.ForeColor = Color.Gray;
+        }
+
+        private void setGuest()
+        {
+            char gender;
+            if (rbnMale.Checked)
+            {
+                gender = 'M';
+            }
+            else
+            {
+                gender = 'F';
+            }
+
+            guestPresenter.setGuest(txtFirstName.Text, txtMiddleName.Text, txtLastName.Text,
+                txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text, gender, txtSchoolName.Text,
+                txtCourse.Text, txtYear.Text, txtWorksAt.Text, txtPosition.Text, activation, cmbEvents.Text);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtSearch.Text))
+            {
+                guestPresenter.searchGuests(txtSearch.Text, dataGuests);
+            }
+            else
+            {
+                guestPresenter.loadGuests(dataGuests);
+            }
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "Search")
+            {
+                txtSearch.Clear();
+                txtSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtSearch.Text))
+            {
+                txtSearch.Text = "Search";
+                txtSearch.ForeColor = Color.Gray;
             }
         }
     }

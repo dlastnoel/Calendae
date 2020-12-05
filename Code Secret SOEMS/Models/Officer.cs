@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS.Models
@@ -26,6 +21,7 @@ namespace Code_Secret_SOEMS.Models
         private DatabaseHelper dbHelper;
         private PasswordHelper ph;
 
+        // Constructor
         public Officer()
         {
             dbHelper = new DatabaseHelper();
@@ -33,7 +29,7 @@ namespace Code_Secret_SOEMS.Models
         }
         
 
-        // DISPLAYING DATA
+        // Load officer data on DataGridView
         public void loadOfficers(DataGridView myDataGridView)
         {
             dbHelper.createQuery(
@@ -53,6 +49,7 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.populateDataGridView(myDataGridView);
         }
 
+        // Add officer
         public void addOfficer()
         {
             dbHelper.createQuery("INSERT INTO officers (id, position, first_name, middle_name, last_name, " +
@@ -78,6 +75,8 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.executeQuery();
         }
 
+        // Gets adviser position and full name
+        // Returns result as string
         public string getAdviser()
         {
             dbHelper.createQuery("SELECT * FROM officers WHERE position = @position");
@@ -87,6 +86,8 @@ namespace Code_Secret_SOEMS.Models
                 dbHelper.getFromReader("last_name");
         }
 
+        // Tests if login is true
+        // Returns result as bool
         public bool loginOfficer(string id, string userPassword)
         {
             string hashPassword;
@@ -114,12 +115,14 @@ namespace Code_Secret_SOEMS.Models
             }
         }
 
+        // Select officer by id
         public void selectOfficer(string id)
         {
             dbHelper.createQuery("SELECT * FROM officers WHERE id = @id;");
             dbHelper.bindParam("@id", id);
         }
 
+        // Updates officer
         public void updateOfficer(string currentIDNo)
         {
             dbHelper.createQuery(
@@ -159,6 +162,7 @@ namespace Code_Secret_SOEMS.Models
 
         }
 
+        // Deletes officer
         public void deleteOfficer(string currentIDNo)
         {
             dbHelper.createQuery("DELETE FROM officers WHERE id = @id;");
@@ -167,7 +171,9 @@ namespace Code_Secret_SOEMS.Models
             dbHelper.executeQuery();
         }
 
-        public string getOfficerDetails(string item)
+        // Reads query
+        // Returns result as string
+        public string getOfficerData(string item)
         {
             return dbHelper.getFromReader(item);
         }

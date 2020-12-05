@@ -57,6 +57,7 @@
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupSecurity.SuspendLayout();
             this.groupPersonalInfo.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -353,6 +354,7 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.DarkOrange;
+            this.panelTop.Controls.Add(this.btnClose);
             this.panelTop.Controls.Add(this.lblTitle);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
@@ -370,6 +372,22 @@
             this.lblTitle.Size = new System.Drawing.Size(150, 19);
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "Adviser Registration";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(917, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(23, 30);
+            this.btnClose.TabIndex = 19;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FrmAdviserRegistration
             // 
@@ -430,5 +448,6 @@
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblPasswordMessage;
+        private System.Windows.Forms.Button btnClose;
     }
 }

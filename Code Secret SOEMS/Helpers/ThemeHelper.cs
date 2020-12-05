@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
 using XanderUI;
-using XanderUI.Designers;
+using FontAwesome.Sharp;
 
 namespace Code_Secret_SOEMS.Helpers
 {
@@ -28,21 +22,25 @@ namespace Code_Secret_SOEMS.Helpers
             return Properties.Settings.Default.isDark;
         }
 
-        public void saveTheme(string theme)
+        // Saves theme
+        public void saveTheme(string theme, bool mode)
         {
-            Properties.Settings.Default.theme = theme;
-            Properties.Settings.Default.Save();
-        }
-
-        public void saveMode(bool mode)
-        {
-            Properties.Settings.Default.isDark = mode;
-            Properties.Settings.Default.Save();
-        }
-        public void saveBoth(string theme, bool mode)
-        {
-            Properties.Settings.Default.theme = theme;
-            Properties.Settings.Default.isDark = mode; ;
+            if(!String.IsNullOrEmpty(theme) && !mode)
+            {
+                // Theme changed
+                Properties.Settings.Default.theme = theme;
+            }
+            else if(String.IsNullOrEmpty(theme) && mode)
+            {
+                //Mode changed
+                Properties.Settings.Default.isDark = mode;
+            } 
+            else
+            {
+                // Theme and mode changed
+                Properties.Settings.Default.theme = theme;
+                Properties.Settings.Default.isDark = mode;
+            }
             Properties.Settings.Default.Save();
         }
 
@@ -250,7 +248,8 @@ namespace Code_Secret_SOEMS.Helpers
             }
         }
 
-        public void setIconButton(IconButton myButton)
+        // Sets icon button color (either white or black)
+        public void setIconButtonColor(IconButton myButton)
         {
             if(isDark())
             {
@@ -262,7 +261,7 @@ namespace Code_Secret_SOEMS.Helpers
         }
 
         // Sets the hover color for the icon buttons (based from theme)
-        public void setIconButtonColor(IconButton myButton)
+        public void setIconButtonBackColor(IconButton myButton)
         {
             switch (getCurrentTheme())
             {

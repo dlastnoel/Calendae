@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Presenters;
 using Code_Secret_SOEMS.Helpers;
@@ -14,50 +8,14 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmEvents : Form
     {
-        EventPresenter eventPresenter;
-        ThemeHelper th;
-        FormHelper fh;
+        private EventPresenter eventPresenter;
+        private ThemeHelper th;
+        private FormHelper fh;
         private UserControl currentUserControl;
-        string position;
-        int currentID;
-        bool activation;
+        private string position;
+        private int event_id;
+        private bool activation;
 
-        private void populateFields()
-        {
-            btnAdd.Enabled = false;
-            btnAdd.FlatStyle = FlatStyle.Standard;
-            btnUpdate.Enabled = true;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnDelete.Enabled = true;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            activation = eventPresenter.prepareEvent(currentID, txtEventName, txtVenue, dateFrom, dateTo,
-                timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails, checkGuests, 
-                txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
-        }
-
-        private void clearFields()
-        {
-            currentID = 0;
-            txtEventName.Clear();
-            txtVenue.Clear();
-            txtStudentRegistrationFee.Clear();
-            txtStudentSlots.Clear();
-            txtEventDetails.Clear();
-            checkGuests.Checked = false;
-            txtGuestRegistrationFee.Clear();
-            txtGuestSlots.Clear();
-            switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
-            lblSwitchStatus.Text = "Deactivated";
-
-            dateFrom.Value = DateTime.Now.Date;
-            dateTo.Value = DateTime.Now.Date;
-
-            btnAdd.Text = "Add";
-            btnUpdate.Enabled = false;
-            btnUpdate.FlatStyle = FlatStyle.Standard;
-            btnDelete.Enabled = false;
-            btnDelete.FlatStyle = FlatStyle.Standard;
-        }
         public FrmEvents(UserControl userControl, string position, bool update, int id)
         {
             InitializeComponent();
@@ -84,7 +42,7 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblGuestRegistrationFee);
             th.setLabelColor(lblGuestSlots);
 
-            currentID = id;
+            event_id = id;
             this.position = position;
             if (this.position != "Adviser")
             {
@@ -153,10 +111,7 @@ namespace Code_Secret_SOEMS
                         {
                             if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                             {
-                                eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                                    timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                                    int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                                    int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
+                                setEvent(true);
                                 eventPresenter.addEvent();
                                 if (activation)
                                 {
@@ -179,10 +134,7 @@ namespace Code_Secret_SOEMS
                         }
                         else
                         {
-                            eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                                    timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                                    int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                                    0, 0, activation);
+                            setEvent(false);
                             eventPresenter.addEvent();
                             MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
@@ -218,12 +170,8 @@ namespace Code_Secret_SOEMS
                 {
                     if (!String.IsNullOrEmpty(txtGuestRegistrationFee.Text) && !String.IsNullOrEmpty(txtGuestSlots.Text))
                     {
-                        MessageBox.Show(activation.ToString());
-                        eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                            timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                            int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                            int.Parse(txtGuestRegistrationFee.Text), int.Parse(txtGuestSlots.Text), activation);
-                        eventPresenter.updateEvent(currentID);
+                        setEvent(true);
+                        eventPresenter.updateEvent(event_id);
                         MessageBox.Show("Event successfully updated", "Events", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                         this.Close();
@@ -237,11 +185,8 @@ namespace Code_Secret_SOEMS
                 }
                 else
                 {
-                    eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
-                        timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
-                        int.Parse(txtStudentSlots.Text), txtEventDetails.Text, checkGuests.Checked,
-                        0, 0, activation);
-                    eventPresenter.updateEvent(currentID);
+                    setEvent(false);
+                    eventPresenter.updateEvent(event_id);
                     MessageBox.Show("Event successfully added", "Events", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                     this.Close();
@@ -256,7 +201,7 @@ namespace Code_Secret_SOEMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            eventPresenter.deleteEvent(currentID);
+            eventPresenter.deleteEvent(event_id);
             MessageBox.Show("Event successfully deleted", "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
@@ -264,9 +209,9 @@ namespace Code_Secret_SOEMS
 
         private void switchIsActivated_Click(object sender, EventArgs e)
         {
-            if(currentID != 0)
+            if(event_id != 0)
             {
-                eventPresenter.eventActivation(currentID, switchIsActivated, lblSwitchStatus);
+                eventPresenter.eventActivation(event_id, switchIsActivated, lblSwitchStatus);
             } else
             {
                 if(switchIsActivated.SwitchState == XanderUI.XUISwitch.State.On)
@@ -293,9 +238,67 @@ namespace Code_Secret_SOEMS
         private void btnShowDetails_Click(object sender, EventArgs e)
         {
             this.Close();
-            fh.setEventID(currentID);
+            fh.setEventId(event_id);
             fh.setCurrentUserControl(currentUserControl);
             fh.setUserControl("Event Details", position);
+        }
+
+        private void populateFields()
+        {
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            eventPresenter.prepareEvent(event_id, txtEventName, txtVenue, dateFrom, dateTo,
+                timeFrom, timeTo, txtStudentRegistrationFee, txtStudentSlots, txtEventDetails, checkGuests,
+                txtGuestRegistrationFee, txtGuestSlots, switchIsActivated, lblSwitchStatus);
+        }
+
+        private void clearFields()
+        {
+            event_id = 0;
+            txtEventName.Clear();
+            txtVenue.Clear();
+            txtStudentRegistrationFee.Clear();
+            txtStudentSlots.Clear();
+            txtEventDetails.Clear();
+            checkGuests.Checked = false;
+            txtGuestRegistrationFee.Clear();
+            txtGuestSlots.Clear();
+            switchIsActivated.SwitchState = XanderUI.XUISwitch.State.Off;
+            lblSwitchStatus.Text = "Deactivated";
+
+            dateFrom.Value = DateTime.Now.Date;
+            dateTo.Value = DateTime.Now.Date;
+
+            btnAdd.Text = "Add";
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatStyle = FlatStyle.Standard;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Standard;
+        }
+
+        private void setEvent(bool guests)
+        {
+            int guest_fee;
+            int guest_slots;
+
+            if (guests)
+            {
+                guest_fee = int.Parse(txtGuestRegistrationFee.Text);
+                guest_slots = int.Parse(txtGuestSlots.Text);
+            }
+            else
+            {
+                guest_fee = 0;
+                guest_slots = 0;
+            }
+            eventPresenter.setEvent(txtEventName.Text, txtVenue.Text, dateFrom.Text, dateTo.Text,
+                timeFrom.Text, timeTo.Text, int.Parse(txtStudentRegistrationFee.Text),
+                int.Parse(txtStudentSlots.Text), txtEventDetails.Text, guests,
+                guest_fee, guest_slots, activation);
         }
     }
 }

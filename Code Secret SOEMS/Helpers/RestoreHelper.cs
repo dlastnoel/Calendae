@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Code_Secret_SOEMS.Helpers
 {
+    //Helper class useful for resetting property settings when debugging
     class RestoreHelper
     {
         public RestoreHelper(string mode)
         {
+            //Resets the entire property settings
             if(mode == "all")
             {
                 Properties.Settings.Default.theme = "Dark Orange";
@@ -27,7 +24,9 @@ namespace Code_Secret_SOEMS.Helpers
                 Properties.Settings.Default.Save();
 
                 MessageBox.Show("All settings reverted to default");
-            } else if(mode == "super")
+            } 
+            // Skips the adviser and school registration
+            else if(mode == "super")
             {
                 Properties.Settings.Default.theme = "Dark Orange";
                 Properties.Settings.Default.isDark = false;
@@ -38,12 +37,14 @@ namespace Code_Secret_SOEMS.Helpers
                 Properties.Settings.Default.password = "";
                 Properties.Settings.Default.firstRun = false;
                 Properties.Settings.Default.loginLock = false;
-                Properties.Settings.Default.schoolName = "College of Information Technology";
-                Properties.Settings.Default.organization = "Team Code Secret";
+                Properties.Settings.Default.schoolName = "";
+                Properties.Settings.Default.organization = "";
                 Properties.Settings.Default.Save();
 
                 MessageBox.Show("Adviser registration removed");
-            } else
+            } 
+            // Removes the lock property settings
+            else
             {
                 Properties.Settings.Default.lockStatus = false;
                 Properties.Settings.Default.loginLock = false;

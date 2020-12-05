@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -14,39 +7,11 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmOfficers : Form
     {
-        FormHelper fh;
-        OfficerPresenter officerPresenter;
-        string currentID;
-        private void populateFields()
-        {
-            btnAdd.Enabled = false;
-            btnAdd.FlatStyle = FlatStyle.Standard;
-            btnUpdate.Enabled = true;
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnDelete.Enabled = true;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            officerPresenter.prepareOfficer(currentID, txtIDNo, txtPosition, txtFirstName, txtMiddleName, txtLastName,
-                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtCourse, txtYearAndSection);
-        }
+        private FormHelper fh;
+        private OfficerPresenter officerPresenter;
+        string officer_id;
 
-        private void clearFields()
-        {
-            txtIDNo.Clear();
-            txtPosition.Clear();
-            txtFirstName.Clear();
-            txtMiddleName.Clear();
-            txtLastName.Clear();
-            txtAddress.Clear();
-            txtContactNo.Clear();
-            txtEmailAddress.Clear();
-            rbnMale.Checked = false;
-            rbnFemale.Checked = false;
-            txtCourse.Clear();
-            txtYearAndSection.Clear();
-            txtPassword.Clear();
-            txtConfirmPassword.Clear();
-            lblPasswordMessage.Text = "";
-        }
+
         public FrmOfficers(bool update, string id)
         {
             InitializeComponent();
@@ -77,7 +42,7 @@ namespace Code_Secret_SOEMS
             th.setLabelColor(lblPassword);
             th.setLabelColor(lblConfirmPassword);
 
-            currentID = id;
+            officer_id = id;
 
             if(update)
             {
@@ -199,7 +164,7 @@ namespace Code_Secret_SOEMS
                             officerPresenter.setOfficer(txtIDNo.Text, txtPosition.Text, txtFirstName.Text,
                                 txtMiddleName.Text, txtLastName.Text, txtAddress.Text, txtContactNo.Text, txtEmailAddress.Text,
                                 gender, txtCourse.Text, txtYearAndSection.Text, txtPassword.Text);
-                            officerPresenter.updateOfficer(currentID);
+                            officerPresenter.updateOfficer(officer_id);
 
                             MessageBox.Show("Officer successfully updated", "Officers", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -228,7 +193,7 @@ namespace Code_Secret_SOEMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            officerPresenter.deleteOfficer(currentID);
+            officerPresenter.deleteOfficer(officer_id);
             MessageBox.Show("Officer successfully deleted", "Officers", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
@@ -237,6 +202,37 @@ namespace Code_Secret_SOEMS
         private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
         {
             fh.passwordMessage(txtPassword.Text, txtConfirmPassword.Text, lblPasswordMessage);
+        }
+
+        private void populateFields()
+        {
+            btnAdd.Enabled = false;
+            btnAdd.FlatStyle = FlatStyle.Standard;
+            btnUpdate.Enabled = true;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnDelete.Enabled = true;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            officerPresenter.prepareOfficer(officer_id, txtIDNo, txtPosition, txtFirstName, txtMiddleName, txtLastName,
+                txtAddress, txtContactNo, txtEmailAddress, rbnMale, rbnFemale, txtCourse, txtYearAndSection);
+        }
+
+        private void clearFields()
+        {
+            txtIDNo.Clear();
+            txtPosition.Clear();
+            txtFirstName.Clear();
+            txtMiddleName.Clear();
+            txtLastName.Clear();
+            txtAddress.Clear();
+            txtContactNo.Clear();
+            txtEmailAddress.Clear();
+            rbnMale.Checked = false;
+            rbnFemale.Checked = false;
+            txtCourse.Clear();
+            txtYearAndSection.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            lblPasswordMessage.Text = "";
         }
     }
 }

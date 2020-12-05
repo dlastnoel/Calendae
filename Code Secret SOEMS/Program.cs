@@ -23,7 +23,7 @@ namespace Code_Secret_SOEMS
             //Application.Run(new FrmEventRequests());
             //Application.Run(new FrmStudentRequests());
             //Application.Run(new FrmGuestRequests());
-            //new RestoreHelper("lock");
+            //RestoreHelper("super");
 
             
         }

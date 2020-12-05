@@ -22,12 +22,12 @@ namespace Code_Secret_SOEMS.Helpers
 
         ThemeHelper th = new ThemeHelper();
 
-        public void setEventID(int currentID)
+        public void setEventId(int eventId)
         {
-            event_id = currentID;
+            event_id = eventId;
         }
 
-        public int getEventID()
+        public int getEventId()
         {
             return event_id;
         }
@@ -75,7 +75,7 @@ namespace Code_Secret_SOEMS.Helpers
                         currentUserControl = new CtrlEvents(position);
                         break;
                     case "Event Details":
-                        currentUserControl = new CtrlEventDetails(this.getEventID());
+                        currentUserControl = new CtrlEventDetails(this.getEventId());
                         break;
                     case "Students":
                         currentUserControl = new CtrlStudents();

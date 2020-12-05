@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Helpers;
 using Code_Secret_SOEMS.Presenters;
@@ -15,11 +9,12 @@ namespace Code_Secret_SOEMS
 {
     public partial class FrmLogin : Form
     {
-        LoginPresenter loginPresenter;
-        DatabaseHelper dh;
-        SettingsHelper sh;
-        ThemeHelper th;
+        private LoginPresenter loginPresenter;
+        private DatabaseHelper dh;
+        private SettingsHelper sh;
+        private ThemeHelper th;
         private static byte counter = 3;
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -33,11 +28,11 @@ namespace Code_Secret_SOEMS
             th.setGradientPanelColor(panelLeft);
             th.setButtonColor(btnLogin);
             th.setButtonColor(btnRegister);
-            th.setIconButton(btnEvents);
-            th.setControlButtonColor(btnClose);
-            th.setIconButtonColor(btnSettings);
-            th.setIconButtonColor(btnAbout);
             th.setIconButtonColor(btnEvents);
+            th.setControlButtonColor(btnClose);
+            th.setIconButtonBackColor(btnSettings);
+            th.setIconButtonBackColor(btnAbout);
+            th.setIconButtonBackColor(btnEvents);
             th.setLabelColor(lblTitle);
             th.setLabelColor(lblIDNo);
             th.setLabelColor(lblPassword);
@@ -72,9 +67,7 @@ namespace Code_Secret_SOEMS
                     {
                         if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
                         {
-                            new FrmMain(loginPresenter.getOfficerId(), 
-                                loginPresenter.getOfficerPosition(), 
-                                loginPresenter.getOfficerName()).Show();
+                            new FrmMain( loginPresenter.getOfficerPosition(), loginPresenter.getOfficerName()).Show();
                             this.Hide();
                         }
                         else
@@ -94,9 +87,7 @@ namespace Code_Secret_SOEMS
                 {
                     if (loginPresenter.loginOfficer(txtIDNo.Text, txtPassword.Text))
                     {
-                        new FrmMain(loginPresenter.getOfficerId(),
-                                loginPresenter.getOfficerPosition(),
-                                loginPresenter.getOfficerName()).Show();
+                        new FrmMain(loginPresenter.getOfficerPosition(), loginPresenter.getOfficerName()).Show();
                         this.Hide();
                     }
                     else
@@ -120,6 +111,11 @@ namespace Code_Secret_SOEMS
                 {
                     this.Hide();
                     new FrmAdviserRegistration().ShowDialog();
+                }
+                else if(!sh.isSchooSet())
+                {
+                    this.Hide();
+                    new FrmSchool().ShowDialog();
                 }
                 else if (sh.isLoginLocked() && sh.isLocked())
                 {

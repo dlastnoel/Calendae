@@ -8,85 +8,6 @@ namespace Code_Secret_SOEMS.Helpers
 {
     class SettingsHelper
     {
-        // Sets organization infos
-        // School name
-        // Organization name
-        public void setOrganization(string schoolName, string organization)
-        {
-            Properties.Settings.Default.schoolName = schoolName;
-            Properties.Settings.Default.organization = organization;
-            Properties.Settings.Default.Save();
-        }
-
-        // Test if system run is first
-        // Returns result as bool
-        public bool isFirstRun()
-        {
-            return Properties.Settings.Default.firstRun;
-        }
-
-        // Disables first run
-        public void disableFirstRun()
-        {
-            Properties.Settings.Default.firstRun = false;
-            Properties.Settings.Default.Save();
-        }
-
-        // Test if login lock is on
-        // Returns result as bool
-        public bool isLoginLocked()
-        {
-            return Properties.Settings.Default.loginLock;
-        }
-
-        public bool isLocked()
-        {
-            return Properties.Settings.Default.lockStatus;
-        }
-
-        public void unlockLogin()
-        {
-            Properties.Settings.Default.lockStatus = false;
-            Properties.Settings.Default.Save();
-        }
-
-        public string getMinutes()
-        {
-            return Properties.Settings.Default.minutes.ToString();
-        }
-
-        // Enables login lock
-        public void enableLoginLock(byte minutes)
-        {
-            Properties.Settings.Default.loginLock = true;
-            Properties.Settings.Default.minutes = minutes;
-            Properties.Settings.Default.Save();
-        }
-
-        public string getNotes()
-        {
-            return Properties.Settings.Default.notes;
-        }
-
-        public void saveNotes(string notes)
-        {
-            Properties.Settings.Default.notes = notes;
-            Properties.Settings.Default.Save();
-        }
-
-        public void lockLogin()
-        {
-            Properties.Settings.Default.lockStatus = true;
-            Properties.Settings.Default.Save();
-        }
-
-        // Disables login lock
-        public void disableLoginLock()
-        {
-            Properties.Settings.Default.loginLock = false;
-            Properties.Settings.Default.Save();
-        }
-
         // Sets db default connection settings
         public void setDefaultConnectionSettings()
         {
@@ -104,6 +25,104 @@ namespace Code_Secret_SOEMS.Helpers
             Properties.Settings.Default.user = user;
             Properties.Settings.Default.port = port;
             Properties.Settings.Default.password = password;
+            Properties.Settings.Default.Save();
+        }
+
+        // Sets organization infos
+        // School name
+        // Organization name
+        public void setOrganization(string schoolName, string organization)
+        {
+            Properties.Settings.Default.schoolName = schoolName;
+            Properties.Settings.Default.organization = organization;
+            Properties.Settings.Default.Save();
+        }
+
+        // Test if system run is first
+        // Returns result as bool
+        public bool isFirstRun()
+        {
+            return Properties.Settings.Default.firstRun;
+        }
+
+        public bool isSchooSet()
+        {
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.schoolName))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        // Disables first run
+        public void disableFirstRun()
+        {
+            Properties.Settings.Default.firstRun = false;
+            Properties.Settings.Default.Save();
+        }
+
+        // Test if login lock is on
+        // Returns result as bool
+        public bool isLoginLocked()
+        {
+            return Properties.Settings.Default.loginLock;
+        }
+
+        // Test if login is locked
+        // Returns result as bool
+        public bool isLocked()
+        {
+            return Properties.Settings.Default.lockStatus;
+        }
+
+        //Locks the lock status of login
+        public void lockLogin()
+        {
+            Properties.Settings.Default.lockStatus = true;
+            Properties.Settings.Default.Save();
+        }
+        
+        // Unlocks the lock status of login
+        public void unlockLogin()
+        {
+            Properties.Settings.Default.lockStatus = false;
+            Properties.Settings.Default.Save();
+        }
+
+        // Disables login lock
+        public void disableLoginLock()
+        {
+            Properties.Settings.Default.loginLock = false;
+            Properties.Settings.Default.Save();
+        }
+
+        // Gets the minutes of the lock
+        // Returns as string
+        public string getMinutes()
+        {
+            return Properties.Settings.Default.minutes.ToString();
+        }
+
+        // Enables login lock
+        public void enableLoginLock(byte minutes)
+        {
+            Properties.Settings.Default.loginLock = true;
+            Properties.Settings.Default.minutes = minutes;
+            Properties.Settings.Default.Save();
+        }
+
+        // Gets the notes for the dashboard
+        public string getNotes()
+        {
+            return Properties.Settings.Default.notes;
+        }
+
+        // Sets the notes from the dashboard
+        public void saveNotes(string notes)
+        {
+            Properties.Settings.Default.notes = notes;
             Properties.Settings.Default.Save();
         }
     }

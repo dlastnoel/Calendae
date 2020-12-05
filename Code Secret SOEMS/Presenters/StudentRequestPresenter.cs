@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using XanderUI;
 using System.Windows.Forms;
 using Code_Secret_SOEMS.Models;
-using XanderUI;
 using Code_Secret_SOEMS.Helpers;
 
 namespace Code_Secret_SOEMS.Presenters
 {
     class StudentRequestPresenter
     {
-        Student _student;
-        List<string> listStudentId;
-        FlowLayoutPanel flowLayoutStudent;
-        ThemeHelper th = new ThemeHelper();
+        private Student _student;
+        private List<string> listStudentId;
+        private FlowLayoutPanel flowLayoutStudent;
+        private ThemeHelper th = new ThemeHelper();
 
         public StudentRequestPresenter(FlowLayoutPanel myFlowLayoutPanel)
         {
@@ -36,7 +32,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblStudentIDNo.Location = new Point(9, 5);
                 lblStudentIDNo.Name = "lblStudentIDNo";
                 lblStudentIDNo.Size = new Size(41, 15);
-                lblStudentIDNo.Text = "ID No.: " + _student.getStudentDetails("id");
+                lblStudentIDNo.Text = "ID No.: " + _student.getStudentData("id");
 
                 Label lblFullName = new Label();
                 lblFullName.AutoSize = true;
@@ -44,8 +40,8 @@ namespace Code_Secret_SOEMS.Presenters
                 lblFullName.Location = new Point(9, 25);
                 lblFullName.Name = "lblFullName";
                 lblFullName.Size = new Size(68, 15);
-                lblFullName.Text = "Full Name: " + _student.getStudentDetails("first_name") + " " + 
-                    _student.getStudentDetails("middle_name") + " " + _student.getStudentDetails("last_name");
+                lblFullName.Text = "Full Name: " + _student.getStudentData("first_name") + " " + 
+                    _student.getStudentData("middle_name") + " " + _student.getStudentData("last_name");
 
                 Label lblGender = new Label();
                 lblGender.AutoSize = true;
@@ -53,7 +49,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblGender.Location = new Point(9, 45);
                 lblGender.Name = "lblGender";
                 lblGender.Size = new Size(57, 15);
-                if(_student.getStudentDetails("gender") == "M")
+                if(_student.getStudentData("gender") == "M")
                 {
                     lblGender.Text = "Gender: Male";
                 } else
@@ -67,7 +63,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblAddress.Location = new Point(8, 65);
                 lblAddress.Name = "lblGender";
                 lblAddress.Size = new Size(51, 15);
-                lblAddress.Text = "Address: " + _student.getStudentDetails("address");
+                lblAddress.Text = "Address: " + _student.getStudentData("address");
 
                 Label lblContactNo = new Label();
                 lblContactNo.AutoSize = true;
@@ -75,7 +71,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblContactNo.Location = new Point(9, 85);
                 lblContactNo.Name = "lblContactNo";
                 lblContactNo.Size = new Size(103, 15);
-                lblContactNo.Text = "Contact Number: " + _student.getStudentDetails("contact");
+                lblContactNo.Text = "Contact Number: " + _student.getStudentData("contact");
 
                 Label lblEmailAddress = new Label();
                 lblEmailAddress.AutoSize = true;
@@ -83,7 +79,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblEmailAddress.Location = new Point(9, 105);
                 lblEmailAddress.Name = "lblEmailAddress";
                 lblEmailAddress.Size = new Size(92, 15);
-                lblEmailAddress.Text = "Email Address: " + _student.getStudentDetails("email");
+                lblEmailAddress.Text = "Email Address: " + _student.getStudentData("email");
 
                 Label lblCourse = new Label();
                 lblCourse.AutoSize = true;
@@ -91,7 +87,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblCourse.Location = new Point(8, 125);
                 lblCourse.Name = "lblCourse";
                 lblCourse.Size = new Size(38, 15);
-                lblCourse.Text = "Course: " + _student.getStudentDetails("course");
+                lblCourse.Text = "Course: " + _student.getStudentData("course");
 
                 Label lblYearAndSection = new Label();
                 lblYearAndSection.AutoSize = true;
@@ -99,7 +95,7 @@ namespace Code_Secret_SOEMS.Presenters
                 lblYearAndSection.Location = new Point(8, 145);
                 lblYearAndSection.Name = "lblYearAndSection";
                 lblYearAndSection.Size = new Size(38, 15);
-                lblYearAndSection.Text = "Year and Section: " + _student.getStudentDetails("year_and_section");
+                lblYearAndSection.Text = "Year and Section: " + _student.getStudentData("year_and_section");
 
                 Label lblSwitchStatus = new Label();
                 lblSwitchStatus.AutoSize = true;
@@ -125,12 +121,12 @@ namespace Code_Secret_SOEMS.Presenters
                     Student s1 = new Student();
                     if (switchIsActivated.SwitchState == XUISwitch.State.Off)
                     {
-                        s1.deactivateStudent(studentId);
+                        s1.studentActivation(studentId, 0);
                         lblSwitchStatus.Text = "Deactivated";
                     }
                     else
                     {
-                        s1.activateStudent(studentId);
+                        s1.studentActivation(studentId, 1);
                         lblSwitchStatus.Text = "Activated";
                     }
                 };

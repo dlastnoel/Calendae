@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using XanderUI;
-using XanderUI.Designers;
 using Code_Secret_SOEMS.Models;
 
 namespace Code_Secret_SOEMS.Presenters
 {
     class EventPresenter
     {
-        Event _event = new Event();
+        private Event _event;
+        
+        public EventPresenter()
+        {
+            _event = new Event();
+        }
 
         public void loadEvents(DataGridView mydataGridView)
         {
@@ -37,81 +37,80 @@ namespace Code_Secret_SOEMS.Presenters
             _event.is_activated = is_activated;
         }
 
+        public void searchEvents(string event_name, DataGridView myDataGridView)
+        {
+            _event.searchEvents(event_name, myDataGridView);
+        }
         public void addEvent()
         {
             _event.addEvent();
         }
 
-        public bool checkEventStatus(int currentID)
+        public bool checkEventStatus(int event_id)
         {
-            _event.selectEvent(currentID);
-            return bool.Parse(_event.getEventItems("is_activated"));
+            _event.selectEvent(event_id);
+            return bool.Parse(_event.getEventData("is_activated"));
             
         }
 
-        public void eventActivation(int currentID, XUISwitch switchIsActivated, Label lblSwitchStatus)
+        public void eventActivation(int event_id, XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
             if(switchIsActivated.SwitchState == XUISwitch.State.On)
             {
-                _event.activateEvent(currentID);
+                _event.eventActivation(event_id, 1);
                 lblSwitchStatus.Text = "Activated";
             } else
             {
-                _event.deactivateEvent(currentID);
+                _event.eventActivation(event_id, 0);
                 lblSwitchStatus.Text = "Activated";
             }
         }
 
 
-        public bool prepareEvent(int currentID, TextBox txtEventName, TextBox txtVenue, DateTimePicker dateFrom, 
+        public void prepareEvent(int event_id, TextBox txtEventName, TextBox txtVenue, DateTimePicker dateFrom, 
             DateTimePicker dateTo, DateTimePicker timeFrom, DateTimePicker timeTo, TextBox txtStudentRegistration, TextBox txtStudentSlots,
             TextBox txtEventDetails, CheckBox chkGuests, TextBox txtGuestRegistration, TextBox txtGuestSlots, 
             XUISwitch switchIsActivated, Label lblSwitchStatus)
         {
-            bool activation;
-            _event.selectEvent(currentID);
-            txtEventName.Text = _event.getEventItems("event_name");
-            txtVenue.Text = _event.getEventItems("venue");
-            dateFrom.Value = Convert.ToDateTime(_event.getEventItems("date_from"));
-            dateTo.Value = Convert.ToDateTime(_event.getEventItems("date_to"));
-            string[] times = _event.getEventItems("time").Split(new string[] {" - "}, StringSplitOptions.None);
+            _event.selectEvent(event_id);
+            txtEventName.Text = _event.getEventData("event_name");
+            txtVenue.Text = _event.getEventData("venue");
+            dateFrom.Value = Convert.ToDateTime(_event.getEventData("date_from"));
+            dateTo.Value = Convert.ToDateTime(_event.getEventData("date_to"));
+            string[] times = _event.getEventData("time").Split(new string[] {" - "}, StringSplitOptions.None);
             timeFrom.Value = Convert.ToDateTime(times[0]);
             timeTo.Value = Convert.ToDateTime(times[1]);
-            txtStudentRegistration.Text = _event.getEventItems("student_registration");
-            txtStudentSlots.Text = _event.getEventItems("student_slots");
-            txtEventDetails.Text = _event.getEventItems("event_details");
-            if(bool.Parse(_event.getEventItems("allow_guests")) == true)
+            txtStudentRegistration.Text = _event.getEventData("student_registration");
+            txtStudentSlots.Text = _event.getEventData("student_slots");
+            txtEventDetails.Text = _event.getEventData("event_details");
+            if(bool.Parse(_event.getEventData("allow_guests")) == true)
             {
                 chkGuests.Checked = true;
-                txtGuestRegistration.Text = _event.getEventItems("guest_registration");
-                txtGuestSlots.Text = _event.getEventItems("guest_slots");
+                txtGuestRegistration.Text = _event.getEventData("guest_registration");
+                txtGuestSlots.Text = _event.getEventData("guest_slots");
             } else
             {
                 chkGuests.Checked = false;
             }
-            if(bool.Parse(_event.getEventItems("is_activated")) == true)
+            if(bool.Parse(_event.getEventData("is_activated")) == true)
             {
-                activation = true;
                 switchIsActivated.SwitchState = XUISwitch.State.On;
                 lblSwitchStatus.Text = "Activated";
             } else
             {
-                activation = false;
                 switchIsActivated.SwitchState = XUISwitch.State.Off;
                 lblSwitchStatus.Text = "Deactivated";
             }
-
-            return activation;
         }
 
-        public void updateEvent(int currentID)
+        public void updateEvent(int event_id)
         {
-            _event.updateEvent(currentID);
+            _event.updateEvent(event_id);
         }
 
-        public void deleteEvent(int currentID)
+        public void deleteEvent(int event_id)
         {
-            _event.deleteEvent(currentID);
+            _event.deleteEvent(event_id);
         }
     }
 

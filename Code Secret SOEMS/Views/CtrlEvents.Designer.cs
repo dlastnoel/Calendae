@@ -63,6 +63,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnOpenForm = new System.Windows.Forms.Button();
             this.btnShowDetails = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataEvents)).BeginInit();
             this.groupEventInfo.SuspendLayout();
             this.groupGuests.SuspendLayout();
@@ -473,11 +474,25 @@
             this.btnShowDetails.Visible = false;
             this.btnShowDetails.Click += new System.EventHandler(this.btnShowDetails_Click);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Roboto Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Location = new System.Drawing.Point(697, 13);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(214, 23);
+            this.txtSearch.TabIndex = 43;
+            this.txtSearch.Text = "Search";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
+            // 
             // CtrlEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnShowDetails);
             this.Controls.Add(this.btnOpenForm);
             this.Controls.Add(this.btnDelete);
@@ -537,5 +552,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTo;
         private System.Windows.Forms.DateTimePicker timeFrom;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
