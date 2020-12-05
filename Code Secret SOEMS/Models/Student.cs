@@ -64,10 +64,10 @@ namespace Code_Secret_SOEMS.Models
                     "year_and_section AS 'Year and Section' " +
                 "FROM students " +
                 "WHERE id LIKE CONCAT('%',@search,'%') " +
-                "OR WHERE id LIKE CONCAT('%',@search,'%') " +
-                "OR WHERE first_name LIKE CONCAT('%',@search,'%') " +
-                "OR WHERE middle_name LIKE CONCAT('%',@search,'%') " +
-                "OR WHERE last_name LIKE CONCAT('%',@search,'%') ;");
+                "OR id LIKE CONCAT('%',@search,'%') " +
+                "OR first_name LIKE CONCAT('%',@search,'%') " +
+                "OR middle_name LIKE CONCAT('%',@search,'%') " +
+                "OR last_name LIKE CONCAT('%',@search,'%') ;");
             dbHelper.bindParam("@search", search);
             dbHelper.populateDataGridView(myDataGridView);
         }
