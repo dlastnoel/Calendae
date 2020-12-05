@@ -388,7 +388,7 @@ namespace Code_Secret_SOEMS
         {
             if(!String.IsNullOrEmpty(txtSearch.Text))
             {
-                eventPresenter.searchEvent(txtSearch.Text, dataEvents);
+                eventPresenter.searchEvents(txtSearch.Text, dataEvents);
             } else
             {
                 eventPresenter.loadEvents(dataEvents);
